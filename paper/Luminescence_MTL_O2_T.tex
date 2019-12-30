@@ -1,4 +1,4 @@
-\documentclass[9pt,twocolumn,twoside]{optica}
+\documentclass[9pt,twocolumn,twoside,pdftex]{optica}
 \setboolean{shortarticle}{false}
 \setboolean{minireview}{false}
 
@@ -18,7 +18,12 @@ Technikumstrasse 9, 8401 Winterthur, Switzerland}
 % \dates{Compiled \today}
 
 %\ociscodes{(140.3490) Lasers, distributed feedback; (060.2420) Fibers, polarization-maintaining; (060.3735) Fiber Bragg gratings.}
-
+%300.6280   Spectroscopy, fluorescence and luminescence
+%260.3800   Luminescence
+%120.0280   Remote sensing and sensors
+%100.4996   Pattern recognition, neural networks
+%200.4260   Neural networks
+%https://www.osapublishing.org/submit/ocis/#230.0230
 % To be edited by editor
 % \doi{\url{http://dx.doi.org/10.1364/optica.XX.XXXXXX}}
 
@@ -52,9 +57,10 @@ To control the temperature of the samples, these were placed in good thermal con
 The absolute error on the oxygen concentration adjusted with the gas mixing device is estimated to be below 1 $\%$ air. 
 
 The optical setup used in this work for the luminescence measurements is shown schematically in Fig. \ref{fig:setup}.
-\begin{figure}[t]
+
+\begin{figure}[htbp]
 \centering
-\includegraphics[keepaspectratio, width=7.5cm]{Figures/setup}
+\includegraphics[keepaspectratio, width=7.5cm]{setup.eps}
 \caption{Scheme of the optical experimental setup. Blue is the excitation, red the luminescence optical path. PD: photodiode; TIA: trans-impedance amplifier.}
 \label{fig:setup}
 \end{figure}
@@ -66,28 +72,20 @@ For the frequency generation and the phase detection a two-phase lock-in amplifi
 
 The sections below show examples of different article components. Sections should generally follow the conventional order: Introduction, Method, Results, Discussion, and Conclusion.  Please do not include Methods in a separate section at the end.
 
-\begin{figure}[hbt]
-\centering
-\includegraphics[width=9 cm]{figures/NN_MTL_O2_T.png}
-\caption{Architecture of the feed-forward MTL network C.}
-\label{NN_MTL_O2_T}
-\end{figure}
+\subsection{Artificial Neural Network Setup}
+\label{NN}
 
-
-\section{Results}
-
-
-
-\subsection{Figures and Tables}
-
-Figure \ref{fig:false-color} shows an example figure.
 
 \begin{figure}[htbp]
 \centering
-\fbox{\includegraphics[width=\linewidth]{sample}}
-\caption{False-color image, where each pixel is assigned to one of seven reference spectra.}
-\label{fig:false-color}
+\includegraphics[width=9 cm]{NN_MTL_O2_T.png}
+\caption{Architecture of the feed-forward MTL.}
+\label{fig:NN_MTL_O2_T}
 \end{figure}
+
+\section{Results and Discussion}
+
+
 
 \subsection{Sample Table}
 
@@ -108,15 +106,6 @@ $m = 3$ & $L_3=4L_1L_2$ & $\Phi_{i3}$ \\
   \label{tab:shape-functions}
 \end{table}
 
-\section{Results}
-
-Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically distributed random variables with $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] = \sigma^2 < \infty$, and let
-\begin{equation}
-S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
-      = \frac{1}{n}\sum_{i}^{n} X_i
-\label{eq:refname1}
-\end{equation}
-denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge in distribution to a normal $\mathcal{N}(0, \sigma^2)$.
 
 \section{Conclusions}
 
