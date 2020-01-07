@@ -2,7 +2,7 @@
 \setboolean{shortarticle}{false}
 \setboolean{minireview}{false}
 
-\title{Dual oxygen and temperature sensing multitask learning neural networks}
+\title{Dual oxygen and temperature sensing multi-task learning neural networks}
 
 \author[1,2,*]{Francesca Venturini}
 \author[2]{Umberto Michelucci}
@@ -74,7 +74,12 @@ For the frequency generation and the phase detection a two-phase lock-in amplifi
 The series of measurements were carried out following the flow shown in Fig. XXX. First the acquisition program fixed the temperature and concentration. Then the phase-shift was measured for varying the modulation frequency. This measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration and the entire frequency-loop was repeated. Finally, the temperature is changed and then the oxygen and frequency loops where repeated.
 The total number of measurements is 50x20x21x9=189000 which lasted ca. 65 hours. The number of measurement was chosen as a compromise between maximal number of measurements and minimal change of the sample due to photobleaching. 
 
-****Fig. ****
+\begin{figure}[htbp]
+\centering
+\includegraphics[keepaspectratio, width=5 cm]{flow-chart.png}
+\caption{Scheme of the optical experimental setup. Blue is the excitation, red the luminescence optical path. PD: photodiode; TIA: trans-impedance amplifier.}
+\label{fig:setup}
+\end{figure}
 
 \subsection{Artificial Neural Network Design}
 \label{NN}
