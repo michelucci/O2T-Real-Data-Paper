@@ -65,6 +65,7 @@ The optical setup used in this work for the luminescence measurements is shown s
 \caption{Scheme of the optical experimental setup. Blue is the excitation, red the luminescence optical path. PD: photodiode; TIA: trans-impedance amplifier.}
 \label{fig:setup}
 \end{figure}
+
 The excitation light was provided by a 405 nm LED (VAOL-5EUV0T4, VCC Visual Communications Company LLC), filtered by a an short pass (SP) filter with cut-off at 498 nm (Semrock 498 SP Bright Line HC short pass) and focused on the surface of the samples with a collimation lens (EO43987, Edmund Optics). The luminescence was focussed by a lens (G063020000, LINOS) and collected by a photodiode (SFH 213 Osram).
 To suppress stray light and light reflected by the sample surface, the emission channel was equipped with a long pass filter with cut-off at 594 nm (Semrock 594 LP Edge Basic long pass) and a short pass filter with cut-off at 682 nm (Semrock 682 SP Bright Line HC short pass). The driver for the LED and the trans-impedance amplifier (TIA) are self-made.
 For the frequency generation and the phase detection a two-phase lock-in amplifier (SR830, Stanford Research Inc.) was used. The modulation frequency was varied between 200 Hz and 15000 kHz.
@@ -72,25 +73,22 @@ For the frequency generation and the phase detection a two-phase lock-in amplifi
 \subsection{Automated Data Acquisition}
 \label{Data}
 
-The series of measurements were carried out following the flow shown in Fig. XXX. First the acquisition program fixed the temperature and concentration. Then the phase-shift was measured for varying the modulation frequency. This measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration and the entire frequency-loop was repeated. Finally, the temperature is changed and then the oxygen and frequency loops where repeated.
+The series of measurements were carried out following the flow shown in Fig. \ref{fig:auto-data}. First the acquisition program fixed the temperature and concentration. Then the phase-shift was measured for varying the modulation frequency. This measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration and the entire frequency-loop was repeated. Finally, the temperature is changed and then the oxygen and frequency loops where repeated.
 The total number of measurements is 50x20x21x9=189000 which lasted ca. 65 hours. The number of measurement was chosen as a compromise between maximal number of measurements and minimal change of the sample due to photobleaching. 
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[keepaspectratio, width=5 cm]{flow-chart.png}
-\caption{Scheme of the optical experimental setup. Blue is the excitation, red the luminescence optical path. PD: photodiode; TIA: trans-impedance amplifier.}
-\label{fig:setup}
+\caption{Flow-chart of the automatic measurement.}
+\label{fig:auto-data}
 \end{figure}
 
 \subsection{Artificial Neural Network Design}
 \label{NN}
 
-The MTL network proposed is depicted in Figure \ref{fig:NN_MTL_O2_T}. It consists of three common hidden layers with 50 neurons each which generate as output a "shared representation". The name comes from the fact that the output of those layers is used to evaluate both $[O_2]$ and $T$. These are followed by three branches, two with each two additional "task-specific hidden layers" to predict respectively $[O_2]$ and $T$, and then one without additional layers to predict $[O_2]$ and $T$ at the same time.The shared representation is the input of two "task-specific hidden layers", that learn how to predict $[O_2]$ and $T$ better. Note how the common hidden layers are shared with both the tasks of predicting $[O_2]$ and $T$, while the task-specific hidden layers are specific to each task separately. Therefore, the MTL  network uses the common hidden layers to find common features beneficial to each of the two tasks. During the training phase, learning to predict $[O_2]$ will influence the common hidden layers and therefore, the prediction of $T$, and vice-versa. A set of task-specific hidden layers will then learn specific features to each output and therefore improve the prediction accuracy.
-The number of neurons of each task-specific hidden layer is 5.
+The artificial network used in this work has a multi-task-learning architecture and is depicted in Figure \ref{fig:NN_MTL_O2_T}. It consists of three common hidden layers with 50 neurons each which generate as output a "shared representation". The name comes from the fact that the output of those layers is used to evaluate both $[O_2]$ and $T$. These are followed by three branches, two with each two additional "task-specific hidden layers" to predict respectively $[O_2]$ and $T$, and then one without additional layers to predict $[O_2]$ and $T$ at the same time.The shared representation is the input of two "task-specific hidden layers", that learn how to predict $[O_2]$ and $T$ better. This architecture uses the common hidden layers to find common features beneficial to each of the two tasks. During the training phase, learning to predict $[O_2]$ will influence the common hidden layers and therefore, the prediction of $T$, and vice-versa. The further task-specific hidden layers learn specific features to each output and therefore improve the prediction accuracy. The number of neurons of each task-specific hidden layer is 5.
 
-In the three architectures investigated the sigmoid activation functions was used for all the neurons.
-
-A common choice for the cost function in regression problems is the mean square error (MSE), which is defined as
+As activation function the sigmoid activation functions was used for all the neurons. A common choice for the cost function in regression problems is the mean square error (MSE), which is defined as
 \begin{equation}
 MSE = \frac{1}{n}\sum_{j=1}^n \sum_{k=1}^d (y_k^{[j]}-\hat y_k^{[j]})^2
 \label{MSE}
@@ -108,7 +106,6 @@ L = \sum_{i=1}^{n_T}\alpha_i \frac{1}{n}\sum_{j=1}^n \sum_{k=1}^d (y_k^{[j]}-\ha
 where  $n_T$ is the number of tasks; $n$ is the number of observations in the input dataset; ${\mathbold y}^{[j]} \in \mathbb{R}^d$ is the measured value of the desired quantity for observation $j$, with $j=1, ..., n$; $ \hat {\mathbold y}^{[j]} \in \mathbb{R}^d$ is the output of the network, when evaluated on the $j^{th}$ observation.
 he global cost function weights used for the plots were $\alpha_1 = 0.3$, $\alpha_2 = 5$ and $\alpha_3 = 1$. Those values were chosen because they result in the lowest $MAE$s (see discussion in Section \ref{Results}).
  
-
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=9 cm]{NN_MTL_O2_T.png}
@@ -119,8 +116,7 @@ he global cost function weights used for the plots were $\alpha_1 = 0.3$, $\alph
 To minimize the cost function, the optimizer Adaptive Moment Estimation (Adam) \cite{Kingma2014, Michelucci2017} was used. The training was performed with a starting learning rate of $10^{-3}$ and using batch-learning, which means that the weights were updated only after the entire training dataset has been fed to the network. Batch-learning was chosen because of its stability and speed since it reduces the training time of a few orders of magnitude in comparison to, for example, stochastic gradient descent \cite{Michelucci2017}. Therefore it makes experimenting with different networks a feasible endeavor. 
 The implementation was performed using the TensorFlow$\texttrademark$ library. 
 
-The metric used to compare results from different network models is the 
-absolute error ($AE$) defined as the absolute value of the difference between the predicted and the expected value for a given observation. For the oxygen concentration of the 
+The metric used to compare results from different network models is the absolute error ($AE$) defined as the absolute value of the difference between the predicted and the expected value for a given observation. For the oxygen concentration of the 
 $j^{th}$ observation $[O_2]^{[j]}$  the $AE$ is 
 \begin{equation}
 \label{AE}
@@ -135,40 +131,34 @@ MAE_{[O_2]}(S_{train}) = \frac{1}{|S_{train}|} \sum_{j \in S_{train}}|[O_2]_{pre
 where $|S_{train}|$ is the size (or cardinality) of the training dataset. For example, in this work $|S_{train}|$=20000.
 The $AE_{T}$ and $MAE_T$ are similarly defined.
 
+
 \section{Results and Discussion}
-\ref{Results}
+\label{Results}
+
+As described in Section \ref{Theory}, the phase-shift depends not only on the oxygen concentration, but also on the temperature and on the modulation frequency of the excitation light. This is shown in Fig. \ref{fig:expdata1} and Fig. \ref{fig:expdata2}.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=9 cm]{expdata1.eps}
-\caption{At temperature 25....}
+\caption{Phase-shift at a fixed temperature $T=25 ^{\circ}$ for selected oxygen concentrations as a function of the modulation frequency of the excitation light.}
 \label{fig:expdata1}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=9 cm]{expdata2.eps}
-\caption{....}
+\caption{Phase-shift at a fixed oxygen concentration $[O_2]=20 \%$ air for selected temperatures as a function of the modulation frequency of the excitation light.}
 \label{fig:expdata2}
 \end{figure}
 \subsection{Sample Table}
 
-Table \ref{tab:shape-functions} shows an example table.
+Fig. \ref{fig:expdata1} shows the phase-shift of the luminescence at a fixed temperature for different oxygen concentrations as a function of the modulation frequency. Fig. \ref{fig:expdata2} gives the complementary information of the phase-shift at a fixed oxygen concentrations for different temperatures as a function of the modulation frequency. Comparing the curves of the two picture it is clear why it is not possible, when measuring one single phase-shift or even a curve of the phase-shift dependent from the modulation frequency to simultaneously extract both the oxygen concentration and the temperature. 
 
-\begin{table}[htbp]
-\centering
-\caption{\bf Shape Functions for Quadratic Line Elements}
-\begin{tabular}{ccc}
-\hline
-local node & $\{N\}_m$ & $\{\Phi_i\}_m$ $(i=x,y,z)$ \\
-\hline
-$m = 1$ & $L_1(2L_1-1)$ & $\Phi_{i1}$ \\
-$m = 2$ & $L_2(2L_2-1)$ & $\Phi_{i2}$ \\
-$m = 3$ & $L_3=4L_1L_2$ & $\Phi_{i3}$ \\
-\hline
-\end{tabular}
-  \label{tab:shape-functions}
-\end{table}
+
+
+
+
+
 
 
 \section{Conclusions}
@@ -186,19 +176,6 @@ $m = 3$ & $L_3=4L_1L_2$ & $\Phi_{i3}$ \\
 \medskip
 
 \noindent\textbf{Disclosures.} The authors declare no conflicts of interest.
-
-\section*{Supplemental Documents}
-\emph{Optica} authors may include supplemental documents with the primary manuscript. For details, see \href{http://www.opticsinfobase.org/submit/style/supplementary-materials-optica.cfm}{Supplementary Materials in Optica}. To reference the supplementary document, the statement ``See Supplement 1 for supporting content.'' should appear at the bottom of the manuscript (above the references).
-
-%\bigskip \noindent See \href{link}{Supplement 1} for supporting content.
-
-\section*{References}
-
-For references, you may add citations manually or use BibTeX. E.g. \cite{Michelucci2017}.
-
-Letter submissions to \emph{Optica} require two sets of references: an abbreviated reference style for publication and a full reference list to aid the editor and reviewers. Citations to journal articles in the abbreviated list should omit the article title and final page number; this abbreviated reference style is produced automatically when the \texttt{$\setminus$setboolean\{shortarticle\}\{true\}} option is selected in the template, if you are using a .bib file for your references.
- 
-The full reference list meant to aid the editor and reviewers must be included as well on an informational page that will not count against page length; again this will be produced automatically if you are using a .bib file and have the \texttt{$\setminus$setboolean\{shortarticle\}\{true\}} option selected.
 
 
 % Bibliography
