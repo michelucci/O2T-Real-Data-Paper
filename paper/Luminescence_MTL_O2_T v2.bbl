@@ -1,0 +1,14 @@
+\begin{thebibliography}{1}
+\newcommand{\enquote}[1]{``#1''}
+
+\bibitem{Kingma2014}
+J.~A. Kingma, D.P.;~Ba, \enquote{Adam: A method for stochastic optimization. in
+  proceedings of 3rd.} {\protect\JournalTitle{In Proceedings of 3rd
+  International Conference on Learning Representations, ICLR 2015}} pp. 1--15
+  (2015).
+
+\bibitem{Michelucci2017}
+U.~Michelucci, \emph{Applied Deep Learning - A Case-Based Approach to
+  Understanding Deep Neural Networks} (APRESS Media, LLC, 2018).
+
+\end{thebibliography}
