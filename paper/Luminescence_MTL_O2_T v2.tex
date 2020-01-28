@@ -3,7 +3,7 @@
 \setboolean{minireview}{false}
 
 
-\title{Dual oxygen and temperature sensing multi-task learning neural networks}
+\title{Dual oxygen and temperature sensing with automatic data acquisition for machine learning}
 
 \author[1,2,*]{Francesca Venturini}
 \author[2]{Umberto Michelucci}
@@ -43,13 +43,19 @@ A well-known optical approach to measure oxygen partial pressure is the quenchin
 
 \section{Introduction}
 
-The determination of oxygen partial pressure is of great interest in numerous areas, like medicine, biotechnology, and chemistry. Among the different methods used to determine oxygen concentration, optical techniques are particularly attractive because they do not consume oxygen, have a fast response time, allow a good precision and accuracy. A well-known optical measuring approach is the quenching of luminescence by the oxygen molecules. The measuring principle is based on the measurement of the luminescence of a specific molecule, whose intensity and the decay time are reduced due to collisions with oxygen. Sensors based on this principle typically rely on approximate empirical models to parametrise the dependence of the sensing quantity on influencing factors. A new approach is to use feed-forward neural networks to predict the desired variables. Unfortunately, those kind of networks usually perform less efficiently when applied to multi-dimensional regression problems. In this work, we propose a new multi-task learning (MTL) neural network approach which allows the extraction of both the oxygen concentration and the temperature using one single indicator and measuring a single quantity, namely the decay time. The results demonstrate that firstly, using neural networks it is in principle possible to extract both the oxygen concentration and the temperature from the measurement of one single quantity and using one single indicator; secondly, that the use the proposed MTL networks allow more accurate and stable predictions for both the parameters. Furthermore, the proposed MTL approach is not limited to luminescence quenching but may be of particular relevance in all those cases, where the mathematical model is not known, too complex or not really of interest and the only goal of the regression problem is to build a system that is able to determine as accurately as possible..
+The determination of oxygen partial pressure is of great interest in numerous areas, like medicine, biotechnology, and chemistry. Among the different methods used to determine oxygen concentration, optical techniques are particularly attractive because they do not consume oxygen, have a fast response time, allow a good precision and accuracy. Further advantages of optical sensors include that they can be used for both in-situ measuremnt and for remote acquisition, via optical fibers. 
+The most used optical measuring approach uses the effect of the quenching of luminescence by the oxygen molecules \cite{Wang2014}. The measuring principle is based on the measurement of the luminescence of a specific molecule or luminophore, whose intensity and decay time are reduced due to collisions with molecular oxygen \cite{Lakowicz2006}.
+
+Sensors based on this principle typically rely on approximate empirical models to parametrise the dependence of the sensing quantity on influencing factors. A new approach is to use feed-forward neural networks to predict the desired variables. Unfortunately, those kind of networks usually perform less efficiently when applied to multi-dimensional regression problems. In this work, we propose a new multi-task learning (MTL) neural network approach which allows the extraction of both the oxygen concentration and the temperature using one single indicator and measuring a single quantity, namely the decay time. The results demonstrate that firstly, using neural networks it is in principle possible to extract both the oxygen concentration and the temperature from the measurement of one single quantity and using one single indicator; secondly, that the use the proposed MTL networks allow more accurate and stable predictions for both the parameters. Furthermore, the proposed MTL approach is not limited to luminescence quenching but may be of particular relevance in all those cases, where the mathematical model is not known, too complex or not really of interest and the only goal of the regression problem is to build a system that is able to determine as accurately as possible..
 
 \section{Methods}
 \label{sec:methods}
 
 \subsection{Theoretical model for Luminescence Quenching for Oxygen Determination}
 \label{Theory}
+
+
+
 
 \subsection{Experimental Setup}
 \label{Experimental}
@@ -109,7 +115,7 @@ he global cost function weights used for the plots were $\alpha_1 = 0.3$, $\alph
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=9 cm]{NN_MTL_O2_T.png}
-\caption{Architecture of the feed-forward MTL.}
+\caption{Architecture of the multi-task learning architecture.}
 \label{fig:NN_MTL_O2_T}
 \end{figure}
 
@@ -139,21 +145,50 @@ As described in Section \ref{Theory}, the phase-shift depends not only on the ox
 
 \begin{figure}[htbp]
 \centering
+\includegraphics[width=9 cm]{expdata3.eps}
+\caption{Phase-shift as a function of the oxygen concentration, for selected temperatures at a fixed modulation frequency of 6kHz.}
+\label{fig:expdata3}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
 \includegraphics[width=9 cm]{expdata1.eps}
-\caption{Phase-shift at a fixed temperature $T=25 ^{\circ}$ for selected oxygen concentrations as a function of the modulation frequency of the excitation light.}
+\caption{Phase-shift for selected oxygen concentrations as a function of the modulation frequency at a fixed temperature $T=25 ^{\circ}$ .}
 \label{fig:expdata1}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=9 cm]{expdata2.eps}
-\caption{Phase-shift at a fixed oxygen concentration $[O_2]=20 \%$ air for selected temperatures as a function of the modulation frequency of the excitation light.}
+\caption{Phase-shift for selected oxygen concentrations as a function of the modulation frequency at a fixed oxygen concentration $[O_2]=20 \%$ at selected temperatures.}
 \label{fig:expdata2}
 \end{figure}
-\subsection{Sample Table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=9 cm]{expdata3.eps}
+\caption{Phase-shift at a fixed oxygen concentration $[O_2]=20 \%$ air for selected temperatures as a function of the modulation frequency of the excitation light.}
+\label{fig:expdata3}
+\end{figure}
 
 Fig. \ref{fig:expdata1} shows the phase-shift of the luminescence at a fixed temperature for different oxygen concentrations as a function of the modulation frequency. Fig. \ref{fig:expdata2} gives the complementary information of the phase-shift at a fixed oxygen concentrations for different temperatures as a function of the modulation frequency. Comparing the curves of the two picture it is clear why it is not possible, when measuring one single phase-shift or even a curve of the phase-shift dependent from the modulation frequency to simultaneously extract both the oxygen concentration and the temperature. 
 
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=9 cm]{results_theta90.eps}
+\caption{Phase-shift at a fixed temperature $T=25 ^{\circ}$ for selected oxygen concentrations as a function of the modulation frequency of the excitation light.}
+\label{fig:result_90}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=9 cm]{result_theta_theta0.eps}
+\caption{Phase-shift at a fixed temperature $T=25 ^{\circ}$ for selected oxygen concentrations as a function of the modulation frequency of the excitation light.}
+\label{fig:result_theta0}
+\end{figure}
 
 
 
