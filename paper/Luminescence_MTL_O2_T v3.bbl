@@ -1,0 +1,57 @@
+\begin{thebibliography}{10}
+\newcommand{\enquote}[1]{``#1''}
+
+\bibitem{Wang2014}
+X.-d. Wang and O.~S. Wolfbeis, \enquote{Optical methods for sensing and imaging
+  oxygen: materials, spectroscopies and applications,}
+  {\protect\JournalTitle{Chemical Society Reviews}} \textbf{43}, 3666--3761
+  (2014).
+
+\bibitem{Lakowicz2006}
+J.~R. Lakowicz, \emph{Principles of Fluorescence Spectroscopy, 3rd ed.}
+  (Springer, New York, 2006).
+
+\bibitem{Carraway1991}
+E.~Carraway, J.~Demas, B.~DeGraff, and J.~Bacon, \enquote{Photophysics and
+  photochemistry of oxygen sensors based on luminescent transition-metal
+  complexes,} {\protect\JournalTitle{Analytical chemistry}} \textbf{63},
+  337--342 (1991).
+
+\bibitem{Demas1995}
+J.~N. Demas, B.~DeGraff, and W.~Xu, \enquote{Modeling of luminescence
+  quenching-based sensors: comparison of multisite and nonlinear gas solubility
+  models,} {\protect\JournalTitle{Analytical Chemistry}} \textbf{67},
+  1377--1380 (1995).
+
+\bibitem{Hartmann1995}
+P.~Hartmann, M.~J. Leiner, and M.~E. Lippitsch, \enquote{Luminescence quenching
+  behavior of an oxygen sensor based on a ru (ii) complex dissolved in
+  polystyrene,} {\protect\JournalTitle{Analytical Chemistry}} \textbf{67},
+  88--93 (1995).
+
+\bibitem{Mills1999}
+A.~Mills, \enquote{Response characteristics of optical sensors for oxygen:
+  models based on a distribution in $\tau$oor kq,}
+  {\protect\JournalTitle{Analyst}} \textbf{124}, 1301--1307 (1999).
+
+\bibitem{Quaranta2012}
+M.~Quaranta, S.~M. Borisov, and I.~Klimant, \enquote{Indicators for optical
+  oxygen sensors,} {\protect\JournalTitle{Bioanalytical reviews}} \textbf{4},
+  115--157 (2012).
+
+\bibitem{Michelucci2019}
+U.~Michelucci, M.~Baumgartner, and F.~Venturini, \enquote{Optical oxygen
+  sensing with artificial intelligence,} {\protect\JournalTitle{Sensors}}
+  \textbf{19}, 777 (2019).
+
+\bibitem{Kingma2014}
+J.~A. Kingma, D.P.;~Ba, \enquote{Adam: A method for stochastic optimization. in
+  proceedings of 3rd.} {\protect\JournalTitle{In Proceedings of 3rd
+  International Conference on Learning Representations, ICLR 2015}} pp. 1--15
+  (2015).
+
+\bibitem{Michelucci2017}
+U.~Michelucci, \emph{Applied Deep Learning - A Case-Based Approach to
+  Understanding Deep Neural Networks} (APRESS Media, LLC, 2018).
+
+\end{thebibliography}

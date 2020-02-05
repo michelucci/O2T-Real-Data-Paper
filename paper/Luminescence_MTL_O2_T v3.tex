@@ -64,7 +64,10 @@ where $I_0$ and $I$, respectively, are the luminescence intensities in the absen
 
 For practical applications, the luminophore needs to be embedded in a supporting substrate, frequently a polymer. As a result, the SV curve deviates from the linear behavior of equation (\ref{SVe}). This deviation can be due, for example, to heterogeneities of the micro-environment of the luminescent indicator, or the presence of static quenching \cite{Wang2014}. A scenario which describes this non-linear behavior involves the presence in the substrate of at two or more environments, in which the indicator is quenched at different rates \cite{Carraway1991,Demas1995}. This multi-site model describes the SV curve as the sum of two or more
 \begin{equation}
-\frac{I_0}{I}=\bigg( \frac{f}{1+K_{SV1} \cdot \left[O_2\right]}+\frac{1-f}{1+K_{SV2}\cdot \left[O_2\right]}\bigg)^{-1}
+%\frac{I_0}{I}=\bigg( \frac{f}{1+K_{SV1} \cdot \left[O_2\right]}+\frac{1-f}{1+K_{SV2}\cdot \left[O_2\right]}\bigg)^{-1}
+\frac{I_0}{I}=\bigg[
+\frac{f_i}{1+K_{SV,i} \cdot \left[O_2\right]}
+\bigg]^{-1}
 \label{SVe2}
 \end{equation}
 where $I_0$ and $I$, respectively, are the luminescence intensities in the absence and presence of oxygen, $f_i$'s are the fractions of the total emission for each component under unquenched conditions, $K_{SVi}$'s are the associated effective Stern–Volmer constants, and $\left[O_2\right]$ indicates the oxygen concentration. A simplification of this model is that one of the sites is not quenched and therefore the constant $K_{SV2}$ is zero.
@@ -72,10 +75,13 @@ where $I_0$ and $I$, respectively, are the luminescence intensities in the absen
 
 Since in most industrial and commercial sensor applications, the decay time $\tau$ is frequently preferred to intensity measurement because of its higher reliability and robustness. The determination of the decay time is done most easily in the frequency domain by modulating the intensity of the excitation.  As a result, the emitted luminescence is also modulated but shows a phase shift $\theta$ due to the finite lifetime of the excited state. This method, has the advantage of allowing very simple and low-cost realization and is widely used in commercial applications.
 
-Although the multi-site model was introduced for luminescence intensities, it is frequently also used to describe the oxygen dependence of the decay times \cite{Demas1995,Quaranta2012}. Therefore, in the simplest case of a two-sites scenario, the model can be rewritten in terms of phase shit as \cite{Michelucci2019}
+Although the multi-site model was introduced for luminescence intensities, it is frequently also used to describe the oxygen dependence of the decay times \cite{Demas1995,Quaranta2012}. Therefore, in the simplest case of a two-sites scenario, the model can be rewritten in terms of phase shift as \cite{Michelucci2019}
 \begin{equation}
-\frac{\tan \theta (\omega, T, [O_2])}{\tan \theta_0 (\omega, T)} = \bigg( \frac{f (\omega , T) }{1+K_{SV1} (\omega , T) \cdot \left[O_2\right]}+\frac{1-f (\omega , T) }{1+K_{SV2} (\omega , T) \cdot \left[O_2\right]} \bigg)^{-1}
+\begin{aligned}
+\frac{\tan \theta (\omega, T, [O_2])}{\tan \theta_0 (\omega, T)} =& \bigg( \frac{f (\omega , T) }{1+K_{SV1} (\omega , T) \cdot \left[O_2\right]}+ \\
+&\frac{1-f (\omega , T) }{1+K_{SV2} (\omega , T) \cdot \left[O_2\right]} \bigg)^{-1} \\
 \label{theta_full}
+\end{aligned}
 \end{equation}
 where $\theta_0$ and $\theta$, respectively, are the phase shifts in the absence and presence of oxygen, $f$ and $1-f$ are the fractions of the total emission for each component under unquenched conditions, $K_{SV1}$ and $K_{SV2}$ are the associated Stern–Volmer constants for each component, and $\left[O_2\right]$ indicates the oxygen concentration. It is to be noted that the quantities $\theta_0$, $f$, $K_{SV1}$, and $K_{SV2}$ are all non-linearly temperature dependent and may result frequency dependent, an artifact of the approximation of the model. Finally, Eq. \cite{theta_full} needs to be inverted to determine $[O_2]$ from the measured quantity $\theta$.
 
