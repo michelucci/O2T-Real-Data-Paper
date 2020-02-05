@@ -97,7 +97,7 @@ The optical setup used in this work for the luminescence measurements is shown s
 \begin{figure}[htbp]
 \centering
 \includegraphics[keepaspectratio, width=8.5cm]{setup_auto.eps}
-\caption{Scheme of the optical experimental setup. Blue is the excitation, red the luminescence optical path. PD: photodiode; TIA: trans-impedance amplifier.}
+\caption{Scheme of the optical experimental setup. Blue is the excitation, red the luminescence optical path. SP: short pass filter; LP: long pass filter PD: photodiode; TIA: trans-impedance amplifier.}
 \label{fig:setup}
 \end{figure}
 
@@ -109,11 +109,11 @@ For the frequency generation and the phase detection a two-phase lock-in amplifi
 \label{Data}
 
 The series of measurements were carried out following the flow shown in Fig. \ref{fig:auto-data}. First the acquisition program fixed the temperature and concentration. Then the phase-shift was measured for varying the modulation frequency. This measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration and the entire frequency-loop was repeated. Finally, the temperature is changed and then the oxygen and frequency loops where repeated.
-The total number of measurements is 50x20x21x9=189000 which lasted ca. 65 hours. The number of measurement was chosen as a compromise between maximal number of measurements and minimal change of the sample due to photobleaching. 
+The total number of measurements is 50x20x21x9=189000 which lasted ca. 65 hours. The number of measurement was chosen as a compromise between maximizing the number of measurements and avoiding photodegradation. A the end of the session a minimal change in the phase shift was observed (QUANTIFY?)
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[keepaspectratio, width=5 cm]{flow-chart.png}
+\includegraphics[keepaspectratio, width=4.5 cm]{flow-chart.png}
 \caption{Flow-chart of the automatic measurement.}
 \label{fig:auto-data}
 \end{figure}
@@ -143,7 +143,7 @@ he global cost function weights used for the plots were $\alpha_1 = 0.3$, $\alph
  
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=9 cm]{NN_MTL_O2_T.png}
+\includegraphics[width=8.7 cm]{NN_MTL_O2_T.png}
 \caption{Architecture of the multi-task learning architecture.}
 \label{fig:NN_MTL_O2_T}
 \end{figure}
@@ -170,11 +170,13 @@ The $AE_{T}$ and $MAE_T$ are similarly defined.
 \section{Results and Discussion}
 \label{Results}
 
+\subsection{Luminescence Results}
+
 As described in Section \ref{Theory}, the phase-shift depends not only on the oxygen concentration, but also on the temperature and on the modulation frequency of the excitation light. This is shown in Fig. \ref{fig:expdata1} and Fig. \ref{fig:expdata2}.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=9 cm]{expdata3.eps}
+\includegraphics[width=8 cm]{expresults1.eps}
 \caption{Phase-shift as a function of the oxygen concentration, for selected temperatures at a fixed modulation frequency of 6kHz.}
 \label{fig:expdata3}
 \end{figure}
@@ -193,16 +195,10 @@ As described in Section \ref{Theory}, the phase-shift depends not only on the ox
 \label{fig:expdata2}
 \end{figure}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=9 cm]{expdata3.eps}
-\caption{Phase-shift at a fixed oxygen concentration $[O_2]=20 \%$ air for selected temperatures as a function of the modulation frequency of the excitation light.}
-\label{fig:expdata3}
-\end{figure}
 
 Fig. \ref{fig:expdata1} shows the phase-shift of the luminescence at a fixed temperature for different oxygen concentrations as a function of the modulation frequency. Fig. \ref{fig:expdata2} gives the complementary information of the phase-shift at a fixed oxygen concentrations for different temperatures as a function of the modulation frequency. Comparing the curves of the two picture it is clear why it is not possible, when measuring one single phase-shift or even a curve of the phase-shift dependent from the modulation frequency to simultaneously extract both the oxygen concentration and the temperature. 
 
-
+\subsection{Neural network performance}
 
 \begin{figure}[htbp]
 \centering
