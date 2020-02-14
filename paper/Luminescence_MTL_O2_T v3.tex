@@ -83,16 +83,14 @@ Although the multi-site model was introduced for luminescence intensities, it is
 \label{theta_full}
 \end{aligned}
 \end{equation}
-where $\theta_0$ and $\theta$, respectively, are the phase shifts in the absence and presence of oxygen, $f$ and $1-f$ are the fractions of the total emission for each component under unquenched conditions, $K_{SV1}$ and $K_{SV2}$ are the associated Stern–Volmer constants for each component, and $\left[O_2\right]$ indicates the oxygen concentration. It is to be noted that the quantities $\theta_0$, $f$, $K_{SV1}$, and $K_{SV2}$ are all non-linearly temperature dependent and may result frequency dependent, an artifact of the approximation of the model. Finally, Eq. \cite{theta_full} needs to be inverted to determine $[O_2]$ from the measured quantity $\theta$.
+where $\theta_0$ and $\theta$, respectively, are the phase shifts in the absence and presence of oxygen, $f$ and $1-f$ are the fractions of the total emission for each component under unquenched conditions, $K_{SV1}$ and $K_{SV2}$ are the associated Stern–Volmer constants for each component, and $\left[O_2\right]$ indicates the oxygen concentration. It is to be noted that the quantities $\theta_0$, $f$, $K_{SV1}$, and $K_{SV2}$ are all non-linearly temperature dependent and may result frequency dependent, an artifact of the approximation of the model. Finally, Eq. \ref{theta_full} needs to be inverted to determine $[O_2]$ from the measured quantity $\theta$.
 
 
 \subsection{Experimental Setup}
 \label{Experimental}
 
-The sample used for the characterization and test is a commercially available Pt-TFPP-based oxygen sensor spot (PSt3, PreSens Precision Sensing GmbH).
-To control the temperature of the samples, these were placed in good thermal contact with a copper plate, placed in a thermally insulated chamber. The temperature of this plate was adjusted at a fixed value between 5 $^\circ$C and 45 $^\circ$C in 5 $^\circ$C steps using a Peltier element and stabilized with a temperature controller (PTC10, Stanford Research Systems). The thermally insulated chamber was connected to a self-made gas-mixing apparatus which enabled to vary the oxygen concentration between 0 $\%$ and 20 $\%$ vol $O_2$ by mixing nitrogen and dry air from two bottles. In the following, the concentration of oxygen will be given in $\%$ of the oxygen concentration of dry air and indicated with $\%$ air. This means, for example, that 20 $\%$ air corresponds to 4 $\%$ vol $O_2$ and 100 $\%$ air corresponds to 20 $\%$ vol $O_2$. The absolute error on the oxygen concentration adjusted with the gas mixing device is estimated to be below 1 $\%$ air. The oxygen concentration was varied between 0 $\%$ air and 100 $\%$ air in 5 $\%$ steps.
- 
-The optical setup used in this work for the luminescence measurements is shown schematically in Fig. \ref{fig:setup}.
+
+The optical setup used in this work for the luminescence measurements is shown schematically in Fig. \ref{fig:setup}. To be able to acquire a large number of data, both the software for the instrument control and for the data acquisition was written using LabVIEW by National Instruments. The acquisition procedure is described in detail in Sect.\ref{Data}.
 
 \begin{figure}[htbp]
 \centering
@@ -101,20 +99,25 @@ The optical setup used in this work for the luminescence measurements is shown s
 \label{fig:setup}
 \end{figure}
 
+The sample used for the characterization and test is a commercially available Pt-TFPP-based oxygen sensor spot (PSt3, PreSens Precision Sensing GmbH).
+To control the temperature of the samples, these were placed in good thermal contact with a copper plate, placed in a thermally insulated chamber. The temperature of this plate was adjusted using a Peltier element and stabilized with a temperature controller (PTC10, Stanford Research Systems). The thermally insulated chamber was connected to a self-made gas-mixing apparatus which enabled to vary the oxygen concentration between 0 $\%$ and 20 $\%$ vol $O_2$ by mixing nitrogen and dry air from two bottles. In the following, the concentration of oxygen will be given in $\%$ of the oxygen concentration of dry air and indicated with $\%$ air. This means, for example, that 20 $\%$ air corresponds to 4 $\%$ vol $O_2$ and 100 $\%$ air corresponds to 20 $\%$ vol $O_2$. The absolute error on the oxygen concentration adjusted with the gas mixing device is estimated to be below 1 $\%$ air. 
+ 
 The excitation light was provided by a 405 nm LED (VAOL-5EUV0T4, VCC Visual Communications Company LLC), filtered by a an short pass (SP) filter with cut-off at 498 nm (Semrock 498 SP Bright Line HC short pass) and focused on the surface of the samples with a collimation lens (EO43987, Edmund Optics). The luminescence was focussed by a lens (G063020000, LINOS) and collected by a photodiode (SFH 213 Osram).
 To suppress stray light and light reflected by the sample surface, the emission channel was equipped with a long pass filter with cut-off at 594 nm (Semrock 594 LP Edge Basic long pass) and a short pass filter with cut-off at 682 nm (Semrock 682 SP Bright Line HC short pass). The driver for the LED and the trans-impedance amplifier (TIA) are self-made.
-For the frequency generation and the phase detection a two-phase lock-in amplifier (SR830, Stanford Research Inc.) was used. The modulation frequency was varied between 200 Hz and 15000 kHz.
+For the frequency generation and the phase detection a two-phase lock-in amplifier (SR830, Stanford Research Inc.) was used. 
 
 \subsection{Automated Data Acquisition}
 \label{Data}
 
-The series of measurements were carried out following the flow shown in Fig. \ref{fig:auto-data}. First the acquisition program fixed the temperature and concentration. Then the phase-shift was measured for varying the modulation frequency. This measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration and the entire frequency-loop was repeated. Finally, the temperature is changed and then the oxygen and frequency loops where repeated.
-The total number of measurements is 50x20x21x9=189000 which lasted ca. 65 hours. The number of measurement was chosen as a compromise between maximizing the number of measurements and avoiding photodegradation. A the end of the session a minimal change in the phase shift was observed (QUANTIFY?)
+The series of measurements were carried out following the flow shown in Fig. \ref{fig:auto-data}. First the acquisition program fixed the temperature and concentration. Then the phase-shift was measured for varying the modulation frequency between 200 Hz and 15000 kHz. This measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration and the entire frequency-loop was repeated.
+The oxygen concentration was varied between 0 $\%$ air and 100 $\%$ air in 5 $\%$ steps.
+Finally, the temperature is changed and then the oxygen and frequency loops where repeated. The temperature was varied between 5 $^\circ$C and 45 $^\circ$C in 5 $^\circ$C steps.
+The total number of measurements is thus 50 x 20 x 21 x 9 = 189000 which required approximately 65 hours. This number of measurement was chosen as a compromise between maximizing the number of data for the training of the neural network and avoiding photodegradation, which naturally occurs when the sample is subjected to illumination. A the end of the session a minimal change in the phase shift was observed (QUANTIFY?)
 
-\begin{figure}[htbp]
+\begin{figure}[t!]
 \centering
-\includegraphics[keepaspectratio, width=4.5 cm]{flow-chart.png}
-\caption{Flow-chart of the automatic measurement.}
+\includegraphics[keepaspectratio, width=6 cm]{flow-chart.png}
+\caption{Flow-chart of the automatic measurement process.}
 \label{fig:auto-data}
 \end{figure}
 
@@ -170,35 +173,48 @@ The $AE_{T}$ and $MAE_T$ are similarly defined.
 \section{Results and Discussion}
 \label{Results}
 
-\subsection{Luminescence Results}
+\subsection{Luminescence Experimental Results}
 
-As described in Section \ref{Theory}, the phase-shift depends not only on the oxygen concentration, but also on the temperature and on the modulation frequency of the excitation light. This is shown in Fig. \ref{fig:expdata1} and Fig. \ref{fig:expdata2}.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=8 cm]{expresults1.eps}
-\caption{Phase-shift as a function of the oxygen concentration, for selected temperatures at a fixed modulation frequency of 6kHz.}
-\label{fig:expdata3}
-\end{figure}
+As described in Section \ref{Theory}, the phase-shift depends not only on the oxygen concentration, but also on the temperature and on the modulation frequency of the excitation light. This can be seen in the Figs. \ref{fig:expdata1} to \ref{fig:expdata3}.
+Fig. \ref{fig:expdata1} shows the measured phase shifts as a function of the oxygen concentration at a constant modulation frequency for increasing temperatures. For clarity, only selected temperatures are shown. The decrease in the phase shift with increasing concentration is the quenching of the luminescence described in Eq. \ref{theta_full}. The effect of the temperature is to further decrease the phase shift but the effect depends on the concentration, being stronger at higher oxygen concentration. This temperature quenching is understandable since higher temperature.... 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=9 cm]{expdata1.eps}
-\caption{Phase-shift for selected oxygen concentrations as a function of the modulation frequency at a fixed temperature $T=25 ^{\circ}$ .}
+\includegraphics[width=8 cm]{phase_O2_T.eps}
+\caption{Measured phase-shift as a function of the oxygen concentration, for selected temperatures at a fixed modulation frequency of 6 kHz. The arrow marks increasing temperatures.}
 \label{fig:expdata1}
 \end{figure}
 
+For a given oxygen concentration the phase shift is strongly dependent from the modulation frequency, as it can be seen in Fig. \ref{fig:expdata2}. Again, the temperature quenching is visible and affects the phase shift differently depending on the modulation frequency.
+
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=9 cm]{expdata2.eps}
-\caption{Phase-shift for selected oxygen concentrations as a function of the modulation frequency at a fixed oxygen concentration $[O_2]=20 \%$ at selected temperatures.}
+\includegraphics[width=8 cm]{phase_f_T.eps}
+\caption{Measured phase-shift for selected oxygen concentrations as a function of the modulation frequency at a fixed oxygen concentration $[O_2]=20 \%$ at selected temperatures.}
 \label{fig:expdata2}
 \end{figure}
 
+The complementary to Fig. Fig. \ref{fig:expdata2} is shown in Fig. \ref{fig:expdata3}, where the phase shift is shown a function of the modulation frequency for selected oxygen concentrations at a fixed temperature.
 
-Fig. \ref{fig:expdata1} shows the phase-shift of the luminescence at a fixed temperature for different oxygen concentrations as a function of the modulation frequency. Fig. \ref{fig:expdata2} gives the complementary information of the phase-shift at a fixed oxygen concentrations for different temperatures as a function of the modulation frequency. Comparing the curves of the two picture it is clear why it is not possible, when measuring one single phase-shift or even a curve of the phase-shift dependent from the modulation frequency to simultaneously extract both the oxygen concentration and the temperature. 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=8 cm]{phase_f_O2.eps}
+\caption{Measured phase-shift for selected oxygen concentrations as a function of the modulation frequency at a fixed temperature $T=25 ^{\circ}$ .}
+\label{fig:expdata3}
+\end{figure}
+
+Comparing the curves shown above it is clear that, when measuring one single phase-shift or even a the phase-shift as a function of the modulation frequency is not possible to simultaneously determine both the oxygen concentration and the temperature from this set of data. To determine the oxygen concentration is mandatory to know the temperature. This is no longer the case with the artificial intelligence approach, as it will be shown in the next section. 
 
 \subsection{Neural network performance}
+
+plot theta/theta0 vs frequency for different T (O2 fix) and for different O2 (T fix)
+plot distribution of total AE
+
+temperature can be presicted less well because phase shift depends less from T than from O2
+
+Stability results
+
+temperature cannot be predicted well without dividing for theta 0
 
 \begin{figure}[htbp]
 \centering
