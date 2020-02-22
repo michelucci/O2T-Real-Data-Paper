@@ -216,6 +216,63 @@ Comparing the curves shown above it is clear that, when measuring one single pha
 
 \subsection{Neural network performance}
 
+To analyze the performance of the network, a fundamental quantity is the prediction probability density?? distribution of the $AE$s since it carries information on the probability of the network to predict the expected value.  for each parameter. For this reason the   kernel density estimate (KDE) of the distributions of the $AE$s for both the oxygen concentration and the temperature was calculated. KDE is a non-parametric algorithm to estimate the probability density function of a random variable by inferring the population distribution based on a finite data sample \cite{Hastie2009}. ATTENZIONE COPIATO DA WIKIPEDIA
+In this work a Gaussian Kernel and a Scott bandwidth adaptive estimation \cite{Sain1996} using the seaborn Python package \cite{seaborn} were used.
+
+The results for $AE_{[O_2]}$ and $AE_T$ for are shown in Figure \ref{fig:prediction_distribution_batch_90}.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=17 cm]{prediction_distribution_batch.eps}
+\caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
+\label{fig:prediction_distribution_batch_90}
+\end{figure*}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=17 cm]{prediction_distribution_epochs.eps}
+\caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
+\label{fig:prediction_distribution_epochs_90}
+\end{figure*}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=17 cm]{prediction_distribution_theta0.eps}
+\caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
+\label{fig:prediction_distribution_theta0}
+\end{figure*}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=7 cm]{ELA_1.eps}
+\caption{Phase-shift at a fixed temperature $T=25 ^{\circ}$ for selected oxygen concentrations as a function of the modulation frequency of the excitation light.}
+\label{fig:result_theta0}
+\end{figure}
+
+
+
+
+Finally, the performance of the different neural networks is summarized in Table \ref{TableMAE_summary}. Here the $MAE$ as defined in Equation \ref{MAE} for the oxygen concentration and the temperature prediction are listed.
+
+\begin{table}[hbt]
+\centering
+\caption {\bf Summary of the performance for the three types of neural networks}
+
+\begin{tabular}{ rccc}
+\smallskip 
+ Input & Epochs / Batch size & $MAE_{[O_2]}$ & $MAE_{[T]}$  \\ 
+ \hline
+$\theta / 90^\circ$ & 20'000 / 4000 & xx \% air & xx $^\circ C$\\ 
+$\theta / 90^\circ$ & 20'000 / 32 & xx\% air & xx $^\circ C$\\ 
+$\theta / 90^\circ$& 100'000 / 32 & xx \% air & xx $^\circ C$\\ 
+$\theta /\theta_0$ & 20'000 / 32 & xx \% air & xx $^\circ C$\\ 
+
+\end{tabular}
+\label{TableMAE_summary}
+\end{table}
+
+
+
 plot theta/theta0 vs frequency for different T (O2 fix) and for different O2 (T fix)
 plot distribution of total AE
 
@@ -224,33 +281,6 @@ temperature can be presicted less well because phase shift depends less from T t
 Stability results
 
 temperature cannot be predicted well without dividing for theta 0
-
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=8 cm]{ELA_1.eps}
-\caption{Phase-shift at a fixed temperature $T=25 ^{\circ}$ for selected oxygen concentrations as a function of the modulation frequency of the excitation light.}
-\label{fig:result_theta0}
-\end{figure}
-
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=9 cm]{results_theta90.eps}
-\caption{Phase-shift at a fixed temperature $T=25 ^{\circ}$ for selected oxygen concentrations as a function of the modulation frequency of the excitation light.}
-\label{fig:result_90}
-\end{figure}
-
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=9 cm]{result_theta_theta0.eps}
-\caption{Phase-shift at a fixed temperature $T=25 ^{\circ}$ for selected oxygen concentrations as a function of the modulation frequency of the excitation light.}
-\label{fig:result_theta0}
-\end{figure}
-
-
-
 
 
 
