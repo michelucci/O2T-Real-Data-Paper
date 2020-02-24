@@ -151,18 +151,18 @@ The software component of this new sensor type is based on a neural network mode
 
 \subsubsection{Neural Network Architecture}
 
-The artificial network used in this work has a multi-task-learning architecture and is depicted in Figure \ref{fig:NN_MTL_O2_T}. It consists of three common hidden layers with 50 neurons each which generate as output a "shared representation". The name comes from the fact that the output of those layers is used to evaluate both $[O_2]$ and $T$. These are followed by three branches, two with each two additional "task-specific hidden layers" to predict respectively $[O_2]$ and $T$, and then one without additional layers to predict $[O_2]$ and $T$ at the same time.The shared representation is the input of two "task-specific hidden layers", that learn how to predict $[O_2]$ and $T$ better. This architecture uses the common hidden layers to find common features beneficial to each of the two tasks. During the training phase, learning to predict $[O_2]$ will influence the common hidden layers and therefore, the prediction of $T$, and vice-versa. The further task-specific hidden layers learn specific features to each output and therefore improve the prediction accuracy. The number of neurons of each task-specific hidden layer is 5.
+The artificial network used in this work has a multi-task-learning architecture and is depicted in Figure \ref{fig:NN_MTL_O2_T}. It consists of three common hidden layers with 50 neurons each which generate as output a "shared representation". The name comes from the fact that the output of those layers is used to evaluate both $[O_2]$ and $T$. These are followed by three branches, two with each two additional "task-specific hidden layers" to predict respectively $[O_2]$ and $T$, and then one without additional layers to predict $[O_2]$ and $T$ at the same time.The shared representation is the input of two "task-specific hidden layers", that learn how to predict $[O_2]$ and $T$ better. This architecture uses the common hidden layers to find common features beneficial to each of the two tasks. During the training phase, learning to predict $[O_2]$ will influence the common hidden layers and therefore, the prediction of $T$, and vice-versa. The further task-specific hidden layers learn specific features to each output and therefore improve the prediction accuracy. The number of neurons of each task-specific hidden layer is 5. A study of which network architecture works best with this kind of data can be found in \cite{Michelucci2019}.
 
-As activation function the sigmoid activation functions was used for all the neurons. For all the runs presented in this article a learning rate of $\gamma = 10^{-3}$ has been used. Number of epochs and mini-batch size has been varied to optimize the NNM performance and are discussed in the appropriate sections.
+The sigmoid activation function was used as activation function for all the neurons. For all the runs presented in this article a starting learning rate of $\gamma = 10^{-3}$ has been used. Number of epochs and mini-batch size has been varied to optimize the NNM performance and are discussed in the appropriate sections. 
 
 \subsubsection{Loss Function}
 
-The loss function used in this work is the mean square error (MSE), which is defined as
+All the task specific loss functions $L_i$ used in this work are the mean square error (MSE), which is defined as
 \begin{equation}
-MSE = \frac{1}{n}\sum_{j=1}^n \sum_{k=1}^d (y_k^{[j]}-\hat y_k^{[j]})^2
+L_i = \frac{1}{n} \sum_{j=1}^n \sum_{k=1}^{d_i} (y_k^{[j]}-\hat y_k^{[j]})^2, \ \ \ i=1,2,3
 \label{MSE}
 \end{equation}
-where $n$ is the number of observations in the input dataset; ${\mathbold y}^{[j]} \in \mathbb{R}^d$ is the measured value of the desired quantity for the $j^{th}$ observation (indicated as a superscript between square brackets), with $j=1, ..., n$; $ \hat {\mathbold y}^{[j]} \in \mathbb{R}^d$ is the output of the network, when evaluated on the $j^{th}$ observation.T Since there are multiple branches, a global cost function $L$ needs to be defined as a linear combination of the task-specific cost functions with weights $\alpha_i$ will be minimized
+where $n$ is the number of observations in the input dataset; ${\mathbold y}^{[j]} \in \mathbb{R}^{d_i}$ is the measured value of the desired quantity for the $j^{th}$ observation (indicated as a superscript between square brackets), with $j=1, ..., n$ for the $i^{th}$ branch and $d_i$ is the dimension of the neural network branch output. In this case $d_1=2, d_2=1$ and $d_3=1$. $ \hat {\mathbold y}^{[j]} \in \mathbb{R}^{d_i}$ is the output of the network branch $i$, when evaluated on the $j^{th}$ observation. Since there are multiple branches, a global cost function $L$ needs to be defined as a linear combination of the task-specific cost functions with weights $\alpha_i$ 
 \begin{equation}
 L = \sum_{i=1}^{n_T}\alpha_i L_i .
 \label{globalcf}
@@ -170,15 +170,15 @@ L = \sum_{i=1}^{n_T}\alpha_i L_i .
 The parameters $\alpha_i$ have to be determined during the hyper-parameter tuning phase to optimize the network predictions.
 In this paper, being the cost function the MSE (Equation \ref{MSE}), the global cost function of Equation \ref{globalcf} is
 \begin{equation}
-L = \sum_{i=1}^{n_T}\alpha_i \frac{1}{n}\sum_{j=1}^n \sum_{k=1}^d (y_k^{[j]}-\hat y_k^{[j]})^2
+L = \sum_{i=1}^{n_T}\alpha_i \frac{1}{n} \sum_{j=1}^n \sum_{k=1}^{d_i} (y_k^{[j]}-\hat y_k^{[j]})^2
 \end{equation}
-where  $n_T$ is the number of tasks; $n$ is the number of observations in the input dataset; ${\mathbold y}^{[j]} \in \mathbb{R}^d$ is the measured value of the desired quantity for observation $j$, with $j=1, ..., n$; $ \hat {\mathbold y}^{[j]} \in \mathbb{R}^d$ is the output of the network, when evaluated on the $j^{th}$ observation.
-he global cost function weights used for the plots were $\alpha_1 = 0.3$, $\alpha_2 = 5$ and $\alpha_3 = 1$. Those values were chosen because they result in the lowest $MAE$s (see discussion in Section \ref{Results}).
+where  $n_T$ is the number of tasks; $n$ is the number of observations in the input dataset; ${\mathbold y}^{[j]} \in \mathbb{R}^d$ is the measured value of the desired quantity for observation $j$ from branch $i$, with $j=1, ..., n$; $ \hat {\mathbold y}^{[j]} \in \mathbb{R}^{d_i}$ is the output of the network, when evaluated on the $j^{th}$ observation.
+The global cost function weights used for the plots were $\alpha_1 = 0.3$, $\alpha_2 = 5$ and $\alpha_3 = 1$. Those values were chosen because they result in the lowest $MAE$s (see discussion in Section \ref{Results} *****REFERENCE????*******).
  
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=8.7 cm]{NN_MTL_O2_T.png}
-\caption{Architecture of the multi-task learning architecture.}
+\caption{Architecture of the multi-task learning neural network used in this paper. The {\sl common hidden layers} generate as output a "shared representation" that is used as input to task specific branches that learn specific features to each quantity and therefore improve the prediction accuracy. } 
 \label{fig:NN_MTL_O2_T}
 \end{figure}
 
@@ -188,32 +188,49 @@ he global cost function weights used for the plots were $\alpha_1 = 0.3$, $\alph
 To minimize the cost function, the optimizer Adaptive Moment Estimation (Adam) \cite{Kingma2014, Michelucci2017} was used. The training was performed with a starting learning rate of $10^{-3}$ as mentioned earlier. The neural network has been trained with two methods. 
 
 {\bf No-batch training}:
-with this method all the training data to evaluate the cost function is used to perform an update of the weights. The loss function used is the one in Equation (\ref{MSE}) with $n$ is the total number of observations available.
+with this method all the training data to evaluate the cost function is used to perform an update of the weights. The loss function used is the one in Equation (\ref{MSE}) where $n$ is the total number of observations available.
 
 {\bf Mini-batch training}:
 with this method a weight update is performed after the network has seen 32 observations. In this case the loss function is the one in Equation (\ref{MSE}) with $n=32$. For each weight update, 32 random observations are chosen from the training dataset without repetitions until all the training dataset has been fed to the network.  
 
-No-batch training has the advantage of stabilty and speed, since it perform one weight update using the entire training dataset \cite{Michelucci2017}. Mini-batch training is normally much more effective, reachine lower values of the loss function in less epochs, but normally takes much more time. In our experimentes No-batch training takes, for $10^3$ epochs roughly 5 minutes on a modern macbook pro, while mini-batch training with $b=32$ takes, for the same amount of epochs, roughly 1 hour, so it is ca. 12 times slower, but is, as it will be shown later, much more effective. 
-The implementation was performed using the TensorFlow$\texttrademark$ library. 
+No-batch training has the advantage of stabilty and speed, since it perform one weight update using the entire training dataset. Mini-batch training is normally much more effective, reaching lower values of the loss function in less epochs, but normally takes much more time \cite{Michelucci2017}. In our experiments No-batch training takes, for $20 \cdot 10^3$ epochs roughly 5 minutes on a modern macbook pro, while mini-batch training with $b=32$ takes, for the same amount of epochs, roughly 1 hour, so it is ca. 12 times slower, but is, as it will be shown later, much more effective in term of the neural network predictions. 
+The implementation was performed using the TensorFlow\texttrademark $\ $library. 
 
-\subsubsection{Metrics}
+\subsubsection{Predictions Absolute Error}
 
-The metric used to compare results from different network models is the absolute error ($AE$) defined as the absolute value of the difference between the predicted and the expected value for a given observation. For the oxygen concentration of the 
+The metric used to compare predictions from expected values is the absolute error ($AE$) defined as the absolute value of the difference between the predicted and the expected value for a given observation. For the oxygen concentration predicted from branch $q$ for the 
 $j^{th}$ observation $[O_2]^{[j]}$  the $AE$ is 
 \begin{equation}
 \label{AE}
-AE^{[j]}_{[O_2]} = |[O_2]^{[j]}_{pred}-[O_2]^{[j]}_{meas}|.
+AE^{q,{[j]}}_{[O_2]} = |[O_2]^{q,{[j]}}_{pred}-[O_2]^{[j]}_{meas}|.
 \end{equation}
-
+Note that in the architecture described in the previous sections, only branch 1 and 2 can predict $[O_2]$, while $T$ can be predicted by branch 1 and 3. In all the results shown in the following sections the predicted $[O_2]$ is from branch 2, while the predicted $T$ is from branch 3. The suffix $q$ in the predicted values will be therefore omitted.
 The further quantity used to analyze the performance of the network is the mean absolute error ($MAE$), defined as the average of the absolute value of the difference between the predicted and the expected oxygen concentration or temperature. For example, for the oxygen prediction using the training dataset $S_{train}$, $MAE_{[O_2]}$ is defined as 
 \begin{equation}
 \label{MAE}
 MAE_{[O_2]}(S_{train}) = \frac{1}{|S_{train}|} \sum_{j \in S_{train}}|[O_2]_{pred}^{[j]}-[O_2]_{real}^{[j]}|
 \end{equation}
-where $|S_{train}|$ is the size (or cardinality) of the training dataset. For example, in this work $|S_{train}|$=20000.
-The $AE_{T}$ and $MAE_T$ are similarly defined.
+where $|S_{train}|$ is the size (or cardinality) of the training dataset. 
+$AE_{T}$ and $MAE_T$ are similarly defined.
 
-\subsubsection{Error Limited Accuracy}
+
+\subsubsection{Error Limited Accuracy $\eta$}
+
+To better characterise the sensor performance as a whole we need to define a new metric, that we have called Error Limited Accuracy (ELA), and that we indicate with $\eta$ that can be defined as follows.
+
+\begin{definition*}
+In a regression problem, given a metric $m$, and a certain value of it $\hat m$, the ELA for this metric $\eta$ limited by the error $\hat m$ is defined as the number of predictions $\hat y$ of the NNM that lie in the range $[m(\hat y)-\hat m, m(\hat y)+\hat m]$ divided by the total number of observations. In more mathematical terms once we define the set
+\begin{equation}
+S(\hat m) = \{ \hat y^{[i]} \ {\text with } \ i = 1,..., n\ | m(\hat y^{[i]})-m(y^{[i]})|\leq \hat m \} 
+\end{equation}
+$\eta$ can be simply defined as
+\begin{equation}
+\eta = \frac{|S(\hat m)|}{n}
+\end{equation}
+where $|S(\hat m)|$ is the cardinality of the set $S(\hat m)$ or in other words, the number of its elements.
+\end{definition*}
+
+This metric allows us to interpret the regression problem we are trying solve as a classification one. $\eta$ simply tells us how many observations are predicted by the NNM within a given error. Of course if we take this error big enough, all the predictions will be classified perfectly. The smaller this error the smaller the number of predictions correctly classified. In this work the metric $m$ is the AE as defined in the previous section.
 
 \section{Results and Discussion}
 \label{Results}
@@ -257,23 +274,6 @@ Comparing the curves shown above it is clear that, when measuring one single pha
 To analyze the performance of the network, a fundamental quantity is the prediction probability density?? distribution of the $AE$s since it carries information on the probability of the network to predict the expected value.  for each parameter. For this reason the   kernel density estimate (KDE) of the distributions of the $AE$s for both the oxygen concentration and the temperature was calculated. KDE is a non-parametric algorithm to estimate the probability density function of a random variable by inferring the population distribution based on a finite data sample \cite{Hastie2009}. ATTENZIONE COPIATO DA WIKIPEDIA
 In this work a Gaussian Kernel and a Scott bandwidth adaptive estimation \cite{Sain1996} using the seaborn Python package \cite{Waskom2020} were used.
 
-\subsubsection{Error Limited Accuracy $\eta$}
-
-To better characterise the sensor performance we need to define a new metric, that we have called Error Limited Accuracy (ELA), and that we indicate with $\eta$. 
-
-\begin{definition*}
-In a regression problem, given a metric $m$, and a certain value of it $\hat m$, the ELA for this metric $\eta$ is defined as the number of predictions $\hat y$ of the NNM that lie in the range $[y-\hat m, y+\hat m]$. Or in more mathematical terms once we define the set
-\begin{equation}
-S(\hat m) = \{ \hat y^{[i]} \ {\text with } \ i = 1,..., n\ | m(\hat y^{[i]})-m(y^{[i]})|\leq \hat m \} 
-\end{equation}
-$\eta$ can be simply defined as
-\begin{equation}
-\eta = \frac{|S(\hat m)|}{n}
-\end{equation}
-where $|S(\hat m)|$ is the cardinality of the set $S(\hat m)$ or in other words, the number of its elements.
-\end{definition*}
-
-This metric allows us to interpret the regression problem we are trying solve as a classification one. $\eta$ simply tells us how many observations are predicted by the NNM within a given error. Of course if we take this error big enough, all the predictions will be classified perfectly. The smaller this error the smaller the number of predictions correctly classified.
 
 \subsection{Sensor performance}
 
@@ -289,14 +289,14 @@ The results for $AE_{[O_2]}$ and $AE_T$ for are shown in Figure \ref{fig:predict
 
 \begin{figure*}[htbp]
 \centering
-\includegraphics[width=17 cm]{prediction_distribution_epochs.eps}
+\includegraphics[width=17 cm]{comparison_theta90_20k_vs_100k.eps}
 \caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
 \label{fig:prediction_distribution_epochs_90}
 \end{figure*}
 
 \begin{figure*}[htbp]
 \centering
-\includegraphics[width=17 cm]{prediction_distribution_theta0.eps}
+\includegraphics[width=17 cm]{theta_theta0_mb_20k.eps}
 \caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
 \label{fig:prediction_distribution_theta0}
 \end{figure*}

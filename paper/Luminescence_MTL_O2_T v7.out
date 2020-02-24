@@ -7,12 +7,11 @@
 \BOOKMARK [3][-]{subsubsection.2.4.1}{Neural Network Architecture}{subsection.2.4}% 7
 \BOOKMARK [3][-]{subsubsection.2.4.2}{Loss Function}{subsection.2.4}% 8
 \BOOKMARK [3][-]{subsubsection.2.4.3}{Optimiser Algorithm}{subsection.2.4}% 9
-\BOOKMARK [3][-]{subsubsection.2.4.4}{Metrics}{subsection.2.4}% 10
-\BOOKMARK [3][-]{subsubsection.2.4.5}{Error Limited Accuracy}{subsection.2.4}% 11
+\BOOKMARK [3][-]{subsubsection.2.4.4}{Predictions Absolute Error}{subsection.2.4}% 10
+\BOOKMARK [3][-]{subsubsection.2.4.5}{Error Limited Accuracy }{subsection.2.4}% 11
 \BOOKMARK [1][-]{section.3}{Results and Discussion}{}% 12
 \BOOKMARK [2][-]{subsection.3.1}{Luminescence Experimental Results}{section.3}% 13
 \BOOKMARK [2][-]{subsection.3.2}{Sensor performance analysis}{section.3}% 14
 \BOOKMARK [3][-]{subsubsection.3.2.1}{Kernel Density Estimation}{subsection.3.2}% 15
-\BOOKMARK [3][-]{subsubsection.3.2.2}{Error Limited Accuracy }{subsection.3.2}% 16
-\BOOKMARK [2][-]{subsection.3.3}{Sensor performance}{section.3}% 17
-\BOOKMARK [1][-]{section.4}{Conclusions}{}% 18
+\BOOKMARK [2][-]{subsection.3.3}{Sensor performance}{section.3}% 16
+\BOOKMARK [1][-]{section.4}{Conclusions}{}% 17
