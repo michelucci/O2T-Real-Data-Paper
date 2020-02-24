@@ -52,7 +52,10 @@ Sensors based on this principle must rely on approximated empirical models to pa
 
 In this work we propose a revolutionary approach based on artificial intelligence which enables dual sensing, the determination of both the oxygen concentration and the temperature, using one single indicator and measuring a single quantity, namely the decay time. Instead of describing the response of the sensor from the relevant parameters through an analytical model, a large amount of data with all the possible variations in the range of interest is collected and used to train a neural network. For dual sensing,  multi-task learning (MTL) neural networks are required, so networks which are characterized by common hidden layers, whose output is then the input of multiple branches of task specific hidden layers. This type of architectures, in facts, can learn correlated tasks \cite{Thrun1996, Caruana1997, Zhang2017, Baxter2000, Thung2018} and are flexible enough to be usable in multi-dimensional regressions \cite{Michelucci2019_2}.
 
-To collect the large amount of data needed for the training, a fully automated setup was developed. After the definition of the range of interest a program varies the parameters of interest and acquires the corresponding sensor response. The hardware used for the sensor is standard laboratory equipment, which makes it easy to 
+To collect the large amount of data needed for the training, a fully automated setup was developed. After the definition of the range of interest a program varies the parameters of interest and acquires the corresponding sensor response. Thanks to this setup it was possible to collect enough measurements to train the neural network and to test their performance in the prediction of the oxygen concentration and temperature.
+
+
+The hardware used for the sensor is standard laboratory equipment, which makes it easy to 
  program was deve, which 
 large amount of data
 application to real data 
