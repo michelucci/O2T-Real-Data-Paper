@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.4.9)  24 FEB 2020 17:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.4.9)  24 FEB 2020 20:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -898,6 +898,18 @@ Package microtype Info: Loading configuration file microtype.cfg.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2018/01/14 v2.7a microtype main configuration file (RS)
 ))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2017/10/31 v2.20.4
+\thm@style=\toks41
+\thm@bodyfont=\toks42
+\thm@headfont=\toks43
+\thm@notefont=\toks44
+\thm@headpunct=\toks45
+\thm@preskip=\skip80
+\thm@postskip=\skip81
+\thm@headsep=\skip82
+\dth@everypar=\toks46
+)
 \c@definition=\count316
 
 (./Luminescence_MTL_O2_T v7.aux
@@ -910,33 +922,33 @@ LaTeX Warning: Label `fig:result_theta0' multiply defined.
 )
 \openout1 = `"Luminescence_MTL_O2_T v7.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 41.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 41.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 43.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 43.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Try loading font information for T1+ppl on input line 41.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 43.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
 \AtBeginShipoutBox=\box49
-Package hyperref Info: Link coloring ON on input line 41.
+Package hyperref Info: Link coloring ON on input line 43.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -946,9 +958,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count317
 )
-LaTeX Info: Redefining \ref on input line 41.
-LaTeX Info: Redefining \pageref on input line 41.
-LaTeX Info: Redefining \nameref on input line 41.
+LaTeX Info: Redefining \ref on input line 43.
+LaTeX Info: Redefining \pageref on input line 43.
+LaTeX Info: Redefining \nameref on input line 43.
 
 (./Luminescence_MTL_O2_T v7.out) (./Luminescence_MTL_O2_T v7.out)
 \@outlinefile=\write4
@@ -962,12 +974,12 @@ LaTeX Info: Redefining \nameref on input line 41.
 \scratchbox=\box50
 \nofMPsegments=\count319
 \nofMParguments=\count320
-\everyMPshowfont=\toks41
+\everyMPshowfont=\toks47
 \MPscratchCnt=\count321
 \MPscratchDim=\dimen191
 \MPnumerator=\count322
 \makeMPintoPDFobject=\count323
-\everyMPtoPDFconversion=\toks42
+\everyMPtoPDFconversion=\toks48
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1020,7 +1032,7 @@ e
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-Package caption Info: We need package `ragged2e' on input line 41.
+Package caption Info: We need package `ragged2e' on input line 43.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/ms/ragged2e.sty
 Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
 
@@ -1030,25 +1042,25 @@ Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 126.
 )
-\CenteringLeftskip=\skip80
-\RaggedLeftLeftskip=\skip81
-\RaggedRightLeftskip=\skip82
-\CenteringRightskip=\skip83
-\RaggedLeftRightskip=\skip84
-\RaggedRightRightskip=\skip85
-\CenteringParfillskip=\skip86
-\RaggedLeftParfillskip=\skip87
-\RaggedRightParfillskip=\skip88
-\JustifyingParfillskip=\skip89
-\CenteringParindent=\skip90
-\RaggedLeftParindent=\skip91
-\RaggedRightParindent=\skip92
-\JustifyingParindent=\skip93
+\CenteringLeftskip=\skip83
+\RaggedLeftLeftskip=\skip84
+\RaggedRightLeftskip=\skip85
+\CenteringRightskip=\skip86
+\RaggedLeftRightskip=\skip87
+\RaggedRightRightskip=\skip88
+\CenteringParfillskip=\skip89
+\RaggedLeftParfillskip=\skip90
+\RaggedRightParfillskip=\skip91
+\JustifyingParfillskip=\skip92
+\CenteringParindent=\skip93
+\RaggedLeftParindent=\skip94
+\RaggedRightParindent=\skip95
+\JustifyingParindent=\skip96
 )
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 41.
-LaTeX Info: Redefining \microtypecontext on input line 41.
+(lastpage)             ! on input line 43.
+LaTeX Info: Redefining \microtypecontext on input line 43.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1062,78 +1074,78 @@ Package microtype Info: No adjustment of character kerning.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/microtype/mt-ppl.cfg
 File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
 )
-LaTeX Font Info:    Try loading font information for T1+phv on input line 43.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 45.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.54997pt on input line 43.
+(Font)              scaled to size 8.54997pt on input line 45.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <9> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 43.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 8.54997pt on input line 43.
+(Font)              scaled to size 8.54997pt on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <22> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 43.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 20.89993pt on input line 43.
+(Font)              scaled to size 20.89993pt on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/bx/sc' in size <9> not available
-(Font)              Font shape `T1/phv/b/sc' tried instead on input line 43.
+(Font)              Font shape `T1/phv/b/sc' tried instead on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/b/sc' will be
-(Font)              scaled to size 8.54997pt on input line 43.
+(Font)              scaled to size 8.54997pt on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/bx/sc' in size <15> not available
-(Font)              Font shape `T1/phv/b/sc' tried instead on input line 43.
+(Font)              Font shape `T1/phv/b/sc' tried instead on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/b/sc' will be
-(Font)              scaled to size 14.24995pt on input line 43.
-LaTeX Font Info:    Calculating math sizes for size <15> on input line 43.
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 43.
+(Font)              scaled to size 14.24995pt on input line 45.
+LaTeX Font Info:    Calculating math sizes for size <15> on input line 45.
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 45.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 43.
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 45.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 43.
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 45.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 43.
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 45.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 15.63011pt on input line 43.
+(Font)              scaled to size 15.63011pt on input line 45.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 11.87878pt on input line 43.
+(Font)              scaled to size 11.87878pt on input line 45.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37816pt on input line 43.
+(Font)              scaled to size 9.37816pt on input line 45.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 15.63011pt on input line 43.
+(Font)              scaled to size 15.63011pt on input line 45.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 11.87878pt on input line 43.
+(Font)              scaled to size 11.87878pt on input line 45.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37816pt on input line 43.
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 43.
+(Font)              scaled to size 9.37816pt on input line 45.
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 45.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1zplm.fd
@@ -1144,54 +1156,54 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/phv/bx/sc' in size <11.39992> not available
-(Font)              Font shape `T1/phv/b/sc' tried instead on input line 43.
+(Font)              Font shape `T1/phv/b/sc' tried instead on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/b/sc' will be
-(Font)              scaled to size 10.82988pt on input line 43.
+(Font)              scaled to size 10.82988pt on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 14.24995pt on input line 43.
+(Font)              scaled to size 14.24995pt on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <15> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 43.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 14.24995pt on input line 43.
+(Font)              scaled to size 14.24995pt on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <15> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 43.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 14.24995pt on input line 43.
+(Font)              scaled to size 14.24995pt on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 43.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 8.54997pt on input line 43.
+(Font)              scaled to size 8.54997pt on input line 45.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 43.
+(Font)              scaled to size 9.37807pt on input line 45.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 43.
+(Font)              scaled to size 7.29405pt on input line 45.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 43.
+(Font)              scaled to size 5.21004pt on input line 45.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 43.
+(Font)              scaled to size 9.37807pt on input line 45.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 43.
+(Font)              scaled to size 7.29405pt on input line 45.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 43.
+(Font)              scaled to size 5.21004pt on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 43.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 45.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 6.64998pt on input line 43.
+(Font)              scaled to size 6.64998pt on input line 45.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <9> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 43.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 45.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <11> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 43.
-LaTeX Font Info:    Try loading font information for TS1+ppl on input line 43.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 45.
+LaTeX Font Info:    Try loading font information for TS1+ppl on input line 45.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 45.
+(Font)              scaled to size 9.49997pt on input line 47.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 45.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 47.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 9.49997pt on input line 45.
+(Font)              scaled to size 9.49997pt on input line 47.
 
 Underfull \vbox (badness 2980) has occurred while \output is active []
 
@@ -1199,7 +1211,7 @@ Underfull \vbox (badness 2980) has occurred while \output is active []
 Underfull \vbox (badness 6641) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 6.64998pt on input line 52.
+(Font)              scaled to size 6.64998pt on input line 54.
  [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
@@ -1212,13 +1224,13 @@ Package epstopdf Info: Source file: <setup_auto.eps>
 (epstopdf)                    size: 9361 bytes
 (epstopdf)             Command: <repstopdf --outfile=setup_auto-eps-converted-t
 o.pdf setup_auto.eps>
-(epstopdf)             \includegraphics on input line 114.
+(epstopdf)             \includegraphics on input line 116.
 Package epstopdf Info: Output file is already uptodate.
 <setup_auto-eps-converted-to.pdf, id=92, 319.1925pt x 305.14pt>
 File: setup_auto-eps-converted-to.pdf Graphic file (type pdf)
 <use setup_auto-eps-converted-to.pdf>
 Package pdftex.def Info: setup_auto-eps-converted-to.pdf  used on input line 11
-4.
+6.
 (pdftex.def)             Requested size: 241.84842pt x 231.20107pt.
  [2]
 Underfull \vbox (badness 5939) has occurred while \output is active []
@@ -1226,22 +1238,22 @@ Underfull \vbox (badness 5939) has occurred while \output is active []
 <flow-chart.png, id=107, 199.82655pt x 512.99655pt>
 File: flow-chart.png Graphic file (type png)
 <use flow-chart.png>
-Package pdftex.def Info: flow-chart.png  used on input line 136.
+Package pdftex.def Info: flow-chart.png  used on input line 138.
 (pdftex.def)             Requested size: 170.71652pt x 438.28783pt.
  [3 <./setup_auto-eps-converted-to.pdf> <./flow-chart.png>]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.59998pt on input line 150.
+(Font)              scaled to size 7.59998pt on input line 152.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <8> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 150.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 152.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 7.59998pt on input line 150.
+(Font)              scaled to size 7.59998pt on input line 152.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <8> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 150.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 152.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <8> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 150.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 152.
 LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
-(Font)              scaled to size 7.59998pt on input line 150.
-LaTeX Font Info:    Try loading font information for U+fplmbb on input line 163
+(Font)              scaled to size 7.59998pt on input line 152.
+LaTeX Font Info:    Try loading font information for U+fplmbb on input line 165
 .
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ufplmbb.fd
@@ -1250,14 +1262,14 @@ File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
 <NN_MTL_O2_T.png, id=126, 469.39365pt x 496.13354pt>
 File: NN_MTL_O2_T.png Graphic file (type png)
 <use NN_MTL_O2_T.png>
-Package pdftex.def Info: NN_MTL_O2_T.png  used on input line 178.
+Package pdftex.def Info: NN_MTL_O2_T.png  used on input line 180.
 (pdftex.def)             Requested size: 247.53888pt x 261.63985pt.
 
 
-LaTeX Warning: Command \texttrademark invalid in math mode on input line 195.
+LaTeX Warning: Command \texttrademark invalid in math mode on input line 197.
 
 
-LaTeX Warning: Command \texttrademark invalid in math mode on input line 195.
+LaTeX Warning: Command \texttrademark invalid in math mode on input line 197.
 
 Missing character: There is no — in font pplr7t!
 [4 <./NN_MTL_O2_T.png>]
@@ -1269,13 +1281,13 @@ Package epstopdf Info: Source file: <phase_O2_T.eps>
 (epstopdf)                    size: 21846 bytes
 (epstopdf)             Command: <repstopdf --outfile=phase_O2_T-eps-converted-t
 o.pdf phase_O2_T.eps>
-(epstopdf)             \includegraphics on input line 226.
+(epstopdf)             \includegraphics on input line 228.
 Package epstopdf Info: Output file is already uptodate.
 <phase_O2_T-eps-converted-to.pdf, id=146, 611.28375pt x 387.4475pt>
 File: phase_O2_T-eps-converted-to.pdf Graphic file (type pdf)
 <use phase_O2_T-eps-converted-to.pdf>
 Package pdftex.def Info: phase_O2_T-eps-converted-to.pdf  used on input line 22
-6.
+8.
 (pdftex.def)             Requested size: 227.62204pt x 144.26968pt.
 Package epstopdf Info: Source file: <phase_f_T.eps>
 (epstopdf)                    date: 2020-02-17 16:53:47
@@ -1285,12 +1297,12 @@ Package epstopdf Info: Source file: <phase_f_T.eps>
 (epstopdf)                    size: 24304 bytes
 (epstopdf)             Command: <repstopdf --outfile=phase_f_T-eps-converted-to
 .pdf phase_f_T.eps>
-(epstopdf)             \includegraphics on input line 235.
+(epstopdf)             \includegraphics on input line 237.
 Package epstopdf Info: Output file is already uptodate.
 <phase_f_T-eps-converted-to.pdf, id=148, 611.28375pt x 388.45125pt>
 File: phase_f_T-eps-converted-to.pdf Graphic file (type pdf)
 <use phase_f_T-eps-converted-to.pdf>
-Package pdftex.def Info: phase_f_T-eps-converted-to.pdf  used on input line 235
+Package pdftex.def Info: phase_f_T-eps-converted-to.pdf  used on input line 237
 .
 (pdftex.def)             Requested size: 227.62204pt x 144.64343pt.
 Package epstopdf Info: Source file: <phase_f_O2.eps>
@@ -1301,36 +1313,36 @@ Package epstopdf Info: Source file: <phase_f_O2.eps>
 (epstopdf)                    size: 31819 bytes
 (epstopdf)             Command: <repstopdf --outfile=phase_f_O2-eps-converted-t
 o.pdf phase_f_O2.eps>
-(epstopdf)             \includegraphics on input line 244.
+(epstopdf)             \includegraphics on input line 246.
 Package epstopdf Info: Output file is already uptodate.
 <phase_f_O2-eps-converted-to.pdf, id=151, 610.28pt x 389.455pt>
 File: phase_f_O2-eps-converted-to.pdf Graphic file (type pdf)
 <use phase_f_O2-eps-converted-to.pdf>
 Package pdftex.def Info: phase_f_O2-eps-converted-to.pdf  used on input line 24
-4.
+6.
 (pdftex.def)             Requested size: 227.62204pt x 145.26083pt.
  [5 <./phase_O2_T-eps-converted-to.pdf> <./phase_f_T-eps-converted-to.pdf> <./p
 hase_f_O2-eps-converted-to.pdf>]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 258.
+(Font)              scaled to size 8.33606pt on input line 260.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 258.
+(Font)              scaled to size 6.25204pt on input line 260.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 258.
+(Font)              scaled to size 8.33606pt on input line 260.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 258.
+(Font)              scaled to size 6.25204pt on input line 260.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 258.
+(hyperref)                removing `math shift' on input line 260.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\eta' on input line 258.
+(hyperref)                removing `\eta' on input line 260.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 258.
+(hyperref)                removing `math shift' on input line 260.
 
 Package epstopdf Info: Source file: <prediction_distribution_batch.eps>
 (epstopdf)                    date: 2020-02-23 09:08:21
@@ -1341,7 +1353,7 @@ d-to.pdf>
 (epstopdf)                    size: 117281 bytes
 (epstopdf)             Command: <repstopdf --outfile=prediction_distribution_ba
 tch-eps-converted-to.pdf prediction_distribution_batch.eps>
-(epstopdf)             \includegraphics on input line 282.
+(epstopdf)             \includegraphics on input line 285.
 Package epstopdf Info: Output file is already uptodate.
 <prediction_distribution_batch-eps-converted-to.pdf, id=170, 1180.41pt x 397.48
 5pt>
@@ -1349,7 +1361,7 @@ File: prediction_distribution_batch-eps-converted-to.pdf Graphic file (type pdf
 )
 <use prediction_distribution_batch-eps-converted-to.pdf>
 Package pdftex.def Info: prediction_distribution_batch-eps-converted-to.pdf  us
-ed on input line 282.
+ed on input line 285.
 (pdftex.def)             Requested size: 483.69684pt x 162.87285pt.
 Package epstopdf Info: Source file: <prediction_distribution_epochs.eps>
 (epstopdf)                    date: 2020-02-23 09:08:21
@@ -1360,7 +1372,7 @@ ed-to.pdf>
 (epstopdf)                    size: 152358 bytes
 (epstopdf)             Command: <repstopdf --outfile=prediction_distribution_ep
 ochs-eps-converted-to.pdf prediction_distribution_epochs.eps>
-(epstopdf)             \includegraphics on input line 289.
+(epstopdf)             \includegraphics on input line 292.
 Package epstopdf Info: Output file is already uptodate.
 <prediction_distribution_epochs-eps-converted-to.pdf, id=171, 1161.33875pt x 40
 2.50375pt>
@@ -1368,7 +1380,7 @@ File: prediction_distribution_epochs-eps-converted-to.pdf Graphic file (type pd
 f)
 <use prediction_distribution_epochs-eps-converted-to.pdf>
 Package pdftex.def Info: prediction_distribution_epochs-eps-converted-to.pdf  u
-sed on input line 289.
+sed on input line 292.
 (pdftex.def)             Requested size: 483.69684pt x 167.64397pt.
 Package epstopdf Info: Source file: <prediction_distribution_theta0.eps>
 (epstopdf)                    date: 2020-02-23 09:08:21
@@ -1379,7 +1391,7 @@ ed-to.pdf>
 (epstopdf)                    size: 99821 bytes
 (epstopdf)             Command: <repstopdf --outfile=prediction_distribution_th
 eta0-eps-converted-to.pdf prediction_distribution_theta0.eps>
-(epstopdf)             \includegraphics on input line 296.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 <prediction_distribution_theta0-eps-converted-to.pdf, id=172, 1128.215pt x 394.
 47375pt>
@@ -1387,7 +1399,7 @@ File: prediction_distribution_theta0-eps-converted-to.pdf Graphic file (type pd
 f)
 <use prediction_distribution_theta0-eps-converted-to.pdf>
 Package pdftex.def Info: prediction_distribution_theta0-eps-converted-to.pdf  u
-sed on input line 296.
+sed on input line 299.
 (pdftex.def)             Requested size: 483.69684pt x 169.1208pt.
 Package epstopdf Info: Source file: <ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta
 _theta0.eps>
@@ -1400,7 +1412,7 @@ _theta0-eps-converted-to.pdf>
 (epstopdf)             Command: <repstopdf --outfile=ELA_model_20001_32_1e-3_3x
 50_2x5_2x5_theta_theta0-eps-converted-to.pdf ELA_model_20001_32_1e-3_3x50_2x5_2
 x5_theta_theta0.eps>
-(epstopdf)             \includegraphics on input line 303.
+(epstopdf)             \includegraphics on input line 306.
 Package epstopdf Info: Output file is already uptodate.
 <ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta_theta0-eps-converted-to.pdf, id=173
 , 420.5512pt x 277.3562pt>
@@ -1408,28 +1420,23 @@ File: ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta_theta0-eps-converted-to.pdf Gr
 aphic file (type pdf)
 <use ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta_theta0-eps-converted-to.pdf>
 Package pdftex.def Info: ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta_theta0-eps-
-converted-to.pdf  used on input line 303.
+converted-to.pdf  used on input line 306.
 (pdftex.def)             Requested size: 199.16928pt x 131.35197pt.
 Package epstopdf Info: Source file: <ELA_comparison.eps>
 (epstopdf)                    date: 2020-02-24 17:45:20
 (epstopdf)                    size: 28286 bytes
 (epstopdf)             Output file: <ELA_comparison-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-02-24 17:44:32
-(epstopdf)                    size: 15657 bytes
+(epstopdf)                    date: 2020-02-24 17:45:28
+(epstopdf)                    size: 15659 bytes
 (epstopdf)             Command: <repstopdf --outfile=ELA_comparison-eps-convert
 ed-to.pdf ELA_comparison.eps>
-(epstopdf)             \includegraphics on input line 310.
-runsystem(repstopdf --outfile=ELA_comparison-eps-converted-to.pdf ELA_compariso
-n.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <ELA_comparison-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-02-24 17:45:28
-(epstopdf)                    size: 15659 bytes.
+(epstopdf)             \includegraphics on input line 313.
+Package epstopdf Info: Output file is already uptodate.
 <ELA_comparison-eps-converted-to.pdf, id=174, 402.65431pt x 277.3562pt>
 File: ELA_comparison-eps-converted-to.pdf Graphic file (type pdf)
 <use ELA_comparison-eps-converted-to.pdf>
 Package pdftex.def Info: ELA_comparison-eps-converted-to.pdf  used on input lin
-e 310.
+e 313.
 (pdftex.def)             Requested size: 199.16928pt x 137.19228pt.
 Package epstopdf Info: Source file: <ELA_model_100001_32_1e-3_3x50_2x5_2x5_thet
 a90.eps>
@@ -1442,7 +1449,7 @@ a90-eps-converted-to.pdf>
 (epstopdf)             Command: <repstopdf --outfile=ELA_model_100001_32_1e-3_3
 x50_2x5_2x5_theta90-eps-converted-to.pdf ELA_model_100001_32_1e-3_3x50_2x5_2x5_
 theta90.eps>
-(epstopdf)             \includegraphics on input line 317.
+(epstopdf)             \includegraphics on input line 320.
 Package epstopdf Info: Output file is already uptodate.
 <ELA_model_100001_32_1e-3_3x50_2x5_2x5_theta90-eps-converted-to.pdf, id=175, 42
 0.5512pt x 277.3562pt>
@@ -1450,7 +1457,7 @@ File: ELA_model_100001_32_1e-3_3x50_2x5_2x5_theta90-eps-converted-to.pdf Graphi
 c file (type pdf)
 <use ELA_model_100001_32_1e-3_3x50_2x5_2x5_theta90-eps-converted-to.pdf>
 Package pdftex.def Info: ELA_model_100001_32_1e-3_3x50_2x5_2x5_theta90-eps-conv
-erted-to.pdf  used on input line 317.
+erted-to.pdf  used on input line 320.
 (pdftex.def)             Requested size: 199.16928pt x 131.35197pt.
 No file "Luminescence_MTL_O2_T v7".bbl.
 
@@ -1465,12 +1472,12 @@ nverted-to.pdf>] [8
  <./ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta_theta0-eps-converted-to.pdf> <./
 ELA_comparison-eps-converted-to.pdf> <./ELA_model_100001_32_1e-3_3x50_2x5_2x5_t
 heta90-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 407.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 407.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 410.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 410.
 
 (./Luminescence_MTL_O2_T v7.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 407.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 407.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 410.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 410.
 Package rerunfilecheck Info: File `"Luminescence_MTL_O2_T v7".out' has not chan
 ged.
 (rerunfilecheck)             Checksum: 98748D2FF4B913318F0AE74EF05C29FD;1285.
@@ -1478,16 +1485,16 @@ ged.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 407.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 410.
  ) 
 Here is how much of TeX's memory you used:
- 28916 strings out of 492649
- 560967 string characters out of 6129623
- 698728 words of memory out of 5000000
- 32185 multiletter control sequences out of 15000+600000
- 634793 words of font info for 301 fonts, out of 8000000 for 9000
+ 28975 strings out of 492649
+ 561704 string characters out of 6129623
+ 699126 words of memory out of 5000000
+ 32239 multiletter control sequences out of 15000+600000
+ 634872 words of font info for 302 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,19n,45p,10403b,407s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,19n,45p,10403b,411s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texl
@@ -1502,10 +1509,10 @@ w/helvetic/uhvro8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/pala
 tino/uplb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/up
 lbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
 fb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on "Luminescence_MTL_O2_T v7.pdf" (8 pages, 1150106 bytes).
+Output written on "Luminescence_MTL_O2_T v7.pdf" (8 pages, 1150288 bytes).
 PDF statistics:
- 651 PDF objects out of 1000 (max. 8388607)
- 248 compressed objects within 3 object streams
- 51 named destinations out of 1000 (max. 500000)
+ 650 PDF objects out of 1000 (max. 8388607)
+ 247 compressed objects within 3 object streams
+ 50 named destinations out of 1000 (max. 500000)
  57549 words of extra memory for PDF output out of 61914 (max. 10000000)
 

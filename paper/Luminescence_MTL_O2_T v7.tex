@@ -1,7 +1,9 @@
 \documentclass[9pt,twocolumn,twoside,pdftex]{optica}
 
-
+\usepackage{amsthm}
 \newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+
 
 \setboolean{shortarticle}{false}
 \setboolean{minireview}{false}
@@ -259,18 +261,19 @@ In this work a Gaussian Kernel and a Scott bandwidth adaptive estimation \cite{S
 
 To better characterise the sensor performance we need to define a new metric, that we have called Error Limited Accuracy (ELA), and that we indicate with $\eta$. 
 
-\begin{definition}
+\begin{definition*}
 In a regression problem, given a metric $m$, and a certain value of it $\hat m$, the ELA for this metric $\eta$ is defined as the number of predictions $\hat y$ of the NNM that lie in the range $[y-\hat m, y+\hat m]$. Or in more mathematical terms once we define the set
 \begin{equation}
-S(\hat m) = \{ \hat y^{[i]} \ {\text with } \ i = 1,..., n\ | |m(\hat y^{[i]})-m(y^{[i]})|\leq \hat m \} 
+S(\hat m) = \{ \hat y^{[i]} \ {\text with } \ i = 1,..., n\ | m(\hat y^{[i]})-m(y^{[i]})|\leq \hat m \} 
 \end{equation}
 $\eta$ can be simply defined as
 \begin{equation}
 \eta = \frac{|S(\hat m)|}{n}
 \end{equation}
 where $|S(\hat m)|$ is the cardinality of the set $S(\hat m)$ or in other words, the number of its elements.
-\end{definition}
+\end{definition*}
 
+This metric allows us to interpret the regression problem we are trying solve as a classification one. $\eta$ simply tells us how many observations are predicted by the NNM within a given error. Of course if we take this error big enough, all the predictions will be classified perfectly. The smaller this error the smaller the number of predictions correctly classified.
 
 \subsection{Sensor performance}
 
@@ -326,16 +329,16 @@ Finally, the performance of the different neural networks is summarized in Table
 
 \begin{table}[hbt]
 \centering
-\caption {\bf Summary of the performance for the three types of neural networks}
+\caption {\bf Summary of the performance for the three types of neural network models}
 
 \begin{tabular}{ rccc}
 \smallskip 
  Input & Epochs / Batch size & $MAE_{[O_2]}$ & $MAE_{[T]}$  \\ 
  \hline
-$\theta / 90^\circ$ & 20'000 / 4000 & xx \% air & xx $^\circ C$\\ 
-$\theta / 90^\circ$ & 20'000 / 32 & xx\% air & xx $^\circ C$\\ 
-$\theta / 90^\circ$& 100'000 / 32 & xx \% air & xx $^\circ C$\\ 
-$\theta /\theta_0$ & 20'000 / 32 & xx \% air & xx $^\circ C$\\ 
+$\theta / 90^\circ$ & 20'000 / 4000 & 2.38 \% air & 3.63 $^\circ C$\\ 
+$\theta / 90^\circ$ & 20'000 / 32 & 1.36\% air & 1.63 $^\circ C$\\ 
+$\theta / 90^\circ$& 100'000 / 32 & 0.22 \% air & 0.27 $^\circ C$\\ 
+$\theta /\theta_0$ & 20'000 / 32 & 0.13 \% air & 0.24 $^\circ C$\\ 
 
 \end{tabular}
 \label{TableMAE_summary}
