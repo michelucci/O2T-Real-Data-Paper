@@ -50,20 +50,16 @@ The simultaneous determination of multiple parameters can be very advantageous i
 
 The problem of dual sensing is particularly relevant in applications which involve oxygen sensing. The determination of oxygen partial pressure is of great interest in numerous fields, like medicine, biotechnology, environmental monitoring, or chemistry since oxygen plays an important role in many processes \cite{Papkovsky2013,Wang2014}. One of the most used optical measuring approaches uses the effect of the dynamical quenching of luminescence by the oxygen molecules. The measuring principle is based on the measurement of the luminescence of a specific luminophore, whose intensity and decay time are reduced due to collisions with molecular oxygen \cite{Lakowicz2006}.
 
-Sensors based on this principle must rely on approximated empirical models to parametrize the dependence of the measured sensing quantity (e.g., luminescence intensity or decay time) on influencing factors of the environment where the indicator is placed. Among these, the parameter with the strongest influence is temperature, since both the luminescence and the quenching phenomena are strongly temperature dependent. Therefore, in any optical oxygen sensor the temperature must be continuously monitored, most frequently with a separate sensor, and used to correct the calculated oxygen concentration. This task can be difficult in a practical implementation and may be a major source of error in sensors based on luminescence sensing. Another disadvantage of this approach, is that the parametrization is system specific and needs to be redefined for each new sensor, since it depends both on fabrication of the sensing element \cite{Xu1994,Draxler1995,Hartmann1996,Mills1998,Badocco2008,Dini2011}and on the optomechanics.
+Sensors based on this principle must rely on approximated empirical models to parametrize the dependence of the measured sensing quantity (e.g., luminescence intensity or decay time) on influencing factors of the environment where the indicator is placed. Among these, the parameter with the strongest influence is temperature, since both the luminescence and the quenching phenomena are strongly temperature dependent. Therefore, in any optical oxygen sensor the temperature must be continuously monitored, most frequently with a separate sensor, and used to correct the calculated oxygen concentration. This task can be difficult in a practical implementation and may be a major source of error in sensors based on luminescence sensing. Another disadvantage of this approach, is that the parametrization is system specific and needs to be redefined for each new sensor, since it depends both on fabrication of the sensing element \cite{Xu1994,Draxler1995,Hartmann1996,Mills1998,Badocco2008,Dini2011} and on the optomechanics.
 
 In this work we propose a revolutionary approach based on artificial intelligence which enables dual sensing, the determination of both the oxygen concentration and the temperature, using one single indicator and measuring a single quantity, namely the decay time. Instead of describing the response of the sensor from the relevant parameters through an analytical model, a large amount of data with all the possible variations in the range of interest is collected and used to train a neural network. For dual sensing,  multi-task learning (MTL) neural networks are required, so networks which are characterized by common hidden layers, whose output is then the input of multiple branches of task specific hidden layers. This type of architectures, in facts, can learn correlated tasks \cite{Thrun1996, Caruana1997, Zhang2017, Baxter2000, Thung2018} and are flexible enough to be usable in multi-dimensional regressions \cite{Michelucci2019_2}.
 
-To collect the large amount of data needed for the training, a fully automated setup was developed. After the definition of the range of interest a program varies the parameters of interest and acquires the corresponding sensor response. Thanks to this setup it was possible to collect enough measurements to train the neural network and to test their performance in the prediction of the oxygen concentration and temperature.
+The collection of the large amount of data which is needed for the training of neural networks, cannot be performed by hand. Therefore, a fully automated setup was developed  both controlling the instruments for adjusting the medium gas concentration and temperature and collecting the sensor response. This allowed the to collect enough measurements to train the neural network on real data and to test the sensor performance on other unseen real data.
+
+This work proposes a paradigm shift from the classical description of the response of the sensor throw an approximate empirical parametric model to the use of MTL neural networks. These which through the training on a large amount of data automatically taken will learn the complex inter-parameter dependencies and sensor-specific response characteristics, thus allowing enabling to build sensors even if the system is too complex, to be comfortably described by a mathematical model.
 
 
-The hardware used for the sensor is standard laboratory equipment, which makes it easy to 
- program was deve, which 
-large amount of data
-application to real data 
-limitation and prospects.
 
-IDEE
 
 Pressure Sensitive Paint: any method requires correction due to the temperature dependence of the luminescence of the paint, for example non-oxygen quenched,  temperature-dependent  phosphor  is  added  to  the  standard  paint
 
@@ -102,7 +98,7 @@ Although the multi-site model was introduced for luminescence intensities, it is
 \label{theta_full}
 \end{aligned}
 \end{equation}
-where $\theta_0$ and $\theta$, respectively, are the phase shifts in the absence and presence of oxygen, $f$ and $1-f$ are the fractions of the total emission for each component under unquenched conditions, $K_{SV1}$ and $K_{SV2}$ are the associated Stern–Volmer constants for each component, and $\left[O_2\right]$ indicates the oxygen concentration. It is to be noted that the quantities $\theta_0$, $f$, $K_{SV1}$, and $K_{SV2}$ are all non-linearly temperature dependent and may result frequency dependent, an artifact of the approximation of the model. Finally, Eq. \ref{theta_full} needs to be inverted to determine $[O_2]$ from the measured quantity $\theta$.
+where $\theta_0$ and $\theta$, respectively, are the phase shifts in the absence and presence of oxygen, $f$ and $1-f$ are the fractions of the total emission for each component under unquenched conditions, $K_{SV1}$ and $K_{SV2}$ are the associated Stern–Volmer constants for each component, and $\left[O_2\right]$ indicates the oxygen concentration. It is to be noted that the quantities $\theta_0$, $f$, $K_{SV1}$, and $K_{SV2}$ are all non-linearly temperature dependent \cite{Ogurtsov2006,lo2008,Zaitsev2016} and may result frequency dependent, an artifact of the approximation of the model. Finally, Eq. \ref{theta_full} needs to be inverted to determine $[O_2]$ from the measured quantity $\theta$.
 
 
 \subsection{Experimental Setup}
@@ -360,6 +356,7 @@ temperature cannot be predicted well without dividing for theta 0
 
 \section{Conclusions}
 
+The results in the prediction of the oxygen concentration and temperature show unprecedented accuracy for both parameters, demonstrating that this approach could allow the realization of a commercial sensor for dual or even multiple sensing.
 
 
 %\section*{Funding Information}
