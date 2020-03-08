@@ -1,0 +1,17 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Methods}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Luminescence Quenching for Oxygen Determination}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Experimental Setup}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Automated Data Acquisition}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Neural Network Software}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Neural Network Architecture}{subsection.2.4}% 7
+\BOOKMARK [3][-]{subsubsection.2.4.2}{Loss Function}{subsection.2.4}% 8
+\BOOKMARK [3][-]{subsubsection.2.4.3}{Optimiser Algorithm}{subsection.2.4}% 9
+\BOOKMARK [3][-]{subsubsection.2.4.4}{Predictions Absolute Error}{subsection.2.4}% 10
+\BOOKMARK [3][-]{subsubsection.2.4.5}{Error Limited Accuracy }{subsection.2.4}% 11
+\BOOKMARK [1][-]{section.3}{Results and Discussion}{}% 12
+\BOOKMARK [2][-]{subsection.3.1}{Luminescence Experimental Results}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.2}{Sensor performance analysis}{section.3}% 14
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Kernel Density Estimation}{subsection.3.2}% 15
+\BOOKMARK [2][-]{subsection.3.3}{Sensor performance}{section.3}% 16
+\BOOKMARK [1][-]{section.4}{Conclusions}{}% 17
