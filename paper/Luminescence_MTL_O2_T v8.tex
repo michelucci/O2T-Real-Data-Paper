@@ -276,28 +276,35 @@ MAE$_{[O_2]}=1.36$ \% air and MAE$_{T}=1.63^\circ$ C (while using mini-batches o
 
 \begin{figure*}[htbp]
 \centering
-\includegraphics[width=17 cm]{prediction_distribution_batch.eps}
-\caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
-\label{fig:prediction_distribution_batch_90}
-\end{figure*}
-
-One can get much better results simply training the network for many more epochs. In Figure \ref{fig:prediction_distribution_epochs_90} the difference between predictions distributions with 20000 and 100000 epochs (always using a mini-batch of size 32) is shown. The results are dramatically better. We have now  MAE$_{[O_2]}=0.22$ \% air and MAE$_{T}=0.27^\circ$ C. Additionally all the predictions for $[O_2]$ lies below 0.94 \% air, and for $T$ lies below 2.1 $^\circ$ C. To train a network for so many epochs requires, on a modern laptop, roughly 5 hours. Predicting both $[O_2]$ and $T$ at the same time from the same set of data with such accuracies is unprecedented and paves the way to a completely new generation of sensors that does not need to measure temperature independently to predict the oxygen concentration.
-
-\begin{figure*}[htbp]
-\centering
-\includegraphics[width=17 cm]{comparison_theta90_20k_vs_100k.eps}
-\caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
-\label{fig:prediction_distribution_epochs_90}
-\end{figure*}
-
-The authors asked themselves if one could get even better results in a more efficient way (reducing the training time). In Figure \ref{fig:prediction_distribution_theta0} predictions distributions are shown when using as input $\theta/\theta_0$, with a mini-batch size of 32 and 20000 epochs. The results are clearly better, especially for the temperature predictions. Training the network with these inputs require roughly 1 hour. Additionally all the predictions for $[O_2]$ lies below 0.87 \% air, and for $T$ lies below 1.7 $^\circ$ C. 
-
-\begin{figure*}[htbp]
-\centering
-\includegraphics[width=17 cm]{theta_theta0_mb_20k.eps}
+\includegraphics[width=17 cm]{KDE_results_all.eps}
 \caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
 \label{fig:prediction_distribution_theta0}
 \end{figure*}
+
+%\begin{figure*}[htbp]
+%\centering
+%\includegraphics[width=17 cm]{prediction_distribution_batch.eps}
+%\caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
+%\label{fig:prediction_distribution_batch_90}
+%\end{figure*}
+
+One can get much better results simply training the network for many more epochs. In Figure \ref{fig:prediction_distribution_epochs_90} the difference between predictions distributions with 20000 and 100000 epochs (always using a mini-batch of size 32) is shown. The results are dramatically better. We have now  MAE$_{[O_2]}=0.22$ \% air and MAE$_{T}=0.27^\circ$ C. Additionally all the predictions for $[O_2]$ lies below 0.94 \% air, and for $T$ lies below 2.1 $^\circ$ C. To train a network for so many epochs requires, on a modern laptop, roughly 5 hours. Predicting both $[O_2]$ and $T$ at the same time from the same set of data with such accuracies is unprecedented and paves the way to a completely new generation of sensors that does not need to measure temperature independently to predict the oxygen concentration.
+
+%\begin{figure*}[htbp]
+%\centering
+%\includegraphics[width=17 cm]{comparison_theta90_20k_vs_100k.eps}
+%\caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
+%\label{fig:prediction_distribution_epochs_90}
+%\end{figure*}
+
+The authors asked themselves if one could get even better results in a more efficient way (reducing the training time). In Figure \ref{fig:prediction_distribution_theta0} predictions distributions are shown when using as input $\theta/\theta_0$, with a mini-batch size of 32 and 20000 epochs. The results are clearly better, especially for the temperature predictions. Training the network with these inputs require roughly 1 hour. Additionally all the predictions for $[O_2]$ lies below 0.87 \% air, and for $T$ lies below 1.7 $^\circ$ C. 
+
+%\begin{figure*}[htbp]
+%\centering
+%\includegraphics[width=17 cm]{theta_theta0_mb_20k.eps}
+%\caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
+%\label{fig:prediction_distribution_theta0}
+%\end{figure*}
 
 
 
