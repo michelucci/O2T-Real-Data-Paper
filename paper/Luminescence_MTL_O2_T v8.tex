@@ -229,26 +229,28 @@ This metric allows us to interpret the regression problem we are trying solve as
 
 \subsection{Luminescence Experimental Results}
 
-As described in Section \ref{Theory}, the phase-shift depends not only on the oxygen concentration, but also on the temperature and on the modulation frequency of the excitation light. This can be seen in the Figs. \ref{fig:expdata1} to \ref{fig:expdata3}.
-Fig. \ref{fig:expdata1} shows the measured phase shifts as a function of the oxygen concentration at a constant modulation frequency of 6 kHz for increasing temperatures. For clarity, only selected temperatures are shown. The decrease in the phase shift with increasing concentration is due to the quenching of the luminescence described in Eq. \ref{theta_full}. The effect of the temperature is to further decrease the phase shift. This effect depends on the concentration, being stronger at higher oxygen concentration. This temperature quenching is understandable since higher temperature increase diffusion of the oxygen molecules. {\bf [REF]}
-
-\begin{figure}[htbp]
+\begin{figure}[t!]
 \centering
 \includegraphics[width=8 cm]{phase_O2_T.eps}
 \caption{Measured phase-shift as a function of the oxygen concentration, for selected temperatures at a fixed modulation frequency of 6 kHz. The arrow marks increasing temperatures.}
 \label{fig:expdata1}
 \end{figure}
 
+As described in Section \ref{Theory}, the phase-shift depends not only on the oxygen concentration, but also on the temperature and on the modulation frequency of the excitation light. This can be seen in the Figs. \ref{fig:expdata1} to \ref{fig:expdata3}.
+Fig. \ref{fig:expdata1} shows the measured phase shifts as a function of the oxygen concentration at a constant modulation frequency of 6 kHz for increasing temperatures. For clarity, only selected temperatures are shown. The decrease in the phase shift with increasing concentration is due to the quenching of the luminescence described in Eq. \ref{theta_full}. The effect of the temperature is to further decrease the phase shift. This effect depends on the concentration, being stronger at higher oxygen concentration. This temperature quenching is understandable since higher temperature increase diffusion of the oxygen molecules. {\bf [REF]}
+
+
+
 For a given oxygen concentration the phase shift is strongly dependent from the modulation frequency, as it can be seen in Fig. \ref{fig:expdata2}. The temperature quenching is visible in the reduction of the phase shift with increasing temperatures at a given modulation frequency. This affects the phase shift differently depending on the modulation frequency. 
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=8 cm]{phase_f_T.eps}
 \caption{Measured phase-shift for selected oxygen concentrations as a function of the modulation frequency at a fixed oxygen concentration $[O_2]=20 \%$ at selected temperatures.}
 \label{fig:expdata2}
 \end{figure}
 
-The complementary to Fig. Fig. \ref{fig:expdata2} is shown in Fig. \ref{fig:expdata3}, where the phase shift is shown a function of the modulation frequency for selected oxygen concentrations at a fixed temperature.
+The complementary to Fig. Fig. \ref{fig:expdata2} is  Fig. \ref{fig:expdata3}, where the phase shift is shown a function of the modulation frequency for selected oxygen concentrations at a fixed temperature.
 
 \begin{figure}[htbp]
 \centering
@@ -257,20 +259,20 @@ The complementary to Fig. Fig. \ref{fig:expdata2} is shown in Fig. \ref{fig:expd
 \label{fig:expdata3}
 \end{figure}
 
-Comparing the curves shown above it is clear that, when measuring one single phase-shift or even a the phase-shift as a function of the modulation frequency is not possible to simultaneously determine both the oxygen concentration and the temperature from this set of data. To determine the oxygen concentration is mandatory to know the temperature. This is no longer the case with the artificial intelligence approach, as it will be shown in the next section. 
+Comparing the curves shown above it is clear that, when measuring one single phase-shift or even a the phase-shift as a function of the modulation frequency is not possible to simultaneously determine both the oxygen concentration and the temperature from this set of data from Eq. (\ref{theta_full}). The temperature must be known to be able to determine the oxygen concentration. This is no longer the case with the artificial intelligence approach, as it will be shown in the next section. 
 
 \subsection{Sensor performance analysis}
 
 \subsubsection{Kernel Density Estimation}
 
-To analyze the performance of the network, a fundamental quantity is the prediction probability density?? distribution of the $AE$s since it carries information on the probability of the network to predict the expected value.  for each parameter. For this reason the   kernel density estimate (KDE) of the distributions of the $AE$s for both the oxygen concentration and the temperature was calculated. KDE is a non-parametric algorithm to estimate the probability density function of a random variable by inferring the population distribution based on a finite data sample \cite{Hastie2009}. ATTENZIONE COPIATO DA WIKIPEDIA
+To analyze the performance of the network, a fundamental quantity is the prediction probability density distribution of the $AE$s since it carries information on the probability of the network to predict the expected value for each parameter. For this reason and to make a clear visualisation of the results the  kernel density estimate (KDE) of the distributions of the $AE$s for both the oxygen concentration and the temperature was calculated. KDE is a non-parametric algorithm to estimate the probability density function of a random variable by inferring the population distribution based on a finite data sample \cite{Hastie2009}. 
 In this work a Gaussian Kernel and a Scott bandwidth adaptive estimation \cite{Sain1996} using the seaborn Python package \cite{Waskom2020} were used.
 
 
 \subsection{Sensor performance}
 
-
-The results for $AE_{[O_2]}$ and $AE_T$ for are shown in Figure \ref{fig:prediction_distribution_batch_90}.
+Let's start with discussing what is the effect of using mini-batches versus not using them. The results can be seen for  $AE_{[O_2]}$ and $AE_T$  in Figure \ref{fig:prediction_distribution_batch_90}. For this comparison the network has been trained for 20000 epochs. In the Figure \ref{fig:prediction_distribution_batch_90} the gray histogram shows the results when using mini-batches of size 32. The effect is extraordinary. The predictions move from (without using batches) having MAE$_{[O_2]}=2.38$ \% air and MAE$_{T}=3.63^\circ$ C to  
+MAE$_{[O_2]}=1.36$ \% air and MAE$_{T}=1.63^\circ$ C (while using mini-batches of size 32). Not only the average values are reduced but the predictions distributions are much narrower. From Figure \ref{fig:prediction_distribution_batch_90} it can also be clearly seen that, even while using mini-batches, we can get errors as high as roughly 5 \% air for $[O_2]$ or roughly as 12 $^\circ$ C for $T$. Decreasing the mini-batch size have the side effect of increasing the training time. While training the network without batches requires just a few minutes, reducing the mini-batch size to 32 increase the training time to roughly 1 hour.
 
 \begin{figure*}[htbp]
 \centering
@@ -279,12 +281,16 @@ The results for $AE_{[O_2]}$ and $AE_T$ for are shown in Figure \ref{fig:predict
 \label{fig:prediction_distribution_batch_90}
 \end{figure*}
 
+One can get much better results simply training the network for many more epochs. In Figure \ref{fig:prediction_distribution_epochs_90} the difference between predictions distributions with 20000 and 100000 epochs (always using a mini-batch of size 32) is shown. The results are dramatically better. We have now  MAE$_{[O_2]}=0.22$ \% air and MAE$_{T}=0.27^\circ$ C. Additionally all the predictions for $[O_2]$ lies below 0.94 \% air, and for $T$ lies below 2.1 $^\circ$ C. To train a network for so many epochs requires, on a modern laptop, roughly 5 hours. Predicting both $[O_2]$ and $T$ at the same time from the same set of data with such accuracies is unprecedented and paves the way to a completely new generation of sensors that does not need to measure temperature independently to predict the oxygen concentration.
+
 \begin{figure*}[htbp]
 \centering
 \includegraphics[width=17 cm]{comparison_theta90_20k_vs_100k.eps}
 \caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
 \label{fig:prediction_distribution_epochs_90}
 \end{figure*}
+
+The authors asked themselves if one could get even better results in a more efficient way (reducing the training time). In Figure \ref{fig:prediction_distribution_theta0} predictions distributions are shown when using as input $\theta/\theta_0$, with a mini-batch size of 32 and 20000 epochs. The results are clearly better, especially for the temperature predictions. Training the network with these inputs require roughly 1 hour. Additionally all the predictions for $[O_2]$ lies below 0.87 \% air, and for $T$ lies below 1.7 $^\circ$ C. 
 
 \begin{figure*}[htbp]
 \centering
@@ -293,32 +299,9 @@ The results for $AE_{[O_2]}$ and $AE_T$ for are shown in Figure \ref{fig:predict
 \label{fig:prediction_distribution_theta0}
 \end{figure*}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=7 cm]{ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta_theta0.eps}
-\caption{ELA...}
-\label{fig:result_theta0}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=7 cm]{ELA_comparison.eps}
-\caption{ELA...}
-\label{fig:result_theta0}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=7 cm]{ELA_model_100001_32_1e-3_3x50_2x5_2x5_theta90.eps}
-\caption{ELA...}
-\label{fig:result_theta0}
-\end{figure}
 
 
-
-
-Finally, the performance of the different neural networks is summarized in Table \ref{TableMAE_summary}. Here the $MAE$ as defined in Equation \ref{MAE} for the oxygen concentration and the temperature prediction are listed.
-
+The performance of the different neural networks is summarized in Table \ref{TableMAE_summary}. 
 \begin{table}[hbt]
 \centering
 \caption {\bf Summary of the performance for the three types of neural network models}
@@ -336,16 +319,44 @@ $\theta /\theta_0$ & 20'000 / 32 & 0.13 \% air & 0.24 $^\circ C$\\
 \label{TableMAE_summary}
 \end{table}
 
+\subsection{Error Limited Accuracy Plots}
+
+To completely understand how such models can be used in a sensor, the authors analysed the behaviour of $\eta$. In Figure \ref{fig:ELA_result_comparison} you can see a comparison of $\eta$ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 epochs. The black line are the results for the network that have been trained with $\theta/\theta_0$ as input, while the red one with $\theta/90$ as input. As expected the curves start from zero and grows to the maximum possible, that is 1. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error. For example for the network trained with $\theta/90$ as input, if we consider an error of 0.95 \% air acceptable, than the model would predict all the oxygen concentrations within the given error. For the network trained with $\theta/\theta_0$ this value would be 0.87 \% air. 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=7 cm]{ELA_comparison.eps}
+\caption{Comparison of $\eta$ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 epochs. The black line are the results for the network that have been trained with $\theta/\theta_0$ as input, while the red one with $\theta/90$ as input. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.}
+\label{fig:ELA_result_comparison}
+\end{figure}
 
 
-plot theta/theta0 vs frequency for different T (O2 fix) and for different O2 (T fix)
-plot distribution of total AE
+%\begin{figure}[htbp]
+%\centering
+%\includegraphics[width=7 cm]{ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta_theta0.eps}
+%\caption{ELA...}
+%\label{fig:ELA_result_theta0}
+%\end{figure}
+%
+%
+%
+%\begin{figure}[htbp]
+%\centering
+%\includegraphics[width=7 cm]{ELA_model_100001_32_1e-3_3x50_2x5_2x5_theta90.eps}
+%\caption{ELA...}
+%\label{fig:result_theta0}
+%\end{figure}
 
-temperature can be presicted less well because phase shift depends less from T than from O2
 
-Stability results
-
-temperature cannot be predicted well without dividing for theta 0
+%
+%plot theta/theta0 vs frequency for different T (O2 fix) and for different O2 (T fix)
+%plot distribution of total AE
+%
+%temperature can be presicted less well because phase shift depends less from T than from O2
+%
+%Stability results
+%
+%temperature cannot be predicted well without dividing for theta 0
 
 
 
