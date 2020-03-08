@@ -1,0 +1,226 @@
+\begin{thebibliography}{10}
+\newcommand{\enquote}[1]{``#1''}
+
+\bibitem{Stich2010}
+M.~I. Stich, L.~H. Fischer, and O.~S. Wolfbeis, \enquote{Multiple fluorescent
+  chemical sensing and imaging,} {\protect\JournalTitle{Chemical Society
+  Reviews}} \textbf{39}, 3102--3114 (2010).
+
+\bibitem{Borisov2011novel}
+S.~M. Borisov, R.~Seifner, and I.~Klimant, \enquote{A novel planar optical
+  sensor for simultaneous monitoring of oxygen, carbon dioxide, ph and
+  temperature,} {\protect\JournalTitle{Analytical and bioanalytical chemistry}}
+  \textbf{400}, 2463--2474 (2011).
+
+\bibitem{Kameya2014}
+T.~Kameya, Y.~Matsuda, Y.~Egami, H.~Yamaguchi, and T.~Niimi, \enquote{Dual
+  luminescent arrays sensor fabricated by inkjet-printing of pressure-and
+  temperature-sensitive paints,} {\protect\JournalTitle{Sensors and Actuators
+  B: Chemical}} \textbf{190}, 70--77 (2014).
+
+\bibitem{Wang2014}
+X.-d. Wang and O.~S. Wolfbeis, \enquote{Optical methods for sensing and imaging
+  oxygen: materials, spectroscopies and applications,}
+  {\protect\JournalTitle{Chemical Society Reviews}} \textbf{43}, 3666--3761
+  (2014).
+
+\bibitem{Santoro2016}
+S.~Santoro, A.~Moro, C.~Portugal, J.~Crespo, I.~Coelhoso, and J.~Lima,
+  \enquote{Development of oxygen and temperature sensitive membranes using
+  molecular probes as ratiometric sensor,} {\protect\JournalTitle{Journal of
+  Membrane Science}} \textbf{514}, 467--475 (2016).
+
+\bibitem{Biring2019}
+S.~Biring, A.~S. Sadhu, and M.~Deb, \enquote{An effective optical dual gas
+  sensor for simultaneous detection of oxygen and ammonia,}
+  {\protect\JournalTitle{Sensors}} \textbf{19}, 5124 (2019).
+
+\bibitem{Collier2013}
+B.~B. Collier and M.~J. McShane, \enquote{Time-resolved measurements of
+  luminescence,} {\protect\JournalTitle{Journal of Luminescence}} \textbf{144},
+  180--190 (2013).
+
+\bibitem{Stehning2004}
+C.~Stehning and G.~A. Holst, \enquote{Addressing multiple indicators on a
+  single optical fiber-digital signal processing approach for temperature
+  compensated oxygen sensing,} {\protect\JournalTitle{IEEE Sensors Journal}}
+  \textbf{4}, 153--159 (2004).
+
+\bibitem{Jorge2008}
+P.~Jorge, C.~Maule, A.~Silva, R.~Benrashid, J.~Santos, and F.~Farahi,
+  \enquote{Dual sensing of oxygen and temperature using quantum dots and a
+  ruthenium complex,} {\protect\JournalTitle{Analytica chimica acta}}
+  \textbf{606}, 223--229 (2008).
+
+\bibitem{Moore2006}
+J.~P. Moore, C.~Higgins, O.~McGaughey, B.~G. Lawless, and B.~D. MacCraith,
+  \enquote{Exploiting sensor cross sensitivity: achieving temperature
+  compensation via a dual-element optical oxygen sensor,} in \emph{Advanced
+  Environmental, Chemical, and Biological Sensing Technologies IV,}  vol. 6377
+  (International Society for Optics and Photonics, 2006), p. 63770I.
+
+\bibitem{Papkovsky2013}
+D.~B. Papkovsky and R.~I. Dmitriev, \enquote{Biological detection by optical
+  oxygen sensing,} {\protect\JournalTitle{Chemical Society Reviews}}
+  \textbf{42}, 8700--8732 (2013).
+
+\bibitem{Lakowicz2006}
+J.~R. Lakowicz, \emph{Principles of Fluorescence Spectroscopy, 3rd ed.}
+  (Springer, New York, 2006).
+
+\bibitem{Li2015}
+F.~Li, Y.~Wei, Y.~Chen, D.~Li, and X.~Zhang, \enquote{An intelligent optical
+  dissolved oxygen measurement method based on a fluorescent quenching
+  mechanism,} {\protect\JournalTitle{Sensors}} \textbf{15}, 30913--30926
+  (2015).
+
+\bibitem{Xu1994}
+W.~Xu, R.~C. McDonough, B.~Langsdorf, J.~Demas, and B.~DeGraff, \enquote{Oxygen
+  sensors based on luminescence quenching: interactions of metal complexes with
+  the polymer supports,} {\protect\JournalTitle{Analytical Chemistry}}
+  \textbf{66}, 4133--4141 (1994).
+
+\bibitem{Draxler1995}
+S.~Draxler, M.~E. Lippitsch, I.~Klimant, H.~Kraus, and O.~S. Wolfbeis,
+  \enquote{Effects of polymer matrixes on the time-resolved luminescence of a
+  ruthenium complex quenched by oxygen,} {\protect\JournalTitle{The Journal of
+  Physical Chemistry}} \textbf{99}, 3162--3167 (1995).
+
+\bibitem{Hartmann1996}
+P.~Hartmann and W.~Trettnak, \enquote{Effects of polymer matrices on
+  calibration functions of luminescent oxygen sensors based on porphyrin ketone
+  complexes,} {\protect\JournalTitle{Analytical chemistry}} \textbf{68},
+  2615--2620 (1996).
+
+\bibitem{Mills1998}
+A.~Mills, \enquote{Controlling the sensitivity of optical oxygen sensors,}
+  {\protect\JournalTitle{Sensors and Actuators B: Chemical}} \textbf{51},
+  60--68 (1998).
+
+\bibitem{Badocco2008}
+D.~Badocco, A.~Mondin, P.~Pastore, S.~Voltolina, and S.~Gross,
+  \enquote{Dependence of calibration sensitivity of a polysulfone/ru (ii)-tris
+  (4, 7-diphenyl-1, 10-phenanthroline)-based oxygen optical sensor on its
+  structural parameters,} {\protect\JournalTitle{Analytica chimica acta}}
+  \textbf{627}, 239--246 (2008).
+
+\bibitem{Dini2011}
+F.~Dini, E.~Martinelli, R.~Paolesse, D.~Filippini, A.~D’Amico,
+  I.~Lundstr{\"o}m, and C.~Di~Natale, \enquote{Polymer matrices effects on the
+  sensitivity and the selectivity of optical chemical sensors,}
+  {\protect\JournalTitle{Sensors and Actuators B: Chemical}} \textbf{154},
+  220--225 (2011).
+
+\bibitem{Thrun1996}
+S.~Thrun, \enquote{Is learning the n-th thing any easier than learning the
+  first?} in \emph{Advances in neural information processing systems,}  (1996),
+  pp. 640--646.
+
+\bibitem{Caruana1997}
+R.~Caruana, \enquote{Multitask learning,} {\protect\JournalTitle{Machine
+  learning}} \textbf{28}, 41--75 (1997).
+
+\bibitem{Zhang2017}
+Y.~Zhang and Q.~Yang, \enquote{A survey on multi-task learning,}
+  {\protect\JournalTitle{arXiv preprint arXiv:1707.08114}}  (2017).
+
+\bibitem{Baxter2000}
+J.~Baxter, \enquote{A model of inductive bias learning,}
+  {\protect\JournalTitle{Journal of artificial intelligence research}}
+  \textbf{12}, 149--198 (2000).
+
+\bibitem{Thung2018}
+K.-H. Thung and C.-Y. Wee, \enquote{A brief review on multi-task learning,}
+  {\protect\JournalTitle{Multimedia Tools and Applications}} \textbf{77},
+  29705--29725 (2018).
+
+\bibitem{Michelucci2019_2}
+U.~Michelucci and F.~Venturini, \enquote{Multi-task learning for
+  multi-dimensional regression: application to luminescence sensing,}
+  {\protect\JournalTitle{Applied Sciences}} \textbf{9}, 4748 (2019).
+
+\bibitem{Carraway1991}
+E.~Carraway, J.~Demas, B.~DeGraff, and J.~Bacon, \enquote{Photophysics and
+  photochemistry of oxygen sensors based on luminescent transition-metal
+  complexes,} {\protect\JournalTitle{Analytical chemistry}} \textbf{63},
+  337--342 (1991).
+
+\bibitem{Demas1995}
+J.~N. Demas, B.~DeGraff, and W.~Xu, \enquote{Modeling of luminescence
+  quenching-based sensors: comparison of multisite and nonlinear gas solubility
+  models,} {\protect\JournalTitle{Analytical Chemistry}} \textbf{67},
+  1377--1380 (1995).
+
+\bibitem{Hartmann1995}
+P.~Hartmann, M.~J. Leiner, and M.~E. Lippitsch, \enquote{Luminescence quenching
+  behavior of an oxygen sensor based on a ru (ii) complex dissolved in
+  polystyrene,} {\protect\JournalTitle{Analytical Chemistry}} \textbf{67},
+  88--93 (1995).
+
+\bibitem{Mills1999}
+A.~Mills, \enquote{Response characteristics of optical sensors for oxygen:
+  models based on a distribution in $\tau$oor kq,}
+  {\protect\JournalTitle{Analyst}} \textbf{124}, 1301--1307 (1999).
+
+\bibitem{Wei2019}
+Y.~Wei, Y.~Jiao, D.~An, D.~Li, W.~Li, and Q.~Wei, \enquote{Review of dissolved
+  oxygen detection technology: From laboratory analysis to online intelligent
+  detection,} {\protect\JournalTitle{Sensors}} \textbf{19}, 3995 (2019).
+
+\bibitem{Quaranta2012}
+M.~Quaranta, S.~M. Borisov, and I.~Klimant, \enquote{Indicators for optical
+  oxygen sensors,} {\protect\JournalTitle{Bioanalytical reviews}} \textbf{4},
+  115--157 (2012).
+
+\bibitem{Michelucci2019}
+U.~Michelucci, M.~Baumgartner, and F.~Venturini, \enquote{Optical oxygen
+  sensing with artificial intelligence,} {\protect\JournalTitle{Sensors}}
+  \textbf{19}, 777 (2019).
+
+\bibitem{Ogurtsov2006}
+V.~I. Ogurtsov and D.~B. Papkovsky, \enquote{Modelling of phase-fluorometric
+  oxygen sensors: Consideration of temperature effects and operational
+  requirements,} {\protect\JournalTitle{Sensors and Actuators B: Chemical}}
+  \textbf{113}, 917--929 (2006).
+
+\bibitem{lo2008}
+Y.-L. Lo, C.-S. Chu, J.-P. Yur, and Y.-C. Chang, \enquote{Temperature
+  compensation of fluorescence intensity-based fiber-optic oxygen sensors using
+  modified stern--volmer model,} {\protect\JournalTitle{Sensors and Actuators
+  B: Chemical}} \textbf{131}, 479--488 (2008).
+
+\bibitem{Zaitsev2016}
+N.~Zaitsev, P.~Melnikov, V.~Alferov, A.~Kopytin, and K.~German, \enquote{Stable
+  optical oxygen sensing material based on perfluorinated polymer and
+  fluorinated platinum (ii) and palladium (ii) porphyrins,}
+  {\protect\JournalTitle{Procedia Engineering}} \textbf{168}, 309--312 (2016).
+
+\bibitem{Michelucci2017}
+U.~Michelucci, \emph{Applied Deep Learning - A Case-Based Approach to
+  Understanding Deep Neural Networks} (APRESS Media, LLC, 2018).
+
+\bibitem{Kingma2014}
+J.~A. Kingma, D.P.;~Ba, \enquote{Adam: A method for stochastic optimization. in
+  proceedings of 3rd.} {\protect\JournalTitle{In Proceedings of 3rd
+  International Conference on Learning Representations, ICLR 2015}} pp. 1--15
+  (2015).
+
+\bibitem{Hastie2009}
+T.~Hastie, R.~Tibshirani, and J.~Friedman, \emph{The elements of statistical
+  learning: data mining, inference, and prediction} (Springer Science \&
+  Business Media, 2009).
+
+\bibitem{Sain1996}
+S.~R. Sain and D.~W. Scott, \enquote{On locally adaptive density estimation,}
+  {\protect\JournalTitle{Journal of the American Statistical Association}}
+  \textbf{91}, 1525--1534 (1996).
+
+\bibitem{Waskom2020}
+M.~Waskom, O.~Botvinnik, J.~Ostblom, S.~Lukauskas, P.~Hobson, MaozGelbart,
+  D.~C. Gemperline, T.~Augspurger, Y.~Halchenko, J.~B. Cole, J.~Warmenhoven,
+  J.~de~Ruiter, C.~Pye, S.~Hoyer, J.~Vanderplas, S.~Villalba, G.~Kunter,
+  E.~Quintero, P.~Bachant, M.~Martin, K.~Meyer, C.~Swain, A.~Miles, T.~Brunner,
+  D.~O'Kane, T.~Yarkoni, M.~L. Williams, and C.~Evans,
+  \enquote{mwaskom/seaborn: v0.10.0 (january 2020),}  (2020).
+
+\end{thebibliography}
