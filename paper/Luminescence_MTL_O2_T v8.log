@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.4.9)  8 MAR 2020 17:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.4.9)  8 MAR 2020 18:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -912,14 +912,7 @@ Package: amsthm 2017/10/31 v2.20.4
 )
 \c@definition=\count316
 
-(./Luminescence_MTL_O2_T v8.aux
-
-LaTeX Warning: Label `fig:result_theta0' multiply defined.
-
-
-LaTeX Warning: Label `fig:result_theta0' multiply defined.
-
-)
+(./Luminescence_MTL_O2_T v8.aux)
 \openout1 = `"Luminescence_MTL_O2_T v8.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
@@ -938,7 +931,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 42.
- (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 42.
@@ -1288,13 +1282,13 @@ Package epstopdf Info: Source file: <phase_O2_T.eps>
 (epstopdf)                    size: 21846 bytes
 (epstopdf)             Command: <repstopdf --outfile=phase_O2_T-eps-converted-t
 o.pdf phase_O2_T.eps>
-(epstopdf)             \includegraphics on input line 237.
+(epstopdf)             \includegraphics on input line 234.
 Package epstopdf Info: Output file is already uptodate.
-<phase_O2_T-eps-converted-to.pdf, id=194, 611.28375pt x 387.4475pt>
+<phase_O2_T-eps-converted-to.pdf, id=189, 611.28375pt x 387.4475pt>
 File: phase_O2_T-eps-converted-to.pdf Graphic file (type pdf)
 <use phase_O2_T-eps-converted-to.pdf>
 Package pdftex.def Info: phase_O2_T-eps-converted-to.pdf  used on input line 23
-7.
+4.
 (pdftex.def)             Requested size: 227.62204pt x 144.26968pt.
 Package epstopdf Info: Source file: <phase_f_T.eps>
 (epstopdf)                    date: 2020-02-17 16:53:47
@@ -1304,14 +1298,17 @@ Package epstopdf Info: Source file: <phase_f_T.eps>
 (epstopdf)                    size: 24304 bytes
 (epstopdf)             Command: <repstopdf --outfile=phase_f_T-eps-converted-to
 .pdf phase_f_T.eps>
-(epstopdf)             \includegraphics on input line 246.
+(epstopdf)             \includegraphics on input line 248.
 Package epstopdf Info: Output file is already uptodate.
 <phase_f_T-eps-converted-to.pdf, id=196, 611.28375pt x 388.45125pt>
 File: phase_f_T-eps-converted-to.pdf Graphic file (type pdf)
 <use phase_f_T-eps-converted-to.pdf>
-Package pdftex.def Info: phase_f_T-eps-converted-to.pdf  used on input line 246
+Package pdftex.def Info: phase_f_T-eps-converted-to.pdf  used on input line 248
 .
 (pdftex.def)             Requested size: 227.62204pt x 144.64343pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 Package epstopdf Info: Source file: <phase_f_O2.eps>
 (epstopdf)                    date: 2020-02-17 16:53:47
 (epstopdf)                    size: 612484 bytes
@@ -1320,16 +1317,16 @@ Package epstopdf Info: Source file: <phase_f_O2.eps>
 (epstopdf)                    size: 31819 bytes
 (epstopdf)             Command: <repstopdf --outfile=phase_f_O2-eps-converted-t
 o.pdf phase_f_O2.eps>
-(epstopdf)             \includegraphics on input line 255.
+(epstopdf)             \includegraphics on input line 257.
 Package epstopdf Info: Output file is already uptodate.
 <phase_f_O2-eps-converted-to.pdf, id=199, 610.28pt x 389.455pt>
 File: phase_f_O2-eps-converted-to.pdf Graphic file (type pdf)
 <use phase_f_O2-eps-converted-to.pdf>
 Package pdftex.def Info: phase_f_O2-eps-converted-to.pdf  used on input line 25
-5.
+7.
 (pdftex.def)             Requested size: 227.62204pt x 145.26083pt.
 
-Underfull \vbox (badness 1314) has occurred while \output is active []
+Underfull \vbox (badness 2856) has occurred while \output is active []
 
  [5 <./phase_O2_T-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <prediction_distribution_batch.eps>
@@ -1341,78 +1338,51 @@ d-to.pdf>
 (epstopdf)                    size: 117281 bytes
 (epstopdf)             Command: <repstopdf --outfile=prediction_distribution_ba
 tch-eps-converted-to.pdf prediction_distribution_batch.eps>
-(epstopdf)             \includegraphics on input line 277.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
-<prediction_distribution_batch-eps-converted-to.pdf, id=218, 1180.41pt x 397.48
+<prediction_distribution_batch-eps-converted-to.pdf, id=221, 1180.41pt x 397.48
 5pt>
 File: prediction_distribution_batch-eps-converted-to.pdf Graphic file (type pdf
 )
 <use prediction_distribution_batch-eps-converted-to.pdf>
 Package pdftex.def Info: prediction_distribution_batch-eps-converted-to.pdf  us
-ed on input line 277.
+ed on input line 279.
 (pdftex.def)             Requested size: 483.69684pt x 162.87285pt.
 Package epstopdf Info: Source file: <comparison_theta90_20k_vs_100k.eps>
-(epstopdf)                    date: 2020-03-08 17:33:58
+(epstopdf)                    date: 2020-03-08 18:31:01
 (epstopdf)                    size: 82983 bytes
 (epstopdf)             Output file: <comparison_theta90_20k_vs_100k-eps-convert
 ed-to.pdf>
-(epstopdf)                    date: 2020-02-24 21:00:49
-(epstopdf)                    size: 23872 bytes
+(epstopdf)                    date: 2020-03-08 18:31:22
+(epstopdf)                    size: 23907 bytes
 (epstopdf)             Command: <repstopdf --outfile=comparison_theta90_20k_vs_
 100k-eps-converted-to.pdf comparison_theta90_20k_vs_100k.eps>
-(epstopdf)             \includegraphics on input line 284.
-runsystem(repstopdf --outfile=comparison_theta90_20k_vs_100k-eps-converted-to.p
-df comparison_theta90_20k_vs_100k.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <comparison_theta90_20k_vs_100k-eps-convert
-ed-to.pdf>
-(epstopdf)                    date: 2020-03-08 17:34:23
-(epstopdf)                    size: 23907 bytes.
-<comparison_theta90_20k_vs_100k-eps-converted-to.pdf, id=219, 972.97505pt x 338
+(epstopdf)             \includegraphics on input line 288.
+Package epstopdf Info: Output file is already uptodate.
+<comparison_theta90_20k_vs_100k-eps-converted-to.pdf, id=223, 972.97505pt x 338
 .02286pt>
 File: comparison_theta90_20k_vs_100k-eps-converted-to.pdf Graphic file (type pd
 f)
 <use comparison_theta90_20k_vs_100k-eps-converted-to.pdf>
 Package pdftex.def Info: comparison_theta90_20k_vs_100k-eps-converted-to.pdf  u
-sed on input line 284.
+sed on input line 288.
 (pdftex.def)             Requested size: 483.69684pt x 168.04134pt.
 Package epstopdf Info: Source file: <theta_theta0_mb_20k.eps>
-(epstopdf)                    date: 2020-02-24 21:01:37
-(epstopdf)                    size: 52600 bytes
+(epstopdf)                    date: 2020-03-08 18:11:44
+(epstopdf)                    size: 53476 bytes
 (epstopdf)             Output file: <theta_theta0_mb_20k-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-02-24 21:01:50
-(epstopdf)                    size: 20542 bytes
+(epstopdf)                    date: 2020-03-08 18:12:20
+(epstopdf)                    size: 20574 bytes
 (epstopdf)             Command: <repstopdf --outfile=theta_theta0_mb_20k-eps-co
 nverted-to.pdf theta_theta0_mb_20k.eps>
-(epstopdf)             \includegraphics on input line 291.
+(epstopdf)             \includegraphics on input line 297.
 Package epstopdf Info: Output file is already uptodate.
-<theta_theta0_mb_20k-eps-converted-to.pdf, id=220, 965.30638pt x 338.02286pt>
+<theta_theta0_mb_20k-eps-converted-to.pdf, id=225, 965.30638pt x 338.02286pt>
 File: theta_theta0_mb_20k-eps-converted-to.pdf Graphic file (type pdf)
 <use theta_theta0_mb_20k-eps-converted-to.pdf>
 Package pdftex.def Info: theta_theta0_mb_20k-eps-converted-to.pdf  used on inpu
-t line 291.
+t line 297.
 (pdftex.def)             Requested size: 483.69684pt x 169.37721pt.
-Package epstopdf Info: Source file: <ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta
-_theta0.eps>
-(epstopdf)                    date: 2020-02-24 17:41:05
-(epstopdf)                    size: 24294 bytes
-(epstopdf)             Output file: <ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta
-_theta0-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-02-24 17:43:29
-(epstopdf)                    size: 13704 bytes
-(epstopdf)             Command: <repstopdf --outfile=ELA_model_20001_32_1e-3_3x
-50_2x5_2x5_theta_theta0-eps-converted-to.pdf ELA_model_20001_32_1e-3_3x50_2x5_2
-x5_theta_theta0.eps>
-(epstopdf)             \includegraphics on input line 298.
-Package epstopdf Info: Output file is already uptodate.
-<ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta_theta0-eps-converted-to.pdf, id=221
-, 420.5512pt x 277.3562pt>
-File: ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta_theta0-eps-converted-to.pdf Gr
-aphic file (type pdf)
-<use ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta_theta0-eps-converted-to.pdf>
-Package pdftex.def Info: ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta_theta0-eps-
-converted-to.pdf  used on input line 298.
-(pdftex.def)             Requested size: 199.16928pt x 131.35197pt.
 Package epstopdf Info: Source file: <ELA_comparison.eps>
 (epstopdf)                    date: 2020-02-24 17:45:20
 (epstopdf)                    size: 28286 bytes
@@ -1421,72 +1391,53 @@ Package epstopdf Info: Source file: <ELA_comparison.eps>
 (epstopdf)                    size: 15659 bytes
 (epstopdf)             Command: <repstopdf --outfile=ELA_comparison-eps-convert
 ed-to.pdf ELA_comparison.eps>
-(epstopdf)             \includegraphics on input line 305.
+(epstopdf)             \includegraphics on input line 328.
 Package epstopdf Info: Output file is already uptodate.
-<ELA_comparison-eps-converted-to.pdf, id=222, 402.65431pt x 277.3562pt>
+<ELA_comparison-eps-converted-to.pdf, id=228, 402.65431pt x 277.3562pt>
 File: ELA_comparison-eps-converted-to.pdf Graphic file (type pdf)
 <use ELA_comparison-eps-converted-to.pdf>
 Package pdftex.def Info: ELA_comparison-eps-converted-to.pdf  used on input lin
-e 305.
+e 328.
 (pdftex.def)             Requested size: 199.16928pt x 137.19228pt.
-Package epstopdf Info: Source file: <ELA_model_100001_32_1e-3_3x50_2x5_2x5_thet
-a90.eps>
-(epstopdf)                    date: 2020-02-24 17:40:54
-(epstopdf)                    size: 24810 bytes
-(epstopdf)             Output file: <ELA_model_100001_32_1e-3_3x50_2x5_2x5_thet
-a90-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-02-24 17:43:30
-(epstopdf)                    size: 13905 bytes
-(epstopdf)             Command: <repstopdf --outfile=ELA_model_100001_32_1e-3_3
-x50_2x5_2x5_theta90-eps-converted-to.pdf ELA_model_100001_32_1e-3_3x50_2x5_2x5_
-theta90.eps>
-(epstopdf)             \includegraphics on input line 312.
-Package epstopdf Info: Output file is already uptodate.
-<ELA_model_100001_32_1e-3_3x50_2x5_2x5_theta90-eps-converted-to.pdf, id=223, 42
-0.5512pt x 277.3562pt>
-File: ELA_model_100001_32_1e-3_3x50_2x5_2x5_theta90-eps-converted-to.pdf Graphi
-c file (type pdf)
-<use ELA_model_100001_32_1e-3_3x50_2x5_2x5_theta90-eps-converted-to.pdf>
-Package pdftex.def Info: ELA_model_100001_32_1e-3_3x50_2x5_2x5_theta90-eps-conv
-erted-to.pdf  used on input line 312.
-(pdftex.def)             Requested size: 199.16928pt x 131.35197pt.
- (./Luminescence_MTL_O2_T v8.bbl [6 <./phase_f_T-eps-converted-to.pdf> <./phase
-_f_O2-eps-converted-to.pdf>] [7 <./prediction_distribution_batch-eps-converted-
-to.pdf> <./comparison_theta90_20k_vs_100k-eps-converted-to.pdf> <./theta_theta0
-_mb_20k-eps-converted-to.pdf>]
+
+Underfull \vbox (badness 1715) has occurred while \output is active []
+
+ [6 <./phase_f_T-eps-converted-to.pdf> <./phase_f_O2-eps-converted-to.pdf>] [7 
+<./prediction_distribution_batch-eps-converted-to.pdf> <./comparison_theta90_20
+k_vs_100k-eps-converted-to.pdf> <./theta_theta0_mb_20k-eps-converted-to.pdf>]
+(./Luminescence_MTL_O2_T v8.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8 <./ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta_theta0-eps-converted-to.pdf> 
-<./ELA_comparison-eps-converted-to.pdf> <./ELA_model_100001_32_1e-3_3x50_2x5_2x
-5_theta90-eps-converted-to.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
-
+ [8 <./ELA_comparison-eps-converted-to.pdf>]) 
 AED: lastpage setting LastPage
-[9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 403.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 403.
+[9
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 414.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 414.
  (./Luminescence_MTL_O2_T v8.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 403.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 403.
-Package rerunfilecheck Info: File `"Luminescence_MTL_O2_T v8".out' has not chan
-ged.
-(rerunfilecheck)             Checksum: 750238CDCA18577B38825A68A3CBAFEF;1222.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 414.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 414.
 
 
-LaTeX Warning: There were multiply-defined labels.
+Package rerunfilecheck Warning: File `"Luminescence_MTL_O2_T v8".out' has chang
+ed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 403.
+Package rerunfilecheck Info: Checksums for `"Luminescence_MTL_O2_T v8".out':
+(rerunfilecheck)             Before: 750238CDCA18577B38825A68A3CBAFEF;1222
+(rerunfilecheck)             After:  056D0F02E1F104EB6936C11722ADDED5;1300.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 414.
  ) 
 Here is how much of TeX's memory you used:
- 29396 strings out of 492649
- 571240 string characters out of 6129623
- 699308 words of memory out of 5000000
- 32606 multiletter control sequences out of 15000+600000
- 637219 words of font info for 310 fonts, out of 8000000 for 9000
+ 29395 strings out of 492649
+ 570605 string characters out of 6129623
+ 699589 words of memory out of 5000000
+ 32599 multiletter control sequences out of 15000+600000
+ 637666 words of font info for 316 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,19n,77p,10403b,591s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,19n,77p,10403b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texl
@@ -1502,10 +1453,10 @@ tino/uplb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/up
 lbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
 fb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></us
 r/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on "Luminescence_MTL_O2_T v8.pdf" (9 pages, 971633 bytes).
+Output written on "Luminescence_MTL_O2_T v8.pdf" (9 pages, 954188 bytes).
 PDF statistics:
- 647 PDF objects out of 1000 (max. 8388607)
- 334 compressed objects within 4 object streams
- 90 named destinations out of 1000 (max. 500000)
- 61637 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 577 PDF objects out of 1000 (max. 8388607)
+ 326 compressed objects within 4 object streams
+ 89 named destinations out of 1000 (max. 500000)
+ 61627 words of extra memory for PDF output out of 61914 (max. 10000000)
 
