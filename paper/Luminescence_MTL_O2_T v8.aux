@@ -72,6 +72,7 @@
 \newlabel{AE}{{7}{5}{Predictions Absolute Error}{equation.2.7}{}}
 \newlabel{MAE}{{8}{5}{Predictions Absolute Error}{equation.2.8}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {D.5}Error Limited Accuracy $\eta $}{5}{subsubsection.2.4.5}}
+\newlabel{sektion:ela}{{D.5}{5}{Error Limited Accuracy $\eta $}{subsubsection.2.4.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Measured phase-shift as a function of the oxygen concentration, for selected temperatures at a fixed modulation frequency of 6 kHz. The arrow marks increasing temperatures.\relax }}{5}{figure.caption.4}}
 \newlabel{fig:expdata1}{{4}{5}{Measured phase-shift as a function of the oxygen concentration, for selected temperatures at a fixed modulation frequency of 6 kHz. The arrow marks increasing temperatures.\relax }{figure.caption.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Results and Discussion}{5}{section.3}}
@@ -84,15 +85,11 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}Sensor performance analysis}{6}{subsection.3.2}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {B.1}Kernel Density Estimation}{6}{subsubsection.3.2.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {C}Sensor performance}{6}{subsection.3.3}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \bf  Summary of the performance for the three types of neural network models\relax }}{6}{table.caption.10}}
-\newlabel{TableMAE_summary}{{1}{6}{\bf Summary of the performance for the three types of neural network models\relax }{table.caption.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \bf  Summary of the performance for the three types of neural network models\relax }}{6}{table.caption.8}}
+\newlabel{TableMAE_summary}{{1}{6}{\bf Summary of the performance for the three types of neural network models\relax }{table.caption.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {D}Error Limited Accuracy Plots}{6}{subsection.3.4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.\relax }}{7}{figure.caption.7}}
-\newlabel{fig:prediction_distribution_batch_90}{{7}{7}{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.\relax }{figure.caption.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.\relax }}{7}{figure.caption.8}}
-\newlabel{fig:prediction_distribution_epochs_90}{{8}{7}{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.\relax }{figure.caption.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.\relax }}{7}{figure.caption.9}}
-\newlabel{fig:prediction_distribution_theta0}{{9}{7}{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.\relax }{figure.caption.9}{}}
+\newlabel{fig:KDE_results_all}{{7}{7}{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.\relax }{figure.caption.7}{}}
 \bibdata{bibliography}
 \bibcite{Stich2010}{{1}{}{{}}{{}}}
 \bibcite{Borisov2011novel}{{2}{}{{}}{{}}}
@@ -112,6 +109,9 @@
 \bibcite{Hartmann1996}{{16}{}{{}}{{}}}
 \bibcite{Mills1998}{{17}{}{{}}{{}}}
 \bibcite{Badocco2008}{{18}{}{{}}{{}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Comparison of $\eta $ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with $\theta /\theta _0$ as input for 20000 epochs, while the red one with $\theta /90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.\relax }}{8}{figure.caption.9}}
+\newlabel{fig:ELA_result_comparison}{{8}{8}{Comparison of $\eta $ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with $\theta /\theta _0$ as input for 20000 epochs, while the red one with $\theta /90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.\relax }{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusions}{8}{section.4}}
 \bibcite{Dini2011}{{19}{}{{}}{{}}}
 \bibcite{Thrun1996}{{20}{}{{}}{{}}}
 \bibcite{Caruana1997}{{21}{}{{}}{{}}}
@@ -122,9 +122,6 @@
 \bibcite{Carraway1991}{{26}{}{{}}{{}}}
 \bibcite{Demas1995}{{27}{}{{}}{{}}}
 \bibcite{Hartmann1995}{{28}{}{{}}{{}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Comparison of $\eta $ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 epochs. The black line are the results for the network that have been trained with $\theta /\theta _0$ as input, while the red one with $\theta /90$ as input. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.\relax }}{8}{figure.caption.11}}
-\newlabel{fig:ELA_result_comparison}{{10}{8}{Comparison of $\eta $ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 epochs. The black line are the results for the network that have been trained with $\theta /\theta _0$ as input, while the red one with $\theta /90$ as input. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.\relax }{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusions}{8}{section.4}}
 \bibcite{Mills1999}{{29}{}{{}}{{}}}
 \bibcite{Wei2019}{{30}{}{{}}{{}}}
 \bibcite{Quaranta2012}{{31}{}{{}}{{}}}

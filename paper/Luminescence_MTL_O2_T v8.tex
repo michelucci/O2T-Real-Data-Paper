@@ -207,22 +207,25 @@ $AE_{T}$ and $MAE_T$ are similarly defined.
 
 
 \subsubsection{Error Limited Accuracy $\eta$}
+\label{sektion:ela}
 
 To better characterise the sensor performance as a whole we need to define a new metric, that we have called Error Limited Accuracy (ELA), and that we indicate with $\eta$ that can be defined as follows.
 
 \begin{definition*}
-In a regression problem, given a metric $m$, and a certain value of it $\hat m$, the ELA for this metric $\eta$ limited by the error $\hat m$ is defined as the number of predictions $\hat y$ of the NNM that lie in the range $[m(\hat y)-\hat m, m(\hat y)+\hat m]$ divided by the total number of observations. In more mathematical terms once we define the set
+In a regression problem, given a metric $m$, and a certain value of it $\hat m$, the ELA for this metric $\eta$ limited by the error $\hat m$ is defined as the number of predictions $\hat y$ of the NNM that lie in the range $[m(\hat y)-\hat m, m(\hat y)+\hat m]$ divided by the total number of observations. It will be indicated with $\eta(\hat m)$. In more mathematical terms once we define the set
 \begin{equation}
-S(\hat m) = \{ \hat y^{[i]} \ {\text with } \ i = 1,..., n\ | m(\hat y^{[i]})-m(y^{[i]})|\leq \hat m \} 
+S(\hat m) = \{ \hat y^{[i]} \ {\text with } \ i = 1,..., n\ | |m(\hat y^{[i]})-m(y^{[i]})|\leq \hat m \} 
 \end{equation}
 $\eta$ can be simply defined as
 \begin{equation}
-\eta = \frac{|S(\hat m)|}{n}
+\eta(\hat m) = \frac{|S(\hat m)|}{n}
 \end{equation}
 where $|S(\hat m)|$ is the cardinality of the set $S(\hat m)$ or in other words, the number of its elements.
 \end{definition*}
 
-This metric allows us to interpret the regression problem we are trying solve as a classification one. $\eta$ simply tells us how many observations are predicted by the NNM within a given error. Of course if we take this error big enough, all the predictions will be classified perfectly. The smaller this error the smaller the number of predictions correctly classified. In this work the metric $m$ is the AE as defined in the previous section.
+This metric allows us to interpret the regression problem we are trying solve as a classification one. $\eta(\hat m)$ simply tells us how many observations are predicted by the NNM within a given value of the chosen metric $\hat m$. If we choose the metric $m$ as the $AE$ of the predictions, $\eta(AE)$ has a very intuitive and useful interpretation. 
+In this case $\eta(\hat{m})$ with $\hat m = \hat{AE}$, is simply the percentage of predictions that are predicted within a certain error $\hat m$ from the expected values.
+In this case, if we take $\hat m$ big enough, all the predictions will be classified perfectly. The smaller $\hat m$ the smaller the number of predictions correctly classified. 
 
 \section{Results and Discussion}
 \label{Results}
@@ -271,14 +274,14 @@ In this work a Gaussian Kernel and a Scott bandwidth adaptive estimation \cite{S
 
 \subsection{Sensor performance}
 
-Let's start with discussing what is the effect of using mini-batches versus not using them. The results can be seen for  $AE_{[O_2]}$ and $AE_T$  in Figure \ref{fig:prediction_distribution_batch_90}. For this comparison the network has been trained for 20000 epochs. In the Figure \ref{fig:prediction_distribution_batch_90} the gray histogram shows the results when using mini-batches of size 32. The effect is extraordinary. The predictions move from (without using batches) having MAE$_{[O_2]}=2.38$ \% air and MAE$_{T}=3.63^\circ$ C to  
-MAE$_{[O_2]}=1.36$ \% air and MAE$_{T}=1.63^\circ$ C (while using mini-batches of size 32). Not only the average values are reduced but the predictions distributions are much narrower. From Figure \ref{fig:prediction_distribution_batch_90} it can also be clearly seen that, even while using mini-batches, we can get errors as high as roughly 5 \% air for $[O_2]$ or roughly as 12 $^\circ$ C for $T$. Decreasing the mini-batch size have the side effect of increasing the training time. While training the network without batches requires just a few minutes, reducing the mini-batch size to 32 increase the training time to roughly 1 hour.
+Let's start with discussing what is the effect of using mini-batches versus not using them. The results can be seen for  $AE_{[O_2]}$ and $AE_T$  in Figure \ref{fig:KDE_results_all}(A) and \ref{fig:KDE_results_all}(B) respectively. For this comparison the network has been trained for 20000 epochs. In the Figure the gray histogram shows the results when using mini-batches of size 32. The effect is extraordinary. The predictions move from (without using batches) having MAE$_{[O_2]}=2.38$ \% air and MAE$_{T}=3.63^\circ$ C to  
+MAE$_{[O_2]}=1.36$ \% air and MAE$_{T}=1.63^\circ$ C (while using mini-batches of size 32). Not only the average values are reduced but the predictions distributions are much narrower. From Figure \ref{fig:KDE_results_all}(A) and \ref{fig:KDE_results_all}(B) it can also be clearly seen that, even while using mini-batches, we can get errors as high as roughly 5 \% air for $[O_2]$ or roughly as 12 $^\circ$ C for $T$. While deciding what is the right mini-batch size, training time must be taken into account. In fact decreasing the mini-batch size have the side effect of increasing the training time. While training the network without batches requires just a few minutes, reducing the mini-batch size to 32 increase the training time to roughly 1 hour.
 
 \begin{figure*}[htbp]
 \centering
 \includegraphics[width=17 cm]{KDE_results_all.eps}
 \caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
-\label{fig:prediction_distribution_theta0}
+\label{fig:KDE_results_all}
 \end{figure*}
 
 %\begin{figure*}[htbp]
@@ -288,7 +291,7 @@ MAE$_{[O_2]}=1.36$ \% air and MAE$_{T}=1.63^\circ$ C (while using mini-batches o
 %\label{fig:prediction_distribution_batch_90}
 %\end{figure*}
 
-One can get much better results simply training the network for many more epochs. In Figure \ref{fig:prediction_distribution_epochs_90} the difference between predictions distributions with 20000 and 100000 epochs (always using a mini-batch of size 32) is shown. The results are dramatically better. We have now  MAE$_{[O_2]}=0.22$ \% air and MAE$_{T}=0.27^\circ$ C. Additionally all the predictions for $[O_2]$ lies below 0.94 \% air, and for $T$ lies below 2.1 $^\circ$ C. To train a network for so many epochs requires, on a modern laptop, roughly 5 hours. Predicting both $[O_2]$ and $T$ at the same time from the same set of data with such accuracies is unprecedented and paves the way to a completely new generation of sensors that does not need to measure temperature independently to predict the oxygen concentration.
+One can get much better results simply training the network for many more epochs. In Figure \ref{fig:KDE_results_all}(C) and \ref{fig:KDE_results_all}(D) the difference between predictions distributions with 20000 and 100000 epochs (always using a mini-batch of size 32) is shown. The results are dramatically better. When the network has been trained for 100000 epochs we have a MAE$_{[O_2]}=0.22$ \% air and a MAE$_{T}=0.27^\circ$ C. Additionally all the predictions for $[O_2]$ lies below 0.94 \% air, and for $T$ lie below 2.1 $^\circ$ C. To train a network for so many epochs requires, on a modern laptop, roughly 5 hours. Predicting both $[O_2]$ and $T$ at the same time from the same set of data with such accuracies is unprecedented and paves the way to a completely new generation of sensors that does not need to measure temperature independently to predict the oxygen concentration.
 
 %\begin{figure*}[htbp]
 %\centering
@@ -297,7 +300,7 @@ One can get much better results simply training the network for many more epochs
 %\label{fig:prediction_distribution_epochs_90}
 %\end{figure*}
 
-The authors asked themselves if one could get even better results in a more efficient way (reducing the training time). In Figure \ref{fig:prediction_distribution_theta0} predictions distributions are shown when using as input $\theta/\theta_0$, with a mini-batch size of 32 and 20000 epochs. The results are clearly better, especially for the temperature predictions. Training the network with these inputs require roughly 1 hour. Additionally all the predictions for $[O_2]$ lies below 0.87 \% air, and for $T$ lies below 1.7 $^\circ$ C. 
+TIn Figure \ref{fig:KDE_results_all}(E) and \ref{fig:KDE_results_all}(F) predictions distributions are shown when using as input $\theta/\theta_0$, with a mini-batch size of 32 and 20000 epochs. The results are clearly better, especially for the temperature predictions. Training the network with these inputs require roughly 1 hour. Additionally all the predictions for $[O_2]$ lies below 0.87 \% air, and for $T$ lies below 1.7 $^\circ$ C. Additionally training the network in this fashion requires roughly 1 hour. 
 
 %\begin{figure*}[htbp]
 %\centering
@@ -328,12 +331,21 @@ $\theta /\theta_0$ & 20'000 / 32 & 0.13 \% air & 0.24 $^\circ C$\\
 
 \subsection{Error Limited Accuracy Plots}
 
-To completely understand how such models can be used in a sensor, the authors analysed the behaviour of $\eta$. In Figure \ref{fig:ELA_result_comparison} you can see a comparison of $\eta$ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 epochs. The black line are the results for the network that have been trained with $\theta/\theta_0$ as input, while the red one with $\theta/90$ as input. As expected the curves start from zero and grows to the maximum possible, that is 1. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error. For example for the network trained with $\theta/90$ as input, if we consider an error of 0.95 \% air acceptable, than the model would predict all the oxygen concentrations within the given error. For the network trained with $\theta/\theta_0$ this value would be 0.87 \% air. 
+The discussion in the previous sections helps in measuring how the network behave and how good the predictions are, but makes understanding what sensor we could build with such model almost impossible. For a sensors one has to be able to estimate the maximum error for the measurements. To achieve this we developed a completely new metric: the ELA ($\eta$), as defined in section \ref{sektion:ela}, that will allow us to characterise the sensor with a maximum error. As explained previously, $\eta$ is defined only when one chooses a metric $m$. In this section the metric chosen is $m=AE_{[O_2]}$.  
+
+In Figure \ref{fig:ELA_result_comparison} you can see a comparison of $\eta$ versus $\hat m$ for network trained with mini-batches of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with $\theta/\theta_0$ as input for 20000 epochs, while the red one with $\theta/90$ as input for 100000 epochs.  
+To explain how to read such plot let's consider the two extreme cases. 
+\begin{itemize}
+\item {\bf Small values of $\hat m$}: $\eta$ will tell us how many predictions lie close to the expected value within the given value of $\hat m$. The smaller $\hat m$ is, the less network predictions will lie within $\pm \hat m$ from the expected values. Therefore the smaller $\hat m$ is, the smaller $\eta$ is. This is clearly reflected in the plot, that for small values of $\hat m$, presents small values of $\eta(\hat m)$.
+\item {\bf Bigger values of $\hat m$}: The bigger $\hat m$ is, the more network predictions will lie within $\pm \hat m$ from the expected values. After a certain value of $\hat m$ all the predictions will lie within $\pm \hat m$ from the expected values, effectively giving $\eta = 1$, as reflected on the right side of the plot. 
+\end{itemize}
+
+The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error. For example for the network trained with $\theta/90$ as input, if an error of 0.95 \% air is considered acceptable, then the model would predict all the oxygen concentrations within the given error. For the network trained with $\theta/\theta_0$ this value would be 0.87 \% air. 
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=7 cm]{ELA_comparison.eps}
-\caption{Comparison of $\eta$ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 epochs. The black line are the results for the network that have been trained with $\theta/\theta_0$ as input, while the red one with $\theta/90$ as input. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.}
+\caption{Comparison of $\eta$ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with $\theta/\theta_0$ as input for 20000 epochs, while the red one with $\theta/90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.}
 \label{fig:ELA_result_comparison}
 \end{figure}
 
@@ -370,7 +382,7 @@ To completely understand how such models can be used in a sensor, the authors an
 
 \section{Conclusions}
 
-The results in the prediction of the oxygen concentration and temperature show unprecedented accuracy for both parameters, demonstrating that this approach could allow the realization of a commercial sensor for dual or even multiple sensing.
+The results in the prediction of the oxygen concentration and temperature show unprecedented accuracy for both parameters, demonstrating that this approach will make a new generation of sensors possible for dual or even multiple sensing. The unprecedented accuracy in predicting both $AE_{[O_2]}$ and $T$ at the same time, from the same set of data, will allow sensors to become easier to build, since no separate temperature measurements are necessary anymore. To be able to estimate what kind of sensor one could build with a given NNM, in this paper a new metric, the ELA ($\eta(\hat m)$), have been proposed to be able to estimate how many predictions like within a certain value of the chosen metric from the expected values.
 
 
 %\section*{Funding Information}
