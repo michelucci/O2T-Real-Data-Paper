@@ -95,20 +95,23 @@ Although the multi-site model was introduced for luminescence intensities, it is
 \label{theta_full}
 \end{aligned}
 \end{equation}
-where $\theta_0$ and $\theta$, respectively, are the phase shifts in the absence and presence of oxygen, $f$ and $1-f$ are the fractions of the total emission for each component under unquenched conditions, $K_{SV1}$ and $K_{SV2}$ are the associated Stern–Volmer constants for each component, and $\left[O_2\right]$ indicates the oxygen concentration. It is to be noted that the quantities $\theta_0$, $f$, $K_{SV1}$, and $K_{SV2}$ are all non-linearly temperature dependent \cite{Ogurtsov2006,lo2008,Zaitsev2016} and may result frequency dependent, an artifact of the approximation of the model. Finally, Eq. \ref{theta_full} needs to be inverted to determine $[O_2]$ from the measured quantity $\theta$.
+where $\theta_0$ and $\theta$, respectively, are the phase shifts in the absence and presence of oxygen, $f$ and $1-f$ are the fractions of the total emission for each component under unquenched conditions, $K_{SV1}$ and $K_{SV2}$ are the associated Stern–Volmer constants for each component, and $\left[O_2\right]$ indicates the oxygen concentration. It is to be noted that the quantities $\theta_0$, $f$, $K_{SV1}$, and $K_{SV2}$ are all non-linearly temperature dependent \cite{Ogurtsov2006,lo2008,Zaitsev2016} and may result frequency dependent, an artifact of the approximation of the model. Finally, Eq. \ref{theta_full} needs to be inverted to determine $[O_2]$ from the measured quantity $\theta$. The proposed approach defies the need of the mathematical model through the use of neural network approach. However the structure of Eq. \ref{theta_full} remains relevant to understand the structure of the data and optimize the architecture of the neural network.
 
 
-\subsection{Experimental Setup}
+\subsection{Experimental}
 \label{Experimental}
 
 The optical setup used in this work for the luminescence measurements is shown schematically in Fig. \ref{fig:setup}. To be able to acquire a large number of data, both the software for the instrument control and for the data acquisition was written using the software LabVIEW by National Instruments. The acquisition procedure is described in detail in Sect. \ref{Data}.
 
-\begin{figure}[htbp]
+\begin{figure}[t!]
 \centering
-\includegraphics[keepaspectratio, width=8.4cm]{Setup_auto.eps}
+\includegraphics[keepaspectratio, width=8.3cm]{Setup_auto.eps}
 \caption{Schematic diagram of the experimental setup. Blue indicates the excitation optical path, red the luminescence one. SP: short pass filter; LP: long pass filter PD: photodiode; TIA: trans-impedance amplifier.}
 \label{fig:setup}
 \end{figure}
+
+
+\subsubsection{Experimental Setup}
 
 The sample used for the characterization and test is a commercially available Pt-TFPP-based oxygen sensor spot (PSt3, PreSens Precision Sensing).
 To control the temperature of the samples, these were placed in good thermal contact with a copper plate, placed in a thermally insulated chamber. The temperature of this plate was adjusted using a Peltier element and stabilized with a temperature controller (PTC10, Stanford Research Systems). The thermally insulated chamber was connected to a self-made gas-mixing apparatus which enabled to vary the oxygen concentration between 0 $\%$ and 20 $\%$ vol $O_2$ by mixing nitrogen and dry air from two bottles. In the following, the concentration of oxygen will be given in $\%$ of the oxygen concentration of dry air and indicated with $\%$ air. This means, for example, that 20 $\%$ air was obtained by mixing 20 $\%$ dry air with 80 $\%$ nitrogen and therefore corresponds to 4 $\%$ vol $O_2$. The absolute error on the oxygen concentration adjusted with the gas mixing device is estimated to be below 1 $\%$ air. 
@@ -117,87 +120,83 @@ The excitation light was provided by a 405 nm LED (VAOL-5EUV0T4, VCC Visual Comm
 To suppress stray light and light reflected by the sample surface, the emission channel was equipped with a long pass filter with cut-off at 594 nm (Semrock 594 LP Edge Basic long pass) and a short pass filter with cut-off at 682 nm (Semrock 682 SP Bright Line HC short pass). The driver for the LED and the trans-impedance amplifier (TIA) are self-made.
 For the frequency generation and the phase detection a two-phase lock-in amplifier (SR830, Stanford Research Inc.) was used. 
 
-\subsection{Automated Data Acquisition}
+\subsubsection{Automated Data Acquisition}
 \label{Data}
 
-The large amount of data needed for the training and the test of the neural network was acquired using an automated acquisition program which followed the flow-chart shown in Fig. \ref{fig:auto-data}. First, the program fixed the temperature and concentration. Then, the phase-shift was measured for varying modulation frequencies between 200 Hz and 15 kHz. This measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration and the entire frequency-loop was repeated.
+\begin{figure}[b!]
+\centering
+\includegraphics[keepaspectratio, width=5.8 cm]{flow-chart.png}
+\caption{Flow-chart of the automated data acquisition program.}
+\label{fig:auto-data}
+\end{figure}
+
+The large amount of data needed for the training and the test of the neural network was acquired using an automated acquisition program which followed the flow-chart shown in Fig. \ref{fig:auto-data}. First, the program fixed the temperature and concentration. Then, the phase-shift was measured for 50 modulation frequencies between 200 Hz and 15 kHz. This measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration and the entire frequency-loop was repeated.
 The oxygen concentration was varied between 0 $\%$ air and 100 $\%$ air in 5 $\%$ air steps.
 Finally, the temperature was changed and then the oxygen and frequency loops where repeated. The temperature was varied between 5 $^\circ$C and 45 $^\circ$C in 5 $^\circ$C steps.
 The total number of measurements was thus 50 x 20 x 21 x 9 = 189'000 which required a total acquisition time of approximately 65 hours. This number of measurement was chosen as a compromise between maximizing the number of data for the training of the neural network and avoiding photodegradation, which naturally occurs when the sample is subjected to illumination. A the end of the session a minimal change in the phase shift was observed.
 
-\begin{figure}[t!]
-\centering
-\includegraphics[keepaspectratio, width=5.9 cm]{flow-chart.png}
-\caption{Flow-chart of the automatic measurement process.}
-\label{fig:auto-data}
-\end{figure}
 
-%%%%%%% UMBI
 
-\subsection{Neural Network Software}
+\subsection{Neural Network Approach}
 \label{NN}
 
-
-
-The software component of this new sensor type is based on a neural network model (NNM). A NNM is made of three components \cite{Michelucci2017}: a neural network architecture (that includes how neurons are connected, the activation functions and all the hyperparameters), a loss function (that we will indicate with $L$) and an optimiser algorithm. In this section those three components are described in detail.
+The software component of this new sensor type is based on a neural network model (NNM). A NNM is made of three components \cite{Michelucci2017}: a neural network architecture (that includes how neurons are connected, the activation functions and all the hyperparameters), a loss function (here indicated with $L$) and an optimiser algorithm. In this section those three components are described in detail.
 
 \subsubsection{Neural Network Architecture}
 
-The artificial network used in this work has a multi-task-learning architecture and is depicted in Figure \ref{fig:NN_MTL_O2_T}. It consists of three common hidden layers with 50 neurons each which generate as output a "shared representation". The name comes from the fact that the output of those layers is used to evaluate both $[O_2]$ and $T$. These are followed by three branches, two with each two additional "task-specific hidden layers" to predict respectively $[O_2]$ and $T$, and then one without additional layers to predict $[O_2]$ and $T$ at the same time.The shared representation is the input of two "task-specific hidden layers", that learn how to predict $[O_2]$ and $T$ better. This architecture uses the common hidden layers to find common features beneficial to each of the two tasks. During the training phase, learning to predict $[O_2]$ will influence the common hidden layers and therefore, the prediction of $T$, and vice-versa. The further task-specific hidden layers learn specific features to each output and therefore improve the prediction accuracy. The number of neurons of each task-specific hidden layer is 5. A study of which network architecture works best with this kind of data can be found in \cite{Michelucci2019}.
+The artificial network used in this work has a multi-task-learning architecture and is depicted schematically in Figure \ref{fig:NN_MTL_O2_T}. It consists of three {\sl common hidden layers} common hidden layers with 50 neurons each which generate as output a "shared representation". The name comes from the fact that the output of those layers is used to predict both $[O_2]$ and $T$. These are followed by three branches, one without additional layers to predict $[O_2]$ and $T$ at the same, and two with each two additional {\sl task-specific hidden layers} to predict respectively $[O_2]$ and $T$. The shared representation is the input of two "task-specific hidden layers", that learn how to predict $[O_2]$ and $T$ better. This architecture uses the common hidden layers to find common features beneficial to each of the two tasks. During the training phase, learning to predict $[O_2]$ will influence the common hidden layers and therefore, the prediction of $T$, and vice-versa. The further task-specific hidden layers learn features specific to each output and therefore improve the prediction accuracy. The number of neurons of each task-specific hidden layer used in this work is five. The activation function is the sigmoid function for all the neurons.  A study of which network architecture works best with this kind of data can be found in \cite{Michelucci2019_2}.
 
-The sigmoid activation function was used as activation function for all the neurons. For all the runs presented in this article a starting learning rate of $\gamma = 10^{-3}$ has been used. Number of epochs and mini-batch size has been varied to optimize the NNM performance and are discussed in the appropriate sections. 
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8.7 cm]{NN_MTL_O2_T.png}
+\caption{Architecture of the multi-task learning neural network used in this paper. The common hidden layers generate as output a "shared representation" that is used as input to task specific branches that learn specific features to each quantity and therefore improve the prediction accuracy. $x_1 ... x_n$ are the input observations; $L_i$ are the task-specific loss functions; $[O_2]_{pred}$ and $T_{pred}$ are the oxygen concentration and temperature predictions of the network respectively.} 
+\label{fig:NN_MTL_O2_T}
+\end{figure}
+
 
 \subsubsection{Loss Function}
 
-All the task specific loss functions $L_i$ used in this work are the mean square error (MSE), which is defined as
+The task specific loss functions $L_i$ are the mean square error (MSE), which is defined as
 \begin{equation}
 L_i = \frac{1}{n} \sum_{j=1}^n \sum_{k=1}^{d_i} (y_k^{[j]}-\hat y_k^{[j]})^2, \ \ \ i=1,2,3
 \label{MSE}
 \end{equation}
-where $n$ is the number of observations in the input dataset; ${\mathbold y}^{[j]} \in \mathbb{R}^{d_i}$ is the measured value of the desired quantity for the $j^{th}$ observation (indicated as a superscript between square brackets), with $j=1, ..., n$ for the $i^{th}$ branch and $d_i$ is the dimension of the neural network branch output. In this case $d_1=2, d_2=1$ and $d_3=1$. $ \hat {\mathbold y}^{[j]} \in \mathbb{R}^{d_i}$ is the output of the network branch $i$, when evaluated on the $j^{th}$ observation. Since there are multiple branches, a global cost function $L$ needs to be defined as a linear combination of the task-specific cost functions with weights $\alpha_i$ 
+where $n$ is the number of observations in the input dataset; ${\mathbold y}^{[j]} \in \mathbb{R}^{d_i}$ is the measured value of the desired quantity for the $j^{th}$ observation (indicated as a superscript between square brackets), with $j=1, ..., n$ for the $i^{th}$ branch and $d_i$ is the dimension of the neural network branch output. In this case $d_1=2, d_2=1$ and $d_3=1$. $ \hat {\mathbold y}^{[j]} \in \mathbb{R}^{d_i}$ is the output of the network branch $i$, when evaluated on the $j^{th}$ observation. Since there are multiple branches, a global loss function $L$ needs to be defined as a linear combination of the task-specific loss functions with weights $\alpha_i$ 
 \begin{equation}
 L = \sum_{i=1}^{n_T}\alpha_i L_i .
 \label{globalcf}
 \end{equation}
 The parameters $\alpha_i$ have to be determined during the hyper-parameter tuning phase to optimize the network predictions.
-In this paper, being the cost function the MSE (Equation \ref{MSE}), the global cost function of Equation \ref{globalcf} is
+In this paper, being the loss function the MSE (Eq. \ref{MSE}), the global loss function results
 \begin{equation}
 L = \sum_{i=1}^{n_T}\alpha_i \frac{1}{n} \sum_{j=1}^n \sum_{k=1}^{d_i} (y_k^{[j]}-\hat y_k^{[j]})^2
 \end{equation}
-where  $n_T$ is the number of tasks; $n$ is the number of observations in the input dataset; ${\mathbold y}^{[j]} \in \mathbb{R}^d$ is the measured value of the desired quantity for observation $j$ from branch $i$, with $j=1, ..., n$; $ \hat {\mathbold y}^{[j]} \in \mathbb{R}^{d_i}$ is the output of the network, when evaluated on the $j^{th}$ observation.
-The global cost function weights used for the plots were $\alpha_1 = 0.3$, $\alpha_2 = 5$ and $\alpha_3 = 1$. Those values were chosen because they result in the lowest $MAE$s (see discussion in Section \ref{Results} *****REFERENCE????*******).
+where  $n_T$ is the number of tasks. The global loss function weights used for the plots were $\alpha_1 = 0.3$, $\alpha_2 = 5$ and $\alpha_3 = 1$ \cite{Michelucci2019_2}.
  
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=8.7 cm]{NN_MTL_O2_T.png}
-\caption{Architecture of the multi-task learning neural network used in this paper. The {\sl common hidden layers} generate as output a "shared representation" that is used as input to task specific branches that learn specific features to each quantity and therefore improve the prediction accuracy. } 
-\label{fig:NN_MTL_O2_T}
-\end{figure}
-
 
 \subsubsection{Optimiser Algorithm}
 
-To minimize the cost function, the optimizer Adaptive Moment Estimation (Adam) \cite{Kingma2014, Michelucci2017} was used. The training was performed with a starting learning rate of $10^{-3}$ as mentioned earlier. The neural network has been trained with two methods. 
+To minimize the loss function, the optimizer Adaptive Moment Estimation (Adam) \cite{Kingma2014, Michelucci2017} was used. The training was performed with a starting learning rate of $10^{-3}$. Two types of training were investigated to compare the training efficiency and performance of the network. {\sl No-batch training}: with this method all the training data  are used to perform an update of the weights to evaluate the loss function. The loss function used is given by Eq. (\ref{MSE}) where $n$ is the total number of observations available (***3780?***). {\sl Mini-batch training}: with this method the weight update is performed after the network has seen 32 observations. In this case $n=32$ in Eq. (\ref{MSE}) with $n=32$. For each weight update, 32 random observations are chosen from the training dataset without repetitions until all the training data has been fed to the network.  
 
-{\bf No-batch training}:
-with this method all the training data to evaluate the cost function is used to perform an update of the weights. The loss function used is the one in Equation (\ref{MSE}) where $n$ is the total number of observations available.
-
-{\bf Mini-batch training}:
-with this method a weight update is performed after the network has seen 32 observations. In this case the loss function is the one in Equation (\ref{MSE}) with $n=32$. For each weight update, 32 random observations are chosen from the training dataset without repetitions until all the training dataset has been fed to the network.  
-
-No-batch training has the advantage of stabilty and speed, since it perform one weight update using the entire training dataset. Mini-batch training is normally much more effective, reaching lower values of the loss function in less epochs, but normally takes much more time \cite{Michelucci2017}. In our experiments No-batch training takes, for $20 \cdot 10^3$ epochs roughly 5 minutes on a modern macbook pro, while mini-batch training with $b=32$ takes, for the same amount of epochs, roughly 1 hour, so it is ca. 12 times slower, but is, as it will be shown later, much more effective in term of the neural network predictions. 
+No-batch training has the advantage of stability and speed, since it performs one weight update using the entire training dataset. Mini-batch training is normally much more effective, allowing to reach smaller values of the loss function in less epochs, but normally takes more time \cite{Michelucci2017}. In our experiments for $20 \cdot 10^3$ epochs No-batch training took roughly five minutes on a modern MacBook Pro, while mini-batch training with $b=32$ took roughly 1 hour, thus resulting ca. 12 times slower. 
 The implementation was performed using the TensorFlow\texttrademark $\ $library. 
 
-\subsubsection{Predictions Absolute Error}
 
-The metric used to compare predictions from expected values is the absolute error ($AE$) defined as the absolute value of the difference between the predicted and the expected value for a given observation. For the oxygen concentration predicted from branch $q$ for the 
+\subsection{Performance Evaluation}
+
+To evaluate the performance of the sensor different quantities were analyzed and are discussed in the next sections.
+
+
+\subsubsection{Absolute Error on the Prediction}
+
+The metric used to compare predictions from expected values is the absolute error ($AE$) defined as the absolute value of the difference between the predicted and the expected value for a given observation. Note that in the architecture described in the previous sections, only branch 1 and 2 can predict $[O_2]$, while $T$ can be predicted by branch 1 and 3. In all the results shown in the following sections the predicted $[O_2]$ is from branch 2, while the predicted $T$ is from branch 3. For the oxygen concentration for the 
 $j^{th}$ observation $[O_2]^{[j]}$  the $AE$ is 
 \begin{equation}
 \label{AE}
-AE^{q,{[j]}}_{[O_2]} = |[O_2]^{q,{[j]}}_{pred}-[O_2]^{[j]}_{meas}|.
+AE^{{[j]}}_{[O_2]} = |[O_2]^{{[j]}}_{pred}-[O_2]^{[j]}_{meas}|.
 \end{equation}
-Note that in the architecture described in the previous sections, only branch 1 and 2 can predict $[O_2]$, while $T$ can be predicted by branch 1 and 3. In all the results shown in the following sections the predicted $[O_2]$ is from branch 2, while the predicted $T$ is from branch 3. The suffix $q$ in the predicted values will be therefore omitted.
-The further quantity used to analyze the performance of the network is the mean absolute error ($MAE$), defined as the average of the absolute value of the difference between the predicted and the expected oxygen concentration or temperature. For example, for the oxygen prediction using the training dataset $S_{train}$, $MAE_{[O_2]}$ is defined as 
+
+The further quantity used to analyze the performance of the network is the mean absolute error ($MAE$), defined as the average of the absolute value of the difference between the predicted and the expected oxygen concentration or temperature. For example, for the oxygen prediction using the training dataset $S_{train}$, the $MAE_{[O_2]}$ is defined as 
 \begin{equation}
 \label{MAE}
 MAE_{[O_2]}(S_{train}) = \frac{1}{|S_{train}|} \sum_{j \in S_{train}}|[O_2]_{pred}^{[j]}-[O_2]_{real}^{[j]}|
@@ -205,82 +204,80 @@ MAE_{[O_2]}(S_{train}) = \frac{1}{|S_{train}|} \sum_{j \in S_{train}}|[O_2]_{pre
 where $|S_{train}|$ is the size (or cardinality) of the training dataset. 
 $AE_{T}$ and $MAE_T$ are similarly defined.
 
-
-\subsubsection{Error Limited Accuracy $\eta$}
-\label{sektion:ela}
-
-To better characterise the sensor performance as a whole we need to define a new metric, that we have called Error Limited Accuracy (ELA), and that we indicate with $\eta$ that can be defined as follows.
-
-\begin{definition*}
-In a regression problem, given a metric $m$, and a certain value of it $\hat m$, the ELA for this metric $\eta$ limited by the error $\hat m$ is defined as the number of predictions $\hat y$ of the NNM that lie in the range $[m(\hat y)-\hat m, m(\hat y)+\hat m]$ divided by the total number of observations. It will be indicated with $\eta(\hat m)$. In more mathematical terms once we define the set
-\begin{equation}
-S(\hat m) = \{ \hat y^{[i]} \ {\text with } \ i = 1,..., n\ | |m(\hat y^{[i]})-m(y^{[i]})|\leq \hat m \} 
-\end{equation}
-$\eta$ can be simply defined as
-\begin{equation}
-\eta(\hat m) = \frac{|S(\hat m)|}{n}
-\end{equation}
-where $|S(\hat m)|$ is the cardinality of the set $S(\hat m)$ or in other words, the number of its elements.
-\end{definition*}
-
-This metric allows us to interpret the regression problem we are trying solve as a classification one. $\eta(\hat m)$ simply tells us how many observations are predicted by the NNM within a given value of the chosen metric $\hat m$. If we choose the metric $m$ as the $AE$ of the predictions, $\eta(AE)$ has a very intuitive and useful interpretation. 
-In this case $\eta(\hat{m})$ with $\hat m = \hat{AE}$, is simply the percentage of predictions that are predicted within a certain error $\hat m$ from the expected values.
-In this case, if we take $\hat m$ big enough, all the predictions will be classified perfectly. The smaller $\hat m$ the smaller the number of predictions correctly classified. 
-
-\section{Results and Discussion}
-\label{Results}
-
-\subsection{Luminescence Experimental Results}
-
-\begin{figure}[t!]
-\centering
-\includegraphics[width=8 cm]{phase_O2_T.eps}
-\caption{Measured phase-shift as a function of the oxygen concentration, for selected temperatures at a fixed modulation frequency of 6 kHz. The arrow marks increasing temperatures.}
-\label{fig:expdata1}
-\end{figure}
-
-As described in Section \ref{Theory}, the phase-shift depends not only on the oxygen concentration, but also on the temperature and on the modulation frequency of the excitation light. This can be seen in the Figs. \ref{fig:expdata1} to \ref{fig:expdata3}.
-Fig. \ref{fig:expdata1} shows the measured phase shifts as a function of the oxygen concentration at a constant modulation frequency of 6 kHz for increasing temperatures. For clarity, only selected temperatures are shown. The decrease in the phase shift with increasing concentration is due to the quenching of the luminescence described in Eq. \ref{theta_full}. The effect of the temperature is to further decrease the phase shift. This effect depends on the concentration, being stronger at higher oxygen concentration. This temperature quenching is understandable since higher temperature increase diffusion of the oxygen molecules. {\bf [REF]}
-
-
-
-For a given oxygen concentration the phase shift is strongly dependent from the modulation frequency, as it can be seen in Fig. \ref{fig:expdata2}. The temperature quenching is visible in the reduction of the phase shift with increasing temperatures at a given modulation frequency. This affects the phase shift differently depending on the modulation frequency. 
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=8 cm]{phase_f_T.eps}
-\caption{Measured phase-shift for selected oxygen concentrations as a function of the modulation frequency at a fixed oxygen concentration $[O_2]=20 \%$ at selected temperatures.}
-\label{fig:expdata2}
-\end{figure}
-
-The complementary to Fig. Fig. \ref{fig:expdata2} is  Fig. \ref{fig:expdata3}, where the phase shift is shown a function of the modulation frequency for selected oxygen concentrations at a fixed temperature.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=8 cm]{phase_f_O2.eps}
-\caption{Measured phase-shift for selected oxygen concentrations as a function of the modulation frequency at a fixed temperature $T=25 ^{\circ}$ .}
-\label{fig:expdata3}
-\end{figure}
-
-Comparing the curves shown above it is clear that, when measuring one single phase-shift or even a the phase-shift as a function of the modulation frequency is not possible to simultaneously determine both the oxygen concentration and the temperature from this set of data from Eq. (\ref{theta_full}). The temperature must be known to be able to determine the oxygen concentration. This is no longer the case with the artificial intelligence approach, as it will be shown in the next section. 
-
-\subsection{Sensor performance analysis}
-
 \subsubsection{Kernel Density Estimation}
 
 To analyze the performance of the network, a fundamental quantity is the prediction probability density distribution of the $AE$s since it carries information on the probability of the network to predict the expected value for each parameter. For this reason and to make a clear visualisation of the results the  kernel density estimate (KDE) of the distributions of the $AE$s for both the oxygen concentration and the temperature was calculated. KDE is a non-parametric algorithm to estimate the probability density function of a random variable by inferring the population distribution based on a finite data sample \cite{Hastie2009}. 
 In this work a Gaussian Kernel and a Scott bandwidth adaptive estimation \cite{Sain1996} using the seaborn Python package \cite{Waskom2020} were used.
 
 
+\subsubsection{Error Limited Accuracy $\eta$}
+\label{sektion:ela}
+
+Generally, in a commercial sensor the accuracy quantifies the performance of the sensor and helps deciding if it chosen device is appropriate for the application of interest. The above defined $AE$ and $MAE$ (being statistical definitions?) are useful to compare the performance of different NNM but are not helpful in quantifying which error the neural network senor will ultimately have im practice.
+For this reason in this work we introduce a new metric, which we will be called Error Limited Accuracy (ELA) and that we indicate with $\eta$.
+
+\begin{definition*}
+In a regression problem, given a metric $m$, and a certain value of it $\hat m$, the ELA for this metric $\eta$ limited by the error $\hat m$ is defined as the number of predictions $\hat y$ of the NNM that lie in the range $[m(\hat y)-\hat m, m(\hat y)+\hat m]$ divided by the total number of observations. It will be indicated with $\eta(\hat m)$. Therefore, given a set
+\begin{equation}
+E(\hat m) = \{ \hat y^{[i]} \ {\text with } \ i = 1,..., n\ | |m(\hat y^{[i]})-m(y^{[i]})|\leq \hat m \} 
+\end{equation}
+$\eta$ is defined as
+\begin{equation}
+\eta(\hat m) = \frac{|E(\hat m)|}{n}
+\end{equation}
+where $|E(\hat m)|$ is the cardinality of the set $E(\hat m)$ or in other words, the number of its elements.
+\end{definition*}
+
+This metric allow to interpret the regression problem as a classification one. $\eta(\hat m)$ simply describes how many observations are predicted by the NNM within a given value of the chosen metric $\hat m$. If we now choose the metric $m$ as the $AE$ of the predictions, $\eta(AE)$ has a very intuitive and useful interpretation. 
+In this case $\eta(\hat{m})$ with $\hat m = \hat{AE}$, is simply the percentage of predictions that are within a certain error $\hat m$ from the expected values. Finally, if we take $\hat m$ big enough, all the predictions will be classified perfectly, so $\eta$ is expected to approach 1 for large $\hat m$ values. The smaller $\hat m$ the smaller the number of predictions correctly classified. 
+
+
+\section{Results and Discussion}
+\label{Results}
+
+\subsection{Luminescence Experimental Results}
+
+\begin{figure}[b!]
+\centering
+\includegraphics[width=8.2 cm]{phase_O2_T.eps}
+\caption{Measured phase shift as a function of the oxygen concentration for selected temperatures at a fixed modulation frequency of 6 kHz. The arrow marks increasing temperatures.}
+\label{fig:expdata1}
+\end{figure}
+
+As described in Section \ref{Theory}, the phase-shift non-linearly depends on the oxygen concentration as described by the Stern-Volmer equation. Additionally, the phase shift depends on the temperature, which influences the luminescence and the collision mechanisms, and on the modulation frequency of the excitation light as described in Eq. \ref{theta_full}. The measured behaviour of the phase shift for variations of these three quantities are shown in the Figs. \ref{fig:expdata1} to \ref{fig:expdata3}.
+
+Fig. \ref{fig:expdata1} shows the measured phase shifts as a function of the oxygen concentration at a constant modulation frequency of 6 kHz for increasing temperatures. For clarity, only curves at five temperatures are shown. The decrease of the phase shift due to the collisional quenching is evident for all curves. The phase shift is, as expected, also strongly depends on the temperature. In absence of oxygen the phase is reduced with increasing $T$ due to temperature quenching; by higher oxygen concentrations the influence of temperature depends on the concentration, being stronger at higher oxygen concentration, as a result of the change of diffusion rates of oxygen in the sample substrate.
+
+For a given oxygen concentration the phase shift is strongly dependent from the modulation frequency, as it can be seen in Fig. \ref{fig:expdata2}, and the shape of the frequency response is determined by the distribution of decay times of the sample. The effect of the temperature of the frequency response is visible in the reduction of the phase shift with increasing temperatures. This affects the phase shift differently depending on the modulation frequency. 
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=8.2 cm]{phase_f_T.eps}
+\caption{Measured phase shift as a function of the modulation frequency for selected temperatures at a fixed oxygen concentration of $[O_2]=20 \%$. The arrow marks increasing temperatures.}
+\label{fig:expdata2}
+\end{figure}
+
+For comparison, the effect of the oxygen concentration on the frequency response at a fixed temperature is shown in Fig. \ref{fig:expdata3}. Compared to Fig. \ref{fig:expdata2}, the frequency response of the sample is much stronger affected by the oxygen concentration than by temperature. In other words, the sample has a higher sensitivity to oxygen than to temperature.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[width=8.2 cm]{phase_f_O2.eps}
+\caption{Measured phase shift as a function of the modulation frequency for selected oxygen concentrations at a fixed temperature of $T=25 ^{\circ}$. The arrow marks increasing oxygen concentrations.}
+\label{fig:expdata3}
+\end{figure}
+
+Comparing the curves shown above it is clear that, when measuring one single phase shift or even a the phase shift as a function of the modulation frequency, namely the frequency response, is not possible to simultaneously determine both the oxygen concentration and the temperature from this set of data and using from Eq. (\ref{theta_full}). The temperature must be known separately and used to determine the oxygen concentration. This is no longer the case with the artificial intelligence approach, as it will be shown in the next section. 
+
+
 \subsection{Sensor performance}
 
-Let's start with discussing what is the effect of using mini-batches versus not using them. The results can be seen for  $AE_{[O_2]}$ and $AE_T$  in Figure \ref{fig:KDE_results_all}(A) and \ref{fig:KDE_results_all}(B) respectively. For this comparison the network has been trained for 20000 epochs. In the Figure the gray histogram shows the results when using mini-batches of size 32. The effect is extraordinary. The predictions move from (without using batches) having MAE$_{[O_2]}=2.38$ \% air and MAE$_{T}=3.63^\circ$ C to  
+Let's start with discussing what is the effect of using mini-batches versus not using them. The results can be seen for  $AE_{[O_2]}$ and $AE_T$  in Figure \ref{fig:KDE_results_all}(A) and \ref{fig:KDE_results_all}(B) respectively. For this comparison the network was trained for 20000 epochs. In the Figure the gray histogram shows the results when using mini-batches of size 32. The effect is extraordinary. The predictions move from (without using batches) having MAE$_{[O_2]}=2.38$ \% air and MAE$_{T}=3.63^\circ$ C to  
 MAE$_{[O_2]}=1.36$ \% air and MAE$_{T}=1.63^\circ$ C (while using mini-batches of size 32). Not only the average values are reduced but the predictions distributions are much narrower. From Figure \ref{fig:KDE_results_all}(A) and \ref{fig:KDE_results_all}(B) it can also be clearly seen that, even while using mini-batches, we can get errors as high as roughly 5 \% air for $[O_2]$ or roughly as 12 $^\circ$ C for $T$. While deciding what is the right mini-batch size, training time must be taken into account. In fact decreasing the mini-batch size have the side effect of increasing the training time. While training the network without batches requires just a few minutes, reducing the mini-batch size to 32 increase the training time to roughly 1 hour.
 
 \begin{figure*}[htbp]
 \centering
-\includegraphics[width=17 cm]{KDE_results_all.eps}
-\caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
+\includegraphics[width=17.5 cm]{KDE_results_all.eps}
+\caption{Performance of the neural network for the oxygen (panels (A), (C) and (E)) and for the temperature (panels (B), (D) and (F)) predictions. In all panels the normalized prediction distribution histogram (columns), the kernel density estimate (KDE) of the distribution of the $AE$s (solid line), and $MAE$ (dashed vertical line) are shown. Panels (A) and (B): Comparison between training using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32; the input of the network is $\theta(\omega_i)/90$. Panels (C) and (D): Comparison between training using mini-batches (MB) with a batch size of 32, training the network for 100'000 ans 20'000 epochs; the input of the network is $\theta(\omega_i)/90$. Panels (E) and (F): training using mini-batches (MB) with a batch size of 32, for 20'000 epochs; the input of the network is $\theta(\omega_i)/\theta_0(\omega_i)$.}
 \label{fig:KDE_results_all}
 \end{figure*}
 
