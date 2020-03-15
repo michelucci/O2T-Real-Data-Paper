@@ -42,59 +42,68 @@
 \newlabel{SVe}{{1}{2}{Luminescence Quenching for Oxygen Determination}{equation.2.1}{}}
 \newlabel{SVe2}{{2}{2}{Luminescence Quenching for Oxygen Determination}{equation.2.2}{}}
 \newlabel{theta_full}{{3}{2}{Luminescence Quenching for Oxygen Determination}{equation.2.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B}Experimental Setup}{2}{subsection.2.2}}
-\newlabel{Experimental}{{B}{2}{Experimental Setup}{subsection.2.2}{}}
-\citation{Michelucci2017}
-\citation{Michelucci2019}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Schematic diagram of the experimental setup. Blue indicates the excitation optical path, red the luminescence one. SP: short pass filter; LP: long pass filter PD: photodiode; TIA: trans-impedance amplifier.\relax }}{3}{figure.caption.1}}
 \@cons\caption@pkg@list{{ragged2e}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:setup}{{1}{3}{Schematic diagram of the experimental setup. Blue indicates the excitation optical path, red the luminescence one. SP: short pass filter; LP: long pass filter PD: photodiode; TIA: trans-impedance amplifier.\relax }{figure.caption.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C}Automated Data Acquisition}{3}{subsection.2.3}}
-\newlabel{Data}{{C}{3}{Automated Data Acquisition}{subsection.2.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {D}Neural Network Software}{3}{subsection.2.4}}
-\newlabel{NN}{{D}{3}{Neural Network Software}{subsection.2.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {D.1}Neural Network Architecture}{3}{subsubsection.2.4.1}}
-\citation{Kingma2014,Michelucci2017}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Experimental Procedure}{3}{subsection.2.2}}
+\newlabel{Experimental}{{B}{3}{Experimental Procedure}{subsection.2.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {B.1}Experimental Setup}{3}{subsubsection.2.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {B.2}Automated Data Acquisition}{3}{subsubsection.2.2.2}}
+\newlabel{Data}{{B.2}{3}{Automated Data Acquisition}{subsubsection.2.2.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Flow-chart of the automated data acquisition program.\relax }}{3}{figure.caption.2}}
+\newlabel{fig:auto-data}{{2}{3}{Flow-chart of the automated data acquisition program.\relax }{figure.caption.2}{}}
 \citation{Michelucci2017}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Flow-chart of the automatic measurement process.\relax }}{4}{figure.caption.2}}
-\newlabel{fig:auto-data}{{2}{4}{Flow-chart of the automatic measurement process.\relax }{figure.caption.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {D.2}Loss Function}{4}{subsubsection.2.4.2}}
-\newlabel{MSE}{{4}{4}{Loss Function}{equation.2.4}{}}
-\newlabel{globalcf}{{5}{4}{Loss Function}{equation.2.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Architecture of the multi-task learning neural network used in this paper. The {\sl  common hidden layers} generate as output a "shared representation" that is used as input to task specific branches that learn specific features to each quantity and therefore improve the prediction accuracy. \relax }}{4}{figure.caption.3}}
-\newlabel{fig:NN_MTL_O2_T}{{3}{4}{Architecture of the multi-task learning neural network used in this paper. The {\sl common hidden layers} generate as output a "shared representation" that is used as input to task specific branches that learn specific features to each quantity and therefore improve the prediction accuracy. \relax }{figure.caption.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {D.3}Optimiser Algorithm}{4}{subsubsection.2.4.3}}
+\citation{Michelucci2019_2}
+\citation{Michelucci2019_2}
+\citation{Kingma2014,Michelucci2017}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}Neural Network Approach}{4}{subsection.2.3}}
+\newlabel{NN}{{C}{4}{Neural Network Approach}{subsection.2.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.1}Neural Network Architecture}{4}{subsubsection.2.3.1}}
+\newlabel{input1}{{4}{4}{Neural Network Architecture}{equation.2.4}{}}
+\newlabel{input2}{{5}{4}{Neural Network Architecture}{equation.2.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.2}Loss Function}{4}{subsubsection.2.3.2}}
+\newlabel{MSE}{{6}{4}{Loss Function}{equation.2.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Architecture of the multi-task learning neural network used in this paper. The common hidden layers generate as output a "shared representation" that is used as input to task specific branches that learn specific features to each quantity and therefore improve the prediction accuracy. $x_1 ... x_n$ are the input observations; $L_i$ are the task-specific loss functions; $[O_2]_{pred}$ and $T_{pred}$ are the oxygen concentration and temperature predictions of the network respectively.\relax }}{4}{figure.caption.3}}
+\newlabel{fig:NN_MTL_O2_T}{{3}{4}{Architecture of the multi-task learning neural network used in this paper. The common hidden layers generate as output a "shared representation" that is used as input to task specific branches that learn specific features to each quantity and therefore improve the prediction accuracy. $x_1 ... x_n$ are the input observations; $L_i$ are the task-specific loss functions; $[O_2]_{pred}$ and $T_{pred}$ are the oxygen concentration and temperature predictions of the network respectively.\relax }{figure.caption.3}{}}
+\newlabel{globalcf}{{7}{4}{Loss Function}{equation.2.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {C.3}Optimiser Algorithm}{4}{subsubsection.2.3.3}}
+\citation{Michelucci2017}
 \citation{Hastie2009}
 \citation{Sain1996}
 \citation{Waskom2020}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {D.4}Predictions Absolute Error}{5}{subsubsection.2.4.4}}
-\newlabel{AE}{{7}{5}{Predictions Absolute Error}{equation.2.7}{}}
-\newlabel{MAE}{{8}{5}{Predictions Absolute Error}{equation.2.8}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {D.5}Error Limited Accuracy $\eta $}{5}{subsubsection.2.4.5}}
-\newlabel{sektion:ela}{{D.5}{5}{Error Limited Accuracy $\eta $}{subsubsection.2.4.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Measured phase-shift as a function of the oxygen concentration, for selected temperatures at a fixed modulation frequency of 6 kHz. The arrow marks increasing temperatures.\relax }}{5}{figure.caption.4}}
-\newlabel{fig:expdata1}{{4}{5}{Measured phase-shift as a function of the oxygen concentration, for selected temperatures at a fixed modulation frequency of 6 kHz. The arrow marks increasing temperatures.\relax }{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D}Performance Evaluation}{5}{subsection.2.4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {D.1}Absolute Error on the Prediction}{5}{subsubsection.2.4.1}}
+\newlabel{AE}{{9}{5}{Absolute Error on the Prediction}{equation.2.9}{}}
+\newlabel{MAE}{{10}{5}{Absolute Error on the Prediction}{equation.2.10}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {D.2}Kernel Density Estimation}{5}{subsubsection.2.4.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {D.3}Error Limited Accuracy $\eta $}{5}{subsubsection.2.4.3}}
+\newlabel{sektion:ela}{{D.3}{5}{Error Limited Accuracy $\eta $}{subsubsection.2.4.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Results and Discussion}{5}{section.3}}
 \newlabel{Results}{{3}{5}{Results and Discussion}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Luminescence Experimental Results}{5}{subsection.3.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Measured phase-shift for selected oxygen concentrations as a function of the modulation frequency at a fixed oxygen concentration $[O_2]=20 \%$ at selected temperatures.\relax }}{6}{figure.caption.5}}
-\newlabel{fig:expdata2}{{5}{6}{Measured phase-shift for selected oxygen concentrations as a function of the modulation frequency at a fixed oxygen concentration $[O_2]=20 \%$ at selected temperatures.\relax }{figure.caption.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Measured phase-shift for selected oxygen concentrations as a function of the modulation frequency at a fixed temperature $T=25 ^{\circ }$ .\relax }}{6}{figure.caption.6}}
-\newlabel{fig:expdata3}{{6}{6}{Measured phase-shift for selected oxygen concentrations as a function of the modulation frequency at a fixed temperature $T=25 ^{\circ }$ .\relax }{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B}Sensor performance analysis}{6}{subsection.3.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {B.1}Kernel Density Estimation}{6}{subsubsection.3.2.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C}Sensor performance}{6}{subsection.3.3}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \bf  Summary of the performance for the three types of neural network models\relax }}{6}{table.caption.8}}
-\newlabel{TableMAE_summary}{{1}{6}{\bf Summary of the performance for the three types of neural network models\relax }{table.caption.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {D}Error Limited Accuracy Plots}{6}{subsection.3.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.\relax }}{7}{figure.caption.7}}
-\newlabel{fig:KDE_results_all}{{7}{7}{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.\relax }{figure.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Measured phase shift as a function of the oxygen concentration for selected temperatures at a fixed modulation frequency of 6 kHz. The arrow marks increasing temperatures.\relax }}{5}{figure.caption.4}}
+\newlabel{fig:expdata1}{{4}{5}{Measured phase shift as a function of the oxygen concentration for selected temperatures at a fixed modulation frequency of 6 kHz. The arrow marks increasing temperatures.\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Measured phase shift as a function of the modulation frequency for selected temperatures at a fixed oxygen concentration of $[O_2]=20 \%$. The arrow marks increasing temperatures.\relax }}{6}{figure.caption.5}}
+\newlabel{fig:expdata2}{{5}{6}{Measured phase shift as a function of the modulation frequency for selected temperatures at a fixed oxygen concentration of $[O_2]=20 \%$. The arrow marks increasing temperatures.\relax }{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Sensor performance}{6}{subsection.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}Error Limited Accuracy Plots}{6}{subsection.3.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Measured phase shift as a function of the modulation frequency for selected oxygen concentrations at a fixed temperature of $T=25 ^{\circ }$. The arrow marks increasing oxygen concentrations.\relax }}{6}{figure.caption.6}}
+\newlabel{fig:expdata3}{{6}{6}{Measured phase shift as a function of the modulation frequency for selected oxygen concentrations at a fixed temperature of $T=25 ^{\circ }$. The arrow marks increasing oxygen concentrations.\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Performance of the neural network for the oxygen (panels (A), (C) and (E)) and for the temperature (panels (B), (D) and (F)) predictions. In all panels the normalized prediction distribution histogram (columns), the kernel density estimate (KDE) of the distribution of the $AE$s (solid line), and $MAE$ (dashed vertical line) are shown. Panels (A) and (B): Comparison between training using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32; the input of the network are observations as defined in Eq. (\ref  {input1}). Panels (C) and (D): Comparison between training using mini-batches (MB) with a batch size of 32, training the network for 100'000 ans 20'000 epochs; the input of the network are observations as defined in Eq. (\ref  {input1}). Panels (E) and (F): training using mini-batches (MB) with a batch size of 32, for 20'000 epochs; the input of the network are observations as defined in Eq. (\ref  {input2}).\relax }}{7}{figure.caption.7}}
+\newlabel{fig:KDE_results_all}{{7}{7}{Performance of the neural network for the oxygen (panels (A), (C) and (E)) and for the temperature (panels (B), (D) and (F)) predictions. In all panels the normalized prediction distribution histogram (columns), the kernel density estimate (KDE) of the distribution of the $AE$s (solid line), and $MAE$ (dashed vertical line) are shown. Panels (A) and (B): Comparison between training using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32; the input of the network are observations as defined in Eq. (\ref {input1}). Panels (C) and (D): Comparison between training using mini-batches (MB) with a batch size of 32, training the network for 100'000 ans 20'000 epochs; the input of the network are observations as defined in Eq. (\ref {input1}). Panels (E) and (F): training using mini-batches (MB) with a batch size of 32, for 20'000 epochs; the input of the network are observations as defined in Eq. (\ref {input2}).\relax }{figure.caption.7}{}}
 \bibdata{bibliography}
 \bibcite{Stich2010}{{1}{}{{}}{{}}}
 \bibcite{Borisov2011novel}{{2}{}{{}}{{}}}
 \bibcite{Kameya2014}{{3}{}{{}}{{}}}
 \bibcite{Wang2014}{{4}{}{{}}{{}}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \bf  Summary of the performance for the three types of neural network models\relax }}{8}{table.caption.8}}
+\newlabel{TableMAE_summary}{{1}{8}{\bf Summary of the performance for the three types of neural network models\relax }{table.caption.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusions}{8}{section.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Comparison of $\eta $ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb  \theta }_n$ as input for 20000 epochs, while the red one with ${\pmb  \theta } / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.\relax }}{8}{figure.caption.9}}
+\newlabel{fig:ELA_result_comparison}{{8}{8}{Comparison of $\eta $ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb \theta }_n$ as input for 20000 epochs, while the red one with ${\pmb \theta } / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.\relax }{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Comparison of $\eta $ versus $AE_{T}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb  \theta }_n$ as input for 20000 epochs, while the red one with ${\pmb  \theta } / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{T}$ for which the predictions would give a 100 accuracy within that error.\relax }}{8}{figure.caption.10}}
+\newlabel{fig:ELA_result_comparison}{{9}{8}{Comparison of $\eta $ versus $AE_{T}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb \theta }_n$ as input for 20000 epochs, while the red one with ${\pmb \theta } / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{T}$ for which the predictions would give a 100 accuracy within that error.\relax }{figure.caption.10}{}}
 \bibcite{Santoro2016}{{5}{}{{}}{{}}}
 \bibcite{Biring2019}{{6}{}{{}}{{}}}
 \bibcite{Collier2013}{{7}{}{{}}{{}}}
@@ -109,9 +118,6 @@
 \bibcite{Hartmann1996}{{16}{}{{}}{{}}}
 \bibcite{Mills1998}{{17}{}{{}}{{}}}
 \bibcite{Badocco2008}{{18}{}{{}}{{}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Comparison of $\eta $ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with $\theta /\theta _0$ as input for 20000 epochs, while the red one with $\theta /90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.\relax }}{8}{figure.caption.9}}
-\newlabel{fig:ELA_result_comparison}{{8}{8}{Comparison of $\eta $ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with $\theta /\theta _0$ as input for 20000 epochs, while the red one with $\theta /90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.\relax }{figure.caption.9}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusions}{8}{section.4}}
 \bibcite{Dini2011}{{19}{}{{}}{{}}}
 \bibcite{Thrun1996}{{20}{}{{}}{{}}}
 \bibcite{Caruana1997}{{21}{}{{}}{{}}}
@@ -135,6 +141,6 @@
 \bibcite{Sain1996}{{39}{}{{}}{{}}}
 \bibcite{Waskom2020}{{40}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\newlabel{LastPage}{{}{9}{}{page.9}{}}
-\xdef\lastpage@lastpage{9}
-\xdef\lastpage@lastpageHy{9}
+\newlabel{LastPage}{{}{10}{}{page.10}{}}
+\xdef\lastpage@lastpage{10}
+\xdef\lastpage@lastpageHy{10}
