@@ -87,7 +87,6 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Measured phase shift as a function of the modulation frequency for selected temperatures at a fixed oxygen concentration of $[O_2]=20 \%$. The arrow marks increasing temperatures.\relax }}{6}{figure.caption.5}}
 \newlabel{fig:expdata2}{{5}{6}{Measured phase shift as a function of the modulation frequency for selected temperatures at a fixed oxygen concentration of $[O_2]=20 \%$. The arrow marks increasing temperatures.\relax }{figure.caption.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}Sensor performance}{6}{subsection.3.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C}Error Limited Accuracy Plots}{6}{subsection.3.3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Measured phase shift as a function of the modulation frequency for selected oxygen concentrations at a fixed temperature of $T=25 ^{\circ }$. The arrow marks increasing oxygen concentrations.\relax }}{6}{figure.caption.6}}
 \newlabel{fig:expdata3}{{6}{6}{Measured phase shift as a function of the modulation frequency for selected oxygen concentrations at a fixed temperature of $T=25 ^{\circ }$. The arrow marks increasing oxygen concentrations.\relax }{figure.caption.6}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Performance of the neural network for the oxygen (panels (A), (C) and (E)) and for the temperature (panels (B), (D) and (F)) predictions. In all panels the normalized prediction distribution histogram (columns), the kernel density estimate (KDE) of the distribution of the $AE$s (solid line), and $MAE$ (dashed vertical line) are shown. Panels (A) and (B): Comparison between training using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32; the input of the network are observations as defined in Eq. (\ref  {input1}). Panels (C) and (D): Comparison between training using mini-batches (MB) with a batch size of 32, training the network for 100'000 ans 20'000 epochs; the input of the network are observations as defined in Eq. (\ref  {input1}). Panels (E) and (F): training using mini-batches (MB) with a batch size of 32, for 20'000 epochs; the input of the network are observations as defined in Eq. (\ref  {input2}).\relax }}{7}{figure.caption.7}}
@@ -97,13 +96,6 @@
 \bibcite{Borisov2011novel}{{2}{}{{}}{{}}}
 \bibcite{Kameya2014}{{3}{}{{}}{{}}}
 \bibcite{Wang2014}{{4}{}{{}}{{}}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \bf  Summary of the performance for the three types of neural network models\relax }}{8}{table.caption.8}}
-\newlabel{TableMAE_summary}{{1}{8}{\bf Summary of the performance for the three types of neural network models\relax }{table.caption.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusions}{8}{section.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Comparison of $\eta $ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb  \theta }_n$ as input for 20000 epochs, while the red one with ${\pmb  \theta } / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.\relax }}{8}{figure.caption.9}}
-\newlabel{fig:ELA_result_comparison}{{8}{8}{Comparison of $\eta $ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb \theta }_n$ as input for 20000 epochs, while the red one with ${\pmb \theta } / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.\relax }{figure.caption.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Comparison of $\eta $ versus $AE_{T}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb  \theta }_n$ as input for 20000 epochs, while the red one with ${\pmb  \theta } / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{T}$ for which the predictions would give a 100 accuracy within that error.\relax }}{8}{figure.caption.10}}
-\newlabel{fig:ELA_result_comparison}{{9}{8}{Comparison of $\eta $ versus $AE_{T}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb \theta }_n$ as input for 20000 epochs, while the red one with ${\pmb \theta } / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{T}$ for which the predictions would give a 100 accuracy within that error.\relax }{figure.caption.10}{}}
 \bibcite{Santoro2016}{{5}{}{{}}{{}}}
 \bibcite{Biring2019}{{6}{}{{}}{{}}}
 \bibcite{Collier2013}{{7}{}{{}}{{}}}
@@ -111,6 +103,12 @@
 \bibcite{Jorge2008}{{9}{}{{}}{{}}}
 \bibcite{Moore2006}{{10}{}{{}}{{}}}
 \bibcite{Papkovsky2013}{{11}{}{{}}{{}}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \bf  Summary of the performance for the three types of neural network models\relax }}{8}{table.caption.8}}
+\newlabel{TableMAE_summary}{{1}{8}{\bf Summary of the performance for the three types of neural network models\relax }{table.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}Error Limited Accuracy Plots}{8}{subsection.3.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusions}{8}{section.4}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \bf  Summary of the values of $m_1$ for the cases shown in Figure \ref  {fig:ELA_result_comparison}(A) and \ref  {fig:ELA_result_comparison}(B).\relax }}{8}{table.caption.10}}
+\newlabel{table:ela}{{2}{8}{\bf Summary of the values of $m_1$ for the cases shown in Figure \ref {fig:ELA_result_comparison}(A) and \ref {fig:ELA_result_comparison}(B).\relax }{table.caption.10}{}}
 \bibcite{Lakowicz2006}{{12}{}{{}}{{}}}
 \bibcite{Li2015}{{13}{}{{}}{{}}}
 \bibcite{Xu1994}{{14}{}{{}}{{}}}
@@ -138,6 +136,8 @@
 \bibcite{Michelucci2017}{{36}{}{{}}{{}}}
 \bibcite{Kingma2014}{{37}{}{{}}{{}}}
 \bibcite{Hastie2009}{{38}{}{{}}{{}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Comparison of $\eta $ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb  \theta }_n$ as input for 20000 epochs, while the red one with ${\pmb  \theta } / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.\relax }}{9}{figure.caption.9}}
+\newlabel{fig:ELA_result_comparison}{{8}{9}{Comparison of $\eta $ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb \theta }_n$ as input for 20000 epochs, while the red one with ${\pmb \theta } / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.\relax }{figure.caption.9}{}}
 \bibcite{Sain1996}{{39}{}{{}}{{}}}
 \bibcite{Waskom2020}{{40}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
