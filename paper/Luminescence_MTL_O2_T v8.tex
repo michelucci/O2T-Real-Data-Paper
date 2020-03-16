@@ -353,7 +353,17 @@ ${\pmb \theta}_n$ & 20'000 / 32 & 0.13 \% air & 0.24 $^\circ C$\\
 
 \subsection{Error Limited Accuracy Plots}
 
+\begin{figure*}[t!]
+\centering
+\includegraphics[width=15 cm]{ELA_comparison_O2_T.eps}
+\caption{Comparison of $\eta$ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb \theta}_n$ as input for 20000 epochs, while the red one with ${\pmb \theta} / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.}
+\label{fig:ELA_result_comparison}
+\end{figure*}
+
+
 The discussion in the previous sections helps in measuring how the network behave and how good the predictions are, but makes understanding what sensor we could build with such model almost impossible. For a sensors one has to be able to estimate the maximum error for the measurements. To achieve this we developed a completely new metric: the ELA ($\eta$), as defined in section \ref{sektion:ela}, that will allow us to characterise the sensor with a maximum error. As explained previously, $\eta$ is defined only when one chooses a metric $m$. In this section the metric chosen is $m=AE_{[O_2]}$ for the oxygen concentration and $m=AE_{T}$ for the temperature.
+
+
 
 In Figure \ref{fig:ELA_result_comparison} you can see a comparison of $\eta$ versus $\hat m$ for network trained with mini-batches of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with $\theta/\theta_0$ as input for 20000 epochs, while the red one with $\theta/90$ as input for 100000 epochs for the oxygen concentration.
 To explain how to read such plot let's consider the two extreme cases. 
@@ -364,21 +374,15 @@ To explain how to read such plot let's consider the two extreme cases.
 
 The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error. For example for the network trained with ${\pmb \theta} / 90$ as input, if an error of 0.95 \% air is considered acceptable, then the model would predict all the oxygen concentrations within the given error. For the network trained with ${\pmb \theta}_n$ this value would be 0.87 \% air. 
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=7 cm]{ELA_comparison.eps}
-\caption{Comparison of $\eta$ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb \theta}_n$ as input for 20000 epochs, while the red one with ${\pmb \theta} / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.}
-\label{fig:ELA_result_comparison}
-\end{figure}
 
 In Figure \ref{fig:ELA_T} the same analysis for $\eta(AE_T)$ can be found. The interpretation is similar to the one given above for the oxygen concentration predictions.
 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=7 cm]{ELA_comparison.eps}
-\caption{Comparison of $\eta$ versus $AE_{T}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb \theta}_n$ as input for 20000 epochs, while the red one with ${\pmb \theta} / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{T}$ for which the predictions would give a 100 accuracy within that error.}
-\label{fig:ELA_result_comparison}
-\end{figure}
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=7 cm]{ELA_comparison.eps}
+%\caption{Comparison of $\eta$ versus $AE_{T}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb \theta}_n$ as input for 20000 epochs, while the red one with ${\pmb \theta} / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{T}$ for which the predictions would give a 100 accuracy within that error.}
+%\label{fig:ELA_result_comparison}
+%\end{figure}
 
 
 
