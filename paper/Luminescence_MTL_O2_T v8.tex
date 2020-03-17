@@ -158,7 +158,7 @@ The artificial network used in this work has a multi-task-learning architecture 
 The network, as will be explained in in the results section, has been trained with two types of input. In the first case each observation consists of a vector of 50 values defined as
 \begin{equation}
 \label{input1}
-\frac{{\pmb \theta}}{90} = \left(
+{\pmb \theta}_s = \left(
 \frac{\theta(w_1)}{90} , \frac{\theta(w_2)}{90} , ..., \frac{\theta(w_{50})}{90} 
 \right)
 \end{equation}
@@ -257,7 +257,7 @@ where $|E(\hat m)|$ is the cardinality of the set $E(\hat m)$ or in other words,
 This metric allow to interpret the regression problem as a classification one. $\eta(\hat m)$ simply describes how many observations are predicted by the NNM within a given value of the chosen metric $\hat m$. If we now choose the metric $m$ as the $AE$ of the predictions, $\eta(AE)$ has a very intuitive and useful interpretation. 
 In this case $\eta(\hat{m})$ with $\hat m = \hat{AE}$, is simply the percentage of predictions that are within a certain error $\hat m$ from the expected values. Finally, if we take $\hat m$ big enough, all the predictions will be classified perfectly, so $\eta$ is expected to approach 1 for large $\hat m$ values. The smaller $\hat m$ the smaller the number of predictions correctly classified will be.
 
-A special case is the value $m=m_1$ for which $\eta(m_1)=1$. Because within $m_1$ the network would predict all the observations correctly. This value ($m_1$) will give us the biggest error in the sensor predictions.
+A special case is the value $m=\overline{m}$ for which $\eta(\overline{m})=1$. Because within $\overline{m}$ the network would predict all the observations correctly. This value ($\overline{m}$) will give us the biggest error in the sensor predictions.
 
 
 \section{Results and Discussion}
@@ -305,7 +305,7 @@ MAE$_{[O_2]}=1.36$ \% air and MAE$_{T}=1.63^\circ$ C (while using mini-batches o
 \begin{figure*}[htbp]
 \centering
 \includegraphics[width=17.5 cm]{KDE_results_all.eps}
-\caption{Performance of the neural network for the oxygen (panels (A), (C) and (E)) and for the temperature (panels (B), (D) and (F)) predictions. In all panels the normalized prediction distribution histogram (columns), the kernel density estimate (KDE) of the distribution of the $AE$s (solid line), and $MAE$ (dashed vertical line) are shown. Panels (A) and (B): Comparison between training using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32; the input of the network are observations as defined in Eq. (\ref{input1}). Panels (C) and (D): Comparison between training using mini-batches (MB) with a batch size of 32, training the network for 100'000 ans 20'000 epochs; the input of the network are observations as defined in Eq. (\ref{input1}). Panels (E) and (F): training using mini-batches (MB) with a batch size of 32, for 20'000 epochs; the input of the network are observations as defined in Eq. (\ref{input2}).}
+\caption{Performance of the neural network for the oxygen (panels (A), (C) and (E)) and for the temperature (panels (B), (D) and (F)) predictions. In all panels the normalized prediction distribution histogram (columns), the kernel density estimate (KDE) of the distribution of the $AE$s (solid line), and $MAE$ (dashed vertical line) are shown. Panels (A) and (B): Comparison between training using no batches (NB) and using mini-batches (MB) with a batch size of 32; the input of the network are observations as defined in Eq. (\ref{input1}). Panels (C) and (D): Comparison between training using mini-batches (MB) with a batch size of 32, training the network for 100'000 ans 20'000 epochs; the input of the network are observations as defined in Eq. (\ref{input1}). Panels (E) and (F): training using mini-batches (MB) with a batch size of 32, for 20'000 epochs; the input of the network are observations as defined in Eq. (\ref{input2}).}
 \label{fig:KDE_results_all}
 \end{figure*}
 
@@ -340,13 +340,13 @@ The performance of the different neural networks is summarized in Table \ref{Tab
 \centering
 \caption {\bf Summary of the performance for the three types of neural network models}
 
-\begin{tabular}{ lccc}
+\begin{tabular}{ cccc}
 \smallskip 
  Input & Epochs / Batch size & $MAE_{[O_2]}$ & $MAE_{[T]}$  \\ 
  \hline
-${\pmb \theta} / 90$ & 20'000 / 4000 & 2.38 \% air & 3.63 $^\circ C$\\ 
-${\pmb \theta} / 90$ & 20'000 / 32 & 1.36\% air & 1.63 $^\circ C$\\ 
-${\pmb \theta} / 90$& 100'000 / 32 & 0.22 \% air & 0.27 $^\circ C$\\ 
+${\pmb \theta}_s$ & 20'000 / \textrm{no batch} & 2.38 \% air & 3.63 $^\circ C$\\ 
+${\pmb \theta}_s$ & 20'000 / 32 & 1.36\% air & 1.63 $^\circ C$\\ 
+${\pmb \theta}_s$& 100'000 / 32 & 0.22 \% air & 0.27 $^\circ C$\\ 
 ${\pmb \theta}_n$ & 20'000 / 32 & 0.13 \% air & 0.24 $^\circ C$\\ 
 
 \end{tabular}
@@ -367,26 +367,21 @@ The discussion in the previous sections helps in measuring how the network behav
 
 
 
-In Figure \ref{fig:ELA_result_comparison}(A) and \ref{fig:ELA_result_comparison}(B) you can see a comparison of $\eta$ versus $\hat m$ for network trained with mini-batches of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb \theta}_n$ as input for 20000 epochs, while the red one with ${\pmb \theta} / 90$ as input for 100000 epochs for the oxygen concentration.
-To explain how to read such plot let's consider the two extreme cases. 
-\begin{itemize}
-\item {\bf Small values of $\hat m$}: $\eta$ will tell us how many predictions lie close to the expected value within the given value of $\hat m$. The smaller $\hat m$ is, the less network predictions will lie within $\pm \hat m$ from the expected values. Therefore the smaller $\hat m$ is, the smaller $\eta$ is. This is clearly reflected in the plot, that for small values of $\hat m$, presents small values of $\eta(\hat m)$.
-\item {\bf Bigger values of $\hat m$}: The bigger $\hat m$ is, the more network predictions will lie within $\pm \hat m$ from the expected values. After a certain value of $\hat m$ all the predictions will lie within $\pm \hat m$ from the expected values, effectively giving $\eta = 1$, as reflected on the right side of the plot. 
-\end{itemize}
+In Figure \ref{fig:ELA_result_comparison}(A) and \ref{fig:ELA_result_comparison}(B) you can see a comparison of $\eta(AE_{[O_2]})$ and $\eta(AE_{T})$ for network trained with mini-batches of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb \theta}_n$ as input for 20000 epochs, while the red one with ${\pmb \theta}_s$ as input for 100000 epochs for the oxygen concentration.
 
-The dashed lines indicates the values of the $AE_{[O_2]}$ for which the predictions would give a 100 accuracy within that error. For example for the network trained with ${\pmb \theta} / 90$ as input, the model would predict perfectly all the oxygen concentrations within 0.95 \% air error. For the network trained with ${\pmb \theta}_n$ this value would be 0.87 \% air. 
+The dashed lines indicates the values of the $\overline{AE_{[O_2]}}$ for which the predictions would give a 100 accuracy within that error. For example for the network trained with ${\pmb \theta}_s$ as input, the model would predict perfectly all the oxygen concentrations within 0.95 \% air error. For the network trained with ${\pmb \theta}_n$ this value would be 0.87 \% air. 
 
-In Figure \ref{fig:ELA_result_comparison}(B) the same analysis can be found for $m=\eta(AE_T)$. The interpretation is similar to the one given above for the oxygen concentration predictions. For the network trained with ${\pmb \theta} / 90$ as input, the model would predict perfectly all the T values within 2.05$^\circ$C error. For the network trained with ${\pmb \theta}_n$ this value would be 1.67$^\circ$C. Those results is summarised in Table \ref{table:ela}.
+In Figure \ref{fig:ELA_result_comparison}(B) the same analysis can be found for $m=\eta(AE_T)$. The interpretation is similar to the one given above for the oxygen concentration predictions. For the network trained with ${\pmb \theta}_s$ as input, the model would predict perfectly all the T values within $\overline{AE_{T}}=2.05^\circ$C error. For the network trained with ${\pmb \theta}_n$ this value would be $\overline{AE_{T}}=1.67^\circ$C. Those results are summarised in Table \ref{table:ela}.
 
 \begin{table}[t!]
 \centering
 \caption {\bf Summary of the values of $m_1$ for the cases shown in Figure \ref{fig:ELA_result_comparison}(A) and \ref{fig:ELA_result_comparison}(B).}
 
-\begin{tabular}{ lccc}
+\begin{tabular}{ cccc}
 \smallskip 
- Input & Epochs / Batch size & $m_1 = AE_{[O_2],1}$ & $m_1 = AE_{T,1}$  \\ 
+ Input & Epochs / Batch size & $\overline{AE_{[O_2]}}$ & $\overline{AE_{T}}$  \\ 
  \hline
-${\pmb \theta} / 90$ & 100'000 / 32 & 0.95 \% air & 2.05 $^\circ C$\\ 
+${\pmb \theta}_s$ & 100'000 / 32 & 0.95 \% air & 2.05 $^\circ C$\\ 
 ${\pmb \theta}_n $ & 20'000 / 32 & 0.87\% air & 1.67 $^\circ C$\\ 
 
 \end{tabular}
