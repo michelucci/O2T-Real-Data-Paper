@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.4.9)  17 MAR 2020 21:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.4.9)  17 MAR 2020 22:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1326,15 +1326,20 @@ Package pdftex.def Info: phase_f_O2-eps-converted-to.pdf  used on input line 29
 2.
 (pdftex.def)             Requested size: 233.3125pt x 148.89175pt.
 Package epstopdf Info: Source file: <KDE_results_all.eps>
-(epstopdf)                    date: 2020-03-16 14:49:56
-(epstopdf)                    size: 23283350 bytes
+(epstopdf)                    date: 2020-03-17 22:07:31
+(epstopdf)                    size: 23251915 bytes
 (epstopdf)             Output file: <KDE_results_all-eps-converted-to.pdf>
 (epstopdf)                    date: 2020-03-16 14:51:14
 (epstopdf)                    size: 383015 bytes
 (epstopdf)             Command: <repstopdf --outfile=KDE_results_all-eps-conver
 ted-to.pdf KDE_results_all.eps>
 (epstopdf)             \includegraphics on input line 307.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=KDE_results_all-eps-converted-to.pdf KDE_results_
+all.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <KDE_results_all-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-03-17 22:07:36
+(epstopdf)                    size: 377215 bytes.
 <KDE_results_all-eps-converted-to.pdf, id=234, 1189.44376pt x 1226.5825pt>
 File: KDE_results_all-eps-converted-to.pdf Graphic file (type pdf)
 <use KDE_results_all-eps-converted-to.pdf>
@@ -1378,17 +1383,13 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 482.
 Package rerunfilecheck Info: File `"Luminescence_MTL_O2_T v8".out' has not chan
 ged.
 (rerunfilecheck)             Checksum: 983CFCA48CDEEDE9FACDCD556EDC7A02;1393.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 482.
  ) 
 Here is how much of TeX's memory you used:
- 29404 strings out of 492649
- 570160 string characters out of 6129623
- 703948 words of memory out of 5000000
- 32594 multiletter control sequences out of 15000+600000
+ 29403 strings out of 492649
+ 570141 string characters out of 6129623
+ 703936 words of memory out of 5000000
+ 32593 multiletter control sequences out of 15000+600000
  638540 words of font info for 325 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,18n,77p,10403b,575s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1407,7 +1408,7 @@ tino/uplb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/up
 lbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
 fb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></us
 r/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on "Luminescence_MTL_O2_T v8.pdf" (10 pages, 1217710 bytes).
+Output written on "Luminescence_MTL_O2_T v8.pdf" (10 pages, 1211934 bytes).
 PDF statistics:
  606 PDF objects out of 1000 (max. 8388607)
  342 compressed objects within 4 object streams
