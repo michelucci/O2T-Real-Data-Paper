@@ -56,7 +56,6 @@ The problem of dual sensing is particularly relevant in applications that involv
 Sensors based on this principle must rely on approximated empirical models to parametrize the dependence of the measured sensing quantity (e.g., luminescence intensity or decay time) on influencing factors. Among these, temperature is the parameter with the strongest influence since both the luminescence and the quenching phenomena are strongly temperature-dependent. Therefore, today in any optical oxygen sensor the temperature must be continuously monitored, most frequently with a separate sensor, and used to correct the calculated oxygen concentration \cite{Li2015}. This task can be difficult in practical implementation and may be a major source of error in sensors based on luminescence sensing. Another disadvantage of this approach is that the parametrization of the sensor response with temperature is system specific since it depends  on how the sensing element was fabricated and on the sensor itself \cite{Xu1994,Draxler1995,Hartmann1996,Mills1998,Badocco2008,Dini2011}.
 
 In this work, we propose a revolutionary approach based on artificial intelligence. The method enables accurate dual-sensing, using one single luminophore, and measuring a single quantity.
-%which enables dual sensing, namely the determination of both the oxygen concentration and the temperature, using one single indicator and measuring a single quantity,  the decay time using the phase-modulation method \cite{Lakowicz2006}. 
 Instead of describing the response of the sensor as a function of the relevant parameters through an analytical model, a neural network  was designed and trained to predict both oxygen concentration and temperature simultaneously.
 This new approach is based on multi-task learning (MTL) neural network architectures. These are characterized by common hidden layers, whose output is then the input of multiple branches of task-specific hidden layers. MTL architectures, in facts, can learn correlated tasks \cite{Thrun1996, Caruana1997, Zhang2017, Baxter2000, Thung2018} and are flexible enough to be usable in multi-dimensional regressions \cite{Michelucci2019_2}.
 
@@ -64,9 +63,6 @@ The collection of the large amount of data that is needed for the training and t
 
 This work proposes a paradigm shift from the classical description of the response of the sensor through an approximate empirical parametric model to the use of MTL neural networks. 
 These will learn the complex inter-parameter dependencies and sensor-specific response characteristics from a large amount of data automatically collected. This new method will enable to build sensors even if they are too complex to be comfortably described by a mathematical model.
-
-%These which through the training on a large amount of data automatically taken will learn the complex inter-parameter dependencies and sensor-specific response characteristics, thus allowing enabling to build sensors even if the system is too complex, to be comfortably described by a mathematical model.
-
 
 
 \section{Methods}
@@ -306,33 +302,12 @@ training using mini-batches (MB) with a batch size of 32 for 20'000 epochs; the 
 \label{fig:KDE_results_all}
 \end{figure*}
 
-%\begin{figure*}[htbp]
-%\centering
-%\includegraphics[width=17 cm]{prediction_distribution_batch.eps}
-%\caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
-%\label{fig:prediction_distribution_batch_90}
-%\end{figure*}
-
 The performance can be improved by simply training the network for many more epochs. xxx IS IT EXPECTED? xxx Fig. \ref{fig:KDE_results_all}(C) and \ref{fig:KDE_results_all}(D) show the comparison between prediction distributions with 20'000 and 100'000 epochs (always using a mini-batch of size 32) using the input observations ${\pmb \theta}_s$ as defined in Eq. (\ref{input1}). The effect of a longer training is a dramatic improvement in the performance. When the network was trained for 100'000 epochs the mean average errors are reduced to only $MAE_{[O_2]}=0.22$ \% air and $MAE_{T}=0.27^\circ$C. Additionally, all the predictions for $[O_2]$ lie below 0.94 \% air, and for $T$ lie below 2.1 $^\circ$C.
 
 The results of Fig. \ref{fig:KDE_results_all}(C) and \ref{fig:KDE_results_all}(D) demonstrate two new findings: 1) with the proposed approach, it is possible to predict both $[O_2]$ and $T$ at the same time from a the phase shift using a single luminophore; 2) that the prediction have expected errors which are comparable or below the typical accuracy of commercial sensors. The possibility of dual sensing paves the road to the development of a completely new generation of sensors.
 The price to pay is that to train a network for so many epochs requires, on a modern laptop, roughly 5 hours.
 
-%\begin{figure*}[htbp]
-%\centering
-%\includegraphics[width=17 cm]{comparison_theta90_20k_vs_100k.eps}
-%\caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
-%\label{fig:prediction_distribution_epochs_90}
-%\end{figure*}
-
 To investigate if the training can be performed more efficiently, the normalized phase shift ${\pmb \theta}_n$ defined in Eq. (\ref{input2}) where used as input to the network. The performance of the network in this case, with a mini-batch size of 32 and a training of 20'000 epochs is shown in Fig. \ref{fig:KDE_results_all}(E) and \ref{fig:KDE_results_all}(F). The performance is further improved; even if the training is only 20'000 the mean average errors are better than what obtained with ${\pmb \theta}_s$ as input and a training of 100'000 epochs: $MAE_{[O_2]}=0.13$ \% air and $MAE_{T}=0.24^\circ$C. The distributions are also narrower, particularly for the temperature. Additionally all the $AE_{[O_2]}$ lie below 0.87 \% air, and  $AE_{T}$ below 1.7 $^\circ$C. This type of training is clearly more efficient. The reason may lie in the additional information which is fed to the network when using the input ${\pmb \theta}_n$ and in the simplified functional behavior of ${\pmb \theta}_n$ compared to ${\pmb \theta}_s$ as it may be expected by Eq. \ref{theta_full}. xxxEXPLAIN BETTERxxxx
-
-%\begin{figure*}[htbp]
-%\centering
-%\includegraphics[width=17 cm]{theta_theta0_mb_20k.eps}
-%\caption{Performance of the neural network for the oxygen (left plot) and for the temperature (right plot) predictions: Normalized prediction distribution histogram (columns) and kernel density estimate (KDE) of the distribution of the $AE$s (solid line) using plain gradient descent (GD) and using mini-batches (MB) with a batch size of 32. The corresponding $MAE$ is also shown as a dashed line in each diagram.}
-%\label{fig:prediction_distribution_theta0}
-%\end{figure*}
 
 The performance of the different neural networks is summarized in Table \ref{TableMAE_summary}. 
 \begin{table}[hbt]
@@ -356,7 +331,7 @@ ${\pmb \theta}_n$ & 20'000 / 32 & 0.13 \% air & 0.24 $^\circ C$\\
 \begin{figure*}[t!]
 \centering
 \includegraphics[width=15.5 cm]{ELA_comparison_O2_T.eps}
-\caption{Comparison of $\eta$ versus $AE_{[O_2]}$ for network trained with mini-batchs of size 32 and for 20'000 and 100'000 epochs. The black line are the results for the network that were trained with ${\pmb \theta}_n$ as input for 20'000 epochs, while the red one with ${\pmb \theta}_s$ as input for 100'000 epochs. The dashed lines indicates the values of the $\overline{AE}_{[O_2]}$ for which the predictions would give a 100 accuracy within that error.}
+\caption{Comparison of the ELA $\eta$: Panel (A) oxygen prediction, panel (B) temperature prediction. The black line are the results for the network that were trained with ${\pmb \theta}_n$ as input for 20'000 epochs with mini-batchs of size 32, while the red one with ${\pmb \theta}_s$ as input for 100'000 epochs with mini-batchs of size 32. The dashed lines indicates the values of the $\overline{AE}$ for which the predictions would give $\eta=1$.}
 \label{fig:ELA_result_comparison}
 \end{figure*}
 
@@ -383,46 +358,6 @@ ${\pmb \theta}_n $ & 20'000 / 32 & 0.87\% air & 1.67 $^\circ C$\\
 
 Fig. \ref{fig:ELA_result_comparison}(A) shows that, for the network trained with ${\pmb \theta}_s$ as input, the model would predict perfectly all the oxygen concentrations within 0.95 \% air error. For the network trained with ${\pmb \theta}_n$ this value is futher reduced to 0.87 \% air. This can be interpreted as the accuracy a sensor based on this NNM  would have.
 Fig. \ref{fig:ELA_result_comparison}(B) shows the results of the same analysis for the temperature measurement. The interpretation is similar to the one given above for the oxygen concentration predictions. For the network trained with ${\pmb \theta}_s$ as input, the model would predict perfectly all the temperature values within $\overline{AE}_{T}=2.05^\circ$C error. For the network trained with ${\pmb \theta}_n$ this value would be  $\overline{AE}_{T}=1.67^\circ$C. It is interesting to note, that the difference of the two types of input used is not significant in the case of temperature.
-
-
-% 1.67, 2.05
-
-%\begin{figure}[h!]
-%\centering
-%\includegraphics[width=7 cm]{ELA_comparison.eps}
-%\caption{Comparison of $\eta$ versus $AE_{T}$ for network trained with mini-batchs of size 32 and for 20000 and 100000 epochs. The black line are the results for the network that have been trained with ${\pmb \theta}_n$ as input for 20000 epochs, while the red one with ${\pmb \theta} / 90$ as input for 100000 epochs. The dashed lines indicates the values of the $AE_{T}$ for which the predictions would give a 100 accuracy within that error.}
-%\label{fig:ELA_result_comparison}
-%\end{figure}
-
-
-
-%\begin{figure}[htbp]
-%\centering
-%\includegraphics[width=7 cm]{ELA_model_20001_32_1e-3_3x50_2x5_2x5_theta_theta0.eps}
-%\caption{ELA...}
-%\label{fig:ELA_result_theta0}
-%\end{figure}
-%
-%
-%
-%\begin{figure}[htbp]
-%\centering
-%\includegraphics[width=7 cm]{ELA_model_100001_32_1e-3_3x50_2x5_2x5_theta90.eps}
-%\caption{ELA...}
-%\label{fig:result_theta0}
-%\end{figure}
-
-
-%
-%plot theta/theta0 vs frequency for different T (O2 fix) and for different O2 (T fix)
-%plot distribution of total AE
-%
-%temperature can be presicted less well because phase shift depends less from T than from O2
-%
-%Stability results
-%
-%temperature cannot be predicted well without dividing for theta 0
-
 
 
 
