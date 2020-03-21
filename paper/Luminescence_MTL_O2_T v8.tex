@@ -347,7 +347,6 @@ ${\pmb \theta}_s$ & 20'000 / \textrm{no batch} & 2.38 \% air & 3.63 $^\circ C$\\
 ${\pmb \theta}_s$ & 20'000 / 32 & 1.36\% air & 1.63 $^\circ C$\\ 
 ${\pmb \theta}_s$& 100'000 / 32 & 0.22 \% air & 0.27 $^\circ C$\\ 
 ${\pmb \theta}_n$ & 20'000 / 32 & 0.13 \% air & 0.24 $^\circ C$\\ 
-
 \end{tabular}
 \label{TableMAE_summary}
 \end{table}
@@ -361,16 +360,11 @@ ${\pmb \theta}_n$ & 20'000 / 32 & 0.13 \% air & 0.24 $^\circ C$\\
 \label{fig:ELA_result_comparison}
 \end{figure*}
 
+The metrics discussed in the previous sections are useful to compare the network performance and to measure how good the predictions are. However they do not offer an understanding on what a sensor build with such a model could achieve. For practical applications, the relevant question is what is the maximum error which the sensor will have in predicting the oxygen concentration and temperature. To answer this question we introduce a completely new metric: the ELA ($\eta$), as defined in Sect. \ref{sektion:ela}. As explained previously, $\eta$ is defined depending on the chosen metric $m$. In this section the metric chosen is $m=AE_{[O_2]}$ for the oxygen concentration and $m=AE_{T}$ for the temperature. This new metrics will allow the determination of the maximum error of the sensor. 
 
-The discussion in the previous sections helps in measuring how the network behave and how good the predictions are, but makes understanding what sensor we could build with such model almost impossible. For a sensors one has to be able to estimate the maximum error for the measurements. To achieve this we developed a completely new metric: the ELA ($\eta$), as defined in section \ref{sektion:ela}, that will allow us to characterise the sensor with a maximum error. As explained previously, $\eta$ is defined only when one chooses a metric $m$. In this section the metric chosen is $m=AE_{[O_2]}$ for the oxygen concentration and $m=AE_{T}$ for the temperature.
-
-
-
-In Fig. \ref{fig:ELA_result_comparison}(A) and \ref{fig:ELA_result_comparison}(B) you can see a comparison of $\eta(AE_{[O_2]})$ and $\eta(AE_{T})$ for network trained with mini-batches of size 32 and for 20'000 and 100'000 epochs. The black line are the results for the network that were trained with ${\pmb \theta}_n$ as input for 20'000 epochs, while the red one with ${\pmb \theta}_s$ as input for 100'000 epochs for the oxygen concentration.
-
-The dashed lines indicates the values of the $\overline{AE_{[O_2]}}$ for which the predictions would give a 100 accuracy within that error. For example for the network trained with ${\pmb \theta}_s$ as input, the model would predict perfectly all the oxygen concentrations within 0.95 \% air error. For the network trained with ${\pmb \theta}_n$ this value would be 0.87 \% air. 
-
-In Fig. \ref{fig:ELA_result_comparison}(B) the same analysis can be found for $m=\eta(AE_T)$. The interpretation is similar to the one given above for the oxygen concentration predictions. For the network trained with ${\pmb \theta}_s$ as input, the model would predict perfectly all the T values within $\overline{AE_{T}}=2.05^\circ$C error. For the network trained with ${\pmb \theta}_n$ this value would be $\overline{AE_{T}}=1.67^\circ$C. Those results are summarised in Table \ref{table:ela}.
+Fig. \ref{fig:ELA_result_comparison} displays the ELA $\eta(\widehat {AE})$ for oxygen concentration (A) and for the temperature (B). In each panel the results obtained using the input ${\pmb \theta}_n$ and a training for 20'000 epochs are shown in black, and the results obtained using the input ${\pmb \theta}_s$ and a training for 100'000 epochs in red. In both cases the training was performed with mini-batches of size 32.
+The dashed lines indicate the values of the $\overline{AE}_{[O_2]}$ and $\overline{AE}_{T}$ for which the error limited accuracy $\eta$ equals 1. In other words, all the predictions will have an error equal or smaller than $\overline{AE}$.
+The values of $\overline{AE}_{[O_2]}$ and $\overline{AE}_{T}$ are summarized in Table \ref{table:ela}.
 
 \begin{table}[t!]
 \centering
@@ -386,6 +380,12 @@ ${\pmb \theta}_n $ & 20'000 / 32 & 0.87\% air & 1.67 $^\circ C$\\
 \end{tabular}
 \label{table:ela}
 \end{table}
+
+
+For example, for the network trained with ${\pmb \theta}_s$ as input, the model would predict perfectly all the oxygen concentrations within 0.95 \% air error. For the network trained with ${\pmb \theta}_n$ this value would be 0.87 \% air. 
+
+In Fig. \ref{fig:ELA_result_comparison}(B) the same analysis can be found for $m=\eta(AE_T)$. The interpretation is similar to the one given above for the oxygen concentration predictions. For the network trained with ${\pmb \theta}_s$ as input, the model would predict perfectly all the T values within $\overline{AE_{T}}=2.05^\circ$C error. For the network trained with ${\pmb \theta}_n$ this value would be $\overline{AE_{T}}=1.67^\circ$C. Those results are summarised in 
+
 
 % 1.67, 2.05
 
