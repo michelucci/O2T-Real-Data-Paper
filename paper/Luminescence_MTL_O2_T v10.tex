@@ -10,7 +10,7 @@
 
 
 
-\title{Model-free dual oxygen and temperature luminescence sensor based on neural networks}
+\title{Dual oxygen and temperature luminescence learning sensor with parallel inference}
 
 \author[1,2,*]{Francesca Venturini}
 \author[2]{Umberto Michelucci}
@@ -305,12 +305,20 @@ training using mini-batches (MB) with a batch size of 32 for 20'000 epochs; the 
 \label{fig:KDE_results_all}
 \end{figure*}
 
+\begin{figure*}[t!]
+\centering
+\includegraphics[width=16 cm]{ELA_comparison_O2_T.eps}
+\caption{Comparison of the ELA $\eta$: Panel (A) oxygen prediction, panel (B) temperature prediction. The black line are the results for the network that were trained with ${\pmb \theta}_n$ as input for 20'000 epochs with mini-batchs of size 32, while the red one with ${\pmb \theta}_s$ as input for 100'000 epochs with mini-batchs of size 32. The dashed lines indicates the values of the $\overline{AE}$ for which the predictions would give $\eta=1$.}
+\label{fig:ELA_result_comparison}
+\end{figure*}
+
 Fig. \ref{fig:KDE_results_all}(C) and \ref{fig:KDE_results_all}(D) show the comparison between prediction distributions with 20'000 and 100'000 epochs (always using a mini-batch of size 32) using the input observations ${\pmb \theta}_s$ as defined in Eq. (\ref{input1}). The effect of longer training is a dramatic improvement in the performance. When the network was trained for 100'000 epochs the mean average errors are reduced to only $MAE_{[O_2]}=0.22$ \% air and $MAE_{T}=0.27^\circ$C. Additionally, all the predictions for $[O_2]$ lie below 0.94 \% air, and for $T$ lie below 2.1 $^\circ$C.
 
 The results of Fig. \ref{fig:KDE_results_all}(C) and \ref{fig:KDE_results_all}(D) demonstrate two new findings: 1) with the proposed approach, it is possible to predict both $[O_2]$ and $T$ at the same time from the phase shift using a single luminophore; 2) the prediction has an expected error which is comparable or below the typical accuracy of commercial sensors. The possibility of dual sensing paves the road to the development of a completely new generation of sensors.
 The price to pay is that to train a network for so many epochs requires, on a modern laptop, approximately 5 hours.
 
 To investigate if the training can be performed more efficiently, the normalized phase shift ${\pmb \theta}_n$ defined in Eq. (\ref{input2}) where used as input to the network. The performance of the network in this case, with a mini-batch size of 32 and a training of 20'000 epochs is shown in Fig. \ref{fig:KDE_results_all}(E) and \ref{fig:KDE_results_all}(F). The performance is further improved; even if the training is only 20'000 the mean average errors are better than what obtained with ${\pmb \theta}_s$ as input and a training of 100'000 epochs: $MAE_{[O_2]}=0.13$ \% air and $MAE_{T}=0.24^\circ$C. The distributions are also narrower, particularly for the temperature. Additionally, all the $AE_{[O_2]}$ lie below 0.87 \% air, and  $AE_{T}$ below 1.7 $^\circ$C. This type of training is clearly more efficient. The reason may lie in the additional information which is fed to the network when using the input ${\pmb \theta}_n$ and in the simplified functional behavior of ${\pmb \theta}_n$ compared to ${\pmb \theta}_s$ as it may be expected by Eq. \ref{theta_full}.
+
 
 The performance of the different neural networks is summarized in Table \ref{TableMAE_summary}. 
 \begin{table}[hbt]
@@ -329,14 +337,8 @@ ${\pmb \theta}_n$ & 20'000 / 32 & 0.13 \% air & 0.24 $^\circ C$\\
 \label{TableMAE_summary}
 \end{table}
 
-\subsection{Error Limited Accuracy Plots}
 
-\begin{figure*}[t!]
-\centering
-\includegraphics[width=15.5 cm]{ELA_comparison_O2_T.eps}
-\caption{Comparison of the ELA $\eta$: Panel (A) oxygen prediction, panel (B) temperature prediction. The black line are the results for the network that were trained with ${\pmb \theta}_n$ as input for 20'000 epochs with mini-batchs of size 32, while the red one with ${\pmb \theta}_s$ as input for 100'000 epochs with mini-batchs of size 32. The dashed lines indicates the values of the $\overline{AE}$ for which the predictions would give $\eta=1$.}
-\label{fig:ELA_result_comparison}
-\end{figure*}
+\subsection{Error Limited Accuracy}
 
 The metrics discussed in the previous sections are useful to compare the network performance and to measure how good the predictions are. However, they do not offer an understanding on what a sensor build with such a model could achieve. For practical applications, the relevant question is what is the maximum error which the sensor will have in predicting the oxygen concentration and temperature. To answer this question, we introduce a completely new metric: the ELA ($\eta$), as defined in Sect. \ref{sektion:ela}. As explained previously, $\eta$ is defined depending on the chosen metric $m$. In this section, the metric chosen is $m=AE_{[O_2]}$ for the oxygen concentration and $m=AE_{T}$ for the temperature. This new metrics will allow the determination of the maximum error of the sensor. 
 
@@ -347,31 +349,27 @@ The values of $\overline{AE}_{[O_2]}$ and $\overline{AE}_{T}$ are summarized in 
 \begin{table}[t!]
 \centering
 \caption {\bf Summary of the values of $\overline{AE}$ for the cases shown in Fig. \ref{fig:ELA_result_comparison}(A) and \ref{fig:ELA_result_comparison}(B).}
-
 \begin{tabular}{ cccc}
 \smallskip 
  Input & Epochs / Batch size & $\overline{AE}_{[O_2]}$ & $\overline{AE}_{T}$  \\ 
  \hline
 ${\pmb \theta}_s$ & 100'000 / 32 & 0.95 \% air & 2.1 $^\circ C$\\ 
 ${\pmb \theta}_n $ & 20'000 / 32 & 0.87\% air & 1.7 $^\circ C$\\ 
-
 \end{tabular}
 \label{table:ela}
 \end{table}
 
 Fig. \ref{fig:ELA_result_comparison}(A) shows that, for the network trained with ${\pmb \theta}_s$ as input, the model would predict perfectly all the oxygen concentrations within 0.95 \% air error. For the network trained with ${\pmb \theta}_n$ this value is futher reduced to 0.87 \% air. This can be interpreted as the accuracy a sensor based on this NNM  would have.
 Fig. \ref{fig:ELA_result_comparison}(B) shows the results of the same analysis for the temperature measurement. The interpretation is similar to the one given above for the oxygen concentration predictions. For the network trained with ${\pmb \theta}_s$ as input, the model would predict perfectly all the temperature values within $\overline{AE}_{T}=2.1^\circ$C error. For the network trained with ${\pmb \theta}_n$ this value would be  $\overline{AE}_{T}=1.7^\circ$C. 
-%It is interesting to note, that the difference of the two types of input used is not significant in the case of temperature.
-
 
 
 \section{Conclusions}
 
-In this work, a new model-free approach to optical sensing was described. This has the power of solving the problem of extracting multiple separate physical quantities at the same time from a single dataset without any {\sl a priori} mathematical model of the measuring effect or sensor components. This type of problem in physics can be challenging or impossible to solve if the mathematical models describing the functional dependence of the dependent variable from a set of independent variables are too complex or unknown.
+In this work, a new model-free approach to luminescence sensing is presented. The proposed method solves the problem of extracting multiple separate physical quantities at the same time from a single dataset without any {\sl a priori} mathematical model, even in presence of cross interferences. This type of problem in physics can be challenging or impossible to solve if the mathematical models describing the functional dependence of the dependent variable from a set of independent variables are too complex or even unknown. 
+The approach is demonstrated by building a luminescence sensor, which using a single luminophore and a single measuring channel, can measure simultaneously both the oxygen concentration and the temperature of a medium. This is achieved using a multi-task learning neural network model, which was trained on a large dataset. The results in the prediction of the oxygen concentration and temperature show unprecedented accuracy for both parameters, demonstrating that this approach will make a new generation of dual- or even multiple-parameter sensors possible. The ability  in predicting both $[O_2]$ and $T$ at the same time, from the a single set of data obtained with a single indicator, has profound implication for the development of luminescence sensors. Sensors will become easier and cheaper to build since no separate temperature measurements are necessary anymore. Similarly, the effect of interferenes can be learned by the neural network and do not need to be corrected for in the data processing.
+To be able to estimate the expected error or accuracy of a sensor build with a given NNM, a new metric, the ELA ($\eta(AE)$), is proposed. The ELA enables to estimate how many predicted values lie within a certain absolute error from the expected measurement. This new metric allows giving a maximum measurement error of the NNM results, effectively transforming a regression problem in a classification one. 
 
-The results in the prediction of the oxygen concentration and temperature show unprecedented accuracy for both parameters, demonstrating that this approach will make a new generation of sensors possible for dual or even multiple sensing. The unprecedented accuracy in predicting both $AE_{[O_2]}$ and $T$ at the same time, from the same set of data, will allow sensors to become easier and cheaper to build since no separate temperature measurements are necessary anymore. To be able to estimate what kind of sensor one could build with a given NNM a new metric, the ELA ($\eta(AE)$), was proposed to be able to estimate how many predictions lie within a certain value of the absolute error from the expected values. This new metric allows giving a maximum measurement error of the NNM results, effectively transforming a regression problem in a classification one. 
-
-This work opens the road to a complete new optical sensing methodology that will allow a new generation of sensors to be built. Those sensors will be able to extract multiple physical quantities from a common set of data at the same time to achieve consistent results that are both accurate and stable. The described approach is relevant for many practical applications in sensor science and demonstrates that this model-free approach has the potential of revolutionizing optical sensing.
+This work opens the road to a complete new optical sensing methodology for future generations of sensors. Those sensors will be able to extract multiple physical quantities from a common set of data at the same time to achieve consistent results that are both accurate and stable. The described approach is relevant for many practical applications in sensor science and demonstrates that this model-free approach has the potential of revolutionizing optical sensing.
 
 
 %\section*{Funding Information}
