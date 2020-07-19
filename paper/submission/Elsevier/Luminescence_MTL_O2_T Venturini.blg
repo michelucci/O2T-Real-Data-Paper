@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Luminescence_MTL_O2_T Venturini.aux
+The style file: elsarticle-num-names.bst
+Database file #1: bibliography.bib
+You've used 42 entries,
+            2793 wiz_defined-function locations,
+            903 strings with 13529 characters,
+and the built_in function-call counts, 25531 in all, are:
+= -- 1483
+> -- 987
+< -- 20
++ -- 404
+- -- 304
+* -- 3497
+:= -- 3382
+add.period$ -- 42
+call.type$ -- 42
+change.case$ -- 168
+chr.to.int$ -- 42
+cite$ -- 42
+duplicate$ -- 2013
+empty$ -- 1945
+format.name$ -- 432
+if$ -- 4527
+int.to.chr$ -- 1
+int.to.str$ -- 43
+missing$ -- 514
+newline$ -- 136
+num.names$ -- 126
+pop$ -- 532
+preamble$ -- 1
+purify$ -- 210
+quote$ -- 0
+skip$ -- 515
+stack$ -- 0
+substring$ -- 1388
+swap$ -- 1902
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 246
+warning$ -- 0
+while$ -- 151
+width$ -- 0
+write$ -- 435
