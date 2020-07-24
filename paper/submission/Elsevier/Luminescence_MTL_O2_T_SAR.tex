@@ -28,7 +28,7 @@
 
 %% Use the option review to obtain double line spacing
 
-\documentclass[preprint,review,12pt]{elsarticle}
+%% \documentclass[preprint,review,12pt]{elsarticle}
 
 %% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
 %% for a journal layout:
@@ -37,7 +37,8 @@
 %% \documentclass[final,3p,times]{elsarticle}
 %\documentclass[final,3p,times,twocolumn]{elsarticle}
 %% \documentclass[final,5p,times]{elsarticle}
-%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+ \documentclass[final,5p,times,twocolumn]{elsarticle}
 
 \usepackage{graphicx}
 \usepackage{amssymb}
@@ -73,7 +74,7 @@
 %\begin{frontmatter}
 \begin{abstract}
 A well-known approach to the optical measure of oxygen is based on the quenching of luminescence by molecular oxygen. The main challenge for this measuring method is the development of an accurate mathematical model. Typically, this is overcome by using an approximate empirical model where these effects are parametrized ad hoc. The complexity increases further if multiple parameters (like oxygen concentration and temperature) need to be extracted, particularly if they are cross interfering. The common solution is to measure the different parameters separately, for example, with different sensors, and correct for the cross interferences.
-In this work, we propose a new approach based on a learning sensor with parallel inference. We show how it is possible to extract multiple parameters from a single set of optical measurements, without the need of any {\sl a priori} mathematical model, and with unprecedented accuracy. {\hl ELA}. The proposed approach is not limited to oxygen and temperature sensing. It can be applied to the sensing with multiple luminophores, whenever the underlying mathematical model is not known or too complex.
+In this work, we propose a new approach based on a learning sensor with parallel inference. We show how it is possible to extract multiple parameters from a single set of optical measurements without the need for any {\sl a priori} mathematical model, and with unprecedented accuracy. We also propose a new metrics to characterize the performance of neural network based sensors, the Error Limited Accuracy. The proposed approach is not limited to oxygen and temperature sensing. It can be applied to the sensing with multiple luminophores, whenever the underlying mathematical model is not known or too complex.
 \end{abstract}
 
 
@@ -104,9 +105,9 @@ Sensors based on this principle must rely on approximated empirical models to pa
 
 In this work, we propose a revolutionary approach based on neural networks for parallel inference. The method enables accurate dual-sensing, using one single luminophore, and measuring a single quantity.
 Instead of describing the response of the sensor as a function of the relevant parameters through an analytical model, a neural network  was designed and trained to predict both oxygen concentration and temperature simultaneously.
-This new approach is based on multi-task learning (MTL) neural network architectures. These are characterized by common hidden layers, whose output is then the input of multiple branches of task-specific hidden layers. MTL architectures were chosen because they can learn correlated tasks \cite{Argyriou2006, Thrun1996, Caruana1997, Zhang2017, Baxter2000, Thung2018}. In a previous purely theoretical study that used only synthetic data the authors showed that MTL architectures can be flexible enough to address multi-dimensional regressions problems \cite{Michelucci2019_2}. This work demonstrates for the first time that this is indeed true by building and characterizing a real physical optical sensor based on this principle.
+This new approach is based on multi-task learning (MTL) neural network architectures. These are characterized by common hidden layers, whose output is then the input of multiple branches of task-specific hidden layers. MTL architectures were chosen because they can learn correlated tasks \cite{Argyriou2006, Thrun1996, Caruana1997, Zhang2017, Baxter2000, Thung2018}. In a previous purely theoretical study that used only synthetic data, the authors showed that MTL architectures can be flexible enough to address multi-dimensional regressions problems \cite{Michelucci2019_2}. This work demonstrates for the first time that this is indeed true by building and characterizing a real physical optical sensor based on this principle.
 
-To train the MTL neural network and to test the performance of the sensor on unseen data a very large amount of data is needed. Since the collection  cannot be performed by hand a fully automated data collection setup was developed, and used to both vary the sensor environment conditions (gas concentration and temperature) and to collect the sensor response. 
+To train the MTL neural network and to test the performance of the sensor on unseen data a very large amount of data is needed. Since the collection  cannot be performed by hand a fully automated data collection setup was developed and used to both vary the sensor environment conditions (gas concentration and temperature) and to collect the sensor response. 
 
 This work proposes a paradigm shift from the classical description of the response of a sensor through an approximate model to the use of MTL sensor learning thanks to neural networks. 
 These will learn the complex inter-parameter dependencies and sensor-specific response characteristics from a large amount of data automatically collected. This new method will enable to build sensors even if the response of the system to the physical quantities is too complex to be comfortably described by a mathematical model.
@@ -230,7 +231,7 @@ The task-specific loss functions for each branch $i$ are indicated with $L_i$ an
 L_i = \frac{1}{n} \sum_{j=1}^n \sum_{k=1}^{d_i} (y_{k,i}^{[j]}-\hat y_{k,i}^{[j]})^2, \ \ \ i=1,2,3
 \label{MSE}
 \end{equation}
-where $n$ is the number of observations in the input dataset; ${\pmb y}_i^{[j]} \in \mathbb{R}^{d_i}$ is the measured value of the desired quantity for the $j^{th}$ observation, with $j=1, ..., n$  and $d_i$ is the dimension of the neural network branch output. In this case $d_1=2, d_2=1$ and $d_3=1$. $ \hat {\pmb y}_i^{[j]} \in \mathbb{R}^{d_i}$ is the output of the network branch $i$, when evaluated on the $j^{th}$ observation. Since there are multiple branches, a global loss function $L$ is defined as a linear combination of the task-specific loss functions with weights $\alpha_i$ 
+where $n$ is the number of observations in the input dataset; ${\pmb y}_i^{[j]} \in \mathbb{R}^{d_i}$ is the measured value of the desired quantity for the $j^{th}$ observation, with $j=1, ..., n$  and $d_i$ is the dimension of the neural network branch output. In this case, $d_1=2, d_2=1$ and $d_3=1$. $ \hat {\pmb y}_i^{[j]} \in \mathbb{R}^{d_i}$ is the output of the network branch $i$, when evaluated on the $j^{th}$ observation. Since there are multiple branches, a global loss function $L$ is defined as a linear combination of the task-specific loss functions with weights $\alpha_i$ 
 \begin{equation}
 L = \sum_{i=1}^{n_T}\alpha_i L_i .
 \label{globalcf}
@@ -247,10 +248,10 @@ The global loss function weights used for this work were $\alpha_1 = 0.3$, $\alp
 \subsubsection{Optimiser Algorithm}
 \label{training}
 
-The loss function was minimized using the optimizer Adaptive Moment Estimation (Adam) \cite{Kingma2014, Michelucci2017}. The implementation was performed using the TensorFlow\texttrademark $\ $library. The training was performed with a starting learning rate of $10^{-3}$. Two types of training were investigated to compare the training efficiency and performance of the network. {\sl No-batch training}: with this method all the training data  are used to perform an update of the weights and to evaluate the loss function. The loss function used is given by Eq. (\ref{global_MSE}). {\sl Mini-batch training}: with this method the weights update is performed after the network has seen 32 observations. In this case Eq. (\ref{global_MSE}) is used with $n=32$. For each update of the weights, 32 random observations are chosen from the training dataset without repetitions until all the training data are fed to the network. 
+The loss function was minimized using the optimizer Adaptive Moment Estimation (Adam) \cite{Kingma2014, Michelucci2017}. The implementation was performed using the TensorFlow\texttrademark $\ $library. The training was performed with a starting learning rate of $10^{-3}$. Two types of training were investigated to compare the training efficiency and performance of the network. {\sl No-batch training}: with this method all the training data  are used to perform an update of the weights and to evaluate the loss function. The loss function used is given by Eq. (\ref{global_MSE}). {\sl Mini-batch training}: with this method the weights update is performed after the network has seen 32 observations. In this case, Eq. (\ref{global_MSE}) is used with $n=32$. For each update of the weights, 32 random observations are chosen from the training dataset without repetitions until all the training data are fed to the network. 
 The size of the mini-batch was chosen as a compromise between a good performance (small value of the loss function ) and the duration of training.
 
-No-batch training has the advantage of stability and requires less time for each epoch since it performs one update of the weights using the entire training dataset. Mini-batch training is normally more effective to reach small values of the loss function in less epochs, but it requires more time for each epoch \cite{Michelucci2017}. In our experiments for $20 \cdot 10^3$ epochs no-batch training took roughly five minutes on a modern MacBook Pro, while mini-batch training with $b=32$ took approximately 1 hour, thus resulting ca. 12 times slower. 
+No-batch training has the advantage of stability and requires less time for each epoch since it performs one update of the weights using the entire training dataset. Mini-batch training is normally more effective in reaching small values of the loss function in less epochs, but it requires more time for each epoch \cite{Michelucci2017}. In our experiments for $20 \cdot 10^3$ epochs no-batch training took roughly five minutes on a modern MacBook Pro, while mini-batch training with $b=32$ took approximately 1 hour, thus resulting ca. 12 times slower. 
 
 
 \subsection{Performance Evaluation}
@@ -335,7 +336,7 @@ For completeness, the effect of the oxygen concentration on the frequency respon
 \label{fig:expdata3}
 \end{figure}
 
-The measurements of Figs. \ref{fig:expdata1} to \ref{fig:expdata3} show how similar the curves of the phase shift may look for different values of oxygen, temperature and modulation frequency. This helps to understand why it is not possible from the measurement of the phase shift, or even of the phase shift for varying modulation frequencies, to simultaneously determine both the oxygen concentration and the temperature using Eq. (\ref{theta_full}). The temperature must be known in advance and used to compute the oxygen concentration. This is no longer the case with the neural network approach, as it will be shown in the next section. 
+The measurements of Figs. \ref{fig:expdata1} to \ref{fig:expdata3} show how similar the curves of the phase shift are for different values of oxygen, temperature and modulation frequency. This helps to understand why it is not possible from the measurement of the phase shift, or even of the phase shift for varying modulation frequencies, to simultaneously determine both the oxygen concentration and the temperature using Eq. (\ref{theta_full}). The temperature must be known in advance and used to compute the oxygen concentration. This is no longer the case with the neural network approach, as it will be shown in the next section. 
 
 
 \subsection{Sensor Performance}
@@ -344,7 +345,7 @@ First, the effect of the training on the sensor performance was investigated. As
 
 \begin{figure*}[htbp]
 \centering
-\includegraphics[width=13.5 cm]{KDE_results_all.eps}
+\includegraphics[width=15 cm]{KDE_results_all.eps}
 \caption{Distributions of the neural network predictions for the oxygen concentration (panels (A), (C) and (E)) and for the temperature (panels (B), (D) and (F)). In all panels the normalized prediction distribution histogram (columns), the kernel density estimate ($KDE$) of the distribution of the $AE$s (solid line), and $MAE$ (dashed vertical line) are shown. Panels (A) and (B): Comparison between training using no batches (NB) and using mini-batches (MB) with a batch size of 32 for 20'000 epochs; the input of the network is ${\pmb \theta}_s$. Panels (C) and (D): Comparison between training using mini-batches (MB) with a batch size of 32 for 100'000 and 20'000 epochs; the input of the network is ${\pmb \theta}_s$. Panels (E) and (F): 
 training using mini-batches (MB) with a batch size of 32 for 20'000 epochs; the input of the network is ${\pmb \theta}_n$.}
 \label{fig:KDE_results_all}
@@ -352,7 +353,7 @@ training using mini-batches (MB) with a batch size of 32 for 20'000 epochs; the 
 
 \begin{figure*}[t!]
 \centering
-\includegraphics[width=13.5 cm]{ELA_comparison_O2_T.eps}
+\includegraphics[width=14 cm]{ELA_comparison_O2_T.eps}
 \caption{Comparison of the $ELA$ $\eta$: Panel (A) oxygen prediction, panel (B) temperature prediction. The black lines are the results obtained with a network that was trained with ${\pmb \theta}_n$ as input for 20'000 epochs with mini-batchs of size 32, while the red ones with ${\pmb \theta}_s$ as input for 100'000 epochs with mini-batchs of size 32. The dashed lines indicates the values of the $\overline{AE}$ for which the predictions would give $\eta=1$.}
 \label{fig:ELA_result_comparison}
 \end{figure*}
@@ -385,7 +386,7 @@ ${\pmb \theta}_n$ & 20'000 / 32 & 0.13 \% air & 0.24 $^\circ C$\\
 
 \subsection{Error Limited Accuracy}
 
-The metrics discussed in the previous sections are useful to compare the network performance and to measure how good the predictions are. However, they do not offer an understanding on what a sensor built with such a model could achieve. For practical applications, the relevant question is rather what is the maximum error which the sensor will have in predicting the oxygen concentration and temperature. To answer this question, the $ELA$ ($\eta$) defined in Section \ref{sektion:ela} can be used. As explained previously, $\eta$ is defined depending on the chosen metric $m$. In this section, the metric chosen is $m=AE_{[O_2]}$ for the oxygen concentration and $m=AE_{T}$ for the temperature. This new metrics will allow the determination of the maximum error of the sensor. 
+The metrics discussed in the previous sections are useful to compare the network performance and to measure how good the predictions are. However, they do not offer an understanding on what a sensor built with such a model could achieve. For practical applications, the relevant question is rather what is the maximum error which the sensor will have predicting the oxygen concentration and temperature. To answer this question, the $ELA$ ($\eta$) defined in Section \ref{sektion:ela} can be used. As explained previously, $\eta$ is defined depending on the chosen metric $m$. In this section, the metric chosen is $m=AE_{[O_2]}$ for the oxygen concentration and $m=AE_{T}$ for the temperature. This new metrics will allow the determination of the maximum error of the sensor. 
 
 Fig. \ref{fig:ELA_result_comparison} displays the $ELA$ $\eta(\widehat {AE})$ for oxygen concentration (A) and for the temperature (B). In each panel, the results obtained using the input ${\pmb \theta}_n$ and a training for 20'000 epochs are shown in black, and the results obtained using the input ${\pmb \theta}_s$ and a training for 100'000 epochs in red. In both cases, the training was performed with mini-batches of size 32.
 The dashed lines indicate the values of the $\overline{AE}_{[O_2]}$ and $\overline{AE}_{T}$ for which the error limited accuracy $\eta$ equals 1. In other words, all the predictions will have an error equal or smaller than $\overline{AE}$.
@@ -410,21 +411,14 @@ Fig. \ref{fig:ELA_result_comparison}(B) shows the results of the same analysis f
 
 \section{Conclusions}
 
-In this work, a new sensor learning approach to luminescence sensing is presented. The proposed method allows parallel inference, or the extraction of multiple physical quantities simultaneously, from a single dataset without any {\sl a priori} mathematical model, even in presence of cross interferences. Classical approaches to this type of problems in physics can be challenging or impossible to solve if the mathematical models describing the functional dependencies are too complex or even unknown.
+In this work, a new sensor learning approach to luminescence sensing is presented. The proposed method allows parallel inference, or the extraction of multiple physical quantities simultaneously, from a single dataset without any {\sl a priori} mathematical model, even in the presence of cross interferences. Classical approaches to this type of problems in physics can be challenging or impossible to solve if the mathematical models describing the functional dependencies are too complex or even unknown.
 
-The approach is demonstrated by a luminescence sensor, which uses a single luminophore and a single measuring channel, and can measure simultaneously both the oxygen concentration and the temperature of a medium. This is achieved using a multi-task learning neural network model, which was trained on a large dataset. The results in the prediction of the oxygen concentration and temperature show unprecedented accuracy for both parameters, demonstrating that this approach can make a new generation of dual- or even multiple-parameter sensors possible.
-To be able to estimate the expected error or accuracy of a sensor build with a given NNM, a new metric, the $ELA$ ($\eta(AE)$), is proposed. The $ELA$ enables to estimate how many predicted values lie within a certain absolute error from the expected measurement. This new metric allows giving a maximum measurement error of the NNM results, effectively transforming a regression problem in a classification one. 
+The approach is demonstrated by realizing a luminescence sensor, which uses a single luminophore and a single measuring channel, and can measure simultaneously both the oxygen concentration and the temperature of a medium. This is achieved using a multi-task learning neural network model, which was trained on a very large dataset. The results in the prediction of the oxygen concentration and temperature show unprecedented accuracy for both parameters, demonstrating that this approach can make a new generation of dual- or even multiple-parameter sensors possible.
+The expected error or accuracy of a sensor based on a given NNM approach is intrinsically difficult. For this reason, the new metric Error Limited Accuracy $ELA$ ($\eta(AE)$) is proposed. The $ELA$ enables to estimate how many predicted values lie within a certain absolute error from the expected measurement. This new metric allows therefore giving a maximum measurement error of the NNM results.
 
-The ability  in predicting both $[O_2]$ and $T$ at the same time, from the a single set of data obtained with a single indicator, has profound implication for the development of luminescence sensors. Sensors will become easier and cheaper to build since no separate temperature measurements are necessary anymore. Similarly, the effect of interferenes can be learned by the neural network and do not need to be corrected for in the data processing.
+The ability to predict both $[O_2]$ and $T$ at the same time, from a single set of data obtained with a single indicator, has profound implications for the development of luminescence sensors. Sensors will become easier and cheaper to build since no separate temperature measurements are necessary anymore. Generally, the effect of interferences can be learned by the neural network and do not need to be corrected for in the data processing. 
+
 This work opens the road to complete new optical sensing approaches for future generations of sensors. Those sensors will be able to extract multiple physical quantities from a common set of data at the same time to achieve consistent results that are both accurate and stable. The described approach is relevant for many practical applications in sensor science and demonstrates that this model-free approach has the potential of revolutionizing optical sensing.
-
-\hl{Additionally as mentioned in this paper, to gather the data and train the model 65 hours (of training data collection) plus 5 hours (for training the model) are required. The question arises if this amount of time is needed if one wants to train the same neural network with a new sensor. Fortunately first tests seem to indicate that this is not necessary. In machine learning it is possible to use what is called transfer learning REF to fine-tune an almost completely trained network on a new dataset with a much-reduced amount of data  (whose collection will require much less than 65 hours) that would be measured on the new sensor.
-The authors are working in this direction and will investigate the extent of new data needed in a future publication. The first tests are very positive and indicates that such a transfer is indeed possible and very efficient.
-} \cite{transfer}
-
-
-\hl{In this work a real physical optical sensor have been built, was characterized and used for the acquisition of data needed for the training. The results described here demonstrate a real-sensor performance which would not be possible with a standard approach. Additionally, in this work there is much more. The necessary data acquisition procedure to be used efficiently with neural networks is described and demonstrated. This is essential to a sensor based on machine learning.
-}
 
 
 %\section*{Funding Information}
