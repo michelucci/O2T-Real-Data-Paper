@@ -1,87 +1,73 @@
-\documentclass[preprint,12pt,a4]{elsarticle}
-%\documentclass[9pt,twocolumn,twoside,pdftex]{osa-article}
+%%
+%% Copyright 2007, 2008, 2009 Elsevier Ltd
+%%
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%%
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%%
 
-%% Select the journal you're submitting to
-%% oe, boe, ome, osac, osajournal
-%\journal{osajournal}
-% Key:
-% Express journals must have the correct journal selected:
-% {oe} Optics Express
-% {boe} Biomedical Optics Express
-% {ome} Optical Material Express
-% {osac} OSAC Continuum
-% Other OSA journals may use:
-% {osajournal} Applied Optics, Advances in Optics and Photonics, Journal of the Optical Society of America A/B, Optics Letters, Optica, Photonics Research
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%% SP 2008/03/01
+%%
+%%
+%%
+%% $Id: elsarticle-template-num.tex 4 2009-10-24 08:22:58Z rishi $
+%%
+%%
+%\documentclass[preprint,12pt]{elsarticle}
 
-% Uncomment if submitting to Photonics Research.
-% ONLY APPLICABLE FOR \journal{osajournal}
-% \setprjcopyright
+%% Use the option review to obtain double line spacing
 
-% Set the article type
-%\articletype{Research Article}
-%% The graphicx package provides the includegraphics command.
+%\documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%\documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+ \documentclass[final,5p,times,twocolumn]{elsarticle}
+
 \usepackage{graphicx}
-%% The amssymb package provides various useful mathematical symbols
 \usepackage{amssymb}
-%% The amsthm package provides extended theorem environments
 \usepackage{amsthm}
-
-
+\usepackage{epstopdf}
 \usepackage{lineno}
 \usepackage{mathtools}
 \usepackage{color, soul}
-
 \usepackage{amsthm}
 \newtheorem{definition}{Definition}
 \newtheorem*{definition*}{Definition}
 
-
-
-%\setboolean{shortarticle}{false}
-%\setboolean{minireview}{false}
-
-
-
-
-
-
-%\affil[1]{Institute of Applied Mathematics and Physics, Zurich University of Applied Sciences,
-%Technikumstrasse 9, 8401 Winterthur, Switzerland}
-%\affil[2]{TOELT LLC; Birchlenstr. 25, 8600 Dübendorf, Switzerland}
-
-%\affil[*]{Corresponding author: francesca.venturini@zhaw.ch}
-
-
-% To be edited by editor
-% \dates{Compiled \today}
-
-%\ociscodes{(300.6280) Spectroscopy, fluorescence and luminescence; (260.3800) Luminescence; (200.4260) Neural networks; (120.0280) Remote sensing and sensors.}
-
-%https://www.osapublishing.org/submit/ocis/#230.0230
-% To be edited by editor	
-% \doi{\url{http://dx.doi.org/10.1364/optica.XX.XXXXXX}}
-
-
-
-%\setboolean{displaycopyright}{true}
 
 \journal{Sensors and Actuators Reports}
 
 \begin{document}
 
 \begin{frontmatter}
+
 \title{Dual oxygen and temperature luminescence learning sensor with parallel inference}
 
-\author[toelt, zhaw]{Francesca Venturini}
+\author[zhaw,toelt]{Francesca Venturini\corref{cor1}}
 \author[toelt]{Umberto Michelucci}
 \author[zhaw]{Michael Baumgartner}
 
-%\author[1,2,*]{Francesca Venturini}
-%\author[2]{Umberto Michelucci}
-%\author[1]{Michael Baumgartner}
+\cortext[cor1]{Corresponding author. E-mail: francesca.venturini@zhaw.ch}
 
-\address[toelt]{TOELT llc, Birchlenstr. 25, 8600 D\"ubendorf}
 \address[zhaw]{Institute of Applied Mathematics and Physics, Zurich University of Applied Sciences, Technikumstrasse 9, 8401 Winterthur, Switzerland}
+\address[toelt]{TOELT llc, Birchlenstr. 25, 8600 D\"ubendorf}
+
 
 
 %\begin{frontmatter}
@@ -92,7 +78,7 @@ In this work, we propose a new approach based on a learning sensor with parallel
 
 
 \begin{keyword}
-Spectroscopy \sep Fluorescence \sep Luminescence \sep Neural networks \sep Remote sensing \sep Sensors
+Dual sensor \sep Optical sensor \sep Luminescence \sep Neural networks \sep Remote sensing \sep Sensors
 %% keywords here, in the form: keyword \sep keyword
 
 %% MSC codes here, in the form: \MSC code \sep code
@@ -103,15 +89,14 @@ Spectroscopy \sep Fluorescence \sep Luminescence \sep Neural networks \sep Remot
 \end{frontmatter}
 
 
-
-
 \section{Introduction}
+\label{Introduction}
 
 The simultaneous determination of multiple physical quantities can be very advantageous in many sensor applications, for example, when an in-situ or a remote acquisition is required. 
 If the physical effect on which the measurement method is based presents cross-interference of more than one quantity, their simultaneous determination becomes a necessity.
 Optical luminescence sensing is particularly attractive for multiple sensing. Using the same measuring principle, several optical elements, like optical fibers and detectors, can be shared in the setup for the detection of more than one parameter, thus allowing a compact and simple sensor design.
 
-The typical approaches to multiple sensing are based on either the use of a single luminescence indicator (luminophore), whose luminescence is sensitive to more than one physical quantity, or the use of several luminophores, one for each quantity, embedded in a substrate and placed in close physical proximity \cite{Stich2010,Borisov2011novel,Kameya2014,Wang2014,Santoro2016,Biring2019}. To be able to determine each quantity separately, it may be necessary to determine more than one optical property (e.g., absorption spectrum, emission spectrum, luminescence intensity, decay time). Another possibility is to measure one single optical property using special detection schemes that take advantage of the emission properties of the used luminophores \cite{Collier2013,Wang2014,Stehning2004,Jorge2008,Biring2019,Moore2006}. 
+The typical approaches to multiple sensing are based on either the use of a single luminescence indicator (luminophore), whose luminescence is sensitive to more than one physical quantity, or the use of several luminophores, one for each quantity, embedded in a substrate and placed in close physical proximity \cite{Stich2010,Borisov2011novel,Kameya2014,Wang2014,Santoro2016,Biring2019}. To be able to determine each quantity separately, it may be necessary to determine more than one optical property (e.g., absorption spectrum, emission spectrum, luminescence intensity, decay time). Another possibility is to measure one single optical property using special detection schemes that take advantage of the emission properties of the used luminophores \cite{Wang2014,Biring2019,Collier2013,Stehning2004,Jorge2008,Moore2006}. 
 
 The problem of dual sensing is particularly relevant in applications that involve oxygen sensing. The determination of oxygen partial pressure is of great interest in numerous fields, like medicine, biotechnology, environmental monitoring, or chemistry since oxygen plays an important role in many processes \cite{Papkovsky2013,Wang2014}. One of the most used optical measuring approaches uses the effect of the dynamical luminescence quenching by oxygen molecules. The measuring principle is based on the measurement of the luminescence of a specific luminophore, whose intensity and decay time are reduced due to collisions with molecular oxygen \cite{Lakowicz2006}.
 
@@ -226,8 +211,7 @@ The network was trained with two types of input to test its effectiveness. In th
 \frac{\theta(w_1)}{90} , \frac{\theta(w_2)}{90} , ..., \frac{\theta(w_{50})}{90} 
 \right)
 \end{equation}
-where $w_i$ are the 50 values of the angular modulation frequency of the excitation light (see Sec. \ref{Experimental}). \hl{This choice of dividing by 90 have been made since, during testing, have been observed that such a normalisation delivers the best results and avoid problems like divergence of the neural network model.}
-In the second case, each observation is
+where $w_i$ are the 50 values of the angular modulation frequency of the excitation light (see Sec. \ref{Experimental}). The phase shift were divided by 90 to normalize the inputs between 0 and 1. In the second case, each observation is
 \begin{equation}
 \label{input2}
 {\pmb \theta}_n = \left(
@@ -267,14 +251,16 @@ The global loss function weights used for this work were $\alpha_1 = 0.3$, $\alp
 \subsubsection{Optimiser Algorithm}
 \label{training}
 
-The loss function was minimized using the optimizer Adaptive Moment Estimation (Adam) \cite{Kingma2014, Michelucci2017}. The implementation was performed using the TensorFlow\texttrademark $\ $library. The training was performed with a starting learning rate of $10^{-3}$. Two types of training were investigated to compare the training efficiency and performance of the network. {\sl No-batch training}: with this method all the training data  are used to perform an update of the weights and to evaluate the loss function. The loss function used is given by Eq. (\ref{MSE}) where $n$ is the total number of observations available. {\sl Mini-batch training}: with this method the weights update is performed after the network has seen 32 observations. In this case Eq. (\ref{MSE}) is used with $n=32$. For each update of the weights, 32 random observations are chosen from the training dataset without repetitions until all the training data are fed to the network.  \hl{The authors have tested many mini-batch sizes. 32 was a good balance between performance (MSE values) results and time duration of training. Note that generally speaking a neural network model with small mini-batches will need less epochs to reach a certain performance value but will take quite a long time for each epoch. On the opposite side of the spectrum a neural network model with a big mini-batch will take many more epochs to reach the same performance and will take less time for each epoch.}
+The loss function was minimized using the optimizer Adaptive Moment Estimation (Adam) \cite{Kingma2014, Michelucci2017}. The implementation was performed using the TensorFlow\texttrademark $\ $library. The training was performed with a starting learning rate of $10^{-3}$. Two types of training were investigated to compare the training efficiency and performance of the network. {\sl No-batch training}: with this method all the training data  are used to perform an update of the weights and to evaluate the loss function. The loss function used is given by Eq. (\ref{MSE}) where $n$ is the total number of observations available. {\sl Mini-batch training}: with this method the weights update is performed after the network has seen 32 observations. In this case Eq. (\ref{MSE}) is used with $n=32$. For each update of the weights, 32 random observations are chosen from the training dataset without repetitions until all the training data are fed to the network. 
+The size of the mini-batch sizes was chosen as a compromise between a good performance (MSE values) and the duration of training.
+% \hl{The authors have tested many mini-batch sizes. 32 was a good balance between performance (MSE values) results and time duration of training. Note that generally speaking a neural network model with small mini-batches will need less epochs to reach a certain performance value but will take quite a long time for each epoch. On the opposite side of the spectrum a neural network model with a big mini-batch will take many more epochs to reach the same performance and will take less time for each epoch.}
 
 No-batch training has the advantage of stability and speed since it performs one weight update using the entire training dataset. Mini-batch training is normally much more effective, allowing to reach smaller values of the loss function in less epochs, but usually takes more time \cite{Michelucci2017}. In our experiments for $20 \cdot 10^3$ epochs no-batch training took roughly five minutes on a modern MacBook Pro, while mini-batch training with $b=32$ took approximately 1 hour, thus resulting ca. 12 times slower. 
 
 
 \subsection{Performance Evaluation}
 
-To evaluate the performance of the sensor, different metrics were analyzed. These are discussed in the next sections. \hl{The measured dataset $S$ have been divided in two parts: one containing 80\% of randomly chosen observations (indicated with $S_{train}$), and one containing the remaining 20\% of the data (indicated with $S_{test}$). The results shown in the following sections have been obtained by measuring the different metrics on the $S_{test}$ dataset.}
+To evaluate the performance of the sensor, different metrics were analyzed. These are discussed in the next sections. \hl{The dataset $S$ of measured data was divided in two parts: one containing 80\% of randomly chosen observations (indicated with $S_{train}$), and one containing the remaining 20\% of the data (indicated with $S_{test}$). All the results presented were obtained by measuring the different metrics on the $S_{test}$ dataset.}
 
 
 \subsubsection{Absolute Error on the Prediction}
