@@ -1,0 +1,149 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\bibstyle{Definitions/mdpi}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{Stich2010,Borisov2011novel,Kameya2014,Wang2014,Santoro2016,Biring2019}
+\citation{Wang2014,Biring2019,Collier2013,Stehning2004,Jorge2008,Moore2006}
+\citation{Papkovsky2013,Wang2014}
+\citation{Lakowicz2006}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}}
+\newlabel{Introduction}{{1}{1}{Introduction}{section.1}{}}
+\citation{Li2015}
+\citation{Xu1994,Draxler1995,Hartmann1996,Mills1998,Badocco2008,Dini2011}
+\citation{Argyriou2006,Thrun1996,Caruana1997,Zhang2017,Baxter2000,Thung2018}
+\citation{Michelucci2019_2}
+\citation{Lakowicz2006}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Methods}{2}{section.2}}
+\newlabel{sec:methods}{{2}{2}{Methods}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Luminescence Quenching for Oxygen Determination}{2}{subsection.2.1}}
+\newlabel{Theory}{{2.1}{2}{Luminescence Quenching for Oxygen Determination}{subsection.2.1}{}}
+\newlabel{SVe}{{1}{2}{Luminescence Quenching for Oxygen Determination}{equation.2.1}{}}
+\citation{Wang2014}
+\citation{Carraway1991,Demas1995}
+\citation{Demas1995,Hartmann1995,Mills1999}
+\citation{Wei2019}
+\citation{Demas1995,Quaranta2012}
+\citation{Michelucci2019}
+\citation{Ogurtsov2006,lo2008,Zaitsev2016}
+\newlabel{SVe2}{{2}{3}{Luminescence Quenching for Oxygen Determination}{equation.2.2}{}}
+\newlabel{theta_full}{{3}{3}{Luminescence Quenching for Oxygen Determination}{equation.2.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Experimental Procedure}{3}{subsection.2.2}}
+\newlabel{Experimental}{{2.2}{3}{Experimental Procedure}{subsection.2.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Schematic diagram of the experimental setup. Blue indicates the excitation optical path, red the luminescence one. SP: shortpass filter; LP: longpass filter PD: photodiode; TIA: trans-impedance amplifier.\relax }}{4}{figure.1}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:setup}{{1}{4}{Schematic diagram of the experimental setup. Blue indicates the excitation optical path, red the luminescence one. SP: shortpass filter; LP: longpass filter PD: photodiode; TIA: trans-impedance amplifier.\relax }{figure.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Experimental Setup}{4}{subsubsection.2.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Automated Data Acquisition}{4}{subsubsection.2.2.2}}
+\newlabel{Data}{{2.2.2}{4}{Automated Data Acquisition}{subsubsection.2.2.2}{}}
+\citation{Michelucci2017}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Neural Network Approach}{5}{subsection.2.3}}
+\newlabel{NN}{{2.3}{5}{Neural Network Approach}{subsection.2.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Flow-chart of the automated data acquisition program.\relax }}{5}{figure.2}}
+\newlabel{fig:auto-data}{{2}{5}{Flow-chart of the automated data acquisition program.\relax }{figure.2}{}}
+\citation{Michelucci2019_2}
+\citation{Michelucci2019_2}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Neural Network Architecture}{6}{subsubsection.2.3.1}}
+\newlabel{input1}{{4}{6}{Neural Network Architecture}{equation.2.4}{}}
+\newlabel{input2}{{5}{6}{Neural Network Architecture}{equation.2.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Loss Function}{6}{subsubsection.2.3.2}}
+\newlabel{MSE}{{6}{6}{Loss Function}{equation.2.6}{}}
+\newlabel{globalcf}{{7}{6}{Loss Function}{equation.2.7}{}}
+\newlabel{global_MSE}{{8}{6}{Loss Function}{equation.2.8}{}}
+\citation{Kingma2014,Michelucci2017}
+\citation{Michelucci2017}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Architecture of the multi-task learning neural network used in this paper. The common hidden layers generate a "shared representation" as output, that is used as input to task specific branches that learn specific features to each quantity and therefore improve the prediction accuracy. $L_i$ are the task-specific loss functions; $[O_2]_{i,pred}$ and $T_{i,pred}$ are the oxygen concentration and temperature predictions of the corresponding branch $i$. Note that branch 2 and 3 have only one output.\relax }}{7}{figure.3}}
+\newlabel{fig:NN_MTL_O2_T}{{3}{7}{Architecture of the multi-task learning neural network used in this paper. The common hidden layers generate a "shared representation" as output, that is used as input to task specific branches that learn specific features to each quantity and therefore improve the prediction accuracy. $L_i$ are the task-specific loss functions; $[O_2]_{i,pred}$ and $T_{i,pred}$ are the oxygen concentration and temperature predictions of the corresponding branch $i$. Note that branch 2 and 3 have only one output.\relax }{figure.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3}Optimiser Algorithm}{7}{subsubsection.2.3.3}}
+\newlabel{training}{{2.3.3}{7}{Optimiser Algorithm}{subsubsection.2.3.3}{}}
+\citation{Hastie2009}
+\citation{Sain1996}
+\citation{Waskom2020}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Performance Evaluation}{8}{subsection.2.4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}Absolute Error on the Prediction}{8}{subsubsection.2.4.1}}
+\newlabel{AE}{{9}{8}{Absolute Error on the Prediction}{equation.2.9}{}}
+\newlabel{MAE}{{10}{8}{Absolute Error on the Prediction}{equation.2.10}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}Kernel Density Estimation}{8}{subsubsection.2.4.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.3}Error Limited Accuracy $\eta $}{8}{subsubsection.2.4.3}}
+\newlabel{sektion:ela}{{2.4.3}{8}{Error Limited Accuracy $\eta $}{subsubsection.2.4.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Results and Discussion}{9}{section.3}}
+\newlabel{Results}{{3}{9}{Results and Discussion}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Luminescence Experimental Results}{9}{subsection.3.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Measured phase shift as a function of the oxygen concentration for selected temperatures at a fixed modulation frequency of 6 kHz. The arrow marks increasing temperatures.\relax }}{9}{figure.4}}
+\newlabel{fig:expdata1}{{4}{9}{Measured phase shift as a function of the oxygen concentration for selected temperatures at a fixed modulation frequency of 6 kHz. The arrow marks increasing temperatures.\relax }{figure.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Measured phase shift as a function of the modulation frequency for selected temperatures at a fixed oxygen concentration of $[O_2]=20 \ \%$ air. The arrow marks increasing temperatures.\relax }}{10}{figure.5}}
+\newlabel{fig:expdata2}{{5}{10}{Measured phase shift as a function of the modulation frequency for selected temperatures at a fixed oxygen concentration of $[O_2]=20 \ \%$ air. The arrow marks increasing temperatures.\relax }{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Measured phase shift as a function of the modulation frequency for selected oxygen concentrations at a fixed temperature of $T=25 \ ^{\circ }$C. The arrow marks increasing oxygen concentrations.\relax }}{10}{figure.6}}
+\newlabel{fig:expdata3}{{6}{10}{Measured phase shift as a function of the modulation frequency for selected oxygen concentrations at a fixed temperature of $T=25 \ ^{\circ }$C. The arrow marks increasing oxygen concentrations.\relax }{figure.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Sensor Performance}{10}{subsection.3.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Distributions of the neural network predictions for the oxygen concentration (panels (A), (C) and (E)) and for the temperature (panels (B), (D) and (F)). In all panels the normalized prediction distribution histogram (columns), the kernel density estimate ($KDE$) of the distribution of the $AE$s (solid line), and $MAE$ (dashed vertical line) are shown. Panels (A) and (B): Comparison between training using no batches (NB) and using mini-batches (MB) with a batch size of 32 for 20'000 epochs; the input of the network is ${\pmb  \theta }_s$. Panels (C) and (D): Comparison between training using mini-batches (MB) with a batch size of 32 for 100'000 and 20'000 epochs; the input of the network is ${\pmb  \theta }_s$. Panels (E) and (F): training using mini-batches (MB) with a batch size of 32 for 20'000 epochs; the input of the network is ${\pmb  \theta }_n$.\relax }}{11}{figure.7}}
+\newlabel{fig:KDE_results_all}{{7}{11}{Distributions of the neural network predictions for the oxygen concentration (panels (A), (C) and (E)) and for the temperature (panels (B), (D) and (F)). In all panels the normalized prediction distribution histogram (columns), the kernel density estimate ($KDE$) of the distribution of the $AE$s (solid line), and $MAE$ (dashed vertical line) are shown. Panels (A) and (B): Comparison between training using no batches (NB) and using mini-batches (MB) with a batch size of 32 for 20'000 epochs; the input of the network is ${\pmb \theta }_s$. Panels (C) and (D): Comparison between training using mini-batches (MB) with a batch size of 32 for 100'000 and 20'000 epochs; the input of the network is ${\pmb \theta }_s$. Panels (E) and (F): training using mini-batches (MB) with a batch size of 32 for 20'000 epochs; the input of the network is ${\pmb \theta }_n$.\relax }{figure.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Comparison of the $ELA$ $\eta $: Panel (A) oxygen prediction, panel (B) temperature prediction. The black lines are the results obtained with a network that was trained with ${\pmb  \theta }_n$ as input for 20'000 epochs with mini-batchs of size 32, while the red ones with ${\pmb  \theta }_s$ as input for 100'000 epochs with mini-batchs of size 32. The dashed lines indicates the values of the $\overline  {AE}$ for which the predictions would give $\eta =1$.\relax }}{12}{figure.8}}
+\newlabel{fig:ELA_result_comparison}{{8}{12}{Comparison of the $ELA$ $\eta $: Panel (A) oxygen prediction, panel (B) temperature prediction. The black lines are the results obtained with a network that was trained with ${\pmb \theta }_n$ as input for 20'000 epochs with mini-batchs of size 32, while the red ones with ${\pmb \theta }_s$ as input for 100'000 epochs with mini-batchs of size 32. The dashed lines indicates the values of the $\overline {AE}$ for which the predictions would give $\eta =1$.\relax }{figure.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \bf  Summary of the performance for neural network models\relax }}{12}{table.1}}
+\newlabel{TableMAE_summary}{{1}{12}{\bf Summary of the performance for neural network models\relax }{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Error Limited Accuracy}{12}{subsection.3.3}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \bf  Summary of the values of $\overline  {AE}$ for the cases shown in Fig. \ref  {fig:ELA_result_comparison}(A) and \ref  {fig:ELA_result_comparison}(B).\relax }}{13}{table.2}}
+\newlabel{table:ela}{{2}{13}{\bf Summary of the values of $\overline {AE}$ for the cases shown in Fig. \ref {fig:ELA_result_comparison}(A) and \ref {fig:ELA_result_comparison}(B).\relax }{table.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusions}{13}{section.4}}
+\bibstyle{elsarticle-num-names}
+\bibdata{bibliography}
+\bibcite{Stich2010}{{1}{2010}{{Stich \em  {et~al.}}}{{Stich, Fischer, and Wolfbeis}}}
+\bibcite{Borisov2011novel}{{2}{2011}{{Borisov \em  {et~al.}}}{{Borisov, Seifner, and Klimant}}}
+\bibcite{Kameya2014}{{3}{2014}{{Kameya \em  {et~al.}}}{{Kameya, Matsuda, Egami, Yamaguchi, and Niimi}}}
+\bibcite{Wang2014}{{4}{2014}{{Wang and Wolfbeis}}{{}}}
+\bibcite{Santoro2016}{{5}{2016}{{Santoro \em  {et~al.}}}{{Santoro, Moro, Portugal, Crespo, Coelhoso, and Lima}}}
+\bibcite{Biring2019}{{6}{2019}{{Biring \em  {et~al.}}}{{Biring, Sadhu, and Deb}}}
+\bibcite{Collier2013}{{7}{2013}{{Collier and McShane}}{{}}}
+\bibcite{Stehning2004}{{8}{2004}{{Stehning and Holst}}{{}}}
+\bibcite{Jorge2008}{{9}{2008}{{Jorge \em  {et~al.}}}{{Jorge, Maule, Silva, Benrashid, Santos, and Farahi}}}
+\bibcite{Moore2006}{{10}{2006}{{Moore \em  {et~al.}}}{{Moore, Higgins, McGaughey, Lawless, and MacCraith}}}
+\bibcite{Papkovsky2013}{{11}{2013}{{Papkovsky and Dmitriev}}{{}}}
+\bibcite{Lakowicz2006}{{12}{2006}{{Lakowicz}}{{}}}
+\bibcite{Li2015}{{13}{2015}{{Li \em  {et~al.}}}{{Li, Wei, Chen, Li, and Zhang}}}
+\bibcite{Xu1994}{{14}{1994}{{Xu \em  {et~al.}}}{{Xu, McDonough, Langsdorf, Demas, and DeGraff}}}
+\bibcite{Draxler1995}{{15}{1995}{{Draxler \em  {et~al.}}}{{Draxler, Lippitsch, Klimant, Kraus, and Wolfbeis}}}
+\@writefile{toc}{\contentsline {section}{References}{14}{section.4}}
+\bibcite{Hartmann1996}{{16}{1996}{{Hartmann and Trettnak}}{{}}}
+\bibcite{Mills1998}{{17}{1998}{{Mills}}{{}}}
+\bibcite{Badocco2008}{{18}{2008}{{Badocco \em  {et~al.}}}{{Badocco, Mondin, Pastore, Voltolina, and Gross}}}
+\bibcite{Dini2011}{{19}{2011}{{Dini \em  {et~al.}}}{{Dini, Martinelli, Paolesse, Filippini, D\IeC {\textquoteright }Amico, Lundstr{\"o}m, and Di~Natale}}}
+\bibcite{Argyriou2006}{{20}{2006}{{Argyriou~A.}}{{}}}
+\bibcite{Thrun1996}{{21}{1996}{{Thrun}}{{}}}
+\bibcite{Caruana1997}{{22}{1997}{{Caruana}}{{}}}
+\bibcite{Zhang2017}{{23}{2017}{{Zhang and Yang}}{{}}}
+\bibcite{Baxter2000}{{24}{2000}{{Baxter}}{{}}}
+\bibcite{Thung2018}{{25}{2018}{{Thung and Wee}}{{}}}
+\bibcite{Michelucci2019_2}{{26}{2019}{{Michelucci and Venturini}}{{}}}
+\bibcite{Carraway1991}{{27}{1991}{{Carraway \em  {et~al.}}}{{Carraway, Demas, DeGraff, and Bacon}}}
+\bibcite{Demas1995}{{28}{1995}{{Demas \em  {et~al.}}}{{Demas, DeGraff, and Xu}}}
+\bibcite{Hartmann1995}{{29}{1995}{{Hartmann \em  {et~al.}}}{{Hartmann, Leiner, and Lippitsch}}}
+\bibcite{Mills1999}{{30}{1999}{{Mills}}{{}}}
+\bibcite{Wei2019}{{31}{2019}{{Wei \em  {et~al.}}}{{Wei, Jiao, An, Li, Li, and Wei}}}
+\bibcite{Quaranta2012}{{32}{2012}{{Quaranta \em  {et~al.}}}{{Quaranta, Borisov, and Klimant}}}
+\bibcite{Michelucci2019}{{33}{2019}{{Michelucci \em  {et~al.}}}{{Michelucci, Baumgartner, and Venturini}}}
+\bibcite{Ogurtsov2006}{{34}{2006}{{Ogurtsov and Papkovsky}}{{}}}
+\bibcite{lo2008}{{35}{2008}{{Lo \em  {et~al.}}}{{Lo, Chu, Yur, and Chang}}}
+\bibcite{Zaitsev2016}{{36}{2016}{{Zaitsev \em  {et~al.}}}{{Zaitsev, Melnikov, Alferov, Kopytin, and German}}}
+\bibcite{Michelucci2017}{{37}{2018}{{Michelucci}}{{}}}
+\bibcite{Kingma2014}{{38}{2015}{{Kingma}}{{}}}
+\bibcite{Hastie2009}{{39}{2009}{{Hastie \em  {et~al.}}}{{Hastie, Tibshirani, and Friedman}}}
+\bibcite{Sain1996}{{40}{1996}{{Sain and Scott}}{{}}}
+\bibcite{Waskom2020}{{41}{2020}{{Waskom \em  {et~al.}}}{{Waskom, Botvinnik, Ostblom, Lukauskas, Hobson, MaozGelbart, Gemperline, Augspurger, Halchenko, Cole, Warmenhoven, de~Ruiter, Pye, Hoyer, Vanderplas, Villalba, Kunter, Quintero, Bachant, Martin, Meyer, Swain, Miles, Brunner, O'Kane, Yarkoni, Williams, and Evans}}}
+\newlabel{LastPage}{{}{16}{}{page.16}{}}
+\xdef\lastpage@lastpage{16}
+\xdef\lastpage@lastpageHy{16}
