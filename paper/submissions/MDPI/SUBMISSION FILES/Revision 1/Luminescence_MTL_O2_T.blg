@@ -1,10 +1,8 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: Luminescence_MTL_O2_T.aux
 The style file: Definitions/mdpi.bst
-Illegal, another \bibstyle command---line 99 of file Luminescence_MTL_O2_T.aux
+Illegal, another \bibstyle command---line 82 of file Luminescence_MTL_O2_T.aux
  : \bibstyle
  :          {elsarticle-num-names}
 I'm skipping whatever remains of this command
 Database file #1: bibliography.bib
-Warning--string name "jan" is undefined
---line 433 of file bibliography.bib
 (There was 1 error message)

@@ -172,7 +172,7 @@ These will learn the complex inter-parameter dependencies and sensor-specific re
 \subsection{Luminescence Quenching for Oxygen Determination}
 \label{Theory}
 
-Luminescence-based oxygen sensors usually consist of a luminophore whose luminescence intensity and decay time decrease for increasing O$_2$ concentrations. This reduction is due to collisions of the excited luminophore with molecular oxygen, which thus provides a radiationless deactivation process. The dependence of the luminescence intensity and decay time of the luminophores used for oxygen sensing is best described by the Stern-Volmer equation \cite{Michelucci2019}. Using a frequency-domain approach \cite{Lakowicz2006}, the phase shift difference between the excitation and the emitted luminescence can be approximated by
+Luminescence-based oxygen sensors usually are based on a luminophore whose luminescence intensity and decay time decrease for increasing O$_2$ concentrations. This reduction is due to collisions of the excited luminophore with molecular oxygen, which thus provides a radiationless deactivation process. The dependence of the luminescence intensity and decay time of the luminophores used for oxygen sensing is best described by the Stern-Volmer equation \cite{Lakowicz2006}. Using a frequency-domain approach, the phase shift difference between the excitation and the emitted luminescence can be approximated using a two-site model \cite{Carraway1991,Demas1995} and written as \cite{Michelucci2019}
 \begin{equation}
 \begin{aligned}
 \frac{\tan \theta_0 (\omega, T)}{\tan \theta (\omega, T, [O_2])}=
@@ -181,73 +181,35 @@ Luminescence-based oxygen sensors usually consist of a luminophore whose lumines
 \label{theta_full}
 \end{aligned}
 \end{equation}
+where $\theta_0$ and $\theta$, are the phase shifts without and with oxygen, $f$ and $1-f$ are the fractions of the total emission for the two components, $K_{SV1}$ and $K_{SV2}$ are the corresponding Stern–Volmer constants, and $\omega$ is the angular modulation frequency. It is to be noted that the quantities $\theta_0$, $f$, $K_{SV1}$, and $K_{SV2}$ are all non-linearly temperature dependent \cite{Ogurtsov2006,lo2008,Zaitsev2016}. Additionally, if the modulation frequency is varied, they may show a frequency dependence, an artifact due to the approximate nature of the model. Finally, Eq. (\ref{theta_full}) needs to be inverted to determine $[O_2]$ from the measured quantity $\theta$.
 
-
-
-%
-%
-%In the case of homogeneous media characterized by an intensity decay which is a single exponential, the decrease in intensity and lifetime are both described by the Stern-Volmer (SV) equation \cite{Lakowicz2006}
-%\begin{equation}
-%\frac{I_0}{I}=\frac{\tau_0}{\tau}=1+K_{SV} \cdot \left[O_2\right]
-%\label{SVe}
-%\end{equation}
-%where $I_0$ and $I$, respectively, are the luminescence intensities in the absence and presence of oxygen, $\tau_0$ and $\tau$ the decay times in the absence and presence of oxygen, $K_{SV}$ the Stern–Volmer constant and $\left[O_2\right]$ indicates the oxygen concentration.
-%
-%For practical applications, the luminophore needs to be embedded in a supporting substrate, frequently a polymer. As a result, the SV curve deviates from the linear behavior of Eq. (\ref{SVe}). This deviation can be due, for example, to heterogeneities of the micro-environment of the luminophore, or to the presence of static quenching \cite{Wang2014}. A proposed scenario describes this non-linear behavior as due to the presence in the substrate of two or more environments, in which the luminescence is quenched at different rates \cite{Carraway1991,Demas1995}. This multi-site model describes the SV curve as the sum of $n$ contributions as
-%\begin{equation}
-%\frac{I_0}{I}=\bigg[ \sum_{i=1}^n
-%\frac{f_i}{1+K_{SVi} \cdot \left[O_2\right]}
-%\bigg]^{-1}
-%\label{SVe2}
-%\end{equation}
-%where $f_i$'s are the fractions of the total emission for each component under unquenched conditions, and $K_{SVi}$'s are the associated effective Stern–Volmer constants. Depending on the luminophore and on the substrate material, the models proposed in the literature may be even more complex \cite{Demas1995,Hartmann1995,Mills1999}.
-%
-%In most industrial and commercial sensors, the decay time $\tau$ is frequently preferred to intensity measurement because of its higher reliability and robustness \cite{Wei2019}. The determination of the decay time is done most easily in the frequency domain by modulating the intensity of the excitation.  As a result, the emitted luminescence is also modulated but shows a phase shift $\theta$ due to the finite lifetime of the excited state. This method has the additional advantage of allowing very simple and low-cost implementation.
-%
-%Although the multi-site model was introduced for luminescence intensities, it is frequently also used to describe the oxygen dependence of the decay times \cite{Demas1995,Quaranta2012}. Therefore, in the simplest case of a two-sites scenario, the model can be rewritten in terms of phase shift as \cite{Michelucci2019}
-%\begin{equation}
-%\begin{aligned}
-%\frac{\tan \theta_0 (\omega, T)}{\tan \theta (\omega, T, [O_2])}=
-% & \bigg( \frac{f (\omega , T) }{1+K_{SV1} (\omega , T) \cdot \left[O_2\right]}+ \\
-%&\frac{1-f (\omega , T) }{1+K_{SV2} (\omega , T) \cdot \left[O_2\right]} \bigg)^{-1} \\
-%\label{theta_full}
-%\end{aligned}
-%\end{equation}
-where $\theta_0$ and $\theta$, respectively, are the phase shifts in the absence and presence of oxygen, $f$ and $1-f$ are the fractions of the total emission for each component under unquenched conditions, $K_{SV1}$ and $K_{SV2}$ are the associated Stern–Volmer constants for each component, and $\omega$ is the angular modulation frequency. It is to be noted that the quantities $\theta_0$, $f$, $K_{SV1}$, and $K_{SV2}$ are all non-linearly temperature dependent \cite{Ogurtsov2006,lo2008,Zaitsev2016}. Additionally, if the modulation frequency is varied, they may show a frequency dependence, an artifact due to the approximate nature of the model. Finally, Eq. (\ref{theta_full}) needs to be inverted to determine $[O_2]$ from the measured quantity $\theta$.
-
-The proposed approach not only solves the difficulties of finding an approximate mathematical model for a complex system, but also allows the determination of multiple quantities simultaneously. Even if it is an approximate description, however, the structure of Eq. (\ref{theta_full}), remains relevant to understand the structure of the data and optimize the architecture of the neural network.
-
+From Eq. (\ref{theta_full}) it is evident, that the phase shift cannot be easily used to determine the oxygen concentration unless $\omega$ and $T$, the parameters $f$, $K_{SV1}$ and $K_{SV2}$ (including their dependencies from $\omega$ and $T$) are known.
+The proposed sensors not only solves the above mentioned difficulties in finding an approximate mathematical model for a complex system, but also allows the determination of multiple quantities simultaneously.
 
 \subsection{Experimental Procedure}
 \label{Experimental}
 
-The optical setup used in this work for the luminescence measurements is described in \cite{Venturini_2020}. To be able to acquire a large number of data, the program for both the instrument control and the data acquisition was written using the software LabVIEW by National Instruments. The acquisition procedure is described in detail below.
+The luminophore used for oxygen detection is Pt-TFPP and is described, togethter with the optical setup for the luminescence measurements in \cite{Venturini_2020}. 
+The large amount of data needed for the training and the test of the neural network was acquired using an automated acquisition program written using the software LabVIEW by National Instruments. The flow chart of the automated data acquisition program is shown in Fig. \ref{fig:auto-data}.
 
-
-\begin{figure}[b!]
+\begin{figure}[t!]
 \centering
 \includegraphics[keepaspectratio, width=5.8 cm]{flow-chart.png}
 \caption{Flow-chart of the automated data acquisition program.}
 \label{fig:auto-data}
 \end{figure}
 
-The large amount of data needed for the training and the test of the neural network was acquired using an automated acquisition program which followed the flow-chart shown in Fig. \ref{fig:auto-data}. First, the program fixed the temperature and concentration. Then, the phase shift was measured for 50 modulation frequencies between 200 Hz and 15 kHz. This measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration and the entire frequency-loop was repeated.
+First, the program fixed the temperature and concentration. Then, the phase shift was measured for 50 modulation frequencies between 200 Hz and 15 kHz. This measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration and the entire frequency-loop was repeated.
 The oxygen concentration was varied between 0 $\%$ air and 100 $\%$ air in 5 $\%$ air steps.
 Finally, the temperature was changed, and then the oxygen and frequency loops where repeated. The temperature was varied between 5 $^\circ$C and 45~$^\circ$C in 5 $^\circ$C steps.
 The total number of measurements was thus 50 (frequencies) x 20 (loops) x 21 (oxygen concentrations) x 9 (temperatures) = 189'000, which required a total acquisition time of approximately 65 hours. This number of measurements was chosen as a compromise between maximizing the number of data and avoiding photodegradation, which naturally occurs when the sample is subjected to illumination. At the end of the session, a minimal change in the phase shift was observed.
 
 
-
-\subsection{Neural Network Approach}
+\subsection{Neural Network Model}
 \label{NN}
 
 The software component of this new sensor type is based on a neural network model (NNM). A NNM is made of three components \cite{Michelucci2017}: a neural network architecture (that includes how neurons are connected, the activation functions and all the hyperparameters), a loss function (here indicated with $L$) and an optimizer algorithm. 
-%\subsubsection{Neural Network Architecture}
 The neural network architecture, the loss function and the optimizer used in this work are described in detail in \cite{Michelucci2019_2} and will not be described again here.
-%
-%depicted schematically in Fig. \ref{fig:NN_MTL_O2_T}. It consists of three {\sl common hidden layers} with 50 neurons each, which generates as output a "shared representation". The name shared representation comes from the fact that the output of common hidden layers is used to predict both $[O_2]$ and $T$. These layers are followed by three branches, one without additional layers to predict $[O_2]$ and $T$ at the same time, and two with each two additional {\sl task-specific hidden layers} to predict respectively $[O_2]$ and $T$. The shared representation is the input of two "task-specific hidden layers", that learn how to predict $[O_2]$ and $T$ better. This architecture uses the common hidden layers to find common features beneficial to each of the two tasks. During the training phase, learning to predict $[O_2]$ will influence the common hidden layers and, therefore, the prediction of $T$, and vice-versa. The further task-specific hidden layers learn features specific to each output and therefore improve the prediction accuracy. The number of neurons of each task-specific hidden layer used in this work is five. The activation function is the sigmoid function for all the neurons.  A study of which network architecture works best with this kind of data can be found in \cite{Michelucci2019_2}.
-
-\subsubsection{Training data normalization}
 
 The network was trained with two types of input to test its effectiveness. In the first case, each observation consists of a vector of 50 values defined as
 \begin{equation}
@@ -264,38 +226,6 @@ where $w_i$ are the 50 values of the angular modulation frequency of the excitat
 \right)
 \end{equation}
 where $\theta_0(w_i)$ is the value of the measured phase shift without oxygen quenching at the angular modulation frequency $w_i$.
-
-%\begin{figure}[t!]
-%\centering
-%\includegraphics[width=8.7 cm]{NN_MTL.png}
-%\caption{Architecture of the multi-task learning neural network used in this paper. The common hidden layers generate a "shared representation" as output, that is used as input to task specific branches that learn specific features to each quantity and therefore improve the prediction accuracy. $L_i$ are the task-specific loss functions; $[O_2]_{i,pred}$ and $T_{i,pred}$ are the oxygen concentration and temperature predictions of  the corresponding branch $i$. Note that branch 2 and 3 have only one output.} 
-%\label{fig:NN_MTL_O2_T}
-%\end{figure}
-
-%
-%\subsubsection{Loss Function}
-%
-%The task-specific loss functions for each branch $i$ are indicated with $L_i$ and is the mean square error (MSE) defined as
-%\begin{equation}
-%L_i = \frac{1}{n} \sum_{j=1}^n \sum_{k=1}^{d_i} (y_{k,i}^{[j]}-\hat y_{k,i}^{[j]})^2, \ \ \ i=1,2,3
-%\label{MSE}
-%\end{equation}
-%where $n$ is the number of observations in the input dataset; ${\pmb y}_i^{[j]} \in \mathbb{R}^{d_i}$ is the measured value of the desired quantity for the $j^{th}$ observation, with $j=1, ..., n$  and $d_i$ is the dimension of the neural network branch output. In this case, $d_1=2, d_2=1$ and $d_3=1$. $ \hat {\pmb y}_i^{[j]} \in \mathbb{R}^{d_i}$ is the output of the network branch $i$, when evaluated on the $j^{th}$ observation. Since there are multiple branches, a global loss function $L$ is defined as a linear combination of the task-specific loss functions with weights $\alpha_i$ 
-%\begin{equation}
-%L = \sum_{i=1}^{n_T}\alpha_i L_i .
-%\label{globalcf}
-%\end{equation}
-%The parameters $\alpha_i$ have to be determined during the hyper-parameter tuning phase to optimize the network predictions.
-%In this paper, being the loss function the MSE (Eq. (\ref{MSE})), the global loss function is
-%\begin{equation}
-%L = \sum_{i=1}^{3}\alpha_i \frac{1}{n} \sum_{j=1}^n \sum_{k=1}^{d_i} (y_{i,k}^{[j]}-\hat y_{i,k}^{[j]})^2
-%\label{global_MSE}
-%\end{equation}
-%The global loss function weights used for this work were $\alpha_1 = 0.3$, $\alpha_2 = 5$ and $\alpha_3 = 1$. These parameters are the result of a hyper-parameter tuning for this architecture \cite{Michelucci2019_2}.
-% 
-%
-\subsubsection{Optimiser Algorithm and training strategy}
-\label{training}
 
 The loss function was minimized using the optimizer Adaptive Moment Estimation (Adam) \cite{Kingma2014, Michelucci2017}. The implementation was performed using the TensorFlow\texttrademark $\ $library. The training was performed with a starting learning rate of $10^{-3}$. Two types of training were investigated to compare the training efficiency and performance of the network. {\sl No-batch training}: with this method all the training data  are used to perform an update of the weights and to evaluate the loss function. {\sl Mini-batch training}: with this method the weights update is performed after the network has seen 32 observations (this number is called mini-batch size \cite{Michelucci2017}). For each update of the weights, 32 random observations are chosen from the training dataset without repetitions until all the training data are fed to the network. 
 The size of the mini-batch was chosen as a compromise between a good performance (small value of the loss function) and the duration of training.
@@ -481,7 +411,7 @@ This work opens the road to complete new optical sensing approaches for future g
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\authorcontributions{U. Michelucci analyzed the data, developed the neural network and wrote the paper. M. Baumgartner built the laboratory setup and performed the experiments, F. Venturini conceived the study, analyzed the data and wrote the paper.}
+\authorcontributions{F. Venturini conceived the work, performed the data analysis and wrote the paper; U. Michelucci performed the data analysis, developed and optimized the neural network and wrote the paper; M. Baumgartner optimized the laboratory setup, programmed the automated data acquisition and performed the experiments.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -524,7 +454,7 @@ AE & Absolute error
 %=====================================
 % Bibliography
 \reftitle{References}
-\bibliographystyle{elsarticle-num-names}
+
 \bibliography{bibliography}
 
 % The following MDPI journals use author-date citation: Arts, Econometrics, Economies, Genealogy, Humanities, IJFS, JRFM, Laws, Religions, Risks, Social Sciences. For those journals, please follow the formatting guidelines on http://www.mdpi.com/authors/references
