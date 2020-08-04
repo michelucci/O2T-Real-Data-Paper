@@ -172,26 +172,7 @@ These will learn the complex inter-parameter dependencies and sensor-specific re
 \subsection{Luminescence Quenching for Oxygen Determination}
 \label{Theory}
 
-Luminescence-based oxygen sensors usually consist of a luminophore whose luminescence intensity and decay time decrease for increasing O$_2$ concentrations. This reduction is due to collisions of the excited luminophore with molecular oxygen, which thus provides a radiationless deactivation process (collisional quenching). 
-In the case of homogeneous media characterized by an intensity decay which is a single exponential, the decrease in intensity and lifetime are both described by the Stern-Volmer (SV) equation \cite{Lakowicz2006}
-\begin{equation}
-\frac{I_0}{I}=\frac{\tau_0}{\tau}=1+K_{SV} \cdot \left[O_2\right]
-\label{SVe}
-\end{equation}
-where $I_0$ and $I$, respectively, are the luminescence intensities in the absence and presence of oxygen, $\tau_0$ and $\tau$ the decay times in the absence and presence of oxygen, $K_{SV}$ the Stern–Volmer constant and $\left[O_2\right]$ indicates the oxygen concentration.
-
-For practical applications, the luminophore needs to be embedded in a supporting substrate, frequently a polymer. As a result, the SV curve deviates from the linear behavior of Eq. (\ref{SVe}). This deviation can be due, for example, to heterogeneities of the micro-environment of the luminophore, or to the presence of static quenching \cite{Wang2014}. A proposed scenario describes this non-linear behavior as due to the presence in the substrate of two or more environments, in which the luminescence is quenched at different rates \cite{Carraway1991,Demas1995}. This multi-site model describes the SV curve as the sum of $n$ contributions as
-\begin{equation}
-\frac{I_0}{I}=\bigg[ \sum_{i=1}^n
-\frac{f_i}{1+K_{SVi} \cdot \left[O_2\right]}
-\bigg]^{-1}
-\label{SVe2}
-\end{equation}
-where $f_i$'s are the fractions of the total emission for each component under unquenched conditions, and $K_{SVi}$'s are the associated effective Stern–Volmer constants. Depending on the luminophore and on the substrate material, the models proposed in the literature may be even more complex \cite{Demas1995,Hartmann1995,Mills1999}.
-
-In most industrial and commercial sensors, the decay time $\tau$ is frequently preferred to intensity measurement because of its higher reliability and robustness \cite{Wei2019}. The determination of the decay time is done most easily in the frequency domain by modulating the intensity of the excitation.  As a result, the emitted luminescence is also modulated but shows a phase shift $\theta$ due to the finite lifetime of the excited state. This method has the additional advantage of allowing very simple and low-cost implementation.
-
-Although the multi-site model was introduced for luminescence intensities, it is frequently also used to describe the oxygen dependence of the decay times \cite{Demas1995,Quaranta2012}. Therefore, in the simplest case of a two-sites scenario, the model can be rewritten in terms of phase shift as \cite{Michelucci2019}
+Luminescence-based oxygen sensors usually consist of a luminophore whose luminescence intensity and decay time decrease for increasing O$_2$ concentrations. This reduction is due to collisions of the excited luminophore with molecular oxygen, which thus provides a radiationless deactivation process. The dependence of the luminescence intensity and decay time of the luminophores used for oxygen sensing is best described by the Stern-Volmer equation \cite{Michelucci2019}. Using a frequency-domain approach \cite{Lakowicz2006}, the phase shift difference between the excitation and the emitted luminescence can be approximated by
 \begin{equation}
 \begin{aligned}
 \frac{\tan \theta_0 (\omega, T)}{\tan \theta (\omega, T, [O_2])}=
@@ -200,6 +181,38 @@ Although the multi-site model was introduced for luminescence intensities, it is
 \label{theta_full}
 \end{aligned}
 \end{equation}
+
+
+
+%
+%
+%In the case of homogeneous media characterized by an intensity decay which is a single exponential, the decrease in intensity and lifetime are both described by the Stern-Volmer (SV) equation \cite{Lakowicz2006}
+%\begin{equation}
+%\frac{I_0}{I}=\frac{\tau_0}{\tau}=1+K_{SV} \cdot \left[O_2\right]
+%\label{SVe}
+%\end{equation}
+%where $I_0$ and $I$, respectively, are the luminescence intensities in the absence and presence of oxygen, $\tau_0$ and $\tau$ the decay times in the absence and presence of oxygen, $K_{SV}$ the Stern–Volmer constant and $\left[O_2\right]$ indicates the oxygen concentration.
+%
+%For practical applications, the luminophore needs to be embedded in a supporting substrate, frequently a polymer. As a result, the SV curve deviates from the linear behavior of Eq. (\ref{SVe}). This deviation can be due, for example, to heterogeneities of the micro-environment of the luminophore, or to the presence of static quenching \cite{Wang2014}. A proposed scenario describes this non-linear behavior as due to the presence in the substrate of two or more environments, in which the luminescence is quenched at different rates \cite{Carraway1991,Demas1995}. This multi-site model describes the SV curve as the sum of $n$ contributions as
+%\begin{equation}
+%\frac{I_0}{I}=\bigg[ \sum_{i=1}^n
+%\frac{f_i}{1+K_{SVi} \cdot \left[O_2\right]}
+%\bigg]^{-1}
+%\label{SVe2}
+%\end{equation}
+%where $f_i$'s are the fractions of the total emission for each component under unquenched conditions, and $K_{SVi}$'s are the associated effective Stern–Volmer constants. Depending on the luminophore and on the substrate material, the models proposed in the literature may be even more complex \cite{Demas1995,Hartmann1995,Mills1999}.
+%
+%In most industrial and commercial sensors, the decay time $\tau$ is frequently preferred to intensity measurement because of its higher reliability and robustness \cite{Wei2019}. The determination of the decay time is done most easily in the frequency domain by modulating the intensity of the excitation.  As a result, the emitted luminescence is also modulated but shows a phase shift $\theta$ due to the finite lifetime of the excited state. This method has the additional advantage of allowing very simple and low-cost implementation.
+%
+%Although the multi-site model was introduced for luminescence intensities, it is frequently also used to describe the oxygen dependence of the decay times \cite{Demas1995,Quaranta2012}. Therefore, in the simplest case of a two-sites scenario, the model can be rewritten in terms of phase shift as \cite{Michelucci2019}
+%\begin{equation}
+%\begin{aligned}
+%\frac{\tan \theta_0 (\omega, T)}{\tan \theta (\omega, T, [O_2])}=
+% & \bigg( \frac{f (\omega , T) }{1+K_{SV1} (\omega , T) \cdot \left[O_2\right]}+ \\
+%&\frac{1-f (\omega , T) }{1+K_{SV2} (\omega , T) \cdot \left[O_2\right]} \bigg)^{-1} \\
+%\label{theta_full}
+%\end{aligned}
+%\end{equation}
 where $\theta_0$ and $\theta$, respectively, are the phase shifts in the absence and presence of oxygen, $f$ and $1-f$ are the fractions of the total emission for each component under unquenched conditions, $K_{SV1}$ and $K_{SV2}$ are the associated Stern–Volmer constants for each component, and $\omega$ is the angular modulation frequency. It is to be noted that the quantities $\theta_0$, $f$, $K_{SV1}$, and $K_{SV2}$ are all non-linearly temperature dependent \cite{Ogurtsov2006,lo2008,Zaitsev2016}. Additionally, if the modulation frequency is varied, they may show a frequency dependence, an artifact due to the approximate nature of the model. Finally, Eq. (\ref{theta_full}) needs to be inverted to determine $[O_2]$ from the measured quantity $\theta$.
 
 The proposed approach not only solves the difficulties of finding an approximate mathematical model for a complex system, but also allows the determination of multiple quantities simultaneously. Even if it is an approximate description, however, the structure of Eq. (\ref{theta_full}), remains relevant to understand the structure of the data and optimize the architecture of the neural network.
