@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.4.9)  4 AUG 2020 15:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.4.9)  4 AUG 2020 15:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1241,7 +1241,7 @@ Package rerunfilecheck Info: File `Luminescence_MTL_O2_T.out' has not changed.
 Here is how much of TeX's memory you used:
  26185 strings out of 492649
  450716 string characters out of 6129623
- 560831 words of memory out of 5000000
+ 559831 words of memory out of 5000000
  29190 multiletter control sequences out of 15000+600000
  70254 words of font info for 316 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1259,7 +1259,7 @@ ist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2018/texmf-dist/fon
 ts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
 1/urw/palatino/uplr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/p
 alatino/uplri8a.pfb>
-Output written on Luminescence_MTL_O2_T.pdf (13 pages, 1252314 bytes).
+Output written on Luminescence_MTL_O2_T.pdf (13 pages, 1252310 bytes).
 PDF statistics:
  588 PDF objects out of 1000 (max. 8388607)
  320 compressed objects within 4 object streams
