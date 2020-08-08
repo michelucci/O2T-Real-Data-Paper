@@ -59,6 +59,7 @@
 \usepackage{lineno}
 \usepackage{mathtools}
 \usepackage{amsthm}
+\usepackage{soul, color}
 
 %\newtheorem{definition}{Definition}
 \newtheorem*{definition*}{Definition}
@@ -83,7 +84,7 @@
 %\newcommand{\orcidauthorB}{0000-0000-000-000X} % Add \orcidB{} behind the author's name
 
 % Authors, for the paper (add full first names)
-\Author{Francesca Venturini$^{1,2}$*, Umberto Michelucci$^{2,3}$, Michael Baumgartner$^{1}$}
+\Author{Francesca Venturini$^{1,3}$*, Umberto Michelucci$^{2,3}$, Michael Baumgartner$^{1}$}
 
 % Authors, for metadata in PDF
 \AuthorNames{Francesca Venturini, Umberto Michelucci, Michael Baumgarten}
@@ -92,8 +93,9 @@
 \address{%
 $^{1}$ \quad Institute of Applied Mathematics and Physics, Zurich University of Applied Sciences,
 Technikumstrasse 9, 8401 Winterthur, Switzerland \\
-$^{2}$ \quad TOELT LLC; Birchlenstr. 25, 8600 Dübendorf, Switzerland\\
-$^{3}$ \quad School of Computing, University of Portsmouth, Portsmouth PO1 3HE, UK}
+$^{2}$ \quad School of Computing, University of Portsmouth, Portsmouth PO1 3HE, UK\\
+$^{3}$ \quad TOELT LLC; Birchlenstr. 25, 8600 Dübendorf, Switzerland
+}
 
 % Contact information of the corresponding author
 \corres{Correspondence: francesca.venturini@zhaw.ch}
@@ -110,7 +112,9 @@ $^{3}$ \quad School of Computing, University of Portsmouth, Portsmouth PO1 3HE, 
 
 % Abstract (Do not insert blank lines, i.e. \\) 
 \abstract{A well-known approach to the optical measure of oxygen is based on the quenching of luminescence by molecular oxygen. The main challenge for this measuring method is the development of an accurate mathematical model. Typically, this is overcome by using an approximate empirical model where these effects are parametrized ad hoc. The complexity increases further if multiple parameters (like oxygen concentration and temperature) need to be extracted, particularly if they are cross interfering. The common solution is to measure the different parameters separately, for example, with different sensors, and correct for the cross interferences.
-In this work, we describe a new type of learning sensor with parallel inference. We show how it is possible for the sensor to extract multiple parameters from a single set of optical measurements without the need for any {\sl a priori} mathematical model, and with unprecedented accuracy. We also propose a new metrics to characterize the performance of neural network based sensors, the Error Limited Accuracy. The proposed approach is not limited to oxygen and temperature sensing. It can be applied to the sensing with multiple luminophores, whenever the underlying mathematical model is not known or too complex.}
+In this work, we describe a new type of learning sensor with parallel inference. 
+{\bf This sensor, for the first time, is capable of generating automatically and autonomously a very large dataset of measurements that can be used to train the neural network based signal processing algorithm with real data that is specific to the hardware itself. This allowed the elimination of the typically used empirical mathematical model and the use of a machine learning algorithm to do inference.}
+In this work we demonstrate how it is possible for such a  sensor to extract multiple parameters from a single set of optical measurements without the need for any {\sl a priori} mathematical model, and with unprecedented accuracy. We also propose a completely new metric to characterise the performance of neural network based sensors, the Error Limited Accuracy. The described sensor is not limited to oxygen and temperature sensing. It can be used for the sensing with multiple luminophores, whenever the underlying mathematical model is not known or too complex.}
 % Keywords
 
 \keyword{artificial intelligence; neural network; machine learning; oxygen sensor; luminescence; optical sensor; luminescence quenching; phase fluorimetry}
@@ -162,7 +166,7 @@ Approximated mathematical models, often empirical, are needed to approximate how
 %% END OF OLD PARAGRAPH
 
 
-Therefore, in any optical oxygen sensor, the temperature must be continuously monitored, most frequently with a separate sensor, and used to correct the calculated oxygen concentration \cite{Li2015}. This task can be difficult in practical implementation and may become a significant source of error.% in sensors based on luminescence sensing. 
+Therefore, in any optical oxygen sensor, the temperature must be continuously monitored, most frequently with a separate sensor, and used to correct the calculated oxygen concentration \cite{Li2015}. This task can be difficult in practical implementation and may become a significant source of error. % in sensors based on luminescence sensing. 
 Another disadvantage of this approach is that the parametrization of the sensor response with temperature is system-specific since it depends  on how the sensing element was fabricated and on the sensor itself \cite{Xu1994,Draxler1995,Hartmann1996,Mills1998,Badocco2008,Dini2011}.
 
 %% OLD PARAGRAPH
@@ -174,18 +178,19 @@ Instead of describing the response of the sensor as a function of the relevant p
 
 %This new approach is based on multi-task learning (MTL) neural network architectures. These are characterized by common hidden layers, whose output is then the input of multiple branches of task-specific hidden layers. 
 
-MTL architectures were chosen for this new sensor because they can learn correlated tasks \cite{Argyriou2006, Thrun1996, Caruana1997, Zhang2017, Baxter2000, Thung2018}. In a previous purely theoretical study that used only synthetic data, the authors showed that MTL architectures can be flexible enough to address multi-dimensional regressions problems \cite{Michelucci2019_2} as required by this new type of sensors. This work demonstrates for the first time that this is indeed true by building and characterizing a real physical optical sensor based on this principle.
+Multi-task learning (MTL) architectures were chosen for this new sensor because they can learn correlated tasks \cite{Argyriou2006, Thrun1996, Caruana1997, Zhang2017, Baxter2000, Thung2018}. In a previous purely theoretical study that used only synthetic data, the authors showed that MTL architectures can be flexible enough to address multi-dimensional regressions problems \cite{Michelucci2019_2} as required by this new type of sensors. This work demonstrates for the first time that this is indeed true by building and characterizing a real physical optical sensor based on this principle.
 
 To train the MTL neural network and to test the performance of the sensor on unseen data a very large amount of data is needed. Since the collection  cannot be performed by hand a fully automated data collection setup was developed and used to both vary the sensor environment conditions (gas concentration and temperature) and to collect the sensor response. 
 
-This work proposes a paradigm shift from the classical description of the response of a sensor through an approximate model to the use of MTL sensor learning thanks to neural networks. 
+This work proposes a paradigm shift from the classical description of the response of a sensor through an approximate model, to the use of MTL based sensor learning thanks to neural networks. 
 These will learn the complex inter-parameter dependencies and sensor-specific response characteristics from a large amount of data automatically collected. This new method will enable to build sensors even if the response of the system to the physical quantities is too complex to be comfortably described by a mathematical model.
 
 
 \section{Methods}
 \label{sec:methods}
 
-\subsection{Luminescence Quenching for Oxygen Determination}
+\subsection{Measurement Principle}
+%Luminescence Quenching for Oxygen Determination}
 \label{Theory}
 
 Luminescence-based oxygen sensors usually are based on a luminophore whose luminescence intensity and decay time decrease for increasing O$_2$ concentrations. This reduction is due to collisions of the excited luminophore with molecular oxygen, which thus provides a radiationless deactivation process. The dependence of the luminescence intensity and decay time of the luminophores used for oxygen sensing is best described by the Stern-Volmer equation \cite{Lakowicz2006}. Using a frequency-domain approach, the phase shift difference between the excitation and the emitted luminescence can be approximated using a two-site model \cite{Carraway1991,Demas1995} and written as \cite{Michelucci2019}
@@ -202,7 +207,7 @@ where $\theta_0$ and $\theta$, are the phase shifts without and with oxygen, $f$
 From Eq. (\ref{theta_full}) it is evident, that the phase shift cannot be easily used to determine the oxygen concentration unless $\omega$ and $T$, the parameters $f$, $K_{SV1}$ and $K_{SV2}$ (including their dependencies from $\omega$ and $T$) are known.
 The proposed sensors not only solves the above mentioned difficulties in finding an approximate mathematical model for a complex system, but also allows the determination of multiple quantities simultaneously.
 
-\subsection{Experimental Procedure}
+\subsection{Experimental Setup and Dataset}
 \label{Experimental}
 
 The luminophore used for oxygen detection is Pt-TFPP and is described, togethter with the optical setup for the luminescence measurements in \cite{Venturini_2020}. 
@@ -221,7 +226,8 @@ Finally, the temperature was changed, and then the oxygen and frequency loops wh
 The total number of measurements was thus 50 (frequencies) x 20 (loops) x 21 (oxygen concentrations) x 9 (temperatures) = 189'000, which required a total acquisition time of approximately 65 hours. This number of measurements was chosen as a compromise between maximizing the number of data and avoiding photodegradation, which naturally occurs when the sample is subjected to illumination. At the end of the session, a minimal change in the phase shift was observed.
 
 
-\subsection{Neural Network Model}
+\subsection{Signal Processing Algorithm}
+%}Neural Network Model}
 \label{NN}
 
 The software component of this new sensor type is based on a neural network model (NNM). A NNM is made of three components \cite{Michelucci2017}: a neural network architecture (that includes how neurons are connected, the activation functions and all the hyperparameters), a loss function (here indicated with $L$) and an optimizer algorithm. 
@@ -249,10 +255,10 @@ The size of the mini-batch was chosen as a compromise between a good performance
 No-batch training has the advantage of stability and requires less time for each epoch since it performs one update of the weights using the entire training dataset. Mini-batch training is normally more effective in reaching small values of the loss function in less epochs, but it requires more time for each epoch \cite{Michelucci2017}. In our experiments for $20 \cdot 10^3$ epochs no-batch training took roughly five minutes on a modern MacBook Pro, while mini-batch training with  mini-batch size of $32$ took approximately 1 hour, thus resulting ca. 12 times slower. 
 
 
-\subsection{Performance Evaluation}
+\subsection{Sensor Performance Evaluation}
 
 %To evaluate the performance of the sensor, different metrics were analyzed. These are discussed in the next sections. 
-To evaluate the performance of the network, the dataset $S$ of measured data was divided in two parts: one containing 80\% of randomly chosen observations (indicated with $S_{train}$), and one containing the remaining 20\% of the data (indicated with $S_{test}$). All the results presented here were obtained by measuring the different metrics on the $S_{test}$ dataset.
+To evaluate the performance of the sensor, the dataset $S$ of measured data was divided in two parts: one containing 80\% of randomly chosen observations (indicated with $S_{train}$), and one containing the remaining 20\% of the data (indicated with $S_{test}$). All the results presented here were obtained by measuring the different metrics on the $S_{test}$ dataset.
 
 
 %\subsubsection{Absolute Error on the Prediction}
@@ -279,7 +285,7 @@ In the Result section we have also studied the prediction distribution of the $A
 %A fundamental quantity to study the performance of the network is the prediction distribution of the $AE$s. This metrics carries information on the probability of the network to predict the expected value. To better illustrate this distribution, the kernel density estimate ($KDE$) of the distributions of the $AE$s was also calculated for both the oxygen concentration and the temperature. $KDE$ is a non-parametric algorithm to estimate the probability density function of a random variable by inferring the population distribution based on a finite data sample \cite{Hastie2009}.  In this work a Gaussian Kernel and a Scott bandwidth adaptive estimation \cite{Sain1996} using the seaborn Python package \cite{Waskom2020} were used.
 
 
-\subsubsection{Error Limited Accuracy $\eta$}
+\subsubsection{Error Limited Accuracy}
 \label{sektion:ela}
 
 Generally, in a commercial sensor, the accuracy quantifies the performance of the sensor and helps to decide if the chosen device is appropriate for the application of interest. The above-defined metrics ($AE$, $MAE$ and $KDE$) are useful to compare the performance of different NNMs but do not help quantify which error the neural network senor will ultimately have in practice.
@@ -303,9 +309,9 @@ This metric allows interpreting the regression problem as a classification one. 
 \section{Results and Discussion}
 \label{Results}
 
-\subsection{Luminescence Experimental Results}
+\subsection{Pt-TFPP Luminescence}
 
-\begin{figure}[b!]
+\begin{figure}[htb]
 \centering
 \includegraphics[width=8.2 cm]{phase_O2_T.eps}
 \caption{Measured phase shift as a function of the oxygen concentration for selected temperatures at a fixed modulation frequency of 6 kHz. The arrow marks increasing temperatures.}
@@ -318,7 +324,7 @@ Fig. \ref{fig:expdata1} shows the measured phase shifts as a function of the oxy
 
 For a given oxygen concentration, the phase shift is strongly dependent on the modulation frequency, as it can be seen in Fig. \ref{fig:expdata2}, where the shape of the frequency response is determined by the distribution of decay times of the sample. From the figure it is visible that the reduction of the phase shift with increasing temperatures is not constant but depends on the modulation frequency.
 
-\begin{figure}[t!]
+\begin{figure}[b!]
 \centering
 \includegraphics[width=8.2 cm]{phase_f_T.eps}
 \caption{Measured phase shift as a function of the modulation frequency for selected temperatures at a fixed oxygen concentration of $[O_2]=20 \  \%$ air. The arrow marks increasing temperatures.}
@@ -343,7 +349,7 @@ First, the effect of the training on the sensor performance was investigated. As
 
 \begin{figure*}[htbp]
 \centering
-\includegraphics[width=15 cm]{KDE_results_all.eps}
+\includegraphics[width=15.5 cm]{KDE_results_all.eps}
 \caption{Distributions of the neural network predictions for the oxygen concentration (panels (A), (C) and (E)) and for the temperature (panels (B), (D) and (F)). In all panels the normalized prediction distribution histogram (columns), the kernel density estimate ($KDE$) of the distribution of the $AE$s (solid line), and $MAE$ (dashed vertical line) are shown. Panels (A) and (B): Comparison between training using no batches (NB) and using mini-batches (MB) with a batch size of 32 for 20'000 epochs; the input of the network is ${\pmb \theta}_s$. Panels (C) and (D): Comparison between training using mini-batches (MB) with a batch size of 32 for 100'000 and 20'000 epochs; the input of the network is ${\pmb \theta}_s$. Panels (E) and (F): 
 training using mini-batches (MB) with a batch size of 32 for 20'000 epochs; the input of the network is ${\pmb \theta}_n$.}
 \label{fig:KDE_results_all}
@@ -471,6 +477,7 @@ AE & Absolute error
 % Bibliography
 \reftitle{References}
 
+%\bibliographystyle{unsrt}
 \bibliography{bibliography}
 
 % The following MDPI journals use author-date citation: Arts, Econometrics, Economies, Genealogy, Humanities, IJFS, JRFM, Laws, Religions, Risks, Social Sciences. For those journals, please follow the formatting guidelines on http://www.mdpi.com/authors/references
