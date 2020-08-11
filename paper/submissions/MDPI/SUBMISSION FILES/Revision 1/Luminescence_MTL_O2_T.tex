@@ -111,10 +111,10 @@ $^{3}$ \quad TOELT LLC; Birchlenstr. 25, 8600 Dübendorf, Switzerland
 %\conference{} % An extended version of a conference paper
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-\abstract{A well-known approach to the optical measure of oxygen is based on the quenching of luminescence by molecular oxygen. The main challenge for this measuring method is the determination of an accurate mathematical model for the sensor response. The reason is the dependence of the sensor signal from multiple parameters (like oxygen concentration and temperature) which are cross interfering in a sensor-specific way.
+\abstract{A well-known approach to the optical measure of oxygen is based on the quenching of luminescence by molecular oxygen. The main challenge for this measuring method is the determination of an accurate mathematical model for the sensor response. The reason is the dependence of the sensor signal from multiple parameters (like oxygen concentration and temperature), which are cross interfering in a sensor-specific way.
 The common solution is to measure the different parameters separately, for example, with different sensors. Then, an approximate empirical model is developed where these effects are parametrized ad hoc.
-In this work, we describe a new type of learning sensor with parallel inference which overcomes all these difficulties. 
-With this sensor we show how to generate automatically and autonomously a very large dataset of measurements and how these are used for the training of the neural-network-based signal processing. This allows the elimination of any approximate empirical model and the use of a machine learning algorithm to do inference. Furthermore, in this work we demonstrate how the sensors learns from the cross-interference to extract multiple parameters from a single set of optical measurements without any {\sl a priori} mathematical model, and with unprecedented accuracy. Finally, we propose a completely new metric to characterize the performance of neural-network-based sensors, the Error Limited Accuracy. In general, the methods described here are not limited to oxygen and temperature sensing. They can be similarly applied for the sensing with multiple luminophores, whenever the underlying mathematical model is not known or too complex.}
+In this work, we describe a new type of learning sensor with parallel inference that overcomes all these difficulties. 
+With this sensor we show how to generate automatically and autonomously a very large dataset of measurements and how these are used for the training of the neural-network-based signal processing. This allows the elimination of any approximate empirical model and the use of a machine learning algorithm to do inference. Furthermore, in this work, we demonstrate how the sensor learns from the cross-interference to extract multiple parameters from a single set of optical measurements without any {\sl a priori} mathematical model, and with unprecedented accuracy. Finally, we propose a completely new metric to characterize the performance of neural-network-based sensors, the Error Limited Accuracy. In general, the methods described here are not limited to oxygen and temperature sensing. They can be similarly applied for the sensing with multiple luminophores, whenever the underlying mathematical model is not known or too complex.}
 % Keywords
 
 \keyword{artificial intelligence; neural network; machine learning; oxygen sensor; luminescence; optical sensor; luminescence quenching; phase fluorimetry}
@@ -156,12 +156,12 @@ Optical luminescence sensing is particularly attractive for multiple sensing. Us
 
 The typical approaches to multiple sensing are based on either the use of a single luminescence indicator (luminophore), whose luminescence is sensitive to more than one physical quantity, or the use of several luminophores, one for each quantity, embedded in a substrate and placed in close physical proximity \cite{Stich2010,Borisov2011novel,Kameya2014,Wang2014,Santoro2016,Biring2019}. To be able to determine each quantity separately, it may be necessary to determine more than one optical property (e.g., absorption spectrum, emission spectrum, luminescence intensity, decay time). Another possibility is to measure one single optical property using special detection schemes that take advantage of the emission properties of the used luminophores \cite{Wang2014,Biring2019,Collier2013,Stehning2004,Jorge2008,Moore2006}. 
 
-The problem of dual sensing is particularly relevant in applications that involve oxygen sensing. Since oxygen plays a major role for living organisms, the measurement of oxygen partial pressure is of great relevance in fields which range from medicine and  biotechnology, to environmental monitoring \cite{Papkovsky2013,Wang2014}. One of the most used optical measuring approaches is based on dynamical luminescence quenching. When colliding with molecular oxygen, the energy of the excited luminophore is reduced due to radiationless deactivation. As a result, both the intensity and decay time of the luminescence are reduced (quenched) \cite{Lakowicz2006}. The the dependence of the measured sensing quantity (e.g., luminescence intensity or decay time) on the relevant influencing factors needs to be described through mathematical models, often empirical, with a sufficiently complex parametrization. Among the cross-interfering quantities, temperature is the most relevant since both the luminescence and its quenching are strongly temperature dependent phenomena. Therefore, in any optical oxygen sensor, the temperature must be continuously monitored, most frequently with a separate sensor, and used to correct the calculated oxygen concentration \cite{Li2015}. This task can be difficult in practical implementation and may become a significant source of error. Another disadvantage of this approach is that the parametrization of the sensor response is system-specific since it depends on how the sensing element was fabricated and on the sensor itself \cite{Xu1994,Draxler1995,Hartmann1996,Mills1998,Badocco2008,Dini2011}.
+The problem of dual sensing is particularly relevant in applications that involve oxygen sensing. Since oxygen plays a major role for living organisms, the measurement of oxygen partial pressure is of great relevance in fields which range from medicine and  biotechnology, to environmental monitoring \cite{Papkovsky2013,Wang2014}. One of the most used optical measuring approaches is based on dynamical luminescence quenching. When colliding with molecular oxygen, the energy of the excited luminophore is reduced due to radiationless deactivation. As a result, both the intensity and decay time of the luminescence are reduced (quenched) \cite{Lakowicz2006}. The dependence of the measured sensing quantity (e.g., luminescence intensity or decay time) on the relevant influencing factors needs to be described through mathematical models, often empirical, with a sufficiently complex parametrization. Among the cross-interfering quantities, temperature is the most relevant since both the luminescence and its quenching are strongly temperature-dependent phenomena. Therefore, in any optical oxygen sensor, the temperature must be continuously monitored, most frequently with a separate sensor, and used to correct the calculated oxygen concentration \cite{Li2015}. This task can be difficult in practical implementation and may become a significant source of error. Another disadvantage of this approach is that the parametrization of the sensor response is system-specific since it depends on how the sensing element was fabricated and on the sensor itself \cite{Xu1994,Draxler1995,Hartmann1996,Mills1998,Badocco2008,Dini2011}.
 
-In this work these difficulties are overcome through a new type of sensor  based on neural networks for parallel inference. This enables  accurate dual-sensing, using one single luminophore and by measuring a single quantity.
+In this work, these difficulties are overcome through a new type of sensor  based on neural networks for parallel inference. This enables  accurate dual-sensing, using one single luminophore and by measuring a single quantity.
 Instead of describing the response of the sensor as a function of the relevant parameters through an analytical model, a neural network was designed and trained to predict both oxygen concentration and temperature simultaneously.
 Multi-task learning (MTL) architectures were chosen for this new sensor because they can learn correlated tasks \cite{Argyriou2006, Thrun1996, Caruana1997, Zhang2017, Baxter2000, Thung2018}. In a previous purely theoretical study that used only synthetic data, the authors showed that MTL architectures can be flexible enough to address multi-dimensional regressions problems \cite{Michelucci2019_2} as required by this new type of sensors. This work demonstrates for the first time that this is indeed true by building, training and characterizing a real physical optical sensor based on this principle.
-To train the MTL neural network and to test the performance of the sensor on unseen data a very large amount of data is needed. Since the collection  cannot be performed by hand, a fully automated data collection setup was developed and used to both vary the sensor environment conditions (gas concentration and temperature) and to collect the sensor response. 
+To train the MTL neural network and to test the performance of the sensor on unseen data, a very large amount of data is needed. Since the collection  cannot be performed by hand, a fully automated data collection setup was developed and used to both vary the sensor environment conditions (gas concentration and temperature) and to collect the sensor response. 
 
 This work proposes a paradigm shift from the classical description of the response of a sensor through an approximate model, to the use of MTL based sensor learning thanks to neural networks. 
 These will learn the complex inter-parameter dependencies and sensor-specific response characteristics from a large amount of data automatically collected. This new method will enable to build sensors even if the response of the system to the physical quantities is too complex to be comfortably described by a mathematical model.
@@ -173,7 +173,7 @@ These will learn the complex inter-parameter dependencies and sensor-specific re
 \subsection{Measurement Principle}
 \label{Theory}
 
-Luminescence-based oxygen sensors usually are based on a luminophore whose luminescence intensity and decay time decrease for increasing O$_2$ concentrations. This reduction is due to collisions of the excited luminophore with molecular oxygen, which thus provides a radiationless deactivation process. The dependence of the luminescence intensity and decay time of the luminophores used for oxygen sensing is best described by the Stern-Volmer equation \cite{Lakowicz2006}. Using a frequency-domain approach, the phase shift difference between the excitation and the emitted luminescence can be approximated using a two-site model \cite{Carraway1991,Demas1995} and written as \cite{Michelucci2019}
+Luminescence-based oxygen sensors usually are based on a luminophore whose luminescence intensity and decay time decrease for increasing O$_2$ concentrations. This reduction is due to collisions of the excited luminophore with molecular oxygen, which thus provides a radiationless deactivation process. The dependence of the luminescence intensity and decay time of the luminophores used for oxygen sensing is best described by the Stern-Volmer (SV) equation \cite{Lakowicz2006}. Using a frequency-domain approach, the phase shift difference between the excitation and the emitted luminescence can be approximated using a two-site model \cite{Carraway1991,Demas1995} and written as \cite{Michelucci2019}
 \begin{equation}
 \begin{aligned}
 \frac{\tan \theta_0 (\omega, T)}{\tan \theta (\omega, T, [O_2])}=
@@ -182,15 +182,15 @@ Luminescence-based oxygen sensors usually are based on a luminophore whose lumin
 \label{theta_full}
 \end{aligned}
 \end{equation}
-where $\theta_0$ and $\theta$, are the phase shifts without and with oxygen, $f$ and $1-f$ are the fractions of the total emission for the two components, $K_{SV1}$ and $K_{SV2}$ are the corresponding Stern–Volmer constants, and $\omega$ is the angular modulation frequency. It is to be noted that the quantities $\theta_0$, $f$, $K_{SV1}$, and $K_{SV2}$ are all non-linearly temperature dependent \cite{Ogurtsov2006,lo2008,Zaitsev2016}. Additionally, if the modulation frequency is varied, they may show a frequency dependence, an artifact due to the approximate nature of the model. Finally, Eq. (\ref{theta_full}) needs to be inverted to determine $[O_2]$ from the measured quantity $\theta$.
+where $\theta_0$ and $\theta$, are the phase shifts without and with oxygen, $f$ and $1-f$ are the fractions of the total emission for the two components, $K_{SV1}$ and $K_{SV2}$ are the corresponding Stern–Volmer constants, and $\omega$ is the angular modulation frequency. It is to be noted that the quantities $\theta_0$, $f$, $K_{SV1}$, and $K_{SV2}$ are all non-linearly temperature dependent \cite{Ogurtsov2006,lo2008,Zaitsev2016}. Additionally, they also depend on the modulation frequency, which in case of $f$, $K_{SV1}$, and $K_{SV2}$ is an artifact due to the approximate nature of the model. Finally, Eq. (\ref{theta_full}) needs to be inverted to determine $[O_2]$ from the measured quantity $\theta$.
 
-From Eq. (\ref{theta_full}) it is evident, that the phase shift cannot be easily used to determine the oxygen concentration unless $\omega$ and $T$, the parameters $f$, $K_{SV1}$ and $K_{SV2}$ (including their dependencies from $\omega$ and $T$) are known.
-The proposed sensors not only solves the above mentioned difficulties in finding an approximate mathematical model for a complex system, but also allows the determination of multiple quantities simultaneously.
+From Eq. (\ref{theta_full}) it is evident that the phase shift cannot be easily used to determine the oxygen concentration unless $\omega$ and $T$, the parameters $f$, $K_{SV1}$ and $K_{SV2}$ (including their dependencies from $\omega$ and $T$) are known.
+The proposed sensor not only overcomes the above-mentioned difficulties in finding an approximate mathematical model, but also allows the determination of multiple quantities simultaneously.
 
 \subsection{Experimental Setup and Dataset}
 \label{Experimental}
 
-The luminophore used for oxygen detection is Pt-TFPP and is described, togethter with the optical setup for the luminescence measurements in \cite{Venturini_2020}. 
+The luminophore used for oxygen detection is Pt-TFPP, commercially available as Oxygen Sensor Spot (PSt3, PreSens  GmbH, Germany). The optical setup for the luminescence measurements is described in \cite{Venturini_2020}. 
 The large amount of data needed for the training and the test of the neural network was acquired using an automated acquisition program written using the software LabVIEW by National Instruments. The flow chart of the automated data acquisition program is shown in Fig. \ref{fig:auto-data}.
 
 \begin{figure}[t!]
@@ -200,14 +200,13 @@ The large amount of data needed for the training and the test of the neural netw
 \label{fig:auto-data}
 \end{figure}
 
-First, the program fixed the temperature and concentration. Then, the phase shift was measured for 50 modulation frequencies between 200 Hz and 15 kHz. This measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration and the entire frequency-loop was repeated.
+First, the program fixed the temperature and concentration. Then, the phase shift was measured for 50 modulation frequencies between 200 Hz and 15 kHz. This measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration, and the entire frequency-loop was repeated.
 The oxygen concentration was varied between 0 $\%$ air and 100 $\%$ air in 5 $\%$ air steps.
 Finally, the temperature was changed, and then the oxygen and frequency loops where repeated. The temperature was varied between 5 $^\circ$C and 45~$^\circ$C in 5 $^\circ$C steps.
 The total number of measurements was thus 50 (frequencies) x 20 (loops) x 21 (oxygen concentrations) x 9 (temperatures) = 189'000, which required a total acquisition time of approximately 65 hours. This number of measurements was chosen as a compromise between maximizing the number of data and avoiding photodegradation, which naturally occurs when the sample is subjected to illumination. At the end of the session, a minimal change in the phase shift was observed.
 
 
 \subsection{Signal Processing Algorithm}
-%}Neural Network Model}
 \label{NN}
 
 The software component of this new sensor type is based on a neural network model (NNM). A NNM is made of three components \cite{Michelucci2017}: a neural network architecture (that includes how neurons are connected, the activation functions and all the hyperparameters), a loss function (here indicated with $L$) and an optimizer algorithm. 
@@ -220,7 +219,7 @@ The network was trained with two types of input to test its effectiveness. In th
 \frac{\theta(w_1)}{90} , \frac{\theta(w_2)}{90} , ..., \frac{\theta(w_{50})}{90} 
 \right)
 \end{equation}
-where $w_i$ are the 50 values of the angular modulation frequency of the excitation light (see Sec. \ref{Experimental}). The measured phase shift were divided by 90 to normalize the inputs between 0 and 1. In the second case, each observation is
+where $w_i$ are the 50 values of the angular modulation frequency of the excitation light (see Sec. \ref{Experimental}). The measured phase shift was divided by 90 to normalize the inputs between 0 and 1. In the second case, each observation is
 \begin{equation}
 \label{input2}
 {\pmb \theta}_n = \left(
@@ -230,49 +229,28 @@ where $w_i$ are the 50 values of the angular modulation frequency of the excitat
 where $\theta_0(w_i)$ is the value of the measured phase shift without oxygen quenching at the angular modulation frequency $w_i$.
 
 The loss function was minimized using the optimizer Adaptive Moment Estimation (Adam) \cite{Kingma2014, Michelucci2017}. The implementation was performed using the TensorFlow\texttrademark $\ $library. The training was performed with a starting learning rate of $10^{-3}$. Two types of training were investigated to compare the training efficiency and performance of the network. {\sl No-batch training}: with this method all the training data  are used to perform an update of the weights and to evaluate the loss function. {\sl Mini-batch training}: with this method the weights update is performed after the network has seen 32 observations (this number is called mini-batch size \cite{Michelucci2017}). For each update of the weights, 32 random observations are chosen from the training dataset without repetitions until all the training data are fed to the network. 
-The size of the mini-batch was chosen as a compromise between a good performance (small value of the loss function) and the duration of training.
+The size of the mini-batch was chosen as a compromise between a good performance (measured through the value of the loss function) and the duration of training.
 
-No-batch training has the advantage of stability and requires less time for each epoch since it performs one update of the weights using the entire training dataset. Mini-batch training is normally more effective in reaching small values of the loss function in less epochs, but it requires more time for each epoch \cite{Michelucci2017}. In our experiments for $20 \cdot 10^3$ epochs no-batch training took roughly five minutes on a modern MacBook Pro, while mini-batch training with  mini-batch size of $32$ took approximately 1 hour, thus resulting ca. 12 times slower. 
+No-batch training has the advantage of stability and requires less time for each epoch since it performs one update of the weights using the entire training dataset. Mini-batch training is normally more effective in reaching small values of the loss function in fewer epochs, but it requires more time for each epoch \cite{Michelucci2017}. In our experiments for $20 \cdot 10^3$ epochs no-batch training took roughly five minutes on a modern MacBook Pro, while mini-batch training with  mini-batch size of $32$ took approximately 1 hour, thus resulting ca. 12 times slower. 
 
 
 \subsection{Sensor Performance Evaluation}
 
-%To evaluate the performance of the sensor, different metrics were analyzed. These are discussed in the next sections. 
-To evaluate the performance of the sensor, the dataset $S$ of measured data was divided in two parts: one containing 80\% of randomly chosen observations (indicated with $S_{train}$), and one containing the remaining 20\% of the data (indicated with $S_{test}$). All the results presented here were obtained by measuring the different metrics on the $S_{test}$ dataset.
-
-
-%\subsubsection{Absolute Error on the Prediction}
+To evaluate the performance of the sensor, the dataset $S$ of measured data was divided into two parts: one containing 80\% of randomly chosen observations (indicated with $S_{train}$), and one containing the remaining 20\% of the data (indicated with $S_{test}$). All the results presented here were obtained by measuring the different metrics on the $S_{test}$ dataset.
 
 The metric used to compare predictions from expected values is the absolute error ($AE$) defined as the absolute value of the difference between the predicted and the expected value for a given observation. 
-A detailed explanation of it can be found in \cite{Michelucci2019_2} and will not be repeated here. With $MAE$ we have indicated the mean of the $AE$ over all observations of a given dataset. 
-%Note that in the architecture described in the previous sections, only branch 1 and 2 can predict $[O_2]$, 
-%while only branch 1 and 3 can predict $T$. The $AE$ for the oxygen concentration for the $j^{th}$ observation $[O_2]^{[j]}$  is 
-%\begin{equation}
-%\label{AE}
-%AE^{{[j]}}_{[O_2]} = |[O_2]^{{[j]}}_{pred}-[O_2]^{[j]}_{meas}|.
-%\end{equation}
-%where $[O_2]^{{[j]}}_{pred}$ and $[O_2]^{{[j]}}_{meas}$ are respectively the $[O_2]$ network prediction and measured value.
-%The further quantity used to analyse the performance of the network is the mean absolute error ($MAE$), defined as the average of the $AE$. For example, for the oxygen prediction using the training dataset $S_{train}$, the $MAE_{[O_2]}$ is defined as 
-%\begin{equation}
-%\label{MAE}
-%MAE_{[O_2]}(S_{train}) = \frac{1}{|S_{train}|} \sum_{j \in S_{train}}|[O_2]_{pred}^{[j]}-[O_2]_{real}^{[j]}|
-%\end{equation}
-%where $|S_{train}|$ is the size (or cardinality) of the training dataset. 
-%$AE_{T}$ and $MAE_T$ are similarly defined, using the prediction and the measured temperature values.
-In the Result section we have also studied the prediction distribution of the $AE$s. To better illustrate this distribution, the kernel density estimate ($KDE$) of the $AE$s was also evaluated. Details on how this was calculated can be found in \cite{Michelucci2019_2} and will not be repeated here.
-%
-%
-%A fundamental quantity to study the performance of the network is the prediction distribution of the $AE$s. This metrics carries information on the probability of the network to predict the expected value. To better illustrate this distribution, the kernel density estimate ($KDE$) of the distributions of the $AE$s was also calculated for both the oxygen concentration and the temperature. $KDE$ is a non-parametric algorithm to estimate the probability density function of a random variable by inferring the population distribution based on a finite data sample \cite{Hastie2009}.  In this work a Gaussian Kernel and a Scott bandwidth adaptive estimation \cite{Sain1996} using the seaborn Python package \cite{Waskom2020} were used.
+The mean of the $AE$ over all observations of a given dataset is the mean absolute error $MAE$ and is a further metric used to characterize the performance.
+In the section \ref{Results}, the prediction distribution of the $AE$s for both the oxygen and temperature predictions is  discussed in detail. To better illustrate this distribution, the kernel density estimate ($KDE$) of the $AE$s was also evaluated. Details on the calculation of the $AE$, $MAE$ and $KDE$ can be found in \cite{Michelucci2019_2}.
 
 
 \subsubsection{Error Limited Accuracy}
 \label{sektion:ela}
 
-Generally, in a commercial sensor, the accuracy quantifies the performance of the sensor and helps to decide if the chosen device is appropriate for the application of interest. The above-defined metrics ($AE$, $MAE$ and $KDE$) are useful to compare the performance of different NNMs but do not help quantify which error the neural network senor will ultimately have in practice.
+Generally, in a commercial sensor, the accuracy quantifies the performance of the sensor and helps to decide if the chosen device is appropriate for the application of interest. The above-defined metrics ($AE$, $MAE$ and $KDE$) are useful to compare the performance of different NNMs but do not help quantify which error the sensor reading will ultimately have in practice.
 For this reason, in this work we introduce a new metric, called Error Limited Accuracy ($ELA$) and indicated with $\eta$.
 
 \begin{definition*}
-In a regression problem, given the metric $AE$, and a chosen value of it $\hat{AE}$, the $ELA$  $\eta$ limited by the error $\hat{AE}$ is defined as the number of predictions $\hat y$ of the NNM that lie in the range $|\hat y-y|\leq \hat{AE}$, with $y$ the expected value, divided by the total number of observations. It will be indicated with $\eta(\hat{AE})$. In more mathematical terms, given the set
+In a regression problem, given the metric $AE$, and a chosen value of it $\hat{AE}$, the $ELA$  $\eta$ limited by the error $\hat{AE}$ is defined as the number of predictions $\hat y$ of the NNM that lie in the range $|\hat y-y|\leq \hat{AE}$, with $y$ the expected value, divided by the total number of observations. It will be indicated with $\eta(\hat{AE})$. Given the set
 \begin{equation}
 E(\hat{AE}) = \{ \hat y^{[i]} \ {\text with } \ i = 1,..., n\ | \ \ |\hat y^{[i]}-y^{[i]}|\leq \hat{AE} \} 
 \end{equation}
@@ -280,10 +258,10 @@ $\eta(\hat{AE})$ is defined as
 \begin{equation}
 \eta(\hat{AE}) = \frac{|E(\hat{AE})|}{n}
 \end{equation}
-where $|E(\hat{AE})|$ is the cardinality of the set $E(\hat{AE})$ or in other words, the number of its elements.
+where $|E(\hat{AE})|$ is the cardinality of the set $E(\hat{AE})$ or, in other words, the number of its elements.
 \end{definition*}
 
-This metric allows interpreting the regression problem as a classification one. $\eta(\hat{AE})$ simply describes how many observations are predicted by the NNM within a given value of the absolute error. In other words, it represents the percentage of predictions that are within a certain error $\hat{AE}$ from the expected values. Finally, if we take $\hat{AE}$ big enough, all the predictions will be classified perfectly, so $\eta(\hat{AE})$ is expected to approach 1 for increasing $\hat{AE}$. The smaller $\hat{AE}$ is, the smaller will be the number of predictions correctly classified. We finally define $\overline{AE}$ as the minimum value of $\hat{AE}$ for which $\eta(\hat{AE})=1$, so the minimum value of the absolute error for which the network predicts all the observations correctly. This value ($\overline{AE}$) can be interpreted as the biggest error in the sensor predictions.
+This metric allows interpreting the regression problem as a classification one. $\eta(\hat{AE})$ simply describes how many observations are predicted by the NNM within a given value of the absolute error. In other words, it represents the percentage of predictions that are within a certain error $\hat{AE}$. Therefore, if we take $\hat{AE}$ big enough, all the predictions will be classified perfectly, so $\eta(\hat{AE})$ is expected to approach 1 for increasing $\hat{AE}$. On the other hand, the smaller $\hat{AE}$ is, the lower will be the number of predictions correctly classified. We finally define $\overline{AE}$ as the minimum value of $\hat{AE}$ for which $\eta(\hat{AE})=1$, so the minimum value of the absolute error for which the network predicts all the observations correctly. This value ($\overline{AE}$) can be interpreted as the biggest error in the sensor predictions.
 
 
 \section{Results and Discussion}
@@ -291,16 +269,16 @@ This metric allows interpreting the regression problem as a classification one. 
 
 \subsection{Pt-TFPP Luminescence}
 
+As described in Section \ref{Theory}, the phase shift depends non-linearly on the oxygen concentration according to the Stern-Volmer equation. It also depends on the temperature, which influences the luminescence and the collision mechanisms, and on the modulation frequency of the excitation light. The experimental observations for the phase shift for variations of these three quantities are shown in the Figs. \ref{fig:expdata1} to \ref{fig:expdata3}.
+
+Fig. \ref{fig:expdata1} shows the measured phase shifts as a function of the oxygen concentration at a constant modulation frequency of 6 kHz and for increasing temperatures. For clarity, the results at selected temperatures are shown. The decrease of the phase shift due to the collisional quenching is clearly visible in all curves. The phase shift is, as expected, also strongly temperature-dependent. For $[O_2]=0$, in the absence of oxygen, the reduction of the phase shift with increasing $T$ is due to temperature quenching; the influence of temperature becomes stronger at higher oxygen concentration, as a result of the increase of the diffusion rates of oxygen through the sample.
+
 \begin{figure}[htb]
 \centering
 \includegraphics[width=8.2 cm]{phase_O2_T.eps}
 \caption{Measured phase shift as a function of the oxygen concentration for selected temperatures at a fixed modulation frequency of 6 kHz. The arrow marks increasing temperatures.}
 \label{fig:expdata1}
 \end{figure}
-
-As described in Section \ref{Theory}, the phase shift depends non-linearly on the oxygen concentration according to the Stern-Volmer equation. It depends also on the temperature, which influences the luminescence and the collision mechanisms, and on the modulation frequency of the excitation light. The experimental observations for the phase shift for variations of these three quantities are shown in the Figs. \ref{fig:expdata1} to \ref{fig:expdata3}.
-
-Fig. \ref{fig:expdata1} shows the measured phase shifts as a function of the oxygen concentration at a constant modulation frequency of 6 kHz and for increasing temperatures. For clarity, the results at only few selected temperatures are shown. The decrease of the phase shift due to the collisional quenching is clearly visible in all curves. The phase shift is, as expected, also strongly  temperature-dependent. For $[O_2]=0$, in the absence of oxygen, the reduction of the phase shift with increasing $T$ is due to temperature quenching; the influence of temperature becomes stronger at higher oxygen concentration, as a result of the increase of the diffusion rates of oxygen through the sample.
 
 For a given oxygen concentration, the phase shift is strongly dependent on the modulation frequency, as it can be seen in Fig. \ref{fig:expdata2}, where the shape of the frequency response is determined by the distribution of decay times of the sample. From the figure it is visible that the reduction of the phase shift with increasing temperatures is not constant but depends on the modulation frequency.
 
@@ -313,48 +291,40 @@ For a given oxygen concentration, the phase shift is strongly dependent on the m
 
 For completeness, the effect of the oxygen concentration on the frequency response at a fixed temperature is shown in Fig. \ref{fig:expdata3}. Compared to Fig. \ref{fig:expdata2}, the frequency response of the sample is affected more strongly by the oxygen concentration than by temperature. In other words, the sample has a higher sensitivity to oxygen than to temperature.
 
-\begin{figure}[t!]
+\begin{figure}[hbt]
 \centering
 \includegraphics[width=8.2 cm]{phase_f_O2.eps}
 \caption{Measured phase shift as a function of the modulation frequency for selected oxygen concentrations at a fixed temperature of $T=25 \ ^{\circ}$C. The arrow marks increasing oxygen concentrations.}
 \label{fig:expdata3}
 \end{figure}
 
-The measurements of Figs. \ref{fig:expdata1} to \ref{fig:expdata3} show how similar the curves of the phase shift are for different values of oxygen, temperature and modulation frequency. This helps to understand why it is not possible from the measurement of the phase shift, or even of the phase shift for varying modulation frequencies, to simultaneously determine both the oxygen concentration and the temperature using Eq. (\ref{theta_full}). The temperature must be known in advance and used to compute the oxygen concentration. This is no longer the case with the neural network approach, as it will be shown in the next section. 
+The measurements of Figs. \ref{fig:expdata1} to \ref{fig:expdata3} show how similar the curves of the phase shift are for different values of oxygen, temperature and modulation frequency. This helps to understand why it is not possible from the measurement of the phase shift, or even of the phase shift for varying modulation frequencies, to simultaneously determine both the oxygen concentration and the temperature using Eq. (\ref{theta_full}). The temperature must be known in advance and used to compute the oxygen concentration. This is no longer the case for the proposed sensor, as it will be shown in the next section. 
 
 
 \subsection{Sensor Performance}
 
-First, the effect of the training on the sensor performance was investigated. As described previously, the neural network was trained with no-batches and with mini-batches. For this comparison the network was trained for 20'000 epochs using the input observations ${\pmb \theta}_s$ as defined in Eq. (\ref{input1}). The results for $AE_{[O_2]}$ and $AE_T$ are shown in Fig. \ref{fig:KDE_results_all}(A) and \ref{fig:KDE_results_all}(B), respectively. The blue histogram shows the $AE$ distribution when using no-batch, the gray when using mini-batches of size 32. The $KDE$ profiles help illustrating the features of the histogram. The effect of introducing mini-batches on the performance is significant. The predictions distributions get much narrower, the mean average errors decrease from $MAE_{[O_2]}=2.4$ \% air and $MAE_{T}=3.6 \ ^\circ$C to $MAE_{[O_2]}=1.4$ \% air and $MAE_{T}=1.6 \ ^\circ$C. Although the performance is significantly improved, from Fig. \ref{fig:KDE_results_all}(A) and \ref{fig:KDE_results_all}(B) it can also be clearly seen that errors as high as approximately 5~\%~air for $[O_2]$ or 12 $^\circ$C for $T$ are still possible.
+First, the effect of the training on the sensor performance was investigated. As described previously, the neural network was trained with no-batches and with mini-batches. For this comparison the network was trained for 20'000 epochs using the input observations ${\pmb \theta}_s$ as defined in Eq. (\ref{input1}). The results for $AE_{[O_2]}$ and $AE_T$ are shown in Fig. \ref{fig:KDE_results_all}(A) and \ref{fig:KDE_results_all}(B), respectively. The blue histogram shows the $AE$ distribution when using no-batch, the gray when using mini-batches of size 32. The $KDE$ profiles help to illustrate the features of the histogram. The effect of introducing mini-batches on the performance is significant. The predictions distributions get much narrower, the mean average errors decrease from $MAE_{[O_2]}=2.4$ \% air and $MAE_{T}=3.6 \ ^\circ$C to $MAE_{[O_2]}=1.4$ \% air and $MAE_{T}=1.6 \ ^\circ$C. Although the performance is significantly improved, from Fig. \ref{fig:KDE_results_all}(A) and \ref{fig:KDE_results_all}(B) it can also be clearly seen that errors as high as approximately 5~\%~air for $[O_2]$ or 12 $^\circ$C for $T$ are still possible.
 
 \begin{figure*}[htbp]
 \centering
 \includegraphics[width=15.5 cm]{KDE_results_all.eps}
-\caption{Distributions of the neural network predictions for the oxygen concentration (panels (A), (C) and (E)) and for the temperature (panels (B), (D) and (F)). In all panels the normalized prediction distribution histogram (columns), the kernel density estimate ($KDE$) of the distribution of the $AE$s (solid line), and $MAE$ (dashed vertical line) are shown. Panels (A) and (B): Comparison between training using no batches (NB) and using mini-batches (MB) with a batch size of 32 for 20'000 epochs; the input of the network is ${\pmb \theta}_s$. Panels (C) and (D): Comparison between training using mini-batches (MB) with a batch size of 32 for 100'000 and 20'000 epochs; the input of the network is ${\pmb \theta}_s$. Panels (E) and (F): 
-training using mini-batches (MB) with a batch size of 32 for 20'000 epochs; the input of the network is ${\pmb \theta}_n$.}
+\caption{Distributions of the neural network predictions for the oxygen concentration (panels (A), (C) and (E)) and for the temperature (panels (B), (D) and (F)). In all panels the normalized prediction distribution histogram (columns), the kernel density estimate ($KDE$) of the distribution of the $AE$s (solid line), and $MAE$ (dashed vertical line) are shown. Panels (A) and (B): Comparison between training using no batches (NB) and using mini-batches (MB) with a batch size of 32 both trained for 20'000 epochs; the input of the network is ${\pmb \theta}_s$. Panels (C) and (D): Comparison between training using mini-batches (MB) with a batch size of 32 for 100'000 and 20'000 epochs; the input of the network is ${\pmb \theta}_s$. Panels (E) and (F): results with a training using mini-batches (MB) with a batch size of 32 for 20'000 epochs and using the input of the network is ${\pmb \theta}_n$.}
 \label{fig:KDE_results_all}
 \end{figure*}
 
-\begin{figure*}[t!]
-\centering
-\includegraphics[width=14 cm]{ELA_comparison_O2_T.eps}
-\caption{Comparison of the $ELA$ $\eta$: Panel (A) oxygen prediction, panel (B) temperature prediction. The black lines are the results obtained with a network that was trained with ${\pmb \theta}_n$ as input for 20'000 epochs with mini-batchs of size 32, while the red ones with ${\pmb \theta}_s$ as input for 100'000 epochs with mini-batchs of size 32. The dashed lines indicates the values of the $\overline{AE}$ for which the predictions would give $\eta=1$.}
-\label{fig:ELA_result_comparison}
-\end{figure*}
+Fig. \ref{fig:KDE_results_all}(C) and \ref{fig:KDE_results_all}(D) show the effect of the training length. Here the comparison is between prediction distributions with 20'000 and 100'000 epochs (always using a mini-batch of size 32), using the input observations ${\pmb \theta}_s$ as defined in Eq. (\ref{input1}). The effect of longer training is a dramatic improvement in the performance. When the network was trained for 100'000 epochs the mean average errors were reduced to only $MAE_{[O_2]}=0.22$ \% air and $MAE_{T}=0.27  \ ^\circ$C. Additionally, all the predictions for $[O_2]$ lie below 0.94 \% air, and for $T$ lie below 2.1 $^\circ$C.
 
-Fig. \ref{fig:KDE_results_all}(C) and \ref{fig:KDE_results_all}(D) show the comparison between prediction distributions with 20'000 and 100'000 epochs (always using a mini-batch of size 32), using the input observations ${\pmb \theta}_s$ as defined in Eq. (\ref{input1}). The effect of longer training is a dramatic improvement in the performance. When the network was trained for 100'000 epochs the mean average errors are reduced to only $MAE_{[O_2]}=0.22$ \% air and $MAE_{T}=0.27  \ ^\circ$C. Additionally, all the predictions for $[O_2]$ lie below 0.94 \% air, and for $T$ lie below 2.1 $^\circ$C.
-
-The results of Fig. \ref{fig:KDE_results_all}(C) and \ref{fig:KDE_results_all}(D) demonstrate two new findings: 1) with the proposed approach, it is possible to predict both $[O_2]$ and $T$ at the same time from the phase shift using a single luminophore; 2) the prediction has an expected error which is comparable or below the typical accuracy of commercial sensors. The possibility of dual sensing paves the road to the development of a completely new generation of sensors.
+The results of Fig. \ref{fig:KDE_results_all}(C) and \ref{fig:KDE_results_all}(D) demonstrate two new findings: 1) with the proposed approach, it is possible to predict both $[O_2]$ and $T$ at the same time from the phase shift using a single luminophore and a set of measurements; 2) the prediction has an expected error that is comparable or below the typical accuracy of commercial sensors. The possibility of dual sensing paves the road to the development of a completely new generation of sensors.
 The price to pay is that the training of a network for 100'000 epochs requires approximately 5 hours on a modern laptop.
 
-To investigate if the training can be performed more efficiently, the normalized phase shift ${\pmb \theta}_n$ defined in Eq. (\ref{input2}) is used as input to the network. The performance of the network in this case, with a mini-batch size of 32 and a training of 20'000 epochs is shown in Fig. \ref{fig:KDE_results_all}(E) and \ref{fig:KDE_results_all}(F). The performance is further improved: even if the number of epochs is only 20'000 the mean average errors are better than what obtained with ${\pmb \theta}_s$ and a training of 100'000 epochs, achieving $MAE_{[O_2]}=0.13$ \% air and $MAE_{T}=0.24 \ ^\circ$C. The distributions are also narrower, particularly for the temperature. Additionally, all the $AE_{[O_2]}$ lie below 0.87 \% air, and  $AE_{T}$ below 1.7 $^\circ$C. This type of training is clearly more efficient. The reason may lie in the additional information which is fed to the network when using the input ${\pmb \theta}_n$ and in the simplified functional behavior of ${\pmb \theta}_n$ compared to ${\pmb \theta}_s$ \cite{Michelucci2019_2}.
+To investigate if the training can be performed more efficiently, the normalized phase shift ${\pmb \theta}_n$ defined in Eq. (\ref{input2}) was used as input to the network. The performance of the network in this case, with a mini-batch size of 32 and a training of 20'000 epochs is shown in Fig. \ref{fig:KDE_results_all}(E) and \ref{fig:KDE_results_all}(F). With this input the performance is further improved: even if the number of epochs is only 20'000 the mean average errors are better than what obtained with ${\pmb \theta}_s$ and a training of 100'000 epochs, achieving $MAE_{[O_2]}=0.13$ \% air and $MAE_{T}=0.24 \ ^\circ$C. The distributions are also narrower, particularly for the temperature. Additionally, all the $AE_{[O_2]}$ lie below 0.87 \% air, and  $AE_{T}$ below 1.7 $^\circ$C. This type of training is clearly more efficient. The reason may lie in the additional information which is fed to the network when using the input ${\pmb \theta}_n$ and in the simplified functional behavior of ${\pmb \theta}_n$ compared to ${\pmb \theta}_s$ \cite{Michelucci2019_2}.
 %as it may be expected by Eq. (\ref{theta_full}).
 
 
 The performance of the different neural networks is summarized in Table \ref{TableMAE_summary}. 
 \begin{table}[hbt]
 \centering
-\caption {\bf Summary of the performance for neural network models}
+\caption {\bf Summary of the performance of the sensor for different neural network models}
 
 \begin{tabular}{ cccc}
 \smallskip 
@@ -371,10 +341,20 @@ ${\pmb \theta}_n$ & 20'000 / 32 & 0.13 \% air & 0.24 $^\circ C$\\
 
 \subsection{Error Limited Accuracy}
 
-The metrics discussed in the previous sections are useful to compare the network performance and to measure how good the predictions are. However, they do not offer an understanding on what a sensor built with such a model could achieve. For practical applications, the relevant question is rather what is the maximum error which the sensor will have predicting the oxygen concentration and temperature. To answer this question, the $ELA$ ($\eta$) defined in Section \ref{sektion:ela} can be used. 
+The metrics discussed in the previous sections are useful to compare the network performance and to measure how good the predictions are. However, they do not offer an understanding on what a sensor built with such a model could achieve. For practical applications, the relevant question is rather what is the maximum error which the sensor will have in predicting the oxygen concentration and temperature. To answer this question, the $ELA$ ($\eta$) defined in Section \ref{sektion:ela} can be used. 
 
-Fig. \ref{fig:ELA_result_comparison} displays the $ELA$ $\eta(\widehat {AE})$ for oxygen concentration (A) and for the temperature (B). In each panel, the results obtained using the input ${\pmb \theta}_n$ and a training for 20'000 epochs are shown in black, and the results obtained using the input ${\pmb \theta}_s$ and a training for 100'000 epochs in red. In both cases, the training was performed with mini-batches of size 32.
+Fig. \ref{fig:ELA_result_comparison} displays the $ELA$ $\eta(\widehat {AE})$ for oxygen concentration (A) and for the temperature (B). In each panel, the results obtained with the bests models described before are shown: the ELAs using the input ${\pmb \theta}_n$ and a training for 20'000 epochs are shown in black, and the ELAs obtained using the input ${\pmb \theta}_s$ and a training for 100'000 epochs in red. In both cases, the training was performed with mini-batches of size 32.
 The dashed lines indicate the values of the $\overline{AE}_{[O_2]}$ and $\overline{AE}_{T}$ for which the error limited accuracy $\eta$ equals 1. In other words, all the predictions will have an error equal or smaller than $\overline{AE}$.
+
+\begin{figure*}[hbt]
+\centering
+\includegraphics[width=14 cm]{ELA_comparison_O2_T.eps}
+\caption{Comparison of the $ELA$ $\eta$: Panel (A) oxygen prediction, panel (B) temperature prediction. The black lines are the results obtained with a network that was trained with ${\pmb \theta}_n$ as input for 20'000 epochs with mini-batchs of size 32, while the red ones with ${\pmb \theta}_s$ as input for 100'000 epochs with mini-batchs of size 32. The dashed lines indicates the values of the $\overline{AE}$ for which the predictions would give $\eta=1$.}
+\label{fig:ELA_result_comparison}
+\end{figure*}
+
+From fig. \ref{fig:ELA_result_comparison}(A) can be seen that, for the network trained with ${\pmb \theta}_s$ as input, the model would predict perfectly all the oxygen concentrations within 0.95 \% air error. For the network trained with ${\pmb \theta}_n$ this value is further reduced to 0.87 \% air. $\overline{AE}_{[O_2]}$ can be interpreted as the accuracy a sensor based on this NNM would have.
+Fig. \ref{fig:ELA_result_comparison}(B) shows the results of the same analysis for the temperature measurement. The interpretation is similar to the one given above for the oxygen concentration. For the network trained with ${\pmb \theta}_s$ as input, the model would predict perfectly all the temperature values within $\overline{AE}_{T}=2.1 \ ^\circ$C error. For the network trained with ${\pmb \theta}_n$ this value would be  $\overline{AE}_{T}=1.7 \ ^\circ$C. The values of $\overline{AE}_{[O_2]}$ and $\overline{AE}_{T}$ are summarized in Table \ref{table:ela}.
 
 \begin{table}[htb]
 \centering
@@ -389,19 +369,15 @@ ${\pmb \theta}_n $ & 20'000 / 32 & 0.87\% air & 1.7 $^\circ C$\\
 \label{table:ela}
 \end{table}
 
-Fig. \ref{fig:ELA_result_comparison}(A) shows that, for the network trained with ${\pmb \theta}_s$ as input, the model would predict perfectly all the oxygen concentrations within 0.95 \% air error. For the network trained with ${\pmb \theta}_n$ this value is futher reduced to 0.87 \% air. $\overline{AE}_{[O_2]}$ can be interpreted as the accuracy a sensor based on this NNM  would have.
-Fig. \ref{fig:ELA_result_comparison}(B) shows the results of the same analysis for the temperature measurement. The interpretation is similar to the one given above for the oxygen concentration. For the network trained with ${\pmb \theta}_s$ as input, the model would predict perfectly all the temperature values within $\overline{AE}_{T}=2.1 \ ^\circ$C error. For the network trained with ${\pmb \theta}_n$ this value would be  $\overline{AE}_{T}=1.7 \ ^\circ$C. The values of $\overline{AE}_{[O_2]}$ and $\overline{AE}_{T}$ are summarized in Table \ref{table:ela}.
-
-
 
 \section{Conclusions}
 
-In this work, the realisation of a new type of sensor based on luminescence sensing is presented. The proposed sensor allows parallel inference, or the extraction of multiple physical quantities simultaneously, from a single measurement without any {\sl a priori} mathematical model, even in the presence of cross interferences. Classical approaches to this type of problems in physics can be challenging or impossible to solve if the mathematical models describing the functional dependencies are too complex or even unknown.
+In this work, the realization of a new type of sensor based on luminescence sensing is presented. The proposed sensor allows parallel inference, or the extraction of multiple physical quantities simultaneously, from a single set of measurements without any {\sl a priori} mathematical model, even in the presence of cross interferences. Classical approaches to this type of problems in physics can be challenging or impossible to solve if the mathematical models describing the functional dependencies are too complex or even unknown.
 
-This sensor, which uses a single luminophore and a single measuring channel can measure simultaneously both the oxygen concentration and the temperature of a medium. This is achieved using a multi-task learning neural network model, which was trained on a very large dataset. The results in the prediction of the oxygen concentration and temperature show unprecedented accuracy for both parameters, demonstrating that this approach can make a new generation of dual- or even multiple-parameter sensors possible.
-Estimating the expected error or accuracy of a sensor based on a given NNM approach is intrinsically difficult. For this reason, the new metric Error Limited Accuracy $ELA$ ($\eta(AE)$) is proposed. The $ELA$ enables to estimate how many predicted values lie within a certain absolute error from the expected measurement. This new metric allows therefore the estimation of the maximum measurement error of the NNM results.
+This sensor, which uses a single luminophore and a single measuring channel can measure simultaneously both the oxygen concentration and the temperature of a medium. This is achieved using a multi-task learning neural network model, which was trained on a very large dataset. The results in the prediction of the oxygen concentration and temperature show unprecedented accuracy for both parameters, demonstrating that this approach could open up the possibility of a new generation of dual- or even multiple-parameter sensors.
+Estimating the accuracy of a sensor based on a given NNM approach is intrinsically difficult. For this reason, the new metric Error Limited Accuracy $ELA$ is proposed. The $ELA$ enables to estimate how many predicted values lie within a certain absolute error from the expected measurement. This new metric allows therefore the estimation of the maximum measurement error of any NNM-based sensor.
 
-The ability to predict both $[O_2]$ and $T$ at the same time, from a single set of data obtained with a single indicator, has profound implications for the development of luminescence sensors. Sensors will become easier and cheaper to build since no separate temperature measurements are necessary anymore. Generally, the effect of interferences can be learned by the neural network and do not need to be corrected for in the data processing. 
+The ability to predict both $[O_2]$ and $T$ at the same time, from a single set of data obtained with a single indicator, has profound implications for the development of luminescence sensors. Sensors will become easier and cheaper to build since no separate temperature measurements are necessary anymore. Generally, this work shows that the effect of interferences can be learned by the neural network and do not need to be corrected for in the data processing. 
 
 This work opens the road to complete new optical sensing approaches for future generations of sensors. Those sensors will be able to extract multiple physical quantities from a common set of data at the same time to achieve consistent results that are both accurate and stable. The described approach is relevant for many practical applications in sensor science and demonstrates that this model-free approach has the potential of revolutionizing optical sensing.
 
@@ -429,11 +405,13 @@ This work opens the road to complete new optical sensing approaches for future g
 \noindent 
 \begin{tabular}{@{}ll}
 SV & Stern-Volmer\\
-LED & Light-emitting diode\\
-TIA & trans-impedance amplifier \\
 Adam & Adaptive Moment Estimation \\
-MAE & Mean absolute error\\
-AE & Absolute error
+NNM & Neural Network Model \\
+MAE & Mean Absolute Error \\
+AE & Absolute Error \\
+KDE & Kernel Density Estimate\\
+ELA & Error Limited Accuracy\\
+
 \end{tabular}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
