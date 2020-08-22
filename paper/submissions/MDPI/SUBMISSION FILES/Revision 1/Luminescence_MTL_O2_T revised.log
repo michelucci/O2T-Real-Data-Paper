@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.4.9)  22 AUG 2020 17:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.4.9)  22 AUG 2020 17:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1218,11 +1218,11 @@ Package rerunfilecheck Info: File `"Luminescence_MTL_O2_T revised".out' has not
 (rerunfilecheck)             Checksum: FA87C11E051456D51373607452E53603;1975.
  ) 
 Here is how much of TeX's memory you used:
- 26156 strings out of 492649
- 450443 string characters out of 6129623
- 564034 words of memory out of 5000000
- 29170 multiletter control sequences out of 15000+600000
- 70482 words of font info for 317 fonts, out of 8000000 for 9000
+ 26163 strings out of 492649
+ 450552 string characters out of 6129623
+ 564095 words of memory out of 5000000
+ 29173 multiletter control sequences out of 15000+600000
+ 70641 words of font info for 319 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,15n,56p,2557b,522s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
@@ -1237,11 +1237,11 @@ xmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2018/texmf-dis
 t/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts
 /type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
 urw/palatino/uplri8a.pfb>
-Output written on "Luminescence_MTL_O2_T revised.pdf" (12 pages, 1245263 bytes)
+Output written on "Luminescence_MTL_O2_T revised.pdf" (12 pages, 1245443 bytes)
 .
 PDF statistics:
- 553 PDF objects out of 1000 (max. 8388607)
- 288 compressed objects within 3 object streams
- 75 named destinations out of 1000 (max. 500000)
+ 554 PDF objects out of 1000 (max. 8388607)
+ 289 compressed objects within 3 object streams
+ 76 named destinations out of 1000 (max. 500000)
  45720 words of extra memory for PDF output out of 51595 (max. 10000000)
 
