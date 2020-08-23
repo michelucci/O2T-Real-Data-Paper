@@ -200,7 +200,7 @@ The large amount of data needed for the training and the test of the neural netw
 \label{fig:auto-data}
 \end{figure}
 
-First, the program fixed the temperature and concentration. Then, the phase shift was measured for 50 modulation frequencies between 200 Hz and 15 kHz. This measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration, and the entire frequency-loop was repeated.
+First, the program fixed the temperature and concentration of the gas in contact with the sensor. Then, the phase shift was measured for 50 modulation frequencies between 200 Hz and 15 kHz. This measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration, and the entire frequency-loop was repeated.
 The oxygen concentration was varied between 0 $\%$ air and 100 $\%$ air in 5 $\%$ air steps.
 Finally, the temperature was changed, and then the oxygen and frequency loops where repeated. The temperature was varied between 5 $^\circ$C and 45~$^\circ$C in 5 $^\circ$C steps.
 The total number of measurements was thus 50 (frequencies) x 20 (loops) x 21 (oxygen concentrations) x 9 (temperatures) = 189'000, which required a total acquisition time of approximately 65 hours. This number of measurements was chosen as a compromise between maximizing the number of data and avoiding photodegradation, which naturally occurs when the sample is subjected to illumination. 
@@ -308,7 +308,7 @@ First, the effect of the training on the sensor performance was investigated. As
 \begin{figure*}[htbp]
 \centering
 \includegraphics[width=15.5 cm]{KDE_results_all.eps}
-\caption{Distributions of the neural network predictions for the oxygen concentration (panels (A), (C) and (E)) and for the temperature (panels (B), (D) and (F)). In all panels the normalized prediction distribution histogram (columns), the kernel density estimate ($KDE$) of the distribution of the $AE$s (solid line), and $MAE$ (dashed vertical line) are shown. Panels (A) and (B): Comparison between training using no batches (NB) and using mini-batches (MB) with a batch size of 32 both trained for 20'000 epochs; the input of the network is ${\pmb \theta}_s$. Panels (C) and (D): Comparison between training using mini-batches (MB) with a batch size of 32 for 100'000 and 20'000 epochs; the input of the network is ${\pmb \theta}_s$. Panels (E) and (F): results with a training using mini-batches (MB) with a batch size of 32 for 20'000 epochs and using the input of the network is ${\pmb \theta}_n$.}
+\caption{Distributions of the neural network predictions for the oxygen concentration (panels (A), (C) and (E)) and for the temperature (panels (B), (D) and (F)). In all panels the normalized prediction distribution histogram (columns), the kernel density estimate $KDE$ of the distribution of the absolute errors $AE$s (solid line), and mean absolute errors $MAE$s (dashed vertical line) are shown. Panels (A) and (B): Comparison between training using no batches (NB) and using mini-batches (MB) with a batch size of 32 both trained for 20'000 epochs; the input of the network is ${\pmb \theta}_s$. Panels (C) and (D): Comparison between training using mini-batches (MB) with a batch size of 32 for 100'000 and 20'000 epochs; the input of the network is ${\pmb \theta}_s$. Panels (E) and (F): results with a training using mini-batches (MB) with a batch size of 32 for 20'000 epochs and using the input of the network is ${\pmb \theta}_n$.}
 \label{fig:KDE_results_all}
 \end{figure*}
 
@@ -338,6 +338,7 @@ ${\pmb \theta}_n$ & 20'000 / 32 & 0.13 \% air & 0.24 $^\circ C$\\
 \label{TableMAE_summary}
 \end{table}
 
+The response time of the sensor is due to the sum of two contributions: the actual measurement time of the phase shift and the time needed by the algorithm to calculate the oxygen concentration and temperature. The measurement time for 50 frequencies with our setup was below one minute but could be easily improved by reducing the time delays in the communication between the various instruments.
 
 \subsection{Error Limited Accuracy}
 
