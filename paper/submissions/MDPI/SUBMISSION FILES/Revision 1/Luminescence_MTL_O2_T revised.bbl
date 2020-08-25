@@ -244,6 +244,11 @@ Michelucci, U.
 \newblock {\em Applied Deep Learning - A Case-Based Approach to Understanding
   Deep Neural Networks}; APRESS Media, LLC,  2018.
 
+\bibitem[Caruana(1997)]{caruana1997multitask}
+Caruana, R.
+\newblock Multitask learning.
+\newblock {\em Machine learning} {\bf 1997}, {\em 28},~41--75.
+
 \bibitem[Kingma(2015)]{Kingma2014}
 Kingma, D.P.;~Ba, J.A.
 \newblock Adam: A method for stochastic optimization. In Proceedings of 3rd.
