@@ -62,7 +62,10 @@
 \usepackage{soul, color}
 
 %\newtheorem{definition}{Definition}
-\newtheorem*{definition*}{Definition}
+%\newtheorem*{definition}{Definition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition} % definition numbers are dependent on theorem numbers
+%\newtheorem{exmp}[thm]{Example} % same for example numbers
 
 %------------------------------------------------------------------
 % The following line should be uncommented if the LaTeX file is uploaded to arXiv.org
@@ -85,9 +88,7 @@ Dual Oxygen and Temperature Luminescence Learning Sensor with Parallel Inference
 %\newcommand{\orcidauthorB}{0000-0000-000-000X} % Add \orcidB{} behind the author's name
 
 % Authors, for the paper (add full first names)
-\Author{\hl{Francesca Venturini} %MDPI: Affiliation number should be used in numerical order. x should be after x. Please confirm.
- \textsuperscript {1,\hl{2}  %MDPI: the affiliation must be in order. We revised the order of the affiliations  2 and 3. Please confirm this change.
-,}*, Umberto Michelucci $^{2,3}$ and Michael Baumgartner $^{1}$}
+\Author{Francesca Venturini \textsuperscript {1,2,}*, Umberto Michelucci $^{2,3}$ and Michael Baumgartner $^{1}$}
 
 % Authors, for metadata in PDF
 \AuthorNames{Francesca Venturini, Umberto Michelucci, Michael Baumgarten}
@@ -96,12 +97,12 @@ Dual Oxygen and Temperature Luminescence Learning Sensor with Parallel Inference
 \address{%
 $^{1}$ \quad Institute of Applied Mathematics and Physics, Zurich University of Applied Sciences,
 Technikumstrasse 9, 8401 Winterthur, Switzerland; Michael.Baumgartner@zhaw.ch \\
-$^{2}$ \quad TOELT LLC, \hl{Birchlenstr.} 25, 8600 Dübendorf, Switzerland\\   %MDPI: please complete the word
+$^{2}$ \quad TOELT LLC, Birchlenstrasse 25, 8600 Dübendorf, Switzerland\\   
 $^{3}$ \quad School of Computing, University of Portsmouth, Portsmouth PO1 3HE, UK; umberto.michelucci@toelt.ai\\
 } 
 
 % Contact information of the corresponding author
-\corres{Correspondence: \hl{francesca.venturini@zhaw.ch}} %MDPI: the email is different from the system, please check which one is correct. (francesca.venturini@zhaw.ch or vent@zhaw.ch)
+\corres{Correspondence: vent@zhaw.ch}
 
 % Current address and/or shared authorship
 %\firstnote{Current address: Affiliation 3} 
@@ -182,7 +183,7 @@ These will learn the complex inter-parameter dependencies and sensor-specific re
 \subsection{Measurement Principle}
 \label{Theory}
 
-Luminescence-based oxygen sensors usually are based on a luminophore in which luminescence intensity and decay time decrease for increasing O$_2$ concentrations. This reduction is due to collisions of the excited luminophore with molecular oxygen, which thus provides a radiationless deactivation process. The dependence of the luminescence intensity and decay time of the luminophores used for oxygen sensing is best described by the Stern--Volmer (SV) equation~\cite{Lakowicz2006}. Using a frequency-domain approach, the phase shift difference between the excitation and the emitted luminescence can be approximated using a \hl{two-site model}~\cite{Carraway1991,Demas1995} and written as~\cite{Michelucci2019} %MDPI: please check if the ``O'' in the equation should not be italic, and please check it in the whole text
+Luminescence-based oxygen sensors usually are based on a luminophore in which luminescence intensity and decay time decrease for increasing O$_2$ concentrations. This reduction is due to collisions of the excited luminophore with molecular oxygen, which thus provides a radiationless deactivation process. The dependence of the luminescence intensity and decay time of the luminophores used for oxygen sensing is best described by the Stern--Volmer (SV) equation~\cite{Lakowicz2006}. Using a frequency-domain approach, the phase shift difference between the excitation and the emitted luminescence can be approximated using a two-site model~\cite{Carraway1991,Demas1995} and written as~\cite{Michelucci2019} %MDPI: please check if the ``O'' in the equation should not be italic, and please check it in the whole text
 \begin{equation}
 \begin{aligned}
 \frac{\tan \theta_0 (\omega, T)}{\tan \theta (\omega, T, [O_2])}=
@@ -199,7 +200,7 @@ The proposed sensor not only overcomes the above-mentioned difficulties in findi
 \subsection{Experimental Setup and Dataset}
 \label{Experimental}
 
-The luminophore used for oxygen detection is Pt-TFPP, commercially available as Oxygen Sensor Spot (PSt3, PreSens  GmbH, \hl{Regensburg,} %MDPI: newly added information, please check 
+The luminophore used for oxygen detection is Pt-TFPP, commercially available as Oxygen Sensor Spot (PSt3, PreSens  GmbH, Regensburg, %MDPI: newly added information, please check 
 Germany). The optical setup for the luminescence measurements is described in~\cite{Venturini_2020}. 
 The large amount of data needed for the training and the test of the neural network was acquired using an automated acquisition program written using the software LabVIEW by National Instruments. The flow chart of the automated data acquisition program is shown in Figure \ref{fig:auto-data}.
 
@@ -208,15 +209,15 @@ The large amount of data needed for the training and the test of the neural netw
 First, the program fixed the temperature and concentration of the gas in contact with the sensor. Then, the phase shift was measured for 50 modulation frequencies between 200 Hz and 15 kHz. This~measurement was repeated 20 times. Next, keeping the temperature fixed, the program changed the oxygen concentration, and the entire frequency-loop was repeated.
 The oxygen concentration was varied between 0$\%$ air and 100$\%$ air in 5$\%$ air steps.
 Finally, the temperature was changed, and~then the oxygen and frequency loops where repeated. The temperature was varied between 5~$^\circ$C and 45~$^\circ$C in 5 $^\circ$C steps.
-The total number of measurements was thus 50 (frequencies) \hl{$\times$} 20 (loops) \hl{$\times$} 21 (oxygen~concentrations) \hl{$\times$} %MDPI: please check if this should be Multiplication sign
- 9 (temperatures) = \hl{189'000} %MDPI: please check if this should be ``189,000'', please check the same format of munbers in the whole text
+The total number of measurements was thus 50 (frequencies) times 20 (loops) times 21 (oxygen~concentrations) times %MDPI: please check if this should be Multiplication sign
+ 9 (temperatures) for a total of 189'000 %MDPI: please check if this should be ``189,000'', please check the same format of munbers in the whole text
  , which required a total acquisition time of approximately 65 h. This number of measurements was chosen as a compromise between maximizing the number of data and avoiding photodegradation, which naturally occurs when the sample is subjected to illumination. 
 
 
 \subsection{Signal Processing Algorithm}
 \label{NN}
 
-The software component of this new sensor type is based on a neural network model (NNM). An~NNM is made of three components~\cite{Michelucci2017}: a neural network architecture (that includes how neurons are connected, the activation functions and all the hyperparameters), a loss function (here indicated with $L$) and an optimizer algorithm. In this particular work we use what is called a Multi Task Learning (MTL) network architecture~\cite{caruana1997multitask}. This architecture has different branches, each able to learn to predict a separate quantity (in our case one $T$ and [$O_2$]). 
+The software component of this new sensor type is based on a neural network model (NNM). An~NNM is made of three components~\cite{Michelucci2017}: a neural network architecture (that includes how neurons are connected, the activation functions and all the hyperparameters), a loss function (here indicated with $L$) and an optimizer algorithm. In this particular work we use what is called a Multi Task Learning (MTL) network architecture~\cite{Caruana1997}. This architecture has different branches, each able to learn to predict a separate quantity (in our case one $T$ and [$O_2$]). 
 The details and parameters of the neural network architecture, of the loss function and of the optimizer used in this work are studied and described in detail in~\cite{Michelucci2019_2} and will not be described again here.
 
 \begin{figure}[H]
@@ -245,7 +246,7 @@ where $\theta_0(w_i)$ is the value of the measured phase shift without oxygen qu
 The loss function was minimized using the optimizer Adaptive Moment Estimation \mbox{(Adam)~\cite{Kingma2014, Michelucci2017}}. The implementation was performed using the TensorFlow\texttrademark $\ $library. The training was performed with a starting learning rate of $10^{-3}$. Two types of training were investigated to compare the training efficiency and performance of the network. {\sl No-batch training}: with this method all the training data  are used to perform an update of the weights and to evaluate the loss function. {\sl Mini-batch training}: with this method the weights update is performed after the network has seen 32 observations (this number is called mini-batch size~\cite{Michelucci2017}). For each update of the weights, 32 random observations are chosen from the training dataset without repetitions until all the training data are fed to the network. 
 The size of the mini-batch was chosen as a compromise between a good performance (measured through the value of the loss function) and the duration of training.
 
-No-batch training has the advantage of stability and requires less time for each epoch since it performs one update of the weights using the entire training dataset. Mini-batch training is normally more effective in reaching small values of the loss function in fewer epochs, but it requires more time for each epoch~\cite{Michelucci2017}. In our experiments the training for \hl{$20 \times 10^3$} %MDPI: we changed the dot into Multiplication sign, please check 
+No-batch training has the advantage of stability and requires less time for each epoch since it performs one update of the weights using the entire training dataset. Mini-batch training is normally more effective in reaching small values of the loss function in fewer epochs, but it requires more time for each epoch~\cite{Michelucci2017}. In our experiments the training for 20'000 %MDPI: we changed the dot into Multiplication sign, please check 
  epochs took roughly five minutes for no-batch training, and approximately 1 h with mini-batch training with mini-batch size of $32$, thus~resulting ca. 12 times slower. The training has been performed on a 2.2 GHz 6-Core Intel Core i7, with~32~GB of RAM. No GPU acceleration was used. 
 
 
@@ -264,8 +265,8 @@ In Section \ref{Results}, the prediction distribution of the $AE$s for both the 
 Generally, in a commercial sensor, the accuracy quantifies the performance of the sensor and helps to decide if the chosen device is appropriate for the application of interest. The above-defined metrics ($AE$, $MAE$ and $KDE$) are useful to compare the performance of different NNMs but do not help quantify which error the sensor reading will ultimately have in practice.
 For this reason, in this work we introduce a new metric, called Error Limited Accuracy ($ELA$) and indicated with $\eta$.
 
-\begin{definition*}
-\hl{In a regression problem}%MDPI: please add the munber after the ``Definition''
+\begin{definition}
+In a regression problem%MDPI: please add the munber after the ``Definition''
 , given the metric $AE$, and a chosen value of it $\hat{AE}$, the $ELA$  $\eta$ limited by the error $\hat{AE}$ is defined as the number of predictions $\hat y$ of the NNM that lie in the range $|\hat y-y|\leq \hat{AE}$, with $y$ the expected value, divided by the total number of observations. It will be indicated with $\eta(\hat{AE})$. Given the set
 \begin{equation}
 E(\hat{AE}) = \{ \hat y^{[i]} \ {\text with } \ i = 1,..., n\ | \ \ |\hat y^{[i]}-y^{[i]}|\leq \hat{AE} \} 
@@ -275,7 +276,7 @@ $\eta(\hat{AE})$ is defined as
 \eta(\hat{AE}) = \frac{|E(\hat{AE})|}{n}
 \end{equation}
 where $|E(\hat{AE})|$ is the cardinality of the set $E(\hat{AE})$ or, in other words, the number of its elements. $ y^{[i]}$ and $\hat y^{[i]}$ are respectively the expected and predicted value of the target variable for observation $i$.
-\end{definition*}
+\end{definition}
 
 This metric allows interpreting the regression problem as a classification one. $\eta(\hat{AE})$ simply describes how many observations are predicted by the NNM within a given value of the absolute error. In other words, it represents the percentage of predictions that are within a certain error $\hat{AE}$. Therefore, if we make $\hat{AE}$ big enough, all the predictions will be classified perfectly, so $\eta(\hat{AE})$ is expected to approach 1 for increasing $\hat{AE}$. On the other hand, the smaller $\hat{AE}$ is, the lower will be the number of predictions correctly classified. We finally define $\overline{AE}$ as the minimum value of $\hat{AE}$ for which $\eta(\hat{AE})=1$, so the minimum value of the absolute error for which the network predicts all the observations correctly. This value ($\overline{AE}$) can be interpreted as the biggest error in the sensor predictions.
 
@@ -327,11 +328,11 @@ The measurements of Figures \ref{fig:expdata1} to \ref{fig:expdata3} show how si
 
 \subsection{Sensor Performance}
 
-First, the effect of the training on the sensor performance was investigated.~As described previously, the neural network was trained with no-batches and with mini-batches. For this comparison the network was trained for \hl{20'000} epochs using the input observations ${\pmb \theta}_s$ as defined in Equation (\ref{input1}). The results for $AE_{[O_2]}$ and $AE_T$ are shown in Figure \ref{fig:KDE_results_all}A,B, respectively. The blue histogram shows the $AE$ distribution when using no-batch, the gray when using mini-batches of size 32. The $KDE$ profiles help to illustrate the features of the histogram. The effect of introducing mini-batches on the performance is significant. The predictions distributions get much narrower, the mean average errors decrease from $MAE_{[O_2]}=2.4$\% air and $MAE_{T}=3.6 \ ^\circ$C to $MAE_{[O_2]}=1.4$\% air and $MAE_{T}=1.6 \ ^\circ$C. Although the performance is significantly improved, from Figure \ref{fig:KDE_results_all}A,B it can also be clearly seen that errors as high as approximately 5\%~air for $[O_2]$ or 12 $^\circ$C for $T$ are still possible.
+First, the effect of the training on the sensor performance was investigated.~As described previously, the neural network was trained with no-batches and with mini-batches. For this comparison the network was trained for 20'000 epochs using the input observations ${\pmb \theta}_s$ as defined in Equation (\ref{input1}). The results for $AE_{[O_2]}$ and $AE_T$ are shown in Figure \ref{fig:KDE_results_all}A,B, respectively. The blue histogram shows the $AE$ distribution when using no-batch, the gray when using mini-batches of size 32. The $KDE$ profiles help to illustrate the features of the histogram. The effect of introducing mini-batches on the performance is significant. The predictions distributions get much narrower, the mean average errors decrease from $MAE_{[O_2]}=2.4$\% air and $MAE_{T}=3.6 \ ^\circ$C to $MAE_{[O_2]}=1.4$\% air and $MAE_{T}=1.6 \ ^\circ$C. Although the performance is significantly improved, from Figure \ref{fig:KDE_results_all}A,B it can also be clearly seen that errors as high as approximately 5\%~air for $[O_2]$ or 12 $^\circ$C for $T$ are still possible.
 
 
 
-Figure \ref{fig:KDE_results_all}C,D shows the effect of the training length. Here the comparison is between prediction distributions with \hl{20'000} and \hl{100'000} epochs (always using a mini-batch of size 32), using the input observations ${\pmb \theta}_s$ as defined in Equation (\ref{input1}). The effect of longer training is a dramatic improvement in the performance. When the network was trained for 100'000 epochs the mean average errors were reduced to only $MAE_{[O_2]}=0.22$\% air and $MAE_{T}=0.27  \ ^\circ$C. Additionally, all the predictions for $[O_2]$ lie below 0.94\% air, and for $T$ lie below 2.1 $^\circ$C.
+Figure \ref{fig:KDE_results_all}C,D shows the effect of the training length. Here the comparison is between prediction distributions with 20'000 and 100'000 epochs (always using a mini-batch of size 32), using the input observations ${\pmb \theta}_s$ as defined in Equation (\ref{input1}). The effect of longer training is a dramatic improvement in the performance. When the network was trained for 100'000 epochs the mean average errors were reduced to only $MAE_{[O_2]}=0.22$\% air and $MAE_{T}=0.27  \ ^\circ$C. Additionally, all the predictions for $[O_2]$ lie below 0.94\% air, and for $T$ lie below 2.1 $^\circ$C.
 
 \begin{figure}[H]
 \centering
@@ -350,7 +351,7 @@ To investigate if the training can be performed more efficiently, the normalized
 The performance of the different neural networks is summarized in Table \ref{TableMAE_summary}. 
 \begin{table}[H]
 \centering
-\caption {\bf \hl{Summary of the performance of the sensor for different neural network models.}} %MDPI: please check if the bold is necessary
+\caption {Summary of the performance of the sensor for different neural network models.} %MDPI: please check if the bold is necessary
 \label{TableMAE_summary}
 \begin{tabular}{ cccc}
 
@@ -389,7 +390,7 @@ Figure \ref{fig:ELA_result_comparison}B shows the results of the same analysis f
 
 \begin{table}[H]
 \centering
-\caption {\bf \hl{Summary of the values of} $\overline{AE}$ for the cases shown in Figure \ref{fig:ELA_result_comparison}A and \ref{fig:ELA_result_comparison}B.}
+\caption {Summary of the values of $\overline{AE}$ for the cases shown in Figure \ref{fig:ELA_result_comparison}A and \ref{fig:ELA_result_comparison}B.}
 \label{table:ela}
 \begin{tabular}{ cccc}
 \toprule
@@ -424,7 +425,7 @@ This work opens the road to complete new optical sensing approaches for future g
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \authorcontributions{F.V. conceived the work, performed the data analysis and wrote the paper; U.M. performed the data analysis, developed and optimized the neural network and wrote the paper; M.B. optimized the laboratory setup, programmed the automated data acquisition and performed the experiments. All authors have read and agreed to the published version of the manuscript.}
 
-\funding{\hl{main text}} %MDPI: Please add: “This research received no external funding” or “This research was funded by NAME OF FUNDER, grant number XXX” and “The APC was funded by XXX”. Check carefully that the details given are accurate and use the standard spelling of funding agency names at https://search.crossref.org/funding, any errors may affect your future funding.
+\funding{This research received no external funding.} %MDPI: Please add: “This research received no external funding” or “This research was funded by NAME OF FUNDER, grant number XXX” and “The APC was funded by XXX”. Check carefully that the details given are accurate and use the standard spelling of funding agency names at https://search.crossref.org/funding, any errors may affect your future funding.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\acknowledgments{In this section you can acknowledge any support given which is not covered by the author contribution or funding sections. This may include administrative and technical support, or donations in kind (e.g. materials used for experiments).}
 
@@ -517,7 +518,7 @@ Biring, S.; Sadhu, A.S.; Deb, M.
 \bibitem[Wolfbeis(1991)]{wolfbeis1991feasibility}
 Wolfbeis, O.S.
 \newblock Feasibility of optically sensing two parameters simultaneously using
-  one indicator.~\newblock  \hl{In \emph{Chemical, Biochemical, and Environmental Fiber Sensors II}; International Society for Optics and Photonics: Bellingham, WA, USA} %MDPI: layout it into a book, added the location of the publisher, please check
+  one indicator.~\newblock  In \emph{Chemical, Biochemical, and Environmental Fiber Sensors II}; International Society for Optics and Photonics: Bellingham, WA, USA %MDPI: layout it into a book, added the location of the publisher, please check
 , 1991; Volume 1368, pp. 218--222.
 
 \bibitem[Zieger \em{et~al.}(2020)Zieger, Steinegger, Klimant, and
@@ -556,8 +557,8 @@ Jorge, P.; Maule, C.; Silva, A.; Benrashid, R.; Santos, J.; Farahi, F.
 Moore, J.P.; Higgins, C.; McGaughey, O.; Lawless, B.G.; MacCraith, B.D.
 \newblock Exploiting sensor cross sensitivity: Achieving temperature
   compensation via a dual-element optical oxygen sensor.
-\newblock  \hl{In \emph{Advanced Environmental, Chemical, and Biological Sensing
-  Technologies IV}; International Society for Optics and Photonics: Bellingham, WA, USA} %MDPI: layout it into a book, added the location of the publisher, please check
+\newblock  In \emph{Advanced Environmental, Chemical, and Biological Sensing
+  Technologies IV; International Society for Optics and Photonics: Bellingham, WA, USA} %MDPI: layout it into a book, added the location of the publisher, please check
 ,  2006; Volume
   6377, p. 63770I.
 
@@ -621,13 +622,12 @@ Dini, F.; Martinelli, E.; Paolesse, R.; Filippini, D.; D’Amico, A.;
 
 \bibitem[Argyriou~A.(2006)]{Argyriou2006}
 Argyriou~A.; Evgeniou~T.; Pontil, M.
-\newblock Multi-task feature learning.~\newblock \hl{In Proceedings of the 19th International Conference on Neural
-  Information Processing Systems (NIPS'06), City, Country, Day Month 2006}. %MAPI: please add the conference location and detail conference date
+\newblock Multi-task feature learning.~\newblock In Proceedings of the 19th International Conference on Neural
+  Information Processing Systems (NIPS'06), Vancouver, B.C., Canada, December 2006. %MAPI: please add the conference location and detail conference date
 
 \bibitem[Thrun(1996)]{Thrun1996}
 Thrun, S.
-\newblock Is learning the n-th thing any easier than learning the first?~\newblock  \hl{In \emph{Advances in Neural Information Processing Systems}}; \hl{Publisher: City, Country,} 1996; pp.
-  640--646. %MAPI: layout it into a book, please add the publisher and location
+\newblock Is learning the n-th thing any easier than learning the first?~\newblock In Proceedings of the 8th International Conference on Neural Information Processing Systems (NIPS'95), Denver, CO, USA, November 1995. pp. 640--646. %MAPI: layout it into a book, please add the publisher and location
 
 \bibitem[Caruana(1997)]{Caruana1997}
 Caruana, R.
@@ -708,18 +708,17 @@ Venturini, F.; Michelucci, U.; Baumgartner, M.
 
 \bibitem[Michelucci(2018)]{Michelucci2017}
 Michelucci, U.~\newblock {\em Applied Deep Learning---A Case-Based Approach to Understanding
-  Deep Neural Networks}; APRESS~Media,~LLC: \hl{New York, NY, USA}, 2018. %MDPI: newly added information, please check
+  Deep Neural Networks}; APRESS~Media,~LLC: New York, NY, USA, 2018. %MDPI: newly added information, please check
  
-
-\bibitem[Caruana(1997)]{caruana1997multitask}
-\hl{Caruana, R.}
-\newblock Multitask learning.
-\newblock {\em Mach. Learn.} {\bf 1997}, {\em 28},~41--75.  %MDPI: this reference is the same as the ref. 25, please confirm and revise
+%\bibitem[Caruana(1997)]{caruana1997multitask}
+%\hl{Caruana, R.}
+%\newblock Multitask learning.
+%\newblock {\em Mach. Learn.} {\bf 1997}, {\em 28},~41--75.  %MDPI: this reference is the same as the ref. 25, please confirm and revise
 
 \bibitem[Kingma(2015)]{Kingma2014}
 Kingma, D.P.;~Ba, J.A.
-\newblock Adam: A method for stochastic optimization.~\newblock \hl{In Proceedings of 3rd International Conference on Learning
-  Representations, ICLR 2015, City, Country, Day Month} 2015; pp. 1--15. %MAPI: please add the conference location and detail conference date
+\newblock Adam: A method for stochastic optimization.~\newblock In Proceedings of 3rd International Conference on Learning
+  Representations, ICLR 2015, San Diego, CA, USA, May 2015; pp. 1--15. %MAPI: please add the conference location and detail conference date
 
 \end{thebibliography}
 
